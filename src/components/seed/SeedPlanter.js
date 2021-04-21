@@ -46,7 +46,7 @@ const SeedPlanter = () => {
     }
 
     return (
-    <div className="w-full pt-24">
+    <div className="w-full pt-24 grid grid-cols-3">
         <div className="button-panel w-max mx-auto">
         {`Diameter: `}
         <input className="border mb-2" value={diameter}  onChange={(e) => handleDiameter(e)} type="number" />
