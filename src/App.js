@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Classic from './components/classic/Classic';
 
 import Home from "./components/home/Home";
 import Nav from './components/nav/Nav';
@@ -18,13 +19,13 @@ const App = () => {
         <hr />
         <Switch>
           <Route exact path="/">
+            <SeedPlanter />
+          </Route>
+          <Route path="/about">
             <Home />
           </Route>
-          <Route path="/seed-planter">
-            <SeedPlanter />
-          </Route>
           <Route path="/painter-classic">
-            <SeedPlanter />
+            <Classic />
           </Route>
         </Switch>
       </div>
