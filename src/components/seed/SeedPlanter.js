@@ -46,9 +46,12 @@ const SeedPlanter = () => {
     }
 
     return (
-    <div value={diameter} className="w-full pt-24" onChange={(e) => handleDiameter(e)}>
-    {`Diameter: `}
-        <input className="border mb-2" type="number" />
+    <div className="w-full pt-24">
+        <div className="button-panel w-max mx-auto">
+        {`Diameter: `}
+        <input className="border mb-2" value={diameter}  onChange={(e) => handleDiameter(e)} type="number" />
+
+        </div>
         <div className="mx-auto bg-green-200 w-72 h-72 relative overflow-hidden" 
             onMouseMove={(e) => _onMouseMove(e)}
             onClick={(e) => plant(e)}
