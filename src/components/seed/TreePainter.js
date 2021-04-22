@@ -51,33 +51,34 @@ const TreePainter = () => {
     }
 
     return (
-    <div className="w-full pt-24 grid grid-cols-3">
-        <div> {/* LEFT COL - BUTTON PANEL */}
-            <div className="button-panel w-max ml-24">
-            {`Diameter: `}
-            <input className="border mb-2" value={diameter}  onChange={(e) => handleDiameter(e)} type="number" />
+    <div className="max-w-7xl mx-auto"> {/* GRID WRAPPER */}
+        <div className="w-full pt-24 grid grid-cols-3">
+            <div> {/* LEFT COL - BUTTON PANEL */}
+                <div className="button-panel w-max ml-24">
+                {`Diameter: `}
+                <input className="border w-12 mb-2" value={diameter}  onChange={(e) => handleDiameter(e)} type="number" />
+                </div>
+                <div className="button-panel w-max ml-24">
+                    <label for="head">Active Color: </label>
+                    <input type="color" id="head" name="head" onChange={(e) => handleColor(e)} value={color}/>
+                </div>
+                <button className="ml-24 border rounded px-2 py-1 mt-2" type="button" onClick={(e) => setTrees([])}>CLEAR</button>
             </div>
-            <div className="button-panel w-max ml-24">
-                <label for="head">Active Color: </label>
-                <input type="color" id="head" name="head" onChange={(e) => handleColor(e)} value={color}/>
+            <div className="mx-auto w-72 h-72 z-10 bg-white relative overflow-hidden border" onMouseMove={(e) => _onMouseMove(e)} onClick={(e) => plant(e)}> { /* Gameboard */ } 
+                <div className="absolute opacity-0 bg-black z-10 w-72 h-72"></div>
+                {drawTrees} 
+                <div className="mx-auto bg-green-200 w-72 h-72 overflow-hidden"></div>
             </div>
-            <button className="ml-24 border rounded px-2 py-1 mt-2" type="button" onClick={(e) => setTrees([])}>CLEAR</button>
-        </div>
-        <div className="mx-auto w-72 h-72 z-10 bg-white relative overflow-hidden border" onMouseMove={(e) => _onMouseMove(e)} onClick={(e) => plant(e)}> { /* Gameboard */ } 
-            <div className="absolute opacity-0 bg-black z-10 w-72 h-72"></div>
-            {drawTrees} 
-            <div className="mx-auto bg-green-200 w-72 h-72 overflow-hidden"></div>
-        </div>
-        <div className="border mx-auto border w-72 h-12 relative">
-            <div className="absolute top-2 left-4 flex">
-                <p className="mr-1 text-gray-400">mouseX:</p>
-                <p>{mouse.x}</p>
+            <div className="border mx-auto border w-72 h-12 relative">
+                <div className="absolute top-2 left-4 flex">
+                    <p className="mr-1 text-gray-400">mouseX:</p>
+                    <p>{mouse.x}</p>
+                </div>
+                <div className="absolute left-32 top-2 flex">
+                    <p className="mr-1 text-gray-400">mouseY:</p>
+                    <p>{mouse.y}</p>
+                </div>
             </div>
-            <div className="absolute left-32 top-2 flex">
-                <p className="mr-1 text-gray-400">mouseY:</p>
-                <p>{mouse.y}</p>
-            </div>
-
         </div>
     </div>
     )
