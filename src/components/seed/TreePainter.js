@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const SeedPlanter = () => {
+const TreePainter = () => {
     const [ mouse, setMouse] = useState({ x: 0, y: 0});
     const [ trees, setTrees ] = useState([]);
     const [ drawTrees, setDrawTrees ] = useState([]);
@@ -82,4 +82,4 @@ const SeedPlanter = () => {
     )
 }
 
-export default SeedPlanter
+export default TreePainter;

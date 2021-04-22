@@ -4,7 +4,7 @@ import Classic from './components/classic/Classic';
 
 import Home from "./components/home/Home";
 import Nav from './components/nav/Nav';
-import SeedPlanter from './components/seed/SeedPlanter';
+import TreePainter from './components/seed/TreePainter';
 
 const App = () => {
 
@@ -19,7 +19,7 @@ const App = () => {
         <hr />
         <Switch>
           <Route exact path="/">
-            <SeedPlanter />
+            <TreePainter />
           </Route>
           <Route path="/about">
             <Home />
