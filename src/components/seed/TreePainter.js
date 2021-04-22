@@ -61,6 +61,7 @@ const TreePainter = () => {
                 <label for="head">Active Color: </label>
                 <input type="color" id="head" name="head" onChange={(e) => handleColor(e)} value={color}/>
             </div>
+            <button className="ml-24 border rounded px-2 py-1 mt-2" type="button" onClick={(e) => setTrees([])}>CLEAR</button>
         </div>
         <div className="mx-auto w-72 h-72 z-10 bg-white relative overflow-hidden border" onMouseMove={(e) => _onMouseMove(e)} onClick={(e) => plant(e)}> { /* Gameboard */ } 
             <div className="absolute opacity-0 bg-black z-10 w-72 h-72"></div>
