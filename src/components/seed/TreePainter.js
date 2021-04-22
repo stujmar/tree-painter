@@ -8,12 +8,11 @@ const TreePainter = () => {
     const [ color, setColor ] = useState("#86cf38");
 
     useEffect(() => {
-        // console.log(mouseX, mouseY);
     },[mouse])
 
     useEffect(() => {
         setDrawTrees(trees.map(tree => {
-            return <div className="absolute shadow" style={{
+            return <div key={`${tree.x},${tree.y}`} className="absolute shadow" style={{
                 top: tree.y, 
                 left: tree.x, 
                 borderRadius: "50%",
@@ -40,7 +39,7 @@ const TreePainter = () => {
     }
 
     const plant = (e) => {
-        console.log(`tree planted at ${mouse.x}, ${mouse.y}`)
+        // console.log(`tree planted at ${mouse.x}, ${mouse.y}`)
         setTrees(trees => [...trees, {
             x: mouse.x - (diameter/2),
             y: mouse.y - (diameter/2),
@@ -59,7 +58,7 @@ const TreePainter = () => {
                 <input className="border w-12 mb-2" value={diameter}  onChange={(e) => handleDiameter(e)} type="number" />
                 </div>
                 <div className="button-panel w-max md:ml-24">
-                    <label for="head">Active Color: </label>
+                    <label htmlFor="head">Active Color: </label>
                     <input type="color" id="head" name="head" onChange={(e) => handleColor(e)} value={color}/>
                 </div>
                 <button className="md:ml-24 border rounded px-2 py-1 mt-2" type="button" onClick={(e) => setTrees([])}>CLEAR</button>
@@ -77,6 +76,9 @@ const TreePainter = () => {
                 <div className="absolute left-32 top-2 flex">
                     <p className="mr-1 text-gray-400">mouseY:</p>
                     <p>{mouse.y}</p>
+                </div>
+                <div className="border h-72 mt-12 overflow-hidden">
+                    {trees.map(tree => <div key={`${tree.x},${tree.y}`}>x:{tree.x}, y:{tree.y}</div>) }
                 </div>
             </div>
         </div>
