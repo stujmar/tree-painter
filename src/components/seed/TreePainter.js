@@ -52,19 +52,19 @@ const TreePainter = () => {
 
     return (
     <div className="max-w-7xl mx-auto"> {/* GRID WRAPPER */}
-        <div className="w-full pt-24 grid grid-cols-3">
-            <div> {/* LEFT COL - BUTTON PANEL */}
-                <div className="button-panel w-max ml-24">
+        <div className="w-full pt-12 md:pt-24 grid  md:grid-cols-3">
+            <div className="w-72 mx-auto"> {/* LEFT COL - BUTTON PANEL */}
+                <div className="button-panel w-max md:ml-24">
                 {`Diameter: `}
                 <input className="border w-12 mb-2" value={diameter}  onChange={(e) => handleDiameter(e)} type="number" />
                 </div>
-                <div className="button-panel w-max ml-24">
+                <div className="button-panel w-max md:ml-24">
                     <label for="head">Active Color: </label>
                     <input type="color" id="head" name="head" onChange={(e) => handleColor(e)} value={color}/>
                 </div>
-                <button className="ml-24 border rounded px-2 py-1 mt-2" type="button" onClick={(e) => setTrees([])}>CLEAR</button>
+                <button className="md:ml-24 border rounded px-2 py-1 mt-2" type="button" onClick={(e) => setTrees([])}>CLEAR</button>
             </div>
-            <div className="mx-auto w-72 h-72 z-10 bg-white relative overflow-hidden border" onMouseMove={(e) => _onMouseMove(e)} onClick={(e) => plant(e)}> { /* Gameboard */ } 
+            <div className="mx-auto w-72 h-72 mt-2 z-10 bg-white relative overflow-hidden border" onMouseMove={(e) => _onMouseMove(e)} onClick={(e) => plant(e)}> { /* Gameboard */ } 
                 <div className="absolute opacity-0 bg-black z-10 w-72 h-72"></div>
                 {drawTrees} 
                 <div className="mx-auto bg-green-200 w-72 h-72 overflow-hidden"></div>
