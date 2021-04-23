@@ -17,7 +17,16 @@ const TreePainter = () => {
     } 
 
     const water = (id) => {
-        console.log("water tree of id: ", id);
+        setTrees( trees.map( tree => {
+            if (tree.id === id) {
+                tree.x -= 1;
+                tree.y -= 1;
+                tree.diameter += 2;
+            }
+            return tree;
+        }
+        ))
+        setSeeds(seeds + 1);
     }
 
     useEffect(() => {
