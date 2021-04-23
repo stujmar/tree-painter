@@ -11,7 +11,7 @@ const PlantedTreeInfo = ({ x, y, color, age, id, onDelete }) => {
                 </div>
                 <div className="flex"> {/* BOTTOM ROW*/}
                     <div>{`age: ${age}`}</div>
-                    <button onClick={() => onDelete(id)}></button>
+                    <button onClick={() => onDelete(id)}>cut down</button>
                 </div>
             </div>
         </>

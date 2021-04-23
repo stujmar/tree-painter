@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PlantedTreeInfo from './PlantedTreeInfo';
 
 const TreePainter = () => {
     const [ mouse, setMouse] = useState({ x: 0, y: 0});
@@ -9,8 +10,7 @@ const TreePainter = () => {
     const [ diameter, setDiameter ] = useState(15);
     const [ color, setColor ] = useState("#B6FE90");
 
-    useEffect(() => {
-    },[mouse])
+ 
 
     useEffect(() => {
         setDrawTrees(trees.map(tree => {
@@ -22,6 +22,10 @@ const TreePainter = () => {
                 width: `${tree.diameter}px`,
                 background: tree.color
                 }}></div>
+        }));
+
+        setInfoPanel(trees.map(tree => {
+            return <PlantedTreeInfo x={tree.x} y={tree.y} color={tree.color} age={tree.age} id={tree.id} onDelete={handleDelete}/>
         }));
     },[trees])
 
@@ -38,6 +42,10 @@ const TreePainter = () => {
 
     const handleColor = (e) => {
         setColor(e.target.value);
+    }
+
+    const handleDelete = (id) => {
+        console.log("delete tree of id: ", id);
     }
 
     const plant = (e) => {
@@ -90,7 +98,8 @@ const TreePainter = () => {
                     <p>{mouse.y}</p>
                 </div>
                 <div className="border h-72 mt-12 overflow-hidden">
-                    {trees.map(tree => <div key={tree.id}>x:{tree.x}, y:{tree.y}</div>) }
+                    {infoPanel}
+                    {/* {trees.map(tree => <div key={tree.id}>x:{tree.x}, y:{tree.y}</div>) } */}
                 </div>
             </div>
         </div>
