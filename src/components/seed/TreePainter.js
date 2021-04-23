@@ -36,7 +36,7 @@ const TreePainter = () => {
     useEffect(() => {
         setDrawTrees(trees.map(tree => {
             return <button key={tree.id} 
-            className="absolute shadow focus:outline-none"
+            className="absolute shadow focus:outline-none water-cursor"
             onClick={() => { waterTree(tree.id)} } 
             style={{
                 top: tree.y, 
@@ -118,7 +118,11 @@ const TreePainter = () => {
                 </div>
             </div>
             <div className={`mx-auto w-72 h-72 mt-2 lg:mt-0 z-10 relative overflow-hidden border`}> { /* Gameboard */ } 
-                <div className={`absolute opacity-0 bg-black z-10 w-72 h-72 ${mode === "PLANTING" ? "" : "hidden" }`} onMouseMove={(e) => _onMouseMove(e)} onClick={(e) => plant(e)} ></div>
+                <div 
+                    className={`absolute opacity-0 bg-black seed-cursor z-10 w-72 h-72 ${mode === "PLANTING" ? "" : "hidden" }`} 
+                    onMouseMove={(e) => _onMouseMove(e)}
+                    onClick={(e) => plant(e)} 
+                    ></div>
                 {drawTrees} 
                 <div className="mx-auto bg-green-200 w-72 h-72 overflow-hidden"></div>
             </div>
