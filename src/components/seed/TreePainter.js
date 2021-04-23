@@ -134,16 +134,16 @@ const TreePainter = () => {
                 </div> 
             </div>
 
-            <div className="border mx-auto border w-72 h-12 relative">
-                <div className="absolute top-2 left-4 flex">
+            <div className="mt-4 mx-auto relative col-span-3 w-full">
+                {/* <div className="absolute top-2 left-4 flex">
                     <p className="mr-1 text-gray-400">mouseX:</p>
                     <p>{mouse.x}</p>
                 </div>
                 <div className="absolute left-32 top-2 flex">
                     <p className="mr-1 text-gray-400">mouseY:</p>
                     <p>{mouse.y}</p>
-                </div>
-                <div className="mt-14">
+                </div> */}
+                <div className=" mx-auto w-11/12 flex flex-row flex-wrap">
                     {infoPanel}
                 </div>
             </div>

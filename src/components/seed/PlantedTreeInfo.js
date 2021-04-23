@@ -3,7 +3,7 @@ import React from 'react'
 const PlantedTreeInfo = ({ x, y, color, age, id, diameter, onDelete }) => {
     return (
         <>
-            <div className="border p-1 mt-1 rounded" style={{borderColor: color, borderWidth: "3px"}}>
+            <div className="border p-1 m-1 rounded" style={{borderColor: color, borderWidth: "3px"}}>
                 <div className="flex"> {/* TOP ROW */}
                     {/* <div>{`x: ${x}`}</div>
                     <div>{`y: ${y}`}</div> */}
