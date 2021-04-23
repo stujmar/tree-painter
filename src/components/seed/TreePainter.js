@@ -5,6 +5,7 @@ const TreePainter = () => {
     const [ seeds, setSeeds ] = useState(10);
     const [ trees, setTrees ] = useState([]);
     const [ drawTrees, setDrawTrees ] = useState([]);
+    const [ infoPanel, setInfoPanel ] = useState([]);
     const [ diameter, setDiameter ] = useState(15);
     const [ color, setColor ] = useState("#B6FE90");
 
@@ -13,7 +14,7 @@ const TreePainter = () => {
 
     useEffect(() => {
         setDrawTrees(trees.map(tree => {
-            return <div key={`${tree.x},${tree.y}`} className="absolute shadow" style={{
+            return <div key={tree.id} className="absolute shadow" style={{
                 top: tree.y, 
                 left: tree.x, 
                 borderRadius: "50%",
@@ -43,6 +44,7 @@ const TreePainter = () => {
         if (seeds > 0) {
 
             setTrees(trees => [...trees, {
+                id: Math.floor(Math.random() * 10000),
                 x: mouse.x - (diameter/2),
                 y: mouse.y - (diameter/2),
                 diameter: diameter ? diameter : 2,
@@ -88,7 +90,7 @@ const TreePainter = () => {
                     <p>{mouse.y}</p>
                 </div>
                 <div className="border h-72 mt-12 overflow-hidden">
-                    {trees.map(tree => <div key={`${tree.x},${tree.y}`}>x:{tree.x}, y:{tree.y}</div>) }
+                    {trees.map(tree => <div key={tree.id}>x:{tree.x}, y:{tree.y}</div>) }
                 </div>
             </div>
         </div>
