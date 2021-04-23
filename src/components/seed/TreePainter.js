@@ -87,6 +87,8 @@ const TreePainter = () => {
     const reset = (e) => {
         setTrees([])
         setSeeds(10);
+        setWater(10);
+        setMode("PLANTING");
     }
 
     const handleMode = () => {
@@ -102,7 +104,7 @@ const TreePainter = () => {
                     <div>{ water !== 1 ? `You have ${water} waters.` : `You have 1 water.`}</div>
                 </div>
                 <div className="flex flex-col">
-                <button type="button" className="border w-max shadow-sm px-2 rounded" onClick={(e) => handleMode(e)}>{`MODE: ${mode}`}</button>
+                <button type="button" className="border w-max shadow-sm px-2 rounded hover:bg-gray-50" onClick={(e) => handleMode(e)}>{`MODE: ${mode}`}</button>
 
                 <section className={ mode === "PLANTING" ? "mt-2" : "hidden"}> 
                 <div className="button-panel mt-2 w-max">
@@ -114,7 +116,7 @@ const TreePainter = () => {
                     <input type="color" id="head" name="head" onChange={(e) => handleColor(e)} value={color}/>
                 </div>
                 </section>
-                <button className="border rounded px-2 py-1 mt-2 w-min" type="button" onClick={(e) => reset(e)}>CLEAR</button>
+                <button className="border rounded px-2  mt-2 w-min hover:bg-gray-50" type="button" onClick={(e) => reset(e)}>RESET</button>
                 </div>
             </div>
             <div className={`mx-auto w-72 h-72 mt-2 lg:mt-0 z-10 relative overflow-hidden border`}> { /* Gameboard */ } 
