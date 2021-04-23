@@ -11,7 +11,10 @@ const TreePainter = () => {
     const [ diameter, setDiameter ] = useState(15);
     const [ color, setColor ] = useState("#B6FE90");
 
- 
+    const handleDelete = (id) => {
+        setTrees(trees.filter( tree => tree.id !== id ));
+        console.log("delete tree of id: ", id);
+    } 
 
     useEffect(() => {
         setDrawTrees(trees.map(tree => {
@@ -26,8 +29,9 @@ const TreePainter = () => {
         }));
 
         setInfoPanel(trees.map(tree => {
-            return <PlantedTreeInfo x={tree.x} y={tree.y} color={tree.color} age={tree.age} id={tree.id} onDelete={handleDelete}/>
+            return <PlantedTreeInfo x={tree.x} y={tree.y} color={tree.color} age={tree.age} id={tree.id} onDelete={(id) => handleDelete(id)}/>
         }));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[trees])
 
     const _onMouseMove = (e) => {
@@ -43,10 +47,6 @@ const TreePainter = () => {
 
     const handleColor = (e) => {
         setColor(e.target.value);
-    }
-
-    const handleDelete = (id) => {
-        console.log("delete tree of id: ", id);
     }
 
     const plant = (e) => {
