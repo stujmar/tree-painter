@@ -14,7 +14,7 @@ const TreePainter = () => {
 
     const handleDelete = (id) => {
         setTrees(trees.filter( tree => tree.id !== id ));
-        console.log("delete tree of id: ", id);
+        setSeeds(seeds + 1);
     } 
 
     const waterTree = (id) => {
