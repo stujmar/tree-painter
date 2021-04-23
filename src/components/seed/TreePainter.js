@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PlantedTreeInfo from './PlantedTreeInfo';
 
 const TreePainter = () => {
+    const [ mode, setMode ] = useState('PLANTING');
     const [ mouse, setMouse] = useState({ x: 0, y: 0});
     const [ seeds, setSeeds ] = useState(10);
     const [ trees, setTrees ] = useState([]);
@@ -68,22 +69,32 @@ const TreePainter = () => {
         setSeeds(10);
     }
 
+    const handleMode = () => {
+        mode === "PLANTING" ? setMode("WATERING") : setMode("PLANTING")
+    }
+
     return (
     <div className="max-w-7xl mx-auto"> {/* GRID WRAPPER */}
-        <div className="w-full pt-12 md:pt-24 grid  md:grid-cols-3">
+        <div className="w-full pt-6 grid  md:grid-cols-3">
             <div className="w-72 md:ml-32 mx-auto"> {/* LEFT COL - BUTTON PANEL */}
+                <button type="button" className="border shadow-sm px-2 rounded" onClick={(e) => handleMode(e)}>{`MODE: ${mode}`}</button>
+                <div className="flex flex-col">
+
+                <section className={ mode === "PLANTING" ? "mt-2" : "hidden"}> 
                 <div>{ seeds !== 1 ? `You have ${seeds} seeds.` : `You have 1 seed.`}</div>
                 <div className="button-panel mt-2 w-max">
                 {`Diameter: `}
                 <input className="border w-12 mb-2" value={diameter}  onChange={(e) => handleDiameter(e)} type="number" />
-                </div>
+                </div> 
                 <div className="button-panel w-max ">
                     <label htmlFor="head">Active Color: </label>
                     <input type="color" id="head" name="head" onChange={(e) => handleColor(e)} value={color}/>
                 </div>
-                <button className=" border rounded px-2 py-1 mt-2" type="button" onClick={(e) => reset(e)}>CLEAR</button>
+                </section>
+                <button className="border rounded px-2 py-1 mt-2 w-min" type="button" onClick={(e) => reset(e)}>CLEAR</button>
+                </div>
             </div>
-            <div className="mx-auto w-72 h-72 mt-2 z-10 bg-white relative overflow-hidden border" onMouseMove={(e) => _onMouseMove(e)} onClick={(e) => plant(e)}> { /* Gameboard */ } 
+            <div className="mx-auto w-72 h-72 mt-2 lg:mt-0 z-10 bg-white relative overflow-hidden border" onMouseMove={(e) => _onMouseMove(e)} onClick={(e) => plant(e)}> { /* Gameboard */ } 
                 <div className="absolute opacity-0 bg-black z-10 w-72 h-72"></div>
                 {drawTrees} 
                 <div className="mx-auto bg-green-200 w-72 h-72 overflow-hidden"></div>
@@ -97,7 +108,7 @@ const TreePainter = () => {
                     <p className="mr-1 text-gray-400">mouseY:</p>
                     <p>{mouse.y}</p>
                 </div>
-                <div className="border h-72 mt-12 overflow-hidden">
+                <div className="border mt-12 ">
                     {infoPanel}
                     {/* {trees.map(tree => <div key={tree.id}>x:{tree.x}, y:{tree.y}</div>) } */}
                 </div>
