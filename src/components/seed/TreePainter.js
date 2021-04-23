@@ -16,20 +16,27 @@ const TreePainter = () => {
         console.log("delete tree of id: ", id);
     } 
 
+    const water = (id) => {
+        console.log("water tree of id: ", id);
+    }
+
     useEffect(() => {
         setDrawTrees(trees.map(tree => {
-            return <div key={tree.id} className="absolute shadow" style={{
+            return <button key={tree.id} 
+            className="absolute shadow focus:outline-none"
+            onClick={() => { water(tree.id)} } 
+            style={{
                 top: tree.y, 
                 left: tree.x, 
                 borderRadius: "50%",
                 height: `${tree.diameter}px`,
                 width: `${tree.diameter}px`,
                 background: tree.color
-                }}></div>
+                }}></button>
         }));
 
         setInfoPanel(trees.map(tree => {
-            return <PlantedTreeInfo x={tree.x} y={tree.y} color={tree.color} age={tree.age} id={tree.id} onDelete={(id) => handleDelete(id)}/>
+            return <PlantedTreeInfo key={tree.id} x={tree.x} y={tree.y} color={tree.color} age={tree.age} id={tree.id} onDelete={(id) => handleDelete(id)}/>
         }));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[trees])
@@ -94,8 +101,8 @@ const TreePainter = () => {
                 <button className="border rounded px-2 py-1 mt-2 w-min" type="button" onClick={(e) => reset(e)}>CLEAR</button>
                 </div>
             </div>
-            <div className="mx-auto w-72 h-72 mt-2 lg:mt-0 z-10 bg-white relative overflow-hidden border" onMouseMove={(e) => _onMouseMove(e)} onClick={(e) => plant(e)}> { /* Gameboard */ } 
-                <div className="absolute opacity-0 bg-black z-10 w-72 h-72"></div>
+            <div className={`mx-auto w-72 h-72 mt-2 lg:mt-0 z-10 relative overflow-hidden border`}> { /* Gameboard */ } 
+                <div className={`absolute opacity-0 bg-black z-10 w-72 h-72 ${mode === "PLANTING" ? "" : "hidden" }`} onMouseMove={(e) => _onMouseMove(e)} onClick={(e) => plant(e)} ></div>
                 {drawTrees} 
                 <div className="mx-auto bg-green-200 w-72 h-72 overflow-hidden"></div>
             </div>
