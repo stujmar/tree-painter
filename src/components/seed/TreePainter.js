@@ -119,15 +119,21 @@ const TreePainter = () => {
                 <button className="border rounded px-2  mt-2 w-min hover:bg-gray-50" type="button" onClick={(e) => reset(e)}>RESET</button>
                 </div>
             </div>
-            <div className={`mx-auto w-72 h-72 mt-2 lg:mt-0 z-10 relative overflow-hidden border`}> { /* Gameboard */ } 
-                <div 
-                    className={`absolute opacity-0 bg-black seed-cursor z-10 w-72 h-72 ${mode === "PLANTING" ? "" : "hidden" }`} 
-                    onMouseMove={(e) => _onMouseMove(e)}
-                    onClick={(e) => plant(e)} 
-                    ></div>
-                {drawTrees} 
-                <div className="mx-auto bg-green-200 w-72 h-72 overflow-hidden"></div>
+
+            <div> { /* Gameboard Grid */ }
+                    <div className="mx-auto bg-blue-600 w-72 h-12"></div> {/* Sky */}
+                <div className="mx-auto w-72 mt-2 lg:mt-0 z-10 relative  border"> {/* Gameboard Wrapper */}
+                    <div 
+                        className={`absolute opacity-0 bg-black seed-cursor z-10 w-72 h-72 ${mode === "PLANTING" ? "" : "hidden" }`} 
+                        onMouseMove={(e) => _onMouseMove(e)}
+                        onClick={(e) => plant(e)} 
+                        >
+                        </div>
+                    {drawTrees} 
+                    <div className="mx-auto bg-green-200 w-72 h-72 overflow-hidden"></div>
+                </div> 
             </div>
+
             <div className="border mx-auto border w-72 h-12 relative">
                 <div className="absolute top-2 left-4 flex">
                     <p className="mr-1 text-gray-400">mouseX:</p>
