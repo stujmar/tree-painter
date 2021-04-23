@@ -97,7 +97,7 @@ const TreePainter = () => {
 
     return (
     <div className="max-w-7xl mx-auto"> {/* GRID WRAPPER */}
-        <div className="w-full pt-6 grid  md:grid-cols-3">
+        <div className="w-full pt-6 grid  grid-cols-3 ">
             <div className="w-72 md:ml-32 mx-auto"> {/* LEFT COL - BUTTON PANEL */}
                 <div className="mb-2">
                     <div>{ seeds !== 1 ? `You have ${seeds} seeds.` : `You have 1 seed.`}</div>
@@ -120,17 +120,17 @@ const TreePainter = () => {
                 </div>
             </div>
 
-            <div> { /* Gameboard Grid */ }
-                    <div className="mx-auto bg-blue-600 w-72 h-12"></div> {/* Sky */}
-                <div className="mx-auto w-72 mt-2 lg:mt-0 z-10 relative  border"> {/* Gameboard Wrapper */}
+            <div className="col-span-2"> { /* Gameboard Grid */ }
+                    <div className="mr-auto bg-blue-600 w-96 h-12"></div> {/* Sky */}
+                <div className="mr-auto w-96 mt-2 lg:mt-0 z-10 relative"> {/* Gameboard Wrapper */}
                     <div 
-                        className={`absolute opacity-0 bg-black seed-cursor z-10 w-72 h-72 ${mode === "PLANTING" ? "" : "hidden" }`} 
+                        className={`absolute opacity-0 bg-black seed-cursor z-10 w-96 h-72 ${mode === "PLANTING" ? "" : "hidden" }`} 
                         onMouseMove={(e) => _onMouseMove(e)}
                         onClick={(e) => plant(e)} 
                         >
                         </div>
                     {drawTrees} 
-                    <div className="mx-auto bg-green-200 w-72 h-72 overflow-hidden"></div>
+                    <div className="mx-auto bg-green-200 w-96 h-72 overflow-hidden"></div>
                 </div> 
             </div>
 
@@ -145,7 +145,6 @@ const TreePainter = () => {
                 </div>
                 <div className="mt-14">
                     {infoPanel}
-                    {/* {trees.map(tree => <div key={tree.id}>x:{tree.x}, y:{tree.y}</div>) } */}
                 </div>
             </div>
         </div>
