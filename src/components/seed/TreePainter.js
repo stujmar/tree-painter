@@ -5,6 +5,7 @@ const TreePainter = () => {
     const [ mode, setMode ] = useState('PLANTING');
     const [ mouse, setMouse] = useState({ x: 0, y: 0});
     const [ seeds, setSeeds ] = useState(10);
+    const [ water, setWater ] = useState(10);
     const [ trees, setTrees ] = useState([]);
     const [ drawTrees, setDrawTrees ] = useState([]);
     const [ infoPanel, setInfoPanel ] = useState([]);
@@ -16,7 +17,8 @@ const TreePainter = () => {
         console.log("delete tree of id: ", id);
     } 
 
-    const water = (id) => {
+    const waterTree = (id) => {
+        setWater(water - 1);
         setTrees( trees.map( tree => {
             if (tree.id === id) {
                 tree.x -= 1;
@@ -33,7 +35,7 @@ const TreePainter = () => {
         setDrawTrees(trees.map(tree => {
             return <button key={tree.id} 
             className="absolute shadow focus:outline-none"
-            onClick={() => { water(tree.id)} } 
+            onClick={() => { waterTree(tree.id)} } 
             style={{
                 top: tree.y, 
                 left: tree.x, 
@@ -93,11 +95,14 @@ const TreePainter = () => {
     <div className="max-w-7xl mx-auto"> {/* GRID WRAPPER */}
         <div className="w-full pt-6 grid  md:grid-cols-3">
             <div className="w-72 md:ml-32 mx-auto"> {/* LEFT COL - BUTTON PANEL */}
-                <button type="button" className="border shadow-sm px-2 rounded" onClick={(e) => handleMode(e)}>{`MODE: ${mode}`}</button>
+                <div className="mb-2">
+                    <div>{ seeds !== 1 ? `You have ${seeds} seeds.` : `You have 1 seed.`}</div>
+                    <div>{ water !== 1 ? `You have ${water} waters.` : `You have 1 water.`}</div>
+                </div>
                 <div className="flex flex-col">
+                <button type="button" className="border w-max shadow-sm px-2 rounded" onClick={(e) => handleMode(e)}>{`MODE: ${mode}`}</button>
 
                 <section className={ mode === "PLANTING" ? "mt-2" : "hidden"}> 
-                <div>{ seeds !== 1 ? `You have ${seeds} seeds.` : `You have 1 seed.`}</div>
                 <div className="button-panel mt-2 w-max">
                 {`Diameter: `}
                 <input className="border w-12 mb-2" value={diameter}  onChange={(e) => handleDiameter(e)} type="number" />
