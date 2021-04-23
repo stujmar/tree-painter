@@ -49,7 +49,7 @@ const TreePainter = () => {
         }));
 
         setInfoPanel(trees.map(tree => {
-            return <PlantedTreeInfo key={tree.id} x={tree.x} y={tree.y} color={tree.color} age={tree.age} id={tree.id} onDelete={(id) => handleDelete(id)}/>
+            return <PlantedTreeInfo key={tree.id} x={tree.x} diameter={tree.diameter} y={tree.y} color={tree.color} age={tree.age} id={tree.id} onDelete={(id) => handleDelete(id)}/>
         }));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[trees])
@@ -135,7 +135,7 @@ const TreePainter = () => {
                     <p className="mr-1 text-gray-400">mouseY:</p>
                     <p>{mouse.y}</p>
                 </div>
-                <div className="border mt-12 ">
+                <div className="mt-14">
                     {infoPanel}
                     {/* {trees.map(tree => <div key={tree.id}>x:{tree.x}, y:{tree.y}</div>) } */}
                 </div>
