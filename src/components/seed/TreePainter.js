@@ -107,64 +107,66 @@ const TreePainter = ( { messageChange } ) => {
     }
 
     return (
-    <div className="max-w-7xl mx-auto"> {/* GRID WRAPPER */}
-        <StatusBar seeds={seeds} stars={stars} water={water}/>
-        <div className="flex flex-col mt-12 lg:flex-row">
-            <div className="border"> {/* BUTTON PANEL */}
-                <div className="w-72 md:ml-32 mx-auto"> {/* LEFT COL - BUTTON PANEL */}
-                    <div className="mb-2">
-                        <div>{ seeds !== 1 ? `You have ${seeds} seeds.` : `You have 1 seed.`}</div>
-                        <div>{ water !== 1 ? `You have ${water} waters.` : `You have 1 water.`}</div>
-                    </div>
-                    <div className="flex flex-col">
-                    <button type="button" className="border w-max shadow-sm px-2 rounded hover:bg-gray-50" onClick={(e) => handleMode(e)}>{`MODE: ${mode}`}</button>
-
-                    <section className={ mode === "PLANTING" ? "mt-2" : "hidden"}> 
-                    <div className="button-panel mt-2 w-max">
-                    {`Diameter: `}
-                    <input className="border w-12 mb-2" value={diameter}  onChange={(e) => handleDiameter(e)} type="number" />
-                    </div> 
-                    <div className="button-panel w-max ">
-                        <label htmlFor="head">Active Color: </label>
-                        <input type="color" id="head" name="head" onChange={(e) => handleColor(e)} value={color}/>
-                    </div>
-                    </section>
-                    <button className="border rounded px-2  mt-2 w-min hover:bg-gray-50" type="button" onClick={(e) => reset(e)}>RESET</button>
-                    </div>
-                </div>
-            </div>
-            <div className=""> {/* GAME FIELD */}
-                        <div className="mx-auto lg:mr-auto bg-blue-600 w-96 h-12"></div> {/* Sky */}
-                    <div className="mx-auto lg:mr-auto w-96 z-10 relative"> {/* Gameboard Wrapper */}
-                        <div 
-                            className={`absolute opacity-0 bg-black z-10 w-96 h-72 ${seeds ? "seed-cursor" : "no-seed-cursor"} ${mode === "PLANTING" ? "" : "hidden" }`} 
-                            onMouseMove={(e) => _onMouseMove(e)}
-                            onClick={(e) => plant(e)} 
-                            >
+        <>
+            <StatusBar seeds={seeds} stars={stars} water={water}/>
+            <div className="max-w-7xl mx-auto"> {/* GRID WRAPPER */}
+                <div className="flex flex-col mt-12 lg:flex-row">
+                    <div className="border"> {/* BUTTON PANEL */}
+                        <div className="w-72 md:ml-32 mx-auto"> {/* LEFT COL - BUTTON PANEL */}
+                            <div className="mb-2">
+                                <div>{ seeds !== 1 ? `You have ${seeds} seeds.` : `You have 1 seed.`}</div>
+                                <div>{ water !== 1 ? `You have ${water} waters.` : `You have 1 water.`}</div>
                             </div>
-                        {drawTrees} 
-                        <div className="mx-auto bg-green-200 w-96 h-72 overflow-hidden"></div>
-                    </div> 
-            </div>
-        </div>
-        <div className="w-full pt-6 grid  grid-cols-3 ">
+                            <div className="flex flex-col">
+                            <button type="button" className="border w-max shadow-sm px-2 rounded hover:bg-gray-50" onClick={(e) => handleMode(e)}>{`MODE: ${mode}`}</button>
+
+                            <section className={ mode === "PLANTING" ? "mt-2" : "hidden"}> 
+                            <div className="button-panel mt-2 w-max">
+                            {`Diameter: `}
+                            <input className="border w-12 mb-2" value={diameter}  onChange={(e) => handleDiameter(e)} type="number" />
+                            </div> 
+                            <div className="button-panel w-max ">
+                                <label htmlFor="head">Active Color: </label>
+                                <input type="color" id="head" name="head" onChange={(e) => handleColor(e)} value={color}/>
+                            </div>
+                            </section>
+                            <button className="border rounded px-2  mt-2 w-min hover:bg-gray-50" type="button" onClick={(e) => reset(e)}>RESET</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className=""> {/* GAME FIELD */}
+                                <div className="mx-auto lg:mr-auto bg-blue-600 w-96 h-12"></div> {/* Sky */}
+                            <div className="mx-auto lg:mr-auto w-96 z-10 relative"> {/* Gameboard Wrapper */}
+                                <div 
+                                    className={`absolute opacity-0 bg-black z-10 w-96 h-72 ${seeds ? "seed-cursor" : "no-seed-cursor"} ${mode === "PLANTING" ? "" : "hidden" }`} 
+                                    onMouseMove={(e) => _onMouseMove(e)}
+                                    onClick={(e) => plant(e)} 
+                                    >
+                                    </div>
+                                {drawTrees} 
+                                <div className="mx-auto bg-green-200 w-96 h-72 overflow-hidden"></div>
+                            </div> 
+                    </div>
+                </div>
+                <div className="w-full pt-6 grid  grid-cols-3 ">
 
 
-            <div className="mt-4 mx-auto relative col-span-3 w-full">
-                {/* <div className="absolute top-2 left-4 flex">
-                    <p className="mr-1 text-gray-400">mouseX:</p>
-                    <p>{mouse.x}</p>
-                </div>
-                <div className="absolute left-32 top-2 flex">
-                    <p className="mr-1 text-gray-400">mouseY:</p>
-                    <p>{mouse.y}</p>
-                </div> */}
-                <div className=" mx-auto w-11/12 flex flex-row flex-wrap">
-                    {infoPanel}
+                    <div className="mt-4 mx-auto relative col-span-3 w-full">
+                        {/* <div className="absolute top-2 left-4 flex">
+                            <p className="mr-1 text-gray-400">mouseX:</p>
+                            <p>{mouse.x}</p>
+                        </div>
+                        <div className="absolute left-32 top-2 flex">
+                            <p className="mr-1 text-gray-400">mouseY:</p>
+                            <p>{mouse.y}</p>
+                        </div> */}
+                        <div className=" mx-auto w-11/12 flex flex-row flex-wrap">
+                            {infoPanel}
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </>
     )
 }
 
