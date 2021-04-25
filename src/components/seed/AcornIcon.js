@@ -2,7 +2,7 @@ import React from 'react';
 
 const AcornIcon = ({amount}) => {
     return (
-        <svg className="group" id="Layer_1" width="25"
+        <svg className="group" id="Layer_1" width="20"
 	 x="0px" y="0px" viewBox="0 0 21.03 28.67"
 	 >
 <g>
