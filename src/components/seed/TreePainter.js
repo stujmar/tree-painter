@@ -141,7 +141,7 @@ const TreePainter = ( { messageChange } ) => {
                             </div>
                         </div>
                     </div>
-                    <div className=""> {/* GAME FIELD */}
+                    <div className="overflow-hidden"> {/* GAME FIELD */}
                                 <div className="mx-auto lg:mr-auto bg-blue-600 w-96 h-12"></div> {/* Sky */}
                             <div className="mx-auto lg:mr-auto w-96 z-10 relative"> {/* Gameboard Wrapper */}
                                 <div 
