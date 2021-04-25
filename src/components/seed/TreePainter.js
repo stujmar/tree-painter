@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import PlantedTreeInfo from './PlantedTreeInfo';
+import StatusBar from './StatusBar';
 
 const TreePainter = ( { messageChange } ) => {
     const [ mode, setMode ] = useState('PLANTING');
     const [ mouse, setMouse] = useState({ x: 0, y: 0});
     const [ seeds, setSeeds ] = useState(10);
+    const [ stars, setStars ] = useState(10);
     const [ water, setWater ] = useState(10);
     const [ trees, setTrees ] = useState([]);
     const [ drawTrees, setDrawTrees ] = useState([]);
@@ -95,6 +97,7 @@ const TreePainter = ( { messageChange } ) => {
     const reset = (e) => {
         setTrees([])
         setSeeds(10);
+        setStars(10);
         setWater(10);
         setMode("PLANTING");
     }
@@ -105,7 +108,8 @@ const TreePainter = ( { messageChange } ) => {
 
     return (
     <div className="max-w-7xl mx-auto"> {/* GRID WRAPPER */}
-        <div className="flex flex-col lg:flex-row">
+        <StatusBar seeds={seeds} stars={stars} water={water}/>
+        <div className="flex flex-col mt-12 lg:flex-row">
             <div className="border"> {/* BUTTON PANEL */}
                 <div className="w-72 md:ml-32 mx-auto"> {/* LEFT COL - BUTTON PANEL */}
                     <div className="mb-2">
