@@ -27,6 +27,13 @@ const TreePainter = ( { messageChange } ) => {
         "no_water" : "Oops all out of water"
     };
 
+    useEffect(() => {
+        messageChange(messageCenter.first_seed)
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[seeds, trees, stars]
+    )
+
     const waterTree = (id) => {
         if (water > 0) {
             setWater(water - 1);
