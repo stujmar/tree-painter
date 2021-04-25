@@ -13,7 +13,8 @@ const App = () => {
       <header className="bg-green-600 h-36 flex items-center justify-center text-lg font-sans text-white">
         <p>Welcome to Tree Painter Studio</p>
       </header>
-      <Router>
+      <TreePainter />
+      {/* <Router>
       <div className="box-border">
       <Nav />
         <hr />
@@ -29,7 +30,7 @@ const App = () => {
           </Route>
         </Switch>
       </div>
-    </Router>
+    </Router> */}
     </div>
   )
 }

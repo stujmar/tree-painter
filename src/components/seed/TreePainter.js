@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PlantedTreeInfo from './PlantedTreeInfo';
 
-const TreePainter = () => {
+const TreePainter = ( { messageChange } ) => {
     const [ mode, setMode ] = useState('PLANTING');
     const [ mouse, setMouse] = useState({ x: 0, y: 0});
     const [ seeds, setSeeds ] = useState(10);
@@ -17,13 +17,13 @@ const TreePainter = () => {
         setSeeds(seeds + 1);
     } 
 
-    const messageCenter = [
-        "Welcome to Tree Painter Studio",
-        "Wow you are planting now!",
-        "Yum that tree was thirsty",
-        "Oops all out of seeds",
-        "Oops all out of water"
-    ];
+    const messageCenter = {
+        "welcome": "Welcome to Tree Painter Studio",
+        "first_seed" : "Wow you are planting now!",
+        "first_water" : "Yum that tree was thirsty!",
+        "no_seeds" : "Oops all out of seeds",
+        "no_water" : "Oops all out of water"
+    };
 
     const waterTree = (id) => {
         if (water > 0) {
