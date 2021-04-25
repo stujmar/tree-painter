@@ -17,6 +17,14 @@ const TreePainter = () => {
         setSeeds(seeds + 1);
     } 
 
+    const messageCenter = [
+        "Welcome to Tree Painter Studio",
+        "Wow you are planting now!",
+        "Yum that tree was thirsty",
+        "Oops all out of seeds",
+        "Oops all out of water"
+    ];
+
     const waterTree = (id) => {
         if (water > 0) {
             setWater(water - 1);
