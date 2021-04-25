@@ -130,7 +130,7 @@ const TreePainter = ( { messageChange } ) => {
                             <section className={ mode === "PLANTING" ? "mt-2" : "hidden"}> 
                             <div className="button-panel mt-2 w-max">
                             {`Diameter: `}
-                            <input className="border w-12 mb-2" value={diameter}  onChange={(e) => handleDiameter(e)} type="number" />
+                            <input className="border w-12 mb-2" value={diameter} min="1" max="100"  onChange={(e) => handleDiameter(e)} type="number" />
                             </div> 
                             <div className="button-panel w-max ">
                                 <label htmlFor="head">Active Color: </label>
