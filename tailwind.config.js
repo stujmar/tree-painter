@@ -5,7 +5,8 @@ module.exports = {
     extend: {
       colors: {
         'acorn-top': '#ECA76D',
-        'acorn-bottom': '#945E42'
+        'acorn-bottom': '#945E42',
+        'water-blue' : '#75b4e3'
       }
     },
   },

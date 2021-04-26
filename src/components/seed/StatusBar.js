@@ -1,5 +1,6 @@
 import React from 'react';
 import AcornIcon from './AcornIcon';
+import WaterIcon from './WaterIcon';
 
 const StatusBar = ({seeds, water, stars,}) => {
 
@@ -8,7 +9,8 @@ const StatusBar = ({seeds, water, stars,}) => {
             <div className="flex max-w-7xl mx-auto justify-center items-top py-1">
                 <AcornIcon amount={seeds} />
                 <div className="px-1 pt-1">{`:${seeds}`}</div>
-                <div className="px-1 pt-1">{`water:${water}`}</div>
+                <WaterIcon amount={water} />
+                <div className="px-1 pt-1">{`:${water}`}</div>
                 <div className="px-1 pt-1">{`stars:${stars}`}</div>
             </div>
         </div>
