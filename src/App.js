@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import Classic from './components/classic/Classic';
 
@@ -8,14 +8,16 @@ import TreePainter from './components/seed/TreePainter';
 
 const App = () => {
 
-  const handleMessageChange = (e) => {
-    console.log(e);
+  const [ message, setMessage ] = useState("Welcome to Tree Painter");
+
+  const handleMessageChange = (payload) => {
+    setMessage(payload);
   }
 
   return (
     <div className="App">
       <header className="bg-green-600 h-36 flex items-center justify-center text-lg font-sans text-white">
-        <p>Welcome to Tree Painter Studio</p>
+        <p>{message}</p>
       </header>
       <TreePainter messageChange={(e) => handleMessageChange(e)}/>
       {/* <Router>
