@@ -117,8 +117,8 @@ const TreePainter = ( { messageChange } ) => {
         <>
             <StatusBar seeds={seeds} stars={stars} water={water}/>
             <div className="max-w-7xl mx-auto"> {/* GRID WRAPPER */}
-                <div className="flex flex-col mt-12 lg:flex-row">
-                    <div className="border p-1"> {/* BUTTON PANEL */}
+                <div className="flex flex-col lg:flex-row">
+                    <div className="border pt-4"> {/* BUTTON PANEL */}
                         <div className="w-72 md:ml-32 h-16 mx-auto grid grid-cols-2"> {/* LEFT COL - BUTTON PANEL */}
                             {/* <div className="mb-2">
                                 <div>{ seeds !== 1 ? `You have ${seeds} seeds.` : `You have 1 seed.`}</div>
