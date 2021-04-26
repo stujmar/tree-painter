@@ -126,7 +126,10 @@ const TreePainter = ( { messageChange } ) => {
                             </div> */}
 
                             <div>
-                              <button type="button" className="border w-max shadow-sm px-2 my-1 rounded hover:bg-gray-50" onClick={(e) => handleMode(e)}>{`MODE: ${mode}`}</button>
+                              <button type="button" className="border w-max shadow-sm px-2 rounded hover:bg-gray-50" onClick={(e) => handleMode(e)}>{`MODE: ${mode}`}</button>
+                            </div>
+                            <div>
+                                <button className="border shadow-sm rounded px-2 ml-4 w-min hover:bg-gray-50" type="button" onClick={(e) => reset(e)}>RESET</button>
                             </div>
 
                             <section className={ mode === "PLANTING" ? "" : "hidden"}> 
@@ -139,7 +142,6 @@ const TreePainter = ( { messageChange } ) => {
                                 <label htmlFor="head">Color: </label>
                                 <input className="" type="color" id="head" name="head" onChange={(e) => handleColor(e)} value={color}/>
                             </div>
-                            <button className="border rounded px-2 mt-2 w-min hover:bg-gray-50" type="button" onClick={(e) => reset(e)}>RESET</button>
                            
                         </div>
                     </div>
