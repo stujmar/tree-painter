@@ -118,27 +118,29 @@ const TreePainter = ( { messageChange } ) => {
             <StatusBar seeds={seeds} stars={stars} water={water}/>
             <div className="max-w-7xl mx-auto"> {/* GRID WRAPPER */}
                 <div className="flex flex-col mt-12 lg:flex-row">
-                    <div className="border"> {/* BUTTON PANEL */}
-                        <div className="w-72 md:ml-32 mx-auto"> {/* LEFT COL - BUTTON PANEL */}
-                            <div className="mb-2">
+                    <div className="border p-1"> {/* BUTTON PANEL */}
+                        <div className="w-72 md:ml-32 h-32 mx-auto grid grid-cols-2"> {/* LEFT COL - BUTTON PANEL */}
+                            {/* <div className="mb-2">
                                 <div>{ seeds !== 1 ? `You have ${seeds} seeds.` : `You have 1 seed.`}</div>
                                 <div>{ water !== 1 ? `You have ${water} waters.` : `You have 1 water.`}</div>
-                            </div>
-                            <div className="flex flex-col">
-                            <button type="button" className="border w-max shadow-sm px-2 rounded hover:bg-gray-50" onClick={(e) => handleMode(e)}>{`MODE: ${mode}`}</button>
+                            </div> */}
 
-                            <section className={ mode === "PLANTING" ? "mt-2" : "hidden"}> 
-                            <div className="button-panel mt-2 w-max">
+                            <div>
+                              <button type="button" className="border w-max shadow-sm px-2 my-1 rounded hover:bg-gray-50" onClick={(e) => handleMode(e)}>{`MODE: ${mode}`}</button>
+                            </div>
+
+                            <section className={ mode === "PLANTING" ? "" : "hidden"}> 
+                            <div className="button-panel w-max ml-2">
                             {`Diameter: `}
-                            <input className="border w-12 mb-2" value={diameter} min="1" max="100"  onChange={(e) => handleDiameter(e)} type="number" />
+                            <input className="border w-12" value={diameter} min="1" max="100"  onChange={(e) => handleDiameter(e)} type="number" />
                             </div> 
-                            <div className="button-panel w-max ">
-                                <label htmlFor="head">Active Color: </label>
-                                <input type="color" id="head" name="head" onChange={(e) => handleColor(e)} value={color}/>
-                            </div>
                             </section>
-                            <button className="border rounded px-2  mt-2 w-min hover:bg-gray-50" type="button" onClick={(e) => reset(e)}>RESET</button>
+                            <div className="button-panel w-max ml-2">
+                                <label htmlFor="head">Color: </label>
+                                <input className="" type="color" id="head" name="head" onChange={(e) => handleColor(e)} value={color}/>
                             </div>
+                            <button className="border rounded px-2 mt-2 w-min hover:bg-gray-50" type="button" onClick={(e) => reset(e)}>RESET</button>
+                           
                         </div>
                     </div>
                     <div className="overflow-hidden"> {/* GAME FIELD */}

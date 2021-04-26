@@ -5,8 +5,6 @@ const PlantedTreeInfo = ({ x, y, color, age, id, diameter, onDelete }) => {
         <>
             <div className="border p-1 m-1 rounded shadow" style={{borderColor: color, borderWidth: "3px"}}>
                 <div className="flex"> {/* TOP ROW */}
-                    {/* <div>{`x: ${x}`}</div>
-                    <div>{`y: ${y}`}</div> */}
                     <div className="ml-1">{`diameter: ${diameter}`}</div>
                     <div className="ml-2">{`age: ${age}`}</div>
                 </div>
