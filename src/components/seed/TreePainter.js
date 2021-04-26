@@ -119,7 +119,7 @@ const TreePainter = ( { messageChange } ) => {
             <div className="max-w-7xl mx-auto"> {/* GRID WRAPPER */}
                 <div className="flex flex-col mt-12 lg:flex-row">
                     <div className="border p-1"> {/* BUTTON PANEL */}
-                        <div className="w-72 md:ml-32 h-32 mx-auto grid grid-cols-2"> {/* LEFT COL - BUTTON PANEL */}
+                        <div className="w-72 md:ml-32 h-16 mx-auto grid grid-cols-2"> {/* LEFT COL - BUTTON PANEL */}
                             {/* <div className="mb-2">
                                 <div>{ seeds !== 1 ? `You have ${seeds} seeds.` : `You have 1 seed.`}</div>
                                 <div>{ water !== 1 ? `You have ${water} waters.` : `You have 1 water.`}</div>
@@ -138,10 +138,10 @@ const TreePainter = ( { messageChange } ) => {
                             <input className="border w-12" value={diameter} min="1" max="100"  onChange={(e) => handleDiameter(e)} type="number" />
                             </div> 
                             </section>
-                            <div className="button-panel w-max ml-2">
+                            <section className={ mode === "PLANTING" ? "" : "hidden"}> 
                                 <label htmlFor="head">Color: </label>
                                 <input className="" type="color" id="head" name="head" onChange={(e) => handleColor(e)} value={color}/>
-                            </div>
+                            </section>
                            
                         </div>
                     </div>
