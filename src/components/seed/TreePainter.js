@@ -119,7 +119,7 @@ const TreePainter = ( { messageChange } ) => {
             <div className="max-w-7xl mx-auto"> {/* GRID WRAPPER */}
                 <div className="flex flex-col lg:flex-row">
                     <div className="pt-4 w-min mx-auto"> {/* BUTTON PANEL */}
-                        <div className="w-72 md:ml-32 h-16 mx-auto grid grid-cols-2"> {/* LEFT COL - BUTTON PANEL */}
+                        <div className="w-72 lg:ml-32 h-16 mx-auto grid grid-cols-2 lg:grid-cols-1"> {/* LEFT COL - BUTTON PANEL */}
                             {/* <div className="mb-2">
                                 <div>{ seeds !== 1 ? `You have ${seeds} seeds.` : `You have 1 seed.`}</div>
                                 <div>{ water !== 1 ? `You have ${water} waters.` : `You have 1 water.`}</div>
@@ -128,7 +128,7 @@ const TreePainter = ( { messageChange } ) => {
                             <div>
                               <button type="button" className="border w-max shadow-sm px-2 rounded hover:bg-gray-50" onClick={(e) => handleMode(e)}>{`MODE: ${mode}`}</button>
                             </div>
-                            <div className="ml-auto">
+                            <div className="ml-auto lg:mr-auto lg:ml-0">
                                 <button className="border shadow-sm rounded px-2 w-min hover:bg-gray-50" type="button" onClick={(e) => reset(e)}>RESET</button>
                             </div>
 
@@ -138,7 +138,7 @@ const TreePainter = ( { messageChange } ) => {
                             <input className="border w-12" value={diameter} min="1" max="100"  onChange={(e) => handleDiameter(e)} type="number" />
                             </div> 
                             </section>
-                            <section className={ mode === "PLANTING" ? "ml-auto" : "hidden"}> 
+                            <section className={ mode === "PLANTING" ? "ml-auto lg:mr-auto lg:ml-0" : "hidden"}> 
                                 <label htmlFor="head">Color: </label>
                                 <input className="" type="color" id="head" name="head" onChange={(e) => handleColor(e)} value={color}/>
                             </section>
