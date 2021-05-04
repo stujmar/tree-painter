@@ -116,10 +116,10 @@ const TreePainter = ( { messageChange } ) => {
     return (
         <>
             <StatusBar seeds={seeds} stars={stars} water={water}/>
-            <div className="max-w-7xl mx-auto"> {/* GRID WRAPPER */}
+            <div className="w-max mx-auto"> {/* GRID WRAPPER */}
                 <div className="flex flex-col lg:flex-row">
-                    <div className="pt-4 w-min mx-auto"> {/* BUTTON PANEL */}
-                        <div className="w-72 lg:ml-32 h-16 mx-auto grid grid-cols-2 lg:grid-cols-1"> {/* LEFT COL - BUTTON PANEL */}
+                    <div className="pt-4 w-min mx-auto lg:ml-auto lg:mr-0"> {/* BUTTON PANEL */}
+                        <div className="w-72 h-16 grid grid-cols-2 lg:grid-cols-1"> {/* LEFT COL - BUTTON PANEL */}
                             {/* <div className="mb-2">
                                 <div>{ seeds !== 1 ? `You have ${seeds} seeds.` : `You have 1 seed.`}</div>
                                 <div>{ water !== 1 ? `You have ${water} waters.` : `You have 1 water.`}</div>
@@ -159,22 +159,10 @@ const TreePainter = ( { messageChange } ) => {
                             </div> 
                     </div>
                 </div>
-                <div className="w-full pt-6 grid  grid-cols-3 ">
-
-
-                    <div className="mt-4 mx-auto relative col-span-3 w-full">
-                        {/* <div className="absolute top-2 left-4 flex">
-                            <p className="mr-1 text-gray-400">mouseX:</p>
-                            <p>{mouse.x}</p>
-                        </div>
-                        <div className="absolute left-32 top-2 flex">
-                            <p className="mr-1 text-gray-400">mouseY:</p>
-                            <p>{mouse.y}</p>
-                        </div> */}
-                        <div className=" mx-auto w-11/12 flex flex-row flex-wrap">
+                <div className="mt-4 w-96">
+                        <div className="grid grid-cols-2">
                             {infoPanel}
                         </div>
-                    </div>
                 </div>
             </div>
         </>
