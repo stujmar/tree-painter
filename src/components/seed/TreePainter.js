@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PlantedTreeInfo from './PlantedTreeInfo';
 import StatusBar from './StatusBar';
+import ButtonPanel from './ButtonPanel'
 
 const TreePainter = ( { messageChange } ) => {
     const [ mode, setMode ] = useState('PLANTING');
@@ -118,30 +119,15 @@ const TreePainter = ( { messageChange } ) => {
             <StatusBar seeds={seeds} stars={stars} water={water}/>
             <div className="w-max mx-auto"> {/* GRID WRAPPER */}
                 <div className="flex flex-col lg:flex-row">
-                    <div className="pt-4 w-min mx-auto lg:ml-auto lg:mr-0"> {/* BUTTON PANEL */}
-                        <div className="w-72 h-16 grid grid-cols-2 lg:grid-cols-1 gap-3"> {/* LEFT COL - BUTTON PANEL */}
-
-                            <div>
-                              <button type="button" className="border w-max shadow-sm px-2 rounded hover:bg-gray-50" onClick={(e) => handleMode(e)}>{`MODE: ${mode}`}</button>
-                            </div>
-                            <div className="ml-auto lg:mr-auto lg:ml-0">
-                                <button className="border shadow-sm rounded px-2 w-min hover:bg-gray-50" type="button" onClick={(e) => reset(e)}>RESET</button>
-                            </div>
-
-                            <section className={ mode === "PLANTING" ? "" : "hidden"}> 
-                                <div className="button-panel w-max ml-2">
-                                {`Diameter: `}
-                                <input className="border w-12" value={diameter} min="1" max="100"  onChange={(e) => handleDiameter(e)} type="number" />
-                                </div> 
-                            </section>
-
-                            <section className={ mode === "PLANTING" ? "ml-auto lg:mr-auto lg:ml-0" : "hidden"}> 
-                                <label htmlFor="head">Color: </label>
-                                <input className="" type="color" id="head" name="head" onChange={(e) => handleColor(e)} value={color}/>
-                            </section>
-                           
-                        </div>
-                    </div>
+                    <ButtonPanel 
+                        mode={mode} 
+                        diameter={diameter}
+                        color={color}
+                        reset={reset}
+                        handleColor={handleColor}
+                        handleDiameter={handleDiameter}
+                        handleMode={handleMode}
+                    />
                     <div className="overflow-hidden mt-4"> {/* GAME FIELD */}
                                 <div className="mx-auto lg:mr-auto bg-blue-400 w-96 h-12"></div> {/* Sky */}
                             <div className="mx-auto lg:mr-auto w-96 z-10 relative"> {/* Gameboard Wrapper */}
