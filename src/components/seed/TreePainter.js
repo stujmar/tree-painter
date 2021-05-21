@@ -129,7 +129,7 @@ const TreePainter = ( { messageChange } ) => {
                         handleMode={handleMode}
                     />
                     <div className="overflow-hidden mt-4"> {/* GAME FIELD */}
-                                <div className="mx-auto lg:mr-auto bg-blue-400 w-96 h-12"></div> {/* Sky */}
+                                <div className="mx-auto lg:mr-auto bg-blue-400 w-96" style={{height: 200}}></div> {/* Sky */}
                             <div className="mx-auto lg:mr-auto w-96 z-10 relative"> {/* Gameboard Wrapper */}
                                 <div 
                                     className={`absolute opacity-0 bg-black z-10 w-96 h-72 ${seeds ? "seed-cursor" : "no-seed-cursor"} ${mode === "PLANTING" ? "" : "hidden" }`} 
