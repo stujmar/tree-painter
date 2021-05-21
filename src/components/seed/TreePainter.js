@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PlantedTreeInfo from './PlantedTreeInfo';
+import ButtonPanel from './ButtonPanel';
+import Debug from './Debug';
 import StatusBar from './StatusBar';
-import ButtonPanel from './ButtonPanel'
 
 const TreePainter = ( { messageChange } ) => {
     const [ mode, setMode ] = useState('PLANTING');
@@ -142,11 +143,7 @@ const TreePainter = ( { messageChange } ) => {
                             </div> 
                     </div>
                 </div>
-                <div className="mt-4 w-96">
-                        <div className="grid grid-cols-2">
-                            {infoPanel}
-                        </div>
-                </div>
+                <Debug infoPanel={infoPanel} />
             </div>
         </>
     )
