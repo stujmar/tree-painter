@@ -2,7 +2,6 @@ import React from 'react'
 import { defaultProps } from 'recompose';
 
 const Sunset = ({opacity}) => {
-    // let test = .5;
     return (
         <div 
         style={{ background: `linear-gradient(0deg, rgba(255,0,0,${opacity}) 0%, rgba(255,255,255,0) 85%)` }}
