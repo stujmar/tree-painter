@@ -2,7 +2,7 @@ import React from 'react'
 import { defaultProps } from 'recompose';
 
 const Sunset = ({opacity}) => {
-let percent = 25;
+let percent = 85;
 
     return (
         <div 
