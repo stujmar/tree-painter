@@ -1,8 +1,7 @@
-const smartConverter = (day) => {
-
-    
-
-
+const smartConverter = (number) => {
+    let month = getMonth(number);
+    let day = number - daysToRemove(month)
+    return `${month} ${day}`
 }
 
 export default smartConverter;
@@ -12,6 +11,24 @@ function getMonth(day){
         return "January"
     } else if (day < 31 && day <= 59) {
         return "February"
+    } else if (day <= 90) {
+        return "March"
+    } else if (day <= 120) {
+        return "April"
+    } else if (day <= 151) {
+        return "May"
+    } else if (day <= 181) {
+        return "June"
+    } else if (day <= 212) {
+        return "July"
+    } else if (day <= 243) {
+        return "August"
+    } else if (day <= 273) {
+        return "September" 
+    } else if (day <= 304) {
+        return "October"
+    } else if (day <= 334) {
+        return "December"
     }
 }
 
