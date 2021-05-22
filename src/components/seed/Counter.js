@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 const Counter = (props) => {
-    let [count, setCount] = useState(0);
+    let [count, setCount] = useState(1);
 
     function useInterval(callback, delay) {
         const savedCallback = useRef();
@@ -23,8 +23,11 @@ const Counter = (props) => {
         }, [delay]);
     }
     useInterval(() => {
-      // Your custom logic here
-      setCount(count + 1);
+      if (count < 365) {
+          setCount(count + 1);
+      } else {
+          setCount(1);
+      }
     }, 1000);
   
     return <h1>{count}</h1>;
