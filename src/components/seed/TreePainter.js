@@ -131,10 +131,10 @@ const TreePainter = ( { messageChange } ) => {
                         handleMode={handleMode}
                     />
                     <div className="overflow-hidden mt-4"> {/* GAME FIELD */}
-                            <div className="mx-auto lg:mr-auto w-96 z-10 relative"> {/* Gameboard Wrapper */}
                                 <Sky />
+                            <div className="mx-auto lg:mr-auto w-96 z-10 relative"> {/* Gameboard Wrapper */}
                                 <div 
-                                    className={`absolute opacity-0 bg-black z-10 w-96 h-72 ${seeds ? "seed-cursor" : "no-seed-cursor"} ${mode === "PLANTING" ? "" : "hidden" }`} 
+                                    className={`absolute bottom-0 opacity-0 bg-black z-10 w-96 h-72 ${seeds ? "seed-cursor" : "no-seed-cursor"} ${mode === "PLANTING" ? "" : "hidden" }`} 
                                     onMouseMove={(e) => _onMouseMove(e)}
                                     onClick={(e) => plant(e)} 
                                     >
@@ -144,6 +144,7 @@ const TreePainter = ( { messageChange } ) => {
                             </div> 
                     </div>
                 </div>
+                <div>{`x:${mouse.x} y:${mouse.y}`}</div>
                 <Debug infoPanel={infoPanel} />
             </div>
         </>
