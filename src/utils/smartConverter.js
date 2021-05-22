@@ -1,7 +1,8 @@
 const smartConverter = (number) => {
     let month = getMonth(number);
-    let day = number - daysToRemove(month)
-    return `${month} ${day}`
+    let day = number - daysToRemove[month]
+    let suffix = getSuffix(number)
+    return `${month} ${day}${suffix}`
 }
 
 export default smartConverter;
@@ -9,7 +10,7 @@ export default smartConverter;
 function getMonth(day){
     if (day <= 31 ) {
         return "January"
-    } else if (day < 31 && day <= 59) {
+    } else if (day <= 59) {
         return "February"
     } else if (day <= 90) {
         return "March"
@@ -28,6 +29,8 @@ function getMonth(day){
     } else if (day <= 304) {
         return "October"
     } else if (day <= 334) {
+        return "November"
+    } else {
         return "December"
     }
 }
@@ -45,5 +48,30 @@ const daysToRemove = {
     October: 273, //31
     November: 304, //30
     December: 334, //31
+
+}
+
+function getSuffix(day){
+    if (day === 11) {
+        return "th";
+    }
+    switch(day.toString().slice(-1)) {
+        case "1":
+         return "st";
+        case "2":
+          return "nd";
+        case "3":
+          return "rd";
+        case "4":
+        case "5":
+        case "6":
+        case "7":
+        case "8":
+        case "9":
+        case "0":
+            return "th"
+        default:
+            return ""
+      }
 
 }

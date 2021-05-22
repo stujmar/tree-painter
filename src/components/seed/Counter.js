@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { dateConverter } from '../../utils/dateConverter';
+import { useState, useEffect, useRef } from 'react';
+import smartConverter from '../../utils/smartConverter';
 
 const Counter = (props) => {
     let [count, setCount] = useState(1);
@@ -24,18 +24,13 @@ const Counter = (props) => {
         }, [delay]);
     }
     useInterval(() => {
-        // console.log(dateConverter(count));
-        // console.log(typeof count);
       if (count < 365) {
           setCount(count + 1);
       } else {
           setCount(1);
       }
-    }, 1000);
-    
-    return !!dateConverter(count) ? dateConverter(count) : count;
-    
-    // return <h1>{count}</h1>;
+    }, 250);
+    return smartConverter(count);
  }
 
 export default Counter;
