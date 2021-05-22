@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import smartConverter from '../../utils/smartConverter';
 
 const Counter = (props) => {
-    let [count, setCount] = useState(1);
+    let [count, setCount] = useState(Math.floor(Math.random() * (366 - 1) + 1));
 
     function useInterval(callback, delay) {
         const savedCallback = useRef();
@@ -29,7 +29,7 @@ const Counter = (props) => {
       } else {
           setCount(1);
       }
-    }, 250);
+    }, 5000);
     return smartConverter(count);
  }
 

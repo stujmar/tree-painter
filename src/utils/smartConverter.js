@@ -1,7 +1,7 @@
 const smartConverter = (number) => {
     let month = getMonth(number);
     let day = number - daysToRemove[month]
-    let suffix = getSuffix(number)
+    let suffix = getSuffix(day)
     return `${month} ${day}${suffix}`
 }
 
@@ -52,7 +52,7 @@ const daysToRemove = {
 }
 
 function getSuffix(day){
-    if (day === 11) {
+    if (day === 11 || day === 12 || day === 13) {
         return "th";
     }
     switch(day.toString().slice(-1)) {

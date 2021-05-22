@@ -132,7 +132,7 @@ const TreePainter = ( { messageChange } ) => {
                     />
                     <div className="overflow-hidden mt-4"> {/* GAME FIELD */}
                                 <div className="mx-auto lg:mr-auto bg-blue-400 w-96 relative" style={{height: 100}}>
-                                    <Sunset opacity={.25} />
+                                    <Sunset opacity={.5} />
                                 </div> {/* Sky */}
                             <div className="mx-auto lg:mr-auto w-96 z-10 relative"> {/* Gameboard Wrapper */}
                                 <div 
