@@ -1,11 +1,17 @@
-const smartConverter = (number) => {
+function getTime(counter){
+    if (counter <= 12) {
+        return counter === 12 ? `${counter}:00pm`: `${counter}:00am`;
+    } else {
+        return counter === 12 ? `${counter-12}:00am` : `${counter-12}:00pm`;
+    }
+}
+
+function getDate(number){
     let month = getMonth(number);
     let day = number - daysToRemove[month]
     let suffix = getSuffix(day)
     return `${month} ${day}${suffix}`
 }
-
-export default smartConverter;
 
 function getMonth(day){
     if (day <= 31 ) {
@@ -75,3 +81,5 @@ function getSuffix(day){
       }
 
 }
+
+export { getDate, getTime };

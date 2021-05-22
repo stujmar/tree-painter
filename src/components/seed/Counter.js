@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import smartConverter from '../../utils/smartConverter';
+import { getTime, getDate } from '../../utils/converters';
 
-const Counter = (props) => {
-    let [count, setCount] = useState(Math.floor(Math.random() * (366 - 1) + 1));
+const Counter = () => {
+    // let [count, setCount] = useState(Math.floor(Math.random() * (366 - 1) + 1));
+    let [hour, setHour] = useState(1);
+    let [day, setDay] = useState(Math.floor(Math.random() * (366 - 1) + 1));
 
     function useInterval(callback, delay) {
         const savedCallback = useRef();
@@ -24,13 +26,21 @@ const Counter = (props) => {
         }, [delay]);
     }
     useInterval(() => {
-      if (count < 365) {
-          setCount(count + 1);
-      } else {
-          setCount(1);
-      }
-    }, 5000);
-    return smartConverter(count);
+        if (hour < 24) {
+            setHour(hour + 1) 
+        } else {
+            setHour(1)
+            if (day < 365) {
+                setDay(day + 1);
+            } else {
+                setDay(1);
+            }
+        }
+    }, 500);
+    return <div className="grid grid-rows-2 w-max">
+    <div>{getDate(day)}</div>
+    <div>{getTime(hour)}</div>
+    </div>;
  }
 
 export default Counter;
