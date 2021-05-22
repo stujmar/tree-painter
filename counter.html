@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="display"></div>
+</body>
+</html>
+
+<script>
+    let count = 0
+    // function counter(){
+    //     setInterval(function(){
+    //         console.log(count);
+    //         document.getElementById('display').innerHTML = count;
+    //         count++;
+    //     }, 1000);
+
+    // }
+    
+    const counter = () => {
+        setInterval(() => {
+            document.getElementById('display').innerHTML = count;
+            count++;
+        }, 1000);
+    };
+
+    counter();
+</script>
