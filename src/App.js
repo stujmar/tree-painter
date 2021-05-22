@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Counter from './components/seed/Counter';
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import Classic from './components/classic/Classic';
 
@@ -18,6 +19,9 @@ const App = () => {
     <div className="App">
       <header className="bg-green-600 h-36 flex items-center justify-center text-lg font-sans text-white">
         <p>{message}</p>
+        <div className="p-4 absolute top-0 left-0">
+          <Counter />
+        </div>
       </header>
       <TreePainter messageChange={(e) => handleMessageChange(e)}/>
       {/* <Router>
