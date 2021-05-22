@@ -24,23 +24,6 @@ const App = () => {
         </div>
       </header>
       <TreePainter messageChange={(e) => handleMessageChange(e)}/>
-      {/* <Router>
-      <div className="box-border">
-      <Nav />
-        <hr />
-        <Switch>
-          <Route exact path="/">
-            <TreePainter />
-          </Route>
-          <Route path="/about">
-            <Home />
-          </Route>
-          <Route path="/painter-classic">
-            <Classic />
-          </Route>
-        </Switch>
-      </div>
-    </Router> */}
     </div>
   )
 }

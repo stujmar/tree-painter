@@ -15,7 +15,7 @@ const TreePainter = ( { messageChange } ) => {
     const [ drawTrees, setDrawTrees ] = useState([]);
     const [ infoPanel, setInfoPanel ] = useState([]);
     const [ diameter, setDiameter ] = useState(15);
-    const [ color, setColor ] = useState("#B6FE90");
+    const [ color, setColor ] = useState("#059669");
 
     const handleDelete = (id) => {
         setTrees(trees.filter( tree => tree.id !== id ));
