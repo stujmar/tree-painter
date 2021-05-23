@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { getTime, getDate } from '../../utils/converters';
+import { getTime, getDate } from '../../utils/dateTimeConverters';
 
 const Counter = () => {
     // let [count, setCount] = useState(Math.floor(Math.random() * (366 - 1) + 1));
