@@ -56,20 +56,29 @@ const TreePainter = ( { messageChange } ) => {
     useEffect(() => {
         setDrawTrees(trees.map(tree => {
             return <button key={tree.id} 
-            className={`absolute shadow focus:outline-none ${ water > 0 ? "water-cursor" : "no-water-cursor" }`}
+            className={`absolute focus:outline-none ${ water > 0 ? "water-cursor" : "no-water-cursor" }`}
             onClick={() => { waterTree(tree.id)} } 
             style={{
                 top: tree.y, 
                 left: tree.x, 
-                borderRadius: "50%",
+                borderRadius: "0%",
+                borderBottom: `${tree.diameter * 1.25}px solid ${tree.color}`,
+                borderLeft: `${tree.diameter}px solid rgba(0,0,0,0)`,
+                borderRight: `${tree.diameter}px solid rgba(0,0,0,0)`,
                 height: `${tree.diameter}px`,
                 width: `${tree.diameter}px`,
-                background: tree.color
                 }}></button>
         }));
 
         setInfoPanel(trees.map(tree => {
-            return <PlantedTreeInfo key={tree.id} x={tree.x} diameter={tree.diameter} y={tree.y} color={tree.color} age={tree.age} id={tree.id} onDelete={(id) => handleDelete(id)}/>
+            return <PlantedTreeInfo
+                        key={tree.id} 
+                        x={tree.x} 
+                        diameter={tree.diameter} 
+                        y={tree.y} color={tree.color} 
+                        age={tree.age} 
+                        id={tree.id}
+                        onDelete={(id) => handleDelete(id)}/>
         }));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[trees])
