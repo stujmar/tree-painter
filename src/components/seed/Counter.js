@@ -36,7 +36,7 @@ const Counter = () => {
                 setDay(1);
             }
         }
-    }, 500);
+    }, 1000);
     return <div className="grid grid-rows-2 w-max">
     <div>{getDate(day)}</div>
     <div>{getTime(hour)}</div>

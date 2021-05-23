@@ -1,4 +1,4 @@
-export const dateConverter = (number) => {
+/* export const dateConverter = (number) => {
     
     let dayLibrary = {
         1: "Happy New Year!",
@@ -361,4 +361,4 @@ export const dateConverter = (number) => {
     
     return dayLibrary[number]
 }
-
+*/
