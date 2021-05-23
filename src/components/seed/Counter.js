@@ -26,17 +26,20 @@ const Counter = () => {
         }, [delay]);
     }
     useInterval(() => {
-        if (hour < 24) {
+        if (hour < 24) {  // If the time is less than 24 tick forward an hour.
             setHour(hour + 1) 
-        } else {
+        } else { // Else we need to reset to 1:00am.
             setHour(1)
-            if (day < 365) {
+        }
+        if (hour === 23) { // If we are about to tick over to 12:00am progress the day.
+            if (day < 365) { // Most days of the year we just tick forward one day.
                 setDay(day + 1);
-            } else {
-                setDay(1);
+            } else { // Except on New Year's Eve resest to the first day of the year.
+                setDay(1); 
             }
         }
-    }, 1000);
+
+    }, 1000); // How many milliseconds it takes for an hour to pass in game.
     return <div className="grid grid-rows-2 w-max">
     <div>{getDate(day)}</div>
     <div>{getTime(hour)}</div>
