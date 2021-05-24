@@ -56,7 +56,7 @@ const TreePainter = ( { messageChange } ) => {
     useEffect(() => {
         setDrawTrees(trees.map(tree => {
             return <button key={tree.id} 
-            className={`absolute focus:outline-none ${ water > 0 ? "water-cursor" : "no-water-cursor" }`}
+            className={`absolute origin-bottom-center focus:outline-none ${ water > 0 ? "water-cursor" : "no-water-cursor" }`}
             onClick={() => { waterTree(tree.id)} } 
             style={{
                 top: tree.y, 

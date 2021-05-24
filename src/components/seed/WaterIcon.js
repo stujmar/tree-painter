@@ -2,7 +2,7 @@ import React from 'react';
 
 const WaterIcon = ({amount}) => {
     return (
-        <div className="flex mr-4">
+        <div className="flex mr-4 w-12">
             <svg version="1.1" baseProfile="basic" width="20" x="0px"
                 y="0px" viewBox="0 0 21.03 28.67" >
                 <path className={`${ amount > 0 ? "text-water-blue" : ""} fill-current`} d="M19.44,19.35C19.11,8.61,10.44,0,10.44,0s-9,9.26-9,19.35c0,5.15,4.03,9.32,9,9.32S19.6,24.49,19.44,19.35z"/>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const AcornIcon = ({amount}) => {
     return (
-        <div className="flex mr-4">
+        <div className="flex mr-4 w-12">
             <svg className="group" id="Layer_1" width="20" x="0px" y="0px" viewBox="0 0 21.03 28.67">
                 <g>
                     <path className={`${ amount > 0 ? "text-acorn-top" : ""} fill-current`} d="M19.67,13.46c0.24,3.33-0.23,6.52-2.01,9.4c-1.22,1.98-2.94,3.31-5.26,3.8c-0.22,0.05-0.35,0.12-0.46,0.37
