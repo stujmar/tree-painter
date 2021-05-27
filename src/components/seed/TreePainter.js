@@ -31,7 +31,7 @@ const TreePainter = ( { messageChange } ) => {
     };
 
     useEffect(() => {
-        messageChange(messageCenter.first_seed)
+        // Onload.
     
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[seeds, trees, stars]
@@ -99,6 +99,7 @@ const TreePainter = ( { messageChange } ) => {
     }
 
     const plant = (e) => {
+        messageChange(messageCenter.first_seed);
         if (seeds > 0) {
 
             setTrees(trees => [...trees, {
