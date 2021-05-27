@@ -23,7 +23,7 @@ const TreePainter = ( { messageChange } ) => {
     } 
 
     const messageCenter = {
-        "welcome": "Welcome to Tree Painter Studio",
+        "welcome": <p>Welcome to Tree Painter Studio.<br/> Click on the green grass to plant a seed.</p>,
         "first_seed" : "Wow you are planting now!",
         "first_water" : "Yum that tree was thirsty!",
         "no_seeds" : "Oops all out of seeds",
@@ -31,12 +31,18 @@ const TreePainter = ( { messageChange } ) => {
     };
 
     useEffect(() => {
-        // Onload.
+        messageChange(messageCenter.welcome);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]
+    )
+
+    useEffect(() => {
+      
     
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[seeds, trees, stars]
     )
-
+    
     const waterTree = (id) => {
         if (water > 0) {
             setWater(water - 1);

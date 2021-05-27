@@ -9,7 +9,7 @@ import TreePainter from './components/seed/TreePainter';
 
 const App = () => {
 
-  const [ message, setMessage ] = useState("Welcome to Tree Painter");
+  const [ message, setMessage ] = useState("");
 
   const handleMessageChange = (payload) => {
     setMessage(payload);
@@ -18,7 +18,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="bg-green-600 h-36 flex items-center justify-center text-lg font-sans text-white">
-        <p>{message}</p>
+        <p className="w-96">{message}</p>
         <div className="p-4 absolute top-0 left-0">
           <Counter />
         </div>
