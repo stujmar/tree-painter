@@ -66,11 +66,11 @@ const TreePainter = ( { messageChange } ) => {
             onClick={() => { waterTree(tree.id)} } 
             style={{
                 top: tree.y, 
-                left: tree.x, 
+                left: tree.x - (tree.y * .05), 
                 borderRadius: "0%",
-                borderBottom: `${tree.diameter * 1.25}px solid ${tree.color}`,
-                borderLeft: `${tree.diameter}px solid rgba(0,0,0,0)`,
-                borderRight: `${tree.diameter}px solid rgba(0,0,0,0)`,
+                borderBottom: `${tree.diameter * 1.25  + (tree.y * .05)}px solid ${tree.color}`,
+                borderLeft: `${tree.diameter + (tree.y * .05)}px solid rgba(0,0,0,0)`,
+                borderRight: `${tree.diameter + (tree.y * .05)}px solid rgba(0,0,0,0)`,
                 height: `${tree.diameter}px`,
                 width: `${tree.diameter}px`,
                 }}></button>
