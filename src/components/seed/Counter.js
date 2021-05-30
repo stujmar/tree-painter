@@ -40,9 +40,9 @@ const Counter = () => {
         }
 
     }, 1000); // How many milliseconds it takes for an hour to pass in game.
-    return <div className="flex md:flex-col w-max">
+    return <div className="flex md:flex-col w-max items-start">
     <div>{getDate(day)}</div>
-    <div className="ml-2">{getTime(hour)}</div>
+    <div className="ml-2 md:ml-0">{getTime(hour)}</div>
     </div>;
  }
 
