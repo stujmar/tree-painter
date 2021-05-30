@@ -18,7 +18,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="bg-green-600 h-36 flex items-center justify-center text-lg font-sans text-white">
-        <p className="w-96 text-center">{message}</p>
+        <p className="w-96 text-center pt-6 md:pt-0">{message}</p>
         <div className="p-4 absolute top-0 left-0">
           <Counter />
         </div>
