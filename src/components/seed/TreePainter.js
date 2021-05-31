@@ -24,7 +24,7 @@ const TreePainter = ( { messageChange } ) => {
 
     const messageCenter = {
         "welcome": <p><span  className="font-medium">Welcome to Tree Painter Studio.</span><br/> Click on the green grass to plant a seed.</p>,
-        "first_seed" : "Wow you are planting now!",
+        "first_seed" : "Wow, you are planting now!",
         "first_water" : "Yum that tree was thirsty!",
         "no_seeds" : "Oops all out of seeds",
         "no_water" : "Oops all out of water"
@@ -135,8 +135,7 @@ const TreePainter = ( { messageChange } ) => {
     return (
         <>
             <StatusBar seeds={seeds} stars={stars} water={water}/>
-            <div className="w-max mx-auto"> {/* GRID WRAPPER */}
-                <div className="flex flex-col lg:flex-row">
+                <div className="w-full relative">
                     <ButtonPanel 
                         mode={mode} 
                         diameter={diameter}
@@ -146,8 +145,11 @@ const TreePainter = ( { messageChange } ) => {
                         handleDiameter={handleDiameter}
                         handleMode={handleMode}
                     />
-                    <div className="overflow-hidden mt-4"> {/* GAME FIELD */}
-                                <Sky />
+                    <Sky />
+                </div>
+            <div className="w-max mx-auto"> {/* GRID WRAPPER */}
+                    <div className="overflow-hidden"> {/* GAME FIELD */}
+                            
                             <div className="mx-auto lg:mr-auto w-96 z-10 relative"> {/* Gameboard Wrapper */}
                                 <div 
                                     className={`absolute bottom-0 opacity-0 bg-black z-10 w-96 h-72 ${seeds ? "seed-cursor" : "no-seed-cursor"} ${mode === "PLANTING" ? "" : "hidden" }`} 
@@ -159,7 +161,6 @@ const TreePainter = ( { messageChange } ) => {
                                 <div className="mx-auto bg-green-200 w-96 h-72 overflow-hidden"></div>
                             </div> 
                     </div>
-                </div>
                 <div>{`x:${mouse.x} y:${mouse.y}`}</div>
                 <Debug infoPanel={infoPanel} />
             </div>
