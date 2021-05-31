@@ -135,7 +135,7 @@ const TreePainter = ( { messageChange } ) => {
     return (
         <>
             <StatusBar seeds={seeds} stars={stars} water={water}/>
-                <div className="w-full relative">
+                <div className="w-full relative" style={{height: "100px"}}>
                     <ButtonPanel 
                         mode={mode} 
                         diameter={diameter}

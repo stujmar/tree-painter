@@ -9,7 +9,7 @@ const Sky = ({ hour }) => {
     return (
         <button 
             onClick={clickSky}
-            className="absolute z-0 mx-auto lg:mr-auto bg-blue-400 absolute w-full relative focus:outline-none" style={{height: 100}}>
+            className="absolute z-0 mx-auto lg:mr-auto h-full bg-blue-400 absolute w-full relative focus:outline-none">
             <Sunset opacity={.25} />
         </button> 
     )   
