@@ -66,11 +66,11 @@ const TreePainter = ( { messageChange } ) => {
             onClick={() => { waterTree(tree.id)} } 
             style={{
                 top: tree.y, 
-                left: tree.x - (tree.y * .05), 
+                left: tree.x, 
                 borderRadius: "0%",
-                borderBottom: `${tree.diameter * 1.25  + (tree.y * .05)}px solid ${tree.color}`,
-                borderLeft: `${tree.diameter + (tree.y * .05)}px solid rgba(0,0,0,0)`,
-                borderRight: `${tree.diameter + (tree.y * .05)}px solid rgba(0,0,0,0)`,
+                borderBottom: `${tree.diameter * 1.25}px solid ${tree.color}`,
+                borderLeft: `${tree.diameter}px solid rgba(0,0,0,0)`,
+                borderRight: `${tree.diameter}px solid rgba(0,0,0,0)`,
                 height: `${tree.diameter}px`,
                 width: `${tree.diameter}px`,
                 }}></button>
@@ -113,8 +113,8 @@ const TreePainter = ( { messageChange } ) => {
 
             setTrees(trees => [...trees, {
                 id: Math.floor(Math.random() * 10000),
-                x: mouse.x - (diameter/2),
-                y: mouse.y - (diameter/2),
+                x: `${(mouse.x/grass.clientWidth* 100).toFixed()}%`,
+                y: `${(mouse.y/grass.clientHeight * 100).toFixed()}%`,
                 diameter: diameter ? diameter : 2,
                 age: 0,
                 color: color
