@@ -90,14 +90,16 @@ const TreePainter = ( { messageChange } ) => {
     },[trees])
 
     const _onMouseMove = (e) => {
-        setMouse({
-            x:e.nativeEvent.offsetX > 0 ? e.nativeEvent.offsetX : 0,
-            y:e.nativeEvent.offsetY > 0 ? e.nativeEvent.offsetY : 0,
-            xMax: grass.clientWidth,
-            yMax: grass.clientWidth
-
-        })
-      }
+        if (!!grass) { // Shot in the dark to avoid "Cannot read property 'clientWidth' of null"
+            setMouse({
+                x:e.nativeEvent.offsetX > 0 ? e.nativeEvent.offsetX : 0,
+                y:e.nativeEvent.offsetY > 0 ? e.nativeEvent.offsetY : 0,
+                xMax: grass.clientWidth,
+                yMax: grass.clientWidth
+                
+            })
+        }
+    }
 
     const handleDiameter = (e) => {
         setDiameter(e.target.value);
