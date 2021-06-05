@@ -156,6 +156,7 @@ const TreePainter = ( { messageChange } ) => {
                             
                             <div className="mx-auto lg:mr-auto w-96 z-10 relative"> {/* Gameboard Wrapper */}
                                 <div 
+                                    id="grass"
                                     className={`absolute bottom-0 opacity-0 bg-black z-10 w-96 h-72 ${seeds ? "seed-cursor" : "no-seed-cursor"} ${mode === "PLANTING" ? "" : "hidden" }`} 
                                     onMouseMove={(e) => _onMouseMove(e)}
                                     onClick={(e) => plant(e)} 
