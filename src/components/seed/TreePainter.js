@@ -7,7 +7,7 @@ import Sky from './Sky';
 
 const TreePainter = ( { messageChange } ) => {
     const [ mode, setMode ] = useState('PLANTING');
-    const [ mouse, setMouse] = useState({ x: 0, y: 0});
+    const [ mouse, setMouse] = useState({ x: 0, y: 0, xMax: 0, yMax: 0});
     const [ seeds, setSeeds ] = useState(10);
     const [ stars, setStars ] = useState(10);
     const [ water, setWater ] = useState(10);
@@ -90,6 +90,10 @@ const TreePainter = ( { messageChange } ) => {
     },[trees])
 
     const _onMouseMove = (e) => {
+        console.log(e)
+        console.log("client", e.clientX, e.clientY);
+        console.log("page", e.pageX, e.pageY);
+        console.log("screen", e.screenX, e.screenY);
         setMouse({
             x:e.nativeEvent.offsetX > 0 ? e.nativeEvent.offsetX : 0,
             y:e.nativeEvent.offsetY > 0 ? e.nativeEvent.offsetY : 0
@@ -161,7 +165,7 @@ const TreePainter = ( { messageChange } ) => {
                                 <div className="mx-auto bg-green-200 w-96 h-72 overflow-hidden"></div>
                             </div> 
                     </div>
-                <div>{`x:${mouse.x} y:${mouse.y}`}</div>
+                <div>{`x:${mouse.x}/max y:${mouse.y}/max`}</div>
                 <Debug infoPanel={infoPanel} />
             </div>
         </>
