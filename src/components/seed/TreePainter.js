@@ -31,6 +31,7 @@ const TreePainter = ( { messageChange } ) => {
     };
 
     useEffect(() => {
+        let grass = document.querySelector('.grass');
         messageChange(messageCenter.welcome);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]
