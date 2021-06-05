@@ -171,7 +171,7 @@ const TreePainter = ( { messageChange } ) => {
                                 <div className="mx-auto bg-green-200 w-96 h-72 overflow-hidden"></div>
                             </div> 
                     </div>
-                <div>{`x:${mouse.x}/max y:${mouse.y}/max`}</div>
+                <div>{`x:${mouse.x}/${grass.clientWidth} y:${mouse.y}/${grass.clientHeight}`}</div>
                 <Debug infoPanel={infoPanel} />
             </div>
         </>
