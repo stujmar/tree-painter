@@ -30,7 +30,7 @@ const TreePainter = ( { messageChange } ) => {
         "no_water" : "Oops all out of water"
     };
 
-    let grass = document.querySelector('.grass');
+    let grass = document.getElementById('grass');
 
     useEffect(() => {
         messageChange(messageCenter.welcome);
