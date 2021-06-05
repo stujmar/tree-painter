@@ -90,10 +90,6 @@ const TreePainter = ( { messageChange } ) => {
     },[trees])
 
     const _onMouseMove = (e) => {
-        console.log(e)
-        console.log("client", e.clientX, e.clientY);
-        console.log("page", e.pageX, e.pageY);
-        console.log("screen", e.screenX, e.screenY);
         setMouse({
             x:e.nativeEvent.offsetX > 0 ? e.nativeEvent.offsetX : 0,
             y:e.nativeEvent.offsetY > 0 ? e.nativeEvent.offsetY : 0,
@@ -169,8 +165,8 @@ const TreePainter = ( { messageChange } ) => {
                                 <div className="mx-auto bg-green-200 w-96 h-72 overflow-hidden"></div>
                             </div> 
                     </div>
-                <div>{grass ? `x:${mouse.x}/${grass.clientWidth} y:${mouse.y}/${grass.clientHeight}` : ""}</div>
-                <div>{grass ? `x:${(mouse.x/grass.clientWidth* 100).toFixed()} y:${(mouse.y/grass.clientHeight * 100).toFixed()}` : ""}</div>
+                <div>{grass ? `x: ${mouse.x}/${grass.clientWidth} y: ${mouse.y}/${grass.clientHeight}` : ""}</div>
+                <div>{grass ? `x: ${(mouse.x/grass.clientWidth* 100).toFixed()}% y: ${(mouse.y/grass.clientHeight * 100).toFixed()}%` : ""}</div>
                 <Debug infoPanel={infoPanel} />
             </div>
         </>
