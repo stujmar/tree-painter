@@ -30,8 +30,9 @@ const TreePainter = ( { messageChange } ) => {
         "no_water" : "Oops all out of water"
     };
 
+    let grass = document.querySelector('.grass');
+
     useEffect(() => {
-        let grass = document.querySelector('.grass');
         messageChange(messageCenter.welcome);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]
@@ -97,7 +98,10 @@ const TreePainter = ( { messageChange } ) => {
         console.log("screen", e.screenX, e.screenY);
         setMouse({
             x:e.nativeEvent.offsetX > 0 ? e.nativeEvent.offsetX : 0,
-            y:e.nativeEvent.offsetY > 0 ? e.nativeEvent.offsetY : 0
+            y:e.nativeEvent.offsetY > 0 ? e.nativeEvent.offsetY : 0,
+            xMax: grass.clientWidth,
+            yMax: grass.clientWidth
+
         })
       }
 
