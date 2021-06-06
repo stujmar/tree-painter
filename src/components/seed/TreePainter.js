@@ -43,7 +43,7 @@ const TreePainter = ( { messageChange } ) => {
     },[seeds, trees, stars]
     )
     
-    const waterTree = (id) => {
+    const treeClick = (id) => {
         if (water > 0) {
             setWater(water - 1);
             setTrees( trees.map( tree => {
@@ -63,7 +63,7 @@ const TreePainter = ( { messageChange } ) => {
         setDrawTrees(trees.map(tree => {
             return <button key={tree.id} 
             className={`absolute origin-bottom-center focus:outline-none ${ water > 0 ? "water-cursor" : "no-water-cursor" }`}
-            onClick={() => { waterTree(tree.id)} } 
+            onClick={() => { treeClick(tree.id)} } 
             style={{
                 top: tree.y, 
                 left: tree.x, 

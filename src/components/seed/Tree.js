@@ -4,7 +4,7 @@ const Tree = (props) => {
     return (
         <button key={props.id} 
             className={`absolute origin-bottom-center focus:outline-none ${ water > 0 ? "water-cursor" : "no-water-cursor" }`}
-            onClick={() => { props.waterTree(props.id)} } 
+            onClick={() => { props.treeClick(props.id)} } 
             style={{
                 top: props.y, 
                 left: props.x, 
