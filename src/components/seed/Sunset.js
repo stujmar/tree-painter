@@ -16,3 +16,4 @@ const withDefaultProps = defaultProps({
   });
 
   export default withDefaultProps(Sunset);
+  

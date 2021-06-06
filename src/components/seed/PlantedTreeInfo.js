@@ -16,4 +16,4 @@ const PlantedTreeInfo = ({ x, y, color, age, id, diameter, onDelete }) => {
     )
 }
 
-export default PlantedTreeInfo
+export default PlantedTreeInfo;
