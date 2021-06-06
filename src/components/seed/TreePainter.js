@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PlantedTreeInfo from './PlantedTreeInfo';
 import ButtonPanel from './ButtonPanel';
 import Debug from './Debug';
@@ -6,7 +6,7 @@ import StatusBar from './StatusBar';
 import Sky from './Sky';
 
 const TreePainter = ( { messageChange } ) => {
-    const [ mode, setMode ] = useState('PLANTING');
+    const [ mode, _setMode ] = useState('PLANTING');
     const [ mouse, setMouse] = useState({ x: 0, y: 0, xMax: 0, yMax: 0});
     const [ seeds, setSeeds ] = useState(10);
     const [ stars, setStars ] = useState(10);
@@ -16,6 +16,13 @@ const TreePainter = ( { messageChange } ) => {
     const [ infoPanel, setInfoPanel ] = useState([]);
     const [ diameter, setDiameter ] = useState(15);
     const [ color, setColor ] = useState("#059669");
+
+
+    const myModeRef = useRef(mode);
+    const setMode = data => {
+        myModeRef.current = data;
+        _setMode(data);
+      };
 
     const handleDelete = (id) => {
         setTrees(trees.filter( tree => tree.id !== id ));
@@ -44,12 +51,13 @@ const TreePainter = ( { messageChange } ) => {
     )
     
     const treeClick = (id) => {
-        if (water > 0) {
+        if (myModeRef.current === 'WATERING' && water > 0) {
+            console.log('success');
             setWater(water - 1);
             setTrees( trees.map( tree => {
                 if (tree.id === id) {
-                    tree.x -= 1;
-                    tree.y -= 1;
+                    // tree.x -= 1;
+                    // tree.y -= 1;
                     tree.diameter = parseInt(tree.diameter) + 2;
                 }
                 return tree;
@@ -134,7 +142,8 @@ const TreePainter = ( { messageChange } ) => {
     }
 
     const handleMode = () => {
-        mode === "PLANTING" ? setMode("WATERING") : setMode("PLANTING")
+        mode === "PLANTING" ? setMode("WATERING") : setMode("PLANTING");
+        console.log('changed mode');
     }
 
     return (

@@ -3,7 +3,7 @@ import React from 'react';
 const Tree = (props) => {
     return (
         <button key={props.id} 
-            className={`absolute origin-bottom-center focus:outline-none ${ water > 0 ? "water-cursor" : "no-water-cursor" }`}
+            className={`absolute origin-bottom-center focus:outline-none ${ props.water > 0 ? "water-cursor" : "no-water-cursor" }`}
             onClick={() => { props.treeClick(props.id)} } 
             style={{
                 top: props.y, 
