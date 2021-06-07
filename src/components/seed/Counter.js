@@ -56,7 +56,9 @@ const Counter = () => {
       <div className="flex  items-start">
           <button className="focus:outline-none" type="button" onClick={() => changeSpeed(stop)}>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={speed === stop ? 3 : 1} d="M6 18L18 6M6 6l12 12" />
+            {/* <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={speed === stop ? 3 : 1} d="M6 18L18 6M6 6l12 12" /> */}
+            <line strokeLinecap="round" strokeLinejoin="round" strokeWidth={speed === stop ? 3 : 1} x1="9" y1="5" x2="9" y2="18" />
+            <line strokeLinecap="round" strokeLinejoin="round" strokeWidth={speed === stop ? 3 : 1} x1="17" y1="5" x2="17" y2="18" />
           </svg>
           </button>
           <button className="focus:outline-none" type="button" onClick={() => changeSpeed(1000)}>
