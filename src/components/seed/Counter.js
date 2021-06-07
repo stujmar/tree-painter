@@ -6,6 +6,7 @@ const Counter = () => {
     let [speed, setSpeed] = useState(1000);
     let [hour, setHour] = useState(1);
     let [day, setDay] = useState(Math.floor(Math.random() * (366 - 1) + 1));
+    let stop = 123456789;
 
     const changeSpeed = (_speed) => {
       setSpeed(_speed);
@@ -52,9 +53,22 @@ const Counter = () => {
         <div>{getDate(day)}</div>
         <div className="ml-2 md:ml-0">{getTime(hour)}</div>
       </div>
-      <div className="flex flex-col items-end">
-          <button className={`${speed === 1000 ? "font-bold": "font-normal"} focus:outline-none`} type="button" onClick={() => changeSpeed(1000)}>normal</button>
-          <button className={`${speed === 500 ? "font-bold": "font-normal"} focus:outline-none`} type="button" onClick={() => changeSpeed(500)}>fast</button>
+      <div className="flex  items-start">
+          <button className="focus:outline-none" type="button" onClick={() => changeSpeed(stop)}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={speed === stop ? 3 : 1} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+          </button>
+          <button className="focus:outline-none" type="button" onClick={() => changeSpeed(1000)}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={speed === 1000 ? 3 : 1} d="M9 5l7 7-7 7" />
+          </svg>
+          </button>
+          <button className={`${speed === 500 ? "font-bold": "font-normal"} focus:outline-none`} type="button" onClick={() => changeSpeed(500)}>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={speed === 500 ? 3 : 1} d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+            </svg>
+          </button>
       </div>
     </div>
       )
