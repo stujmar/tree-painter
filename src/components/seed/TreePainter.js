@@ -52,7 +52,6 @@ const TreePainter = ( { messageChange } ) => {
     
     const treeClick = (id) => {
         if (myModeRef.current === 'WATERING' && water > 0) {
-            console.log('success');
             setWater(water - 1);
             setTrees( trees.map( tree => {
                 if (tree.id === id) {
@@ -143,7 +142,6 @@ const TreePainter = ( { messageChange } ) => {
 
     const handleMode = () => {
         mode === "PLANTING" ? setMode("WATERING") : setMode("PLANTING");
-        console.log('changed mode');
     }
 
     return (
