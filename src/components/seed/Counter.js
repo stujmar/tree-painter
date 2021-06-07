@@ -3,6 +3,7 @@ import { getTime, getDate } from '../../utils/dateTimeConverters';
 
 const Counter = () => {
     // let [count, setCount] = useState(Math.floor(Math.random() * (366 - 1) + 1));
+    let [speed, setSpeed] = useState(1000);
     let [hour, setHour] = useState(1);
     let [day, setDay] = useState(Math.floor(Math.random() * (366 - 1) + 1));
 
@@ -39,11 +40,13 @@ const Counter = () => {
             }
         }
 
-    }, 1000); // How many milliseconds it takes for an hour to pass in game.
-    return <div className="flex md:flex-col w-max items-start">
+    }, speed); // How many milliseconds it takes for an hour to pass in game.
+    return (
+    <div className="flex md:flex-col w-max items-start">
     <div>{getDate(day)}</div>
     <div className="ml-2 md:ml-0">{getTime(hour)}</div>
-    </div>;
+    </div>
+      )
  }
 
 export default Counter;
