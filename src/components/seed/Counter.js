@@ -7,6 +7,11 @@ const Counter = () => {
     let [hour, setHour] = useState(1);
     let [day, setDay] = useState(Math.floor(Math.random() * (366 - 1) + 1));
 
+    const changeSpeed = (_speed) => {
+      setSpeed(_speed);
+    }
+
+
     function useInterval(callback, delay) {
         const savedCallback = useRef();
       
@@ -47,7 +52,10 @@ const Counter = () => {
         <div>{getDate(day)}</div>
         <div className="ml-2 md:ml-0">{getTime(hour)}</div>
       </div>
-      <div className="">controls</div>
+      <div className="flex flex-col items-end">
+          <button className={`${speed === 1000 ? "font-bold": "font-normal"} focus:outline-none`} type="button" onClick={() => changeSpeed(1000)}>normal</button>
+          <button className={`${speed === 500 ? "font-bold": "font-normal"} focus:outline-none`} type="button" onClick={() => changeSpeed(500)}>fast</button>
+      </div>
     </div>
       )
  }
