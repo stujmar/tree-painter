@@ -20,10 +20,9 @@ const App = () => {
   const getSeason = () => {
     switch(season) {
       case "SPRING":
-        
         return "bg-green-400";
       case "SUMMER":
-        return "bg-yellow-300";
+        return "bg-yellow-400";
       case "FALL":
         return "bg-orange-400";
       case "WINTER":
