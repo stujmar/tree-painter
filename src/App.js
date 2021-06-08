@@ -35,6 +35,7 @@ const App = () => {
 
   useEffect(() => {
     getSeason();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[season]);
 
   const changeSeason = (_season) => {
