@@ -35,7 +35,7 @@ const App = () => {
 
   useEffect(() => {
     getSeason();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[season]);
 
   const changeSeason = (_season) => {
@@ -45,8 +45,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <header className={`${getSeason()} h-36 flex items-center justify-center text-lg font-sans text-white`}>
-        <div className="w-96 text-center pt-6 md:pt-0">{message}</div>
+      <header className={`${getSeason()} h-48 flex items-center justify-center text-lg font-sans text-white`}>
+        <div className="w-96 text-center pt-12 md:pt-0">{message}</div>
         <div className="absolute top-0 left-0">
           <Counter changeSeason={changeSeason} />
         </div>
