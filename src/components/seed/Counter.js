@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { getTime, getDate } from '../../utils/dateTimeConverters';
 
-const Counter = () => {
+const Counter = (props) => {
     // let [count, setCount] = useState(Math.floor(Math.random() * (366 - 1) + 1));
     let [speed, setSpeed] = useState(1000);
-    let [season, setSeason] = useState('');
     let [hour, setHour] = useState(1);
     let [day, setDay] = useState(Math.floor(Math.random() * (366 - 1) + 1));
     let stop = 123456789;
@@ -14,7 +13,7 @@ const Counter = () => {
     }
 
     const changeSeason = (_season) => {
-      setSeason(_season);
+      props.changeSeason(_season);
     }
 
 
