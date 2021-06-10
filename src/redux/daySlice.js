@@ -8,10 +8,10 @@ export const daySlice = createSlice({
     name: 'day',
     initialState,
     reducers: {
-        increment: (state) => {
+        incrementDay: (state) => {
             state.value += 1;
         },
-        reset: (state) => {
+        resetDay: (state) => {
             state.value = 0;
         }
     }

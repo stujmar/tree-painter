@@ -8,10 +8,10 @@ export const hourSlice = createSlice({
     name: 'hour',
     initialState,
     reducers: {
-        increment: (state) => {
+        incrementHour: (state) => {
             state.value += 1;
         },
-        reset: (state) => {
+        resetHour: (state) => {
             state.value = 0;
         }
     }
