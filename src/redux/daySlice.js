@@ -17,7 +17,7 @@ export const daySlice = createSlice({
     }
 });
 
-export const [ increment, reset ] = daySlice.actions;
+export const { increment, reset } = daySlice.actions;
 
 export const selectDay = (state) => state.day.value;
 

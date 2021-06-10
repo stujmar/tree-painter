@@ -17,7 +17,7 @@ export const hourSlice = createSlice({
     }
 });
 
-export const [ increment, reset ] = hourSlice.actions;
+export const { increment, reset } = hourSlice.actions;
 
 export const selectHour = (state) => state.hour.value;
 
