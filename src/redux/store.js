@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import hoursReducer from './hoursSlice';
-import daysReducer from './daysSlice';
-import seasonsReducer from './seasonsSlice';
+import hoursReducer from './hourSlice';
+import daysReducer from './daySlice';
+import seasonsReducer from './seasonSlice';
 
 export const store = configureStore({
     reducer: {
-        hours: hoursReducer,
-        days: daysReducer,
-        seaons: seasonsReducer
+        hour: hoursReducer,
+        day: daysReducer,
+        season: seasonsReducer
     },
 });
