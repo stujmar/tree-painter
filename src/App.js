@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import Counter from './components/seed/Counter';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import TreePainter from './components/seed/TreePainter';
 import { selectSeason, setSeason } from './redux/seasonSlice';
 import { increment } from './redux/daySlice';
+import TimeControls from './components/view/TimeControls';
 
 const App = () => {
   const activeSeason = useSelector(selectSeason);
@@ -60,6 +60,7 @@ const App = () => {
         <div className="w-96 text-center pt-12 md:pt-0">{message}</div>
         <div className="absolute top-0 left-0">
           {/* <Counter changeSeason={changeSeason} /> */}
+          <TimeControls />
         </div>
       </header>
       <TreePainter messageChange={(e) => handleMessageChange(e)}/>
