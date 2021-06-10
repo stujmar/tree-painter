@@ -32,6 +32,10 @@ const App = () => {
     }
   };
 
+  const logSeason = () => {
+    console.log("season");
+  };
+
   useEffect(() => {
     getSeason();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -51,6 +55,7 @@ const App = () => {
         </div>
       </header>
       <TreePainter messageChange={(e) => handleMessageChange(e)}/>
+      <button onClick={logSeason}>Log Season</button>
     </div>
   )
 }
