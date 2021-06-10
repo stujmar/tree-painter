@@ -13,6 +13,9 @@ export const hourSlice = createSlice({
         },
         resetHour: (state) => {
             state.value = 0;
+        },
+        setHour: (state, action) => {
+            state.value = action.payload;
         }
     }
 });

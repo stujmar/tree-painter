@@ -13,6 +13,9 @@ export const daySlice = createSlice({
         },
         resetDay: (state) => {
             state.value = 0;
+        },
+        setDay: (state, action) => {
+            state.value = action.payload;
         }
     }
 });
