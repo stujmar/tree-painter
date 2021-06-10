@@ -6,6 +6,8 @@ import { selectSeason } from './redux/seasonSlice';
 
 const App = () => {
   const activeSeason = useSelector(selectSeason);
+  const dispatch = useDispatch();
+
   const [ message, setMessage ] = useState("");
   const [ season, setSeason ] = useState("SPRING");
 
@@ -31,6 +33,13 @@ const App = () => {
 
   const logSeason = () => {
     console.log(activeSeason);
+  };
+
+  const winter = () => {
+    dispatch(setSeason("WINTER"));
+  };
+  const fall = () => {
+    dispatch(setSeason("FALL"));
   };
 
   useEffect(() => {
