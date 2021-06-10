@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Counter from './components/seed/Counter';
 import { useSelector, useDispatch } from 'react-redux';
 import TreePainter from './components/seed/TreePainter';
+import { selectSeason } from './redux/seasonSlice';
 
 const App = () => {
+  const activeSeason = useSelector(selectSeason);
   const [ message, setMessage ] = useState("");
   const [ season, setSeason ] = useState("SPRING");
 
@@ -28,7 +30,7 @@ const App = () => {
   };
 
   const logSeason = () => {
-    console.log("season");
+    console.log(activeSeason);
   };
 
   useEffect(() => {
@@ -51,6 +53,8 @@ const App = () => {
       </header>
       <TreePainter messageChange={(e) => handleMessageChange(e)}/>
       <button onClick={logSeason}>Log Season</button>
+      {/* <button onClick={winter}>winter</button>
+      <button onClick={fall}>fall</button> */}
     </div>
   )
 }
