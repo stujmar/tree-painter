@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Counter from './components/seed/Counter';
-// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import Classic from './components/classic/Classic';
-
-// import Home from "./components/home/Home";
-// import Nav from './components/nav/Nav';
+import { useSelector, useDispatch } from 'react-redux';
 import TreePainter from './components/seed/TreePainter';
 
 const App = () => {
-
   const [ message, setMessage ] = useState("");
   const [ season, setSeason ] = useState("SPRING");
 
