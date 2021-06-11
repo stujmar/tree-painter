@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    value: 0
+    value: 1
 };
 
 export const hourSlice = createSlice({
@@ -12,7 +12,7 @@ export const hourSlice = createSlice({
             state.value += 1;
         },
         resetHour: (state) => {
-            state.value = 0;
+            state.value = 1;
         },
         setHour: (state, action) => {
             state.value = action.payload;
