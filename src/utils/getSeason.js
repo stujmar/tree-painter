@@ -9,7 +9,7 @@ export function getSeason(day){
         case "February":
             return {
                 name: "winter",
-                dark: "bg-blue-600",
+                dark: "bg-blue-500",
                 light: "bg-blue-400"
             }
         case "March":
@@ -17,7 +17,7 @@ export function getSeason(day){
         case "May":
             return {
                 name: "spring",
-                dark: "bg-green-600",
+                dark: "bg-green-500",
                 light: "bg-green-400"
             }
         case "June":
@@ -25,7 +25,7 @@ export function getSeason(day){
         case "August":
             return {
                 name: "summer",
-                dark: "bg-yellow-600",
+                dark: "bg-yellow-500",
                 light: "bg-yellow-400"
             }
         case "September":
@@ -33,13 +33,13 @@ export function getSeason(day){
         case "November":
             return {
                 name: "autumn",
-                dark: "bg-orange-600",
+                dark: "bg-orange-500",
                 light: "bg-orange-400"
             }
         default:
             return {
                 name: "none",
-                dark: "bg-gray-600",
+                dark: "bg-gray-500",
                 light: "bg-gray-400"
             }
     }
