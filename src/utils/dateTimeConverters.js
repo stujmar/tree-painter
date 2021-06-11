@@ -82,4 +82,4 @@ function getSuffix(day){
 
 }
 
-export { getDate, getTime };
+export { getDate, getTime, getMonth };
