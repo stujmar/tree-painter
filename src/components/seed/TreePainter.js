@@ -4,6 +4,7 @@ import ButtonPanel from './ButtonPanel';
 import Debug from './Debug';
 import StatusBar from './StatusBar';
 import Sky from './Sky';
+import Tree from './Tree';
 
 const TreePainter = ( { messageChange } ) => {
     const [ mode, _setMode ] = useState('PLANTING');
@@ -66,21 +67,25 @@ const TreePainter = ( { messageChange } ) => {
         }
     }
 
+    // useEffect(() => {
+    //     setDrawTrees(trees.map(tree => {
+    //         return <button key={tree.id} 
+    //         className={`absolute origin-bottom-center focus:outline-none ${ water > 0 ? "water-cursor" : "no-water-cursor" }`}
+    //         onClick={() => { treeClick(tree.id)} } 
+    //         style={{
+    //             top: tree.y, 
+    //             left: tree.x, 
+    //             borderRadius: "0%",
+    //             borderBottom: `${tree.diameter * 1.25}px solid ${tree.color}`,
+    //             borderLeft: `${tree.diameter}px solid rgba(0,0,0,0)`,
+    //             borderRight: `${tree.diameter}px solid rgba(0,0,0,0)`,
+    //             height: `${tree.diameter}px`,
+    //             width: `${tree.diameter}px`,
+    //             }}></button>
+    //     }));
     useEffect(() => {
         setDrawTrees(trees.map(tree => {
-            return <button key={tree.id} 
-            className={`absolute origin-bottom-center focus:outline-none ${ water > 0 ? "water-cursor" : "no-water-cursor" }`}
-            onClick={() => { treeClick(tree.id)} } 
-            style={{
-                top: tree.y, 
-                left: tree.x, 
-                borderRadius: "0%",
-                borderBottom: `${tree.diameter * 1.25}px solid ${tree.color}`,
-                borderLeft: `${tree.diameter}px solid rgba(0,0,0,0)`,
-                borderRight: `${tree.diameter}px solid rgba(0,0,0,0)`,
-                height: `${tree.diameter}px`,
-                width: `${tree.diameter}px`,
-                }}></button>
+            return <Tree key={tree.id} treeData={tree} />
         }));
 
         setInfoPanel(trees.map(tree => {
