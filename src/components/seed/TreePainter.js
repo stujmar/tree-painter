@@ -51,21 +51,21 @@ const TreePainter = ( { messageChange } ) => {
     },[seeds, trees, stars]
     )
     
-    const treeClick = (id) => {
-        if (myModeRef.current === 'WATERING' && water > 0) {
-            setWater(water - 1);
-            setTrees( trees.map( tree => {
-                if (tree.id === id) {
-                    // tree.x -= 1;
-                    // tree.y -= 1;
-                    tree.diameter = parseInt(tree.diameter) + 2;
-                }
-                return tree;
-            }
-            ))
-            setSeeds(seeds + 1);
-        }
-    }
+    // const treeClick = (id) => {
+    //     if (myModeRef.current === 'WATERING' && water > 0) {
+    //         setWater(water - 1);
+    //         setTrees( trees.map( tree => {
+    //             if (tree.id === id) {
+    //                 // tree.x -= 1;
+    //                 // tree.y -= 1;
+    //                 tree.diameter = parseInt(tree.diameter) + 2;
+    //             }
+    //             return tree;
+    //         }
+    //         ))
+    //         setSeeds(seeds + 1);
+    //     }
+    // }
 
     // useEffect(() => {
     //     setDrawTrees(trees.map(tree => {
