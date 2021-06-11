@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import TreePainter from './components/seed/TreePainter';
 import { selectSeason, setSeason } from './redux/seasonSlice';
-import { increment } from './redux/daySlice';
+import { incrementDay } from './redux/daySlice';
 import TimeControls from './components/view/TimeControls';
+import ClockService from './components/service/ClockService';
 
 const App = () => {
   const activeSeason = useSelector(selectSeason);
@@ -40,7 +41,7 @@ const App = () => {
     dispatch(setSeason("WINTER"));
   };
   const fall = () => {
-    dispatch(increment());
+    dispatch(incrementDay());
   };
 /*
   useEffect(() => {
@@ -55,6 +56,7 @@ const App = () => {
 */
   return (
     <div className="App">
+      <ClockService />
       {/* <header className={`${getSeason()} h-48 flex items-center justify-center text-lg font-sans text-white`}> */}
       <header className={`bg-green-400 h-48 flex items-center justify-center text-lg font-sans text-white`}>
         <div className="w-96 text-center pt-12 md:pt-0">{message}</div>

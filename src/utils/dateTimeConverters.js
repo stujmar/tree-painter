@@ -2,7 +2,7 @@ function getTime(counter){
     if (counter <= 12) {
         return counter === 12 ? `${counter}:00pm`: `${counter}:00am`;
     } else {
-        return counter === 12 ? `${counter-12}:00am` : `${counter-12}:00pm`;
+        return counter === 24 ? `${counter-12}:00am` : `${counter-12}:00pm`;
     }
 }
 
