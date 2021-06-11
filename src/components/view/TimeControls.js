@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTime, getDate } from '../../utils/dateTimeConverters';
 import { selectDay } from '../../redux/daySlice';
 import { selectHour } from '../../redux/hourSlice';
 import { selectSeason, setSeason } from '../../redux/seasonSlice';
-
+import { setSpeed, selectSpeed } from '../../redux/clockSlice';
 const TimeControls = () => {
-    let [speed, setSpeed] = useState(1000);
+    // let [speed, setSpeed] = useState(1000);
     const day = useSelector(selectDay);
     const hour = useSelector(selectHour);
+    const speed = useSelector(selectSpeed);
     const season = useSelector(selectSeason);
     let stop = 123456789;
 
@@ -21,6 +22,7 @@ const TimeControls = () => {
 
     const changeSpeed = (_speed) => {
         setSpeed(_speed);
+        dispatch(setSpeed(_speed));
     }
 
     return (    

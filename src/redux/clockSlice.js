@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    speed: 999
+    speed: 1000
 };
 
 export const clockSlice = createSlice({
@@ -16,6 +16,7 @@ export const clockSlice = createSlice({
 
 export const { setSpeed } = clockSlice.actions;
 
-export const selectClock = (state) => state.clock.speed;
+export const selectClock = (state) => state.clock;
+export const selectSpeed = (state) => state.clock.speed;
 
 export default clockSlice.reducer;
