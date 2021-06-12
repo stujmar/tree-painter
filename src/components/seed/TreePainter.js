@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { addTree } from '../../redux/gameSlice';
 
 import PlantedTreeInfo from './PlantedTreeInfo';
 import ButtonPanel from './ButtonPanel';
@@ -22,6 +23,7 @@ const TreePainter = ( { messageChange } ) => {
     const [ color, setColor ] = useState("#059669");
 
 
+    const dispatch = useDispatch();
     const myModeRef = useRef(mode);
     const setMode = data => {
         myModeRef.current = data;
@@ -126,8 +128,9 @@ const TreePainter = ( { messageChange } ) => {
 
     const plant = (e) => {
         messageChange(messageCenter.first_seed);
-        if (seeds > 0) {
 
+        if (seeds > 0) {
+            // Set Trees in local State.
             setTrees(trees => [...trees, {
                 id: Math.floor(Math.random() * 10000),
                 x: `${(mouse.x/grass.clientWidth* 100).toFixed()}%`,
@@ -136,6 +139,16 @@ const TreePainter = ( { messageChange } ) => {
                 age: 0,
                 color: color
             }]);
+            // Set Trees in Redux state.
+            dispatch( addTree({
+                id: Math.floor(Math.random() * 10000),
+                x: `${(mouse.x/grass.clientWidth* 100).toFixed()}%`,
+                y: `${(mouse.y/grass.clientHeight * 100).toFixed()}%`,
+                diameter: diameter ? diameter : 2,
+                age: 0,
+                color: color
+            }) );
+
             setSeeds(seeds - 1);
         }
     }

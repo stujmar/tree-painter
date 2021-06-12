@@ -18,12 +18,12 @@ export const gameSlice = createSlice({
             state.mode = action.payload;
         },
         addTree: (state, action) => {
-            state.trees = state.trees.push(action.payload)
+            state.trees = state.trees.concat(action.payload)
         }
     }
 });
 
-export const { setMode } = gameSlice.actions;
+export const { addTree, setMode } = gameSlice.actions;
 
 export const selectGame = (state) => state.game;
 export const selectMode = (state) => state.game.mode;
