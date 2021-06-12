@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addTree } from '../../redux/gameSlice';
+import { addTree, removeTree } from '../../redux/gameSlice';
 import { selectHour } from '../../redux/hourSlice';
 
 import PlantedTreeInfo from './PlantedTreeInfo';
@@ -36,6 +36,7 @@ const TreePainter = ( { messageChange } ) => {
     const handleDelete = (id) => {
         setTrees(trees.filter( tree => tree.id !== id ));
         setSeeds(seeds + 1);
+        dispatch(removeTree(id));
     } 
 
     const messageCenter = {
@@ -142,8 +143,9 @@ const TreePainter = ( { messageChange } ) => {
 
         if (seeds > 0) {
             // Set Trees in local State.
+            let randomId = Math.floor(Math.random() * 10000)
             setTrees(trees => [...trees, {
-                id: Math.floor(Math.random() * 10000),
+                id: randomId,
                 x: `${(mouse.x/grass.clientWidth* 100).toFixed()}%`,
                 y: `${(mouse.y/grass.clientHeight * 100).toFixed()}%`,
                 diameter: diameter ? diameter : 2,
@@ -152,12 +154,13 @@ const TreePainter = ( { messageChange } ) => {
             }]);
             // Set Trees in Redux state.
             dispatch( addTree({
-                id: Math.floor(Math.random() * 10000),
+                id: randomId,
                 x: `${(mouse.x/grass.clientWidth* 100).toFixed()}%`,
                 y: `${(mouse.y/grass.clientHeight * 100).toFixed()}%`,
                 diameter: diameter ? diameter : 2,
                 age: 0,
-                color: color
+                color: color,
+                growth: []
             }) );
 
             setSeeds(seeds - 1);
