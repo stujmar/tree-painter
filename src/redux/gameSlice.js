@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    mode: "PLANTING"
+    mode: "PLANTING",
+    trees: []
 };
 
 export const gameSlice = createSlice({
@@ -10,6 +11,9 @@ export const gameSlice = createSlice({
     reducers: {
         setMode: (state, action) => {
             state.mode = action.payload;
+        },
+        addTree: (state, action) => {
+            state.trees = state.trees.push(action.payload)
         }
     }
 });

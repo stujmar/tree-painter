@@ -3,6 +3,10 @@ import React from 'react';
 const Tree = ({treeData}) => {
 
     let seedCrop = treeData.age === 0 ? "overflow-hidden" : "overflow-visible";
+    const handleClick = () => {
+        console.log("you clicked a tree");
+    }
+
     return (
         // <button key={props.id} 
         //     className={`absolute origin-bottom-center focus:outline-none ${ props.water > 0 ? "water-cursor" : "no-water-cursor" }`}
@@ -17,8 +21,9 @@ const Tree = ({treeData}) => {
         //         height: `${props.diameter}px`,
         //         width: `${props.diameter}px`,
         //         }}></button>
-        <div 
-            className="absolute"
+        <button
+            onClick={handleClick}
+            className="absolute focus:outline-none"
             style={{
                 top: treeData.y, 
                 left: treeData.x, 
@@ -30,8 +35,7 @@ const Tree = ({treeData}) => {
             <div className={`w-full h-full relative ${seedCrop}`}>
                 <div className="bg-orange-500 absolute -bottom-2 left-1 rounded-2xl h-4 w-4"></div>
             </div>
-
-        </div>
+        </button>
     )
 }
 

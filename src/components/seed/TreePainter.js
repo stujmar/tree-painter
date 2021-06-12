@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import PlantedTreeInfo from './PlantedTreeInfo';
 import ButtonPanel from './ButtonPanel';
 import Debug from './Debug';
