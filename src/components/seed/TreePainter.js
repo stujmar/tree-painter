@@ -5,6 +5,7 @@ import Debug from './Debug';
 import StatusBar from './StatusBar';
 import Sky from './Sky';
 import Tree from './Tree';
+import HUD from './HUD';
 
 const TreePainter = ( { messageChange } ) => {
     const [ mode, _setMode ] = useState('PLANTING');
@@ -153,6 +154,7 @@ const TreePainter = ( { messageChange } ) => {
         <>
             <StatusBar seeds={seeds} stars={stars} water={water}/>
                 <div className="w-full relative" style={{height: "100px"}}>
+                <HUD />
                     <ButtonPanel 
                         mode={mode} 
                         diameter={diameter}
