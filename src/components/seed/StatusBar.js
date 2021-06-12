@@ -13,8 +13,8 @@ const StatusBar = ({seeds, water, stars,}) => {
         <div className={`w-full ${getSeason(day).dark}`}>
             <div className="grid grid-cols-3 max-w-7xl mx-auto justify-start items-top py-1 w-max">
                 <AcornIcon amount={seeds} color={getSeason(day).text} />
-                <WaterIcon amount={water} />
-                <StarIcon amount={stars} />
+                <WaterIcon amount={water} color={getSeason(day).text}/>
+                <StarIcon amount={stars} color={getSeason(day).text}/>
             </div>
         </div>
     )

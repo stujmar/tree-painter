@@ -1,9 +1,15 @@
 import React from 'react';
 
-const WaterIcon = ({amount}) => {
+const WaterIcon = ({amount, color}) => {
     return (
-        <div className="flex mr-4 w-12">
-            <svg version="1.1" baseProfile="basic" width="20" x="0px"
+        <div className="flex mr-4 w-max items-center">
+            <svg width="18" height="24" className={`${color} fill-current`} viewBox="0 0 18 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g >
+                <path d="M18 16.1163C18 20.3909 14.1251 24.0208 8.96003 24C4.00662 23.9792 0 20.6517 0 16.5483C0 9.64411 9.00392 0 9.00392 0C9.00392 0 18 8.32865 18 16.1163Z" fill="white"/>
+                </g>
+            </svg>
+
+            {/* <svg version="1.1" baseProfile="basic" width="20" x="0px"
                 y="0px" viewBox="0 0 21.03 28.67" >
                 <path className={`${ amount > 0 ? "text-water-blue" : ""} fill-current`} d="M19.44,19.35C19.11,8.61,10.44,0,10.44,0s-9,9.26-9,19.35c0,5.15,4.03,9.32,9,9.32S19.6,24.49,19.44,19.35z"/>
                 <g>
@@ -22,8 +28,8 @@ const WaterIcon = ({amount}) => {
                         c0-0.14,0.04-0.25,0.11-0.33c0.08-0.08,0.19-0.13,0.34-0.13h2.75c0.12,0,0.23,0.04,0.33,0.13c0.1,0.08,0.15,0.19,0.15,0.33v2.53
                         c0,0.13-0.04,0.24-0.12,0.33s-0.2,0.15-0.36,0.15H8.97c-0.31,0-0.46-0.16-0.46-0.48V22.48z"/>
                 </g>
-            </svg>
-            <div className="ml-1 mt-1">{`:${amount}`}</div>
+            </svg> */}
+            <div className={`ml-1 ${color} text-md font-medium`}>{`: ${amount}`}</div>
         </div>
     )
 }
