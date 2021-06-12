@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addTree, removeTree } from '../../redux/gameSlice';
+import { addTree, removeTree, resetTrees } from '../../redux/gameSlice';
 import { selectHour } from '../../redux/hourSlice';
 
 import PlantedTreeInfo from './PlantedTreeInfo';
@@ -168,7 +168,8 @@ const TreePainter = ( { messageChange } ) => {
     }
 
     const reset = (e) => {
-        setTrees([])
+        setTrees([]);
+        dispatch(resetTrees());
         setSeeds(10);
         setStars(10);
         setWater(10);

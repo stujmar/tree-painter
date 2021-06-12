@@ -24,11 +24,14 @@ export const gameSlice = createSlice({
             state.trees = state.trees.filter(tree => {
                return tree.id !== action.payload;
             })        
+        },
+        resetTrees: (state) => {
+            state.trees = [];
         }
     }
 });
 
-export const { addTree, setMode, removeTree } = gameSlice.actions;
+export const { addTree, setMode, removeTree, resetTrees } = gameSlice.actions;
 
 export const selectGame = (state) => state.game;
 export const selectMode = (state) => state.game.mode;
