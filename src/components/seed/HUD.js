@@ -8,9 +8,7 @@ const HUD = () => {
 
 
     const toggleMode = (_mode) => {
-        console.log("click", _mode)
         dispatch(setMode(_mode));
-
     }
 
     return (
