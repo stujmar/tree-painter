@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addTree } from '../../redux/gameSlice';
+import { selectHour } from '../../redux/hourSlice';
 
 import PlantedTreeInfo from './PlantedTreeInfo';
 import ButtonPanel from './ButtonPanel';
@@ -22,6 +23,8 @@ const TreePainter = ( { messageChange } ) => {
     const [ diameter, setDiameter ] = useState(15);
     const [ color, setColor ] = useState("#059669");
 
+    // const [ count, setCount ] = useState(0);
+    let hour = useSelector(selectHour);
 
     const dispatch = useDispatch();
     const myModeRef = useRef(mode);
@@ -50,6 +53,14 @@ const TreePainter = ( { messageChange } ) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]
     )
+
+    useEffect(() => {
+        let newTrees = [...trees];
+        setTrees(newTrees.map(tree => {
+            return  {...tree, age: tree.age += 1};
+        }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[hour])
 
     useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
