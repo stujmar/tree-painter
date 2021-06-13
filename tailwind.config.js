@@ -21,6 +21,14 @@ module.exports = {
         'acorn-top': '#ECA76D',
         'acorn-bottom': '#945E42',
         'water-blue' : '#75b4e3'
+      },
+      transitionDuration: {
+        '0': '0ms',
+        '2000': '2000ms',
+        '5000': '5000ms'
+      },
+      boxShadow: {
+        glow: '0 0 25px 5px rgba(255, 255, 255, 0.45)',
       }
     },
   },
