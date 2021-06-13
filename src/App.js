@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import TreePainter from './components/seed/TreePainter';
+import TreePainter from './components/gameBoard/TreePainter';
 import { selectDay } from './redux/daySlice';
 import {getSeason} from './utils/getSeason';
-import TimeControls from './components/view/TimeControls';
-import ClockService from './components/service/ClockService';
+import TimeControls from './components/header/TimeControls';
+import ClockService from './components/header/ClockService';
 
 const App = () => {
   const day = useSelector(selectDay);

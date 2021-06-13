@@ -3,10 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addTree, removeTree, resetTrees, ageTrees, selectMode, setMode, selectTrees } from '../../redux/gameSlice';
 import { selectHour } from '../../redux/hourSlice';
 
-import PlantedTreeInfo from './PlantedTreeInfo';
-import Debug from './Debug';
-import StatusBar from './StatusBar';
-import Sky from './Sky';
+import PlantedTreeInfo from '../debug/PlantedTreeInfo';
+import Debug from '../debug/Debug';
+import StatusBar from '../statusBar/StatusBar';
+import Sky from '../sky/Sky';
 import Tree from './Tree';
 import HUD from './HUD';
 

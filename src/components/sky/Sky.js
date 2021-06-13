@@ -12,7 +12,6 @@ const Sky = () => {
     let speed = useSelector(selectSpeed);
 
     useEffect(() => {
-        console.log("checking hour", hour);
        setSun(hour <= 6 || hour >= 18 ?  {transform: "translateY(150px)"} : {transform: "translateY(-170px)"});
        setSky(hour <= 6 || hour >= 20 ?  {opacity: 1.0} : {opacity: 0});
        setSunSet(hour <= 7 || hour >= 19 ? 1.0 : 0);
