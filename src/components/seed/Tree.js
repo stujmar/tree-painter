@@ -33,6 +33,7 @@ const Tree = ({treeData}) => {
                 }}
             >
             <div className={`w-full h-full relative ${seedCrop}`}>
+                {}
                 <div className="bg-orange-500 absolute -bottom-2 left-1 rounded-2xl h-4 w-4"></div>
             </div>
         </button>

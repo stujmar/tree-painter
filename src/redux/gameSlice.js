@@ -27,11 +27,21 @@ export const gameSlice = createSlice({
         },
         resetTrees: (state) => {
             state.trees = [];
+        },
+        ageTrees: (state) => {
+            state.trees = state.trees.map(tree => {
+                return {...tree, age: tree.age + 1}
+            })
+        },
+        growTrees: (state, action) => {
+            state.trees = state.trees.map(tree => {
+                return {...tree, growth: tree.growth.push(action.payload)}
+            })
         }
     }
 });
 
-export const { addTree, setMode, removeTree, resetTrees } = gameSlice.actions;
+export const { addTree, setMode, removeTree, resetTrees, ageTrees, growTrees } = gameSlice.actions;
 
 export const selectGame = (state) => state.game;
 export const selectMode = (state) => state.game.mode;

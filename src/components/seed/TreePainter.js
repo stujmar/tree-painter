@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addTree, removeTree, resetTrees } from '../../redux/gameSlice';
+import { addTree, removeTree, resetTrees, ageTrees } from '../../redux/gameSlice';
 import { selectHour } from '../../redux/hourSlice';
 
 import PlantedTreeInfo from './PlantedTreeInfo';
-import ButtonPanel from './ButtonPanel';
+// import ButtonPanel from './ButtonPanel';
 import Debug from './Debug';
 import StatusBar from './StatusBar';
 import Sky from './Sky';
@@ -60,14 +60,11 @@ const TreePainter = ( { messageChange } ) => {
         setTrees(newTrees.map(tree => {
             return  {...tree, age: tree.age += 1};
         }));
+        dispatch(ageTrees());
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[hour])
 
-    useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[seeds, trees, stars]
-    )
-    
     // const treeClick = (id) => {
     //     if (myModeRef.current === 'WATERING' && water > 0) {
     //         setWater(water - 1);
@@ -176,16 +173,16 @@ const TreePainter = ( { messageChange } ) => {
         setMode("PLANTING");
     }
 
-    const handleMode = () => {
-        mode === "PLANTING" ? setMode("WATERING") : setMode("PLANTING");
-    }
+    // const handleMode = () => {
+    //     mode === "PLANTING" ? setMode("WATERING") : setMode("PLANTING");
+    // }
 
     return (
         <>
             <StatusBar seeds={seeds} stars={stars} water={water}/>
                 <div className="w-full relative" style={{height: "100px"}}>
-                <HUD />
-                    <ButtonPanel 
+                
+                    {/* <ButtonPanel 
                         mode={mode} 
                         diameter={diameter}
                         color={color}
@@ -193,7 +190,7 @@ const TreePainter = ( { messageChange } ) => {
                         handleColor={handleColor}
                         handleDiameter={handleDiameter}
                         handleMode={handleMode}
-                    />
+                    /> */}
                     <Sky />
                 </div>
                     <div className="overflow-hidden"> {/* GAME FIELD */}
@@ -207,7 +204,13 @@ const TreePainter = ( { messageChange } ) => {
                                     >
                                     </div>
                                 {drawTrees} 
-                                <div className="mx-auto bg-green-200 w-full h-72 overflow-hidden"></div>
+                                <div className="mx-auto bg-green-500 w-full h-72 overflow-hidden"></div>
+                            <HUD />
+                            <button 
+                                type="button"
+                                className="absolute bottom-3 right-3 border-4 rounded-lg font-medium text-white border-white px-2 z-10 shadow focus:outline-none"
+                                onClick={reset}
+                            >RESET</button>
                             </div> 
                     </div>
             <div className="w-max mx-auto"> {/* GRID WRAPPER */}
