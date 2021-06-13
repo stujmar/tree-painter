@@ -165,8 +165,10 @@ const TreePainter = ( { messageChange } ) => {
                             </div> 
                     </div>
             <div className="w-max mx-auto"> {/* GRID WRAPPER */}
-                <div>{grass ? `x: ${mouse.x}/${grass.clientWidth} y: ${mouse.y}/${grass.clientHeight}` : ""}</div>
-                <div>{grass ? `x: ${(mouse.x/grass.clientWidth* 100).toFixed()}% y: ${(mouse.y/grass.clientHeight * 100).toFixed()}%` : ""}</div>
+                <div className="flex justify-between mx-4">
+                    <div>{grass ? `x: ${mouse.x}/${grass.clientWidth} y: ${mouse.y}/${grass.clientHeight}` : ""}</div>
+                    <div>{grass ? `x: ${(mouse.x/grass.clientWidth* 100).toFixed()}% y: ${(mouse.y/grass.clientHeight * 100).toFixed()}%` : ""}</div>
+                </div>
                 <Debug infoPanel={infoPanel} />
             </div>
         </>
