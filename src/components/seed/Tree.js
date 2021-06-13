@@ -1,11 +1,20 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeTreeById, selectMode } from '../../redux/gameSlice';
 
 const Tree = ({treeData}) => {
 
+    const dispatch = useDispatch();
     let seedCrop = treeData.age === 0 ? "overflow-hidden" : "overflow-visible";
-    const handleClick = () => {
-        console.log("you clicked a tree");
-    }
+    let mode = useSelector(selectMode);
+
+    const handleClick = (id) => {
+        if (mode === "CHOPPING") {
+            dispatch(removeTreeById(id)); 
+        } else if (mode === "WATERING") {
+            console.log("you watered tree:", id);
+        }
+    };
 
     return (
         // <button key={props.id} 
@@ -22,7 +31,7 @@ const Tree = ({treeData}) => {
         //         width: `${props.diameter}px`,
         //         }}></button>
         <button
-            onClick={handleClick}
+            onClick={() => handleClick(treeData.id)}
             className="absolute focus:outline-none"
             style={{
                 top: treeData.y, 

@@ -35,13 +35,26 @@ export const gameSlice = createSlice({
         },
         growTrees: (state, action) => {
             state.trees = state.trees.map(tree => {
-                return {...tree, growth: tree.growth.push(action.payload)}
+                return {...tree, growth: tree.growth.push(action.payload)};
+            })
+        },
+        removeTreeById: (state, action) => {
+            state.trees = state.trees.filter(tree => {
+                return tree.id !== action.payload;
             })
         }
     }
 });
 
-export const { addTree, setMode, removeTree, resetTrees, ageTrees, growTrees } = gameSlice.actions;
+export const { 
+    addTree, 
+    setMode, 
+    removeTree, 
+    resetTrees, 
+    ageTrees, 
+    growTrees,
+    removeTreeById
+    } = gameSlice.actions;
 
 export const selectGame = (state) => state.game;
 export const selectMode = (state) => state.game.mode;

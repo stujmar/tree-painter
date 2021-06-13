@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addTree, removeTree, resetTrees, ageTrees } from '../../redux/gameSlice';
+import { addTree, removeTree, resetTrees, ageTrees, selectMode, setMode } from '../../redux/gameSlice';
 import { selectHour } from '../../redux/hourSlice';
 
 import PlantedTreeInfo from './PlantedTreeInfo';
@@ -12,7 +12,7 @@ import Tree from './Tree';
 import HUD from './HUD';
 
 const TreePainter = ( { messageChange } ) => {
-    const [ mode, _setMode ] = useState('PLANTING');
+    // const [ mode, _setMode ] = useState('PLANTING');
     const [ mouse, setMouse] = useState({ x: 0, y: 0, xMax: 0, yMax: 0});
     const [ seeds, setSeeds ] = useState(10);
     const [ stars, setStars ] = useState(10);
@@ -25,13 +25,14 @@ const TreePainter = ( { messageChange } ) => {
 
     // const [ count, setCount ] = useState(0);
     let hour = useSelector(selectHour);
+    let mode = useSelector(selectMode);
 
     const dispatch = useDispatch();
-    const myModeRef = useRef(mode);
-    const setMode = data => {
-        myModeRef.current = data;
-        _setMode(data);
-      };
+    // const myModeRef = useRef(mode);
+    // const setMode = data => {
+    //     myModeRef.current = data;
+    //     _setMode(data);
+    //   };
 
     const handleDelete = (id) => {
         setTrees(trees.filter( tree => tree.id !== id ));
@@ -97,6 +98,7 @@ const TreePainter = ( { messageChange } ) => {
     //             width: `${tree.diameter}px`,
     //             }}></button>
     //     }));
+
     useEffect(() => {
         setDrawTrees(trees.map(tree => {
             return <Tree key={tree.id} treeData={tree} />
@@ -127,13 +129,13 @@ const TreePainter = ( { messageChange } ) => {
         }
     }
 
-    const handleDiameter = (e) => {
-        setDiameter(e.target.value);
-    }
+    // const handleDiameter = (e) => {
+    //     setDiameter(e.target.value);
+    // }
 
-    const handleColor = (e) => {
-        setColor(e.target.value);
-    }
+    // const handleColor = (e) => {
+    //     setColor(e.target.value);
+    // }
 
     const plant = (e) => {
         messageChange(messageCenter.first_seed);
@@ -170,7 +172,7 @@ const TreePainter = ( { messageChange } ) => {
         setSeeds(10);
         setStars(10);
         setWater(10);
-        setMode("PLANTING");
+        dispatch(setMode("PLANTING"));
     }
 
     // const handleMode = () => {
