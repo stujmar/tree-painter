@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addTree, removeTree, resetTrees, ageTrees, selectMode, setMode } from '../../redux/gameSlice';
+import { addTree, removeTree, resetTrees, ageTrees, selectMode, setMode, selectTrees } from '../../redux/gameSlice';
 import { selectHour } from '../../redux/hourSlice';
 
 import PlantedTreeInfo from './PlantedTreeInfo';
-// import ButtonPanel from './ButtonPanel';
 import Debug from './Debug';
 import StatusBar from './StatusBar';
 import Sky from './Sky';
@@ -12,30 +11,20 @@ import Tree from './Tree';
 import HUD from './HUD';
 
 const TreePainter = ( { messageChange } ) => {
-    // const [ mode, _setMode ] = useState('PLANTING');
     const [ mouse, setMouse] = useState({ x: 0, y: 0, xMax: 0, yMax: 0});
     const [ seeds, setSeeds ] = useState(10);
     const [ stars, setStars ] = useState(10);
     const [ water, setWater ] = useState(10);
-    const [ trees, setTrees ] = useState([]);
     const [ drawTrees, setDrawTrees ] = useState([]);
     const [ infoPanel, setInfoPanel ] = useState([]);
-    const [ diameter, setDiameter ] = useState(15);
-    const [ color, setColor ] = useState("#059669");
 
-    // const [ count, setCount ] = useState(0);
     let hour = useSelector(selectHour);
     let mode = useSelector(selectMode);
+    let trees = useSelector(selectTrees);
 
     const dispatch = useDispatch();
-    // const myModeRef = useRef(mode);
-    // const setMode = data => {
-    //     myModeRef.current = data;
-    //     _setMode(data);
-    //   };
 
     const handleDelete = (id) => {
-        setTrees(trees.filter( tree => tree.id !== id ));
         setSeeds(seeds + 1);
         dispatch(removeTree(id));
     } 
@@ -57,12 +46,7 @@ const TreePainter = ( { messageChange } ) => {
     )
 
     useEffect(() => {
-        let newTrees = [...trees];
-        setTrees(newTrees.map(tree => {
-            return  {...tree, age: tree.age += 1};
-        }));
         dispatch(ageTrees());
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[hour])
 
@@ -108,8 +92,7 @@ const TreePainter = ( { messageChange } ) => {
             return <PlantedTreeInfo
                         key={tree.id} 
                         x={tree.x} 
-                        diameter={tree.diameter} 
-                        y={tree.y} color={tree.color} 
+                        y={tree.y} 
                         age={tree.age} 
                         id={tree.id}
                         onDelete={(id) => handleDelete(id)}/>
@@ -129,36 +112,17 @@ const TreePainter = ( { messageChange } ) => {
         }
     }
 
-    // const handleDiameter = (e) => {
-    //     setDiameter(e.target.value);
-    // }
-
-    // const handleColor = (e) => {
-    //     setColor(e.target.value);
-    // }
-
     const plant = (e) => {
         messageChange(messageCenter.first_seed);
 
         if (seeds > 0) {
-            // Set Trees in local State.
             let randomId = Math.floor(Math.random() * 10000)
-            setTrees(trees => [...trees, {
-                id: randomId,
-                x: `${(mouse.x/grass.clientWidth* 100).toFixed()}%`,
-                y: `${(mouse.y/grass.clientHeight * 100).toFixed()}%`,
-                diameter: diameter ? diameter : 2,
-                age: 0,
-                color: color
-            }]);
             // Set Trees in Redux state.
             dispatch( addTree({
                 id: randomId,
                 x: `${(mouse.x/grass.clientWidth* 100).toFixed()}%`,
                 y: `${(mouse.y/grass.clientHeight * 100).toFixed()}%`,
-                diameter: diameter ? diameter : 2,
                 age: 0,
-                color: color,
                 growth: []
             }) );
 
@@ -166,8 +130,7 @@ const TreePainter = ( { messageChange } ) => {
         }
     }
 
-    const reset = (e) => {
-        setTrees([]);
+    const reset = () => {
         dispatch(resetTrees());
         setSeeds(10);
         setStars(10);
@@ -175,24 +138,10 @@ const TreePainter = ( { messageChange } ) => {
         dispatch(setMode("PLANTING"));
     }
 
-    // const handleMode = () => {
-    //     mode === "PLANTING" ? setMode("WATERING") : setMode("PLANTING");
-    // }
-
     return (
         <>
             <StatusBar seeds={seeds} stars={stars} water={water}/>
                 <div className="w-full relative" style={{height: "100px"}}>
-                
-                    {/* <ButtonPanel 
-                        mode={mode} 
-                        diameter={diameter}
-                        color={color}
-                        reset={reset}
-                        handleColor={handleColor}
-                        handleDiameter={handleDiameter}
-                        handleMode={handleMode}
-                    /> */}
                     <Sky />
                 </div>
                     <div className="overflow-hidden"> {/* GAME FIELD */}
