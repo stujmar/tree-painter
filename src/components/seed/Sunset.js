@@ -1,19 +1,16 @@
 import React from 'react'
-import { defaultProps } from 'recompose';
 
-const Sunset = ({opacity}) => {
-let percent = 85;
+const Sunset = ({sunSet}) => {
+let percent = 65;
 
     return (
         <div 
-        style={{ background: `linear-gradient(0deg, rgba(255,0,0,${opacity}) 0%, rgba(255,255,255,0) ${percent}%)` }}
-        className="bottom-0 w-full h-full">
+            style={{ background: `linear-gradient(0deg, rgba(255,100,100, 1.0) 0%, rgba(255,255,255,0) ${percent}%)`,
+            opacity: sunSet}}
+        className="bottom-0 absolute w-full h-full z-4 transition duration-5000">
         </div>
     )
 }
-const withDefaultProps = defaultProps({
-    opacity: .5
-  });
 
-  export default withDefaultProps(Sunset);
+  export default Sunset;
   
