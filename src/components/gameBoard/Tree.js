@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { removeTreeById, selectMode } from '../../redux/gameSlice';
+import Trunk from './Trunk';
 
 const Tree = ({treeData}) => {
 
     const dispatch = useDispatch();
+    const [ trunks, setTrunks ] = useState([]);
     let seedCrop = treeData.age === 0 ? "overflow-hidden" : "overflow-visible";
     let mode = useSelector(selectMode);
 
@@ -16,20 +19,13 @@ const Tree = ({treeData}) => {
         }
     };
 
+    useEffect(() => {
+        setTrunks(treeData.growth.map((trunk) => {
+            return <Trunk />
+        }))
+    },[treeData])
+
     return (
-        // <button key={props.id} 
-        //     className={`absolute origin-bottom-center focus:outline-none ${ props.water > 0 ? "water-cursor" : "no-water-cursor" }`}
-        //     onClick={() => { props.treeClick(props.id)} } 
-        //     style={{
-        //         top: props.y, 
-        //         left: props.x, 
-        //         borderRadius: "0%",
-        //         borderBottom: `${props.diameter * 1.25}px solid ${props.color}`,
-        //         borderLeft: `${props.diameter}px solid rgba(0,0,0,0)`,
-        //         borderRight: `${props.diameter}px solid rgba(0,0,0,0)`,
-        //         height: `${props.diameter}px`,
-        //         width: `${props.diameter}px`,
-        //         }}></button>
         <button
             onClick={() => handleClick(treeData.id)}
             className="absolute focus:outline-none"
@@ -42,8 +38,10 @@ const Tree = ({treeData}) => {
                 }}
             >
             <div className={`w-full h-full relative ${seedCrop}`}>
-                {}
-                <div className="bg-orange-500 absolute -bottom-2 left-1 rounded-2xl h-4 w-4"></div>
+                <div className="absolute bottom-0 left-1">
+                {trunks}
+                </div>
+                <div className={`bg-orange-500 absolute -bottom-2 left-1 rounded-2xl h-4 w-4 ${treeData.age > 0 ? "hidden" : ""}`}></div>
             </div>
         </button>
     )
