@@ -115,7 +115,7 @@ const TreePainter = ( { messageChange } ) => {
                 <div className="w-full relative" style={{height: "100px"}}>
                     <Sky />
                 </div>
-                    <div className="overflow-hidden"> {/* GAME FIELD */}
+                    <div className=""> {/* GAME FIELD */}
                             
                             <div className="mx-auto lg:mr-auto w-full z-10 relative"> {/* Gameboard Wrapper */}
                                 <div 
