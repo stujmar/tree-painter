@@ -35,7 +35,7 @@ export const gameSlice = createSlice({
         },
         growTrees: (state, action) => {
             state.trees = state.trees.map(tree => {
-                return {...tree, growth: tree.growth.push(action.payload)};
+                return {...tree, growth: tree.growth.concat(action.payload)};
             })
         },
         removeTreeById: (state, action) => {

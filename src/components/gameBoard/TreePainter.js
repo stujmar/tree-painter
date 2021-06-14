@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addTree, removeTree, resetTrees, ageTrees, selectMode, setMode, selectTrees } from '../../redux/gameSlice';
+import { addTree, removeTree, resetTrees, ageTrees, selectMode, setMode, selectTrees, growTrees } from '../../redux/gameSlice';
 import { selectHour } from '../../redux/hourSlice';
 
 import PlantedTreeInfo from '../debug/PlantedTreeInfo';
@@ -47,41 +47,12 @@ const TreePainter = ( { messageChange } ) => {
 
     useEffect(() => {
         dispatch(ageTrees());
+        console.log(!!trees.length);
+        if (!!trees.length) {
+            dispatch(growTrees({left: 0, right: 0}));
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[hour])
-
-    // const treeClick = (id) => {
-    //     if (myModeRef.current === 'WATERING' && water > 0) {
-    //         setWater(water - 1);
-    //         setTrees( trees.map( tree => {
-    //             if (tree.id === id) {
-    //                 // tree.x -= 1;
-    //                 // tree.y -= 1;
-    //                 tree.diameter = parseInt(tree.diameter) + 2;
-    //             }
-    //             return tree;
-    //         }
-    //         ))
-    //         setSeeds(seeds + 1);
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     setDrawTrees(trees.map(tree => {
-    //         return <button key={tree.id} 
-    //         className={`absolute origin-bottom-center focus:outline-none ${ water > 0 ? "water-cursor" : "no-water-cursor" }`}
-    //         onClick={() => { treeClick(tree.id)} } 
-    //         style={{
-    //             top: tree.y, 
-    //             left: tree.x, 
-    //             borderRadius: "0%",
-    //             borderBottom: `${tree.diameter * 1.25}px solid ${tree.color}`,
-    //             borderLeft: `${tree.diameter}px solid rgba(0,0,0,0)`,
-    //             borderRight: `${tree.diameter}px solid rgba(0,0,0,0)`,
-    //             height: `${tree.diameter}px`,
-    //             width: `${tree.diameter}px`,
-    //             }}></button>
-    //     }));
 
     useEffect(() => {
         setDrawTrees(trees.map(tree => {
