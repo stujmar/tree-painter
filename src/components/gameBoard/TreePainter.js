@@ -47,7 +47,6 @@ const TreePainter = ( { messageChange } ) => {
 
     useEffect(() => {
         dispatch(ageTrees());
-        console.log(!!trees.length);
         if (!!trees.length) {
             dispatch(growTrees({left: 0, right: 0}));
         }
@@ -55,7 +54,10 @@ const TreePainter = ( { messageChange } ) => {
     },[hour])
 
     useEffect(() => {
-        setDrawTrees(trees.map(tree => {
+        let sortedTrees = trees.slice().sort((a, b) => {
+            return a.y.slice(0, -1) - b.y.slice(0, -1);
+        }); // frozen in strict mode?
+        setDrawTrees(sortedTrees.map(tree => {
             return <Tree key={tree.id} treeData={tree} />
         }));
 
