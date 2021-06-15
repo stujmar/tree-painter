@@ -1,24 +1,32 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import TreePainter from './components/gameBoard/TreePainter';
 import { selectDay } from './redux/daySlice';
 import {getSeason} from './utils/getSeason';
+
 import TimeControls from './components/header/TimeControls';
 import ClockService from './components/header/ClockService';
+import TreePainter from './components/gameBoard/TreePainter';
+import Graph from './components/debug/Graph';
 
 const App = () => {
   const day = useSelector(selectDay);
 
   const [ message, setMessage ] = useState("");
+  const [ graph, setGraph ] = useState(false);
   // const [ season, setSeason ] = useState("SPRING");
 
   const handleMessageChange = (payload) => {
     setMessage(payload);
   }
 
+  const toggleGraph = () => {
+    setGraph(!graph);
+  }
+
 
   return (
     <div className="App">
+      {graph ? <Graph /> : <></>}
       <ClockService />
       <header className={`${getSeason(day).light} h-48 flex items-center justify-center text-lg font-sans text-white`}>
         <div className="w-96 text-center pt-12 md:pt-0">{message}</div>
@@ -26,7 +34,7 @@ const App = () => {
           <TimeControls />
         </div>
       </header>
-      <TreePainter messageChange={(e) => handleMessageChange(e)}/>
+      <TreePainter messageChange={(e) => handleMessageChange(e)} toggleGraph={toggleGraph} />
     </div>
   )
 }
