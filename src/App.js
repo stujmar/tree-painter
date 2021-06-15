@@ -5,7 +5,7 @@ import {getSeason} from './utils/getSeason';
 
 import TimeControls from './components/header/TimeControls';
 import ClockService from './components/header/ClockService';
-import TreePainter from './components/gameBoard/TreePainter';
+import Game from './components/gameBoard/Game';
 import Graph from './components/debug/Graph';
 
 const App = () => {
@@ -34,7 +34,7 @@ const App = () => {
           <TimeControls />
         </div>
       </header>
-      <TreePainter messageChange={(e) => handleMessageChange(e)} toggleGraph={toggleGraph} />
+      <Game messageChange={(e) => handleMessageChange(e)} toggleGraph={toggleGraph} />
     </div>
   )
 }

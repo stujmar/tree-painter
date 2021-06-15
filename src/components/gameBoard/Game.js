@@ -10,7 +10,7 @@ import Sky from '../sky/Sky';
 import Tree from './Tree';
 import HUD from './HUD';
 
-const TreePainter = ( { messageChange } ) => {
+const Game = ( { messageChange } ) => {
     const [ mouse, setMouse] = useState({ x: 0, y: 0, xMax: 0, yMax: 0});
     const [ seeds, setSeeds ] = useState(10);
     const [ stars, setStars ] = useState(10);
@@ -165,4 +165,4 @@ const TreePainter = ( { messageChange } ) => {
     )
 }
 
-export default TreePainter;
+export default Game;
