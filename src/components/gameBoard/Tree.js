@@ -40,7 +40,7 @@ const Tree = ({treeData}) => {
             <div className={`w-full h-full relative ${seedCrop}`}>
                 <div className="absolute bottom-0 left-1 flex flex-col-reverse">
                     {trunks}
-                    <div className={`rounded-full -ml-2 h-8 w-8 bg-green-300 ${treeData.age === 0 ? "hidden" : ""}`}></div>
+                    <div className={`rounded-full ${treeData.age <= 2 ? '-ml-1 h-6 w-6' : '-ml-2 h-8 w-8'} bg-green-300 ${treeData.age === 0 ? "hidden" : ""}`}></div>
                 </div>
                 <div className={`bg-orange-500 absolute -bottom-2 left-1 rounded-2xl h-4 w-4 ${treeData.age > 0 ? "hidden" : ""}`}></div>
             </div>
