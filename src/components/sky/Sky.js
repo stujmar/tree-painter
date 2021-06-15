@@ -8,6 +8,7 @@ const Sky = () => {
     const [sun, setSun] = useState({transform: "translateY(-170px)"})
     const [sky, setSky] = useState({opacity: 0})
     const [sunSet, setSunSet] = useState(0);
+    const [stars, setStars] = useState(10);
     let hour = useSelector(selectHour);
     let speed = useSelector(selectSpeed);
 
@@ -18,7 +19,9 @@ const Sky = () => {
     },[hour])
 
     const clickSky = () => {
-        console.log("Sky");
+        if (stars > 0) {
+            setStars(stars - 1);
+        }
     }
 
     return (
