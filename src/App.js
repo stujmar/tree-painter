@@ -26,7 +26,7 @@ const App = () => {
 
   return (
     <div className="App">
-      {graph ? <Graph /> : <></>}
+      {graph ? <Graph toggleGraph={toggleGraph}/> : <></>}
       <ClockService />
       <header className={`${getSeason(day).light} h-48 flex items-center justify-center text-lg font-sans text-white`}>
         <div className="w-96 text-center pt-12 md:pt-0">{message}</div>

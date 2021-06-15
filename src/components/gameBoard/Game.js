@@ -10,7 +10,7 @@ import Sky from '../sky/Sky';
 import Tree from './Tree';
 import HUD from './HUD';
 
-const Game = ( { messageChange } ) => {
+const Game = ( { messageChange, toggleGraph } ) => {
     const [ mouse, setMouse] = useState({ x: 0, y: 0, xMax: 0, yMax: 0});
     const [ seeds, setSeeds ] = useState(10);
     const [ stars, setStars ] = useState(10);
@@ -131,7 +131,9 @@ const Game = ( { messageChange } ) => {
                                 <div className="mx-auto bg-green-500 w-full h-72 overflow-hidden"></div>
                             <HUD />
                             <div className="flex flex-row absolute bottom-3 right-3 gap-2">
-                                <button className="border-4 rounded-lg hover:bg-green-600 border-white z-10 px-1 shadow focus:outline-none">
+                                <button 
+                                    className="border-4 rounded-lg hover:bg-green-600 border-white z-10 px-1 shadow focus:outline-none"
+                                    onClick={toggleGraph}>
                                     <svg width="24" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M24 9.2712L22.8263 0L16.4515 5.80651L19.2029 7.0696L15.3707 18.1769L7.68919 2.75585L0 21.9927L1.99984 23.0549L7.90363 8.28523L15.7316 24L21.2487 8.0081L24 9.2712Z" fill="white"/>
                                     </svg>
