@@ -21,7 +21,7 @@ const Tree = ({treeData}) => {
 
     useEffect(() => {
         setTrunks(treeData.growth.map((trunk) => {
-            return <Trunk />
+            return <Trunk key={Math.floor(Math.random() * 10000)}/>
         }))
     },[treeData])
 
