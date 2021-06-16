@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { removeTreeById, selectMode } from '../../redux/gameSlice';
 import Trunk from './Trunk';
+import Canopy from './Canopy';
 
 const Tree = ({treeData}) => {
 
@@ -33,14 +34,15 @@ const Tree = ({treeData}) => {
                 top: treeData.y, 
                 left: treeData.x, 
                 height: `24px`,
-                width: `26px`,
+                width: `40px`,
                 overflow: {seedCrop}
                 }}
             >
             <div className={`w-full h-full relative ${seedCrop}`}>
-                <div className="absolute bottom-0 left-1 flex flex-col-reverse">
-                    {trunks}
-                    <div className={`rounded-full ${treeData.age <= 2 ? '-ml-1 h-6 w-6' : '-ml-2 h-8 w-8'} bg-green-300 ${treeData.age === 0 ? "hidden" : ""}`}></div>
+                <div className="flex flex-col-reverse items-center absolute bottom-0">
+                        {trunks}
+                        <Canopy age={treeData.age} />
+                    {/* <div className={`rounded-full ${treeData.age <= 2 ? '-ml-1 h-6 w-6' : '-ml-2 h-8 w-8'} bg-green-300 ${treeData.age === 0 ? "hidden" : ""}`}></div> */}
                 </div>
                 <div className={`bg-orange-500 absolute -bottom-2 left-1 rounded-2xl h-4 w-4 ${treeData.age > 0 ? "hidden" : ""}`}></div>
             </div>
