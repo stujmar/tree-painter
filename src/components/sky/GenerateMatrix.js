@@ -7,7 +7,7 @@ const GenerateMatrix = ({height, width}) => {
 
     function makeRow(){
       let row = [];
-      for (let i = 0; i < tileCount; i++) {
+      for (let i = 0; i < width; i++) {
         row.push(<div key={i}>{Math.floor(Math.random() * 2)}</div>);
       }
       setTiles(row);
