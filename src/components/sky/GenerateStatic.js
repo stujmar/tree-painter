@@ -1,15 +1,10 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 
 const GenerateStatic = ({height, width}) => {
 
     let tileCount = height * width;
-    let tiles = [];
+    let [tiles, setTiles] = useState([]);
 
-    setInterval(function(){
-        for (let i = 0; i < tileCount; i++) {
-            tiles.push(<div key={i}>{Math.floor(Math.random() * 2)}</div>)
-        }
-    },1000);
     function useInterval(callback, delay) {
         const savedCallback = useRef();
       
@@ -30,7 +25,10 @@ const GenerateStatic = ({height, width}) => {
         }, [delay]);
     }
     useInterval(() => {
-
+      console.log("here");
+      for (let i = 0; i < tileCount; i++) {
+        setTiles(<div key={i}>{Math.floor(Math.random() * 2)}</div>)
+    }
 
     }, 1000);
 

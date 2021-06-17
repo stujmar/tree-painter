@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectDay } from './redux/daySlice';
 import {getSeason} from './utils/getSeason';
@@ -10,16 +10,10 @@ import Game from './components/gameBoard/Game';
 import Graph from './components/debug/Graph';
 
 const App = () => {
-
-  // const [test, setTest] = useState("");
-  // useEffect(() => {
-  //   setTest(generateStatic(2,4));
-  // },[])
   const day = useSelector(selectDay);
 
   const [ message, setMessage ] = useState("");
   const [ graph, setGraph ] = useState(false);
-  // const [ season, setSeason ] = useState("SPRING");
 
   const handleMessageChange = (payload) => {
     setMessage(payload);
