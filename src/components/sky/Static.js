@@ -1,6 +1,8 @@
 import React from 'react';
 
 const Static = () => {
+
+    
     // const [ grid, setGrid ] = useState(false);
     // let skyDimensions = document.getElementById('static');
     

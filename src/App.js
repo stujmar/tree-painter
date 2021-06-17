@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectDay } from './redux/daySlice';
 import {getSeason} from './utils/getSeason';
+import { generateStatic } from './utils/generateStatic';
 
 import TimeControls from './components/header/TimeControls';
 import ClockService from './components/header/ClockService';
@@ -9,6 +10,11 @@ import Game from './components/gameBoard/Game';
 import Graph from './components/debug/Graph';
 
 const App = () => {
+
+  const [test, setTest] = useState("");
+  useEffect(() => {
+    setTest(generateStatic(2,4));
+  },[])
   const day = useSelector(selectDay);
 
   const [ message, setMessage ] = useState("");
@@ -35,6 +41,7 @@ const App = () => {
         </div>
       </header>
       <Game messageChange={(e) => handleMessageChange(e)} toggleGraph={toggleGraph} />
+      {test}
     </div>
   )
 }
