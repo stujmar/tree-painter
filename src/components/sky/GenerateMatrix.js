@@ -3,24 +3,29 @@ import React, { useEffect, useState } from 'react';
 const GenerateMatrix = ({height, width}) => {
 
     // let tileCount = height * width;
-    let matrix = document.getElementById('matrix');
-    let matrixWidth = !!matrix ? matrix.clientWidth : "";
-    console.log(matrixWidth);
-    let [tiles, setTiles] = useState([]);
+    // const [ rowCount, setRowCount ] = useState(0);
+    // let [tiles, setTiles] = useState([]);
 
-    function makeRow(){
-      let row = [];
-      for (let i = 0; i < width; i++) {
-        row.push(<div key={i}>{Math.floor(Math.random() * 2)}</div>);
-      }
-      setTiles(row);
-    }
+    // function makeRow(){
+    //   let row = [];
+    //   for (let i = 0; i < rowCount; i++) {
+    //     row.push(<div key={i}>{Math.floor(Math.random() * 2)}</div>);
+    //   }
+    //   setTiles(row);
+    // }
 
-    useEffect(() => {
-      makeRow();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
-
+    // useEffect(() => {
+    //   let matrix = document.getElementById('matrix');
+    //   let matrixWidth = !!matrix ? matrix.clientWidth : "";
+    //   setRowCount(Math.floor(matrixWidth/9));
+    //   console.log('onload');
+    //   // eslint-disable-next-line react-hooks/exhaustive-deps
+    // },[])
+    
+    // useEffect(() => {
+    //   makeRow();
+    // })
+    
     // function useInterval(callback, delay) {
     //     const savedCallback = useRef();
       
@@ -45,7 +50,7 @@ const GenerateMatrix = ({height, width}) => {
     // }, 1000);
 
     return <div id="matrix" className="flex flex-wrap justify-center bg-black text-green-400 w-full">
-    {tiles}
+    {/* {tiles} */}
     </div>;
 };
 
