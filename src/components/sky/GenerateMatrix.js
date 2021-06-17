@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 const GenerateMatrix = ({height, width}) => {
 
-    let tileCount = height * width;
+    // let tileCount = height * width;
+    let matrix = document.getElementById('matrix');
+    let matrixWidth = !!matrix ? matrix.clientWidth : "";
+    console.log(matrixWidth);
     let [tiles, setTiles] = useState([]);
 
     function makeRow(){
@@ -41,7 +44,7 @@ const GenerateMatrix = ({height, width}) => {
     //   console.log("here");
     // }, 1000);
 
-    return <div className="flex flex-wrap bg-black text-green-400">
+    return <div id="matrix" className="flex flex-wrap justify-center bg-black text-green-400 w-full">
     {tiles}
     </div>;
 };
