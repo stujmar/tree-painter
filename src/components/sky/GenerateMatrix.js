@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const GenerateStatic = ({height, width}) => {
+const GenerateMatrix = ({height, width}) => {
 
     let tileCount = height * width;
     let [tiles, setTiles] = useState([]);
@@ -47,4 +47,4 @@ const GenerateStatic = ({height, width}) => {
 };
 
 
-export default GenerateStatic;
+export default GenerateMatrix;

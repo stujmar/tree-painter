@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectDay } from './redux/daySlice';
 import {getSeason} from './utils/getSeason';
-import GenerateStatic from './components/sky/GenerateStatic';
+import GenerateMatrix from './components/sky/GenerateMatrix';
 
 import TimeControls from './components/header/TimeControls';
 import ClockService from './components/header/ClockService';
@@ -35,7 +35,7 @@ const App = () => {
         </div>
       </header>
       <Game messageChange={(e) => handleMessageChange(e)} toggleGraph={toggleGraph} />
-      <GenerateStatic height={4} width={100} />
+      <GenerateMatrix height={4} width={100} />
     </div>
   )
 }
