@@ -124,13 +124,17 @@ const Game = ( { messageChange, toggleGraph } ) => {
                             <div className="mx-auto lg:mr-auto w-full z-10 relative"> {/* Gameboard Wrapper */}
                                 <div 
                                     id="grass"
-                                    className={`absolute bottom-0 opacity-0 bg-black z-10 w-full h-72 ${seeds ? "seed-cursor" : "no-seed-cursor"} ${mode === "PLANTING" ? "" : "hidden" }`} 
+                                    className={`absolute top-0 opacity-0 bg-black z-10 w-full ${seeds ? "seed-cursor" : "no-seed-cursor"} ${mode === "PLANTING" ? "" : "hidden" }`} 
+                                    style={{height: "calc(100vh - 324px)"}}
                                     onMouseMove={(e) => _onMouseMove(e)}
                                     onClick={(e) => plant(e)} 
                                     >
                                     </div>
                                 {drawTrees} 
-                                <div className="mx-auto bg-green-500 w-full h-72 overflow-hidden"></div>
+                                <div 
+                                    className="mx-auto bg-green-500 w-full h-72 overflow-hidden"
+                                    style={{height: "calc(100vh - 324px)"}}
+                                    ></div>
                             <HUD />
                             <div className="flex flex-row absolute bottom-3 right-3 gap-2">
                                 <button 
@@ -158,7 +162,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                             </div>
                             </div> 
                     </div>
-            <div className="w-max mx-auto"> {/* GRID WRAPPER */}
+            <div className="w-max mx-auto absolute top-0 hidden"> {/* DeBug */}
                 <div className="flex justify-between mx-4">
                     <div>{grass ? `x: ${mouse.x}/${grass.clientWidth} y: ${mouse.y}/${grass.clientHeight}` : ""}</div>
                     <div>{grass ? `x: ${(mouse.x/grass.clientWidth* 100).toFixed()}% y: ${(mouse.y/grass.clientHeight * 100).toFixed()}%` : ""}</div>
