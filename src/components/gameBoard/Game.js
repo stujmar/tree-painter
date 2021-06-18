@@ -9,6 +9,7 @@ import StatusBar from '../statusBar/StatusBar';
 import Sky from '../sky/Sky';
 import Tree from './Tree';
 import HUD from './HUD';
+import { setSpeed } from '../../redux/clockSlice';
 
 const Game = ( { messageChange, toggleGraph } ) => {
     const [ mouse, setMouse] = useState({ x: 0, y: 0, xMax: 0, yMax: 0});
@@ -108,6 +109,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
         setSeeds(10);
         setStars(10);
         setWater(10);
+        dispatch(setSpeed(1000));
         dispatch(setMode("PLANTING"));
     }
 
