@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { coinFlip } from '../../utils/coinFlip';
+import { useDispatch } from 'react-redux';
+import { setSpeed } from '../../redux/clockSlice';
 
 const GenerateStatic = ({ isPaused }) => {
 
-        const [row, setRow] = useState([]);
+    const dispatch = useDispatch();
+    const [row, setRow] = useState([]);
 
         useEffect(() => {
             updateGrid();
@@ -22,6 +25,10 @@ const GenerateStatic = ({ isPaused }) => {
                 array.push(renderPixel(i));
             }
             setRow(array);
+        }
+
+        function unPause() {
+            dispatch(setSpeed(1000));
         }
 
         function useInterval(callback, delay) {
@@ -53,9 +60,13 @@ const GenerateStatic = ({ isPaused }) => {
 
             {isPaused ? <div className="relative flex flex-wrap items-start bg-white justify-center overflow-hidden">
             <div style={{position: "absolute", left: "50%"}}>
-                <div className="font-bold text-red-600 top-8 text-blend-difference z-30 bg-black px-1 pb-1 text-4xl" style={{position: "relative", left: "-50%", textStroke: "2px white"}}>
+                <button
+                    type="button"
+                    onClick={() => unPause()}
+                    className="focus:outline-none font-bold text-red-600 hover:text-red-500 top-8 text-blend-difference z-50 bg-black px-1 pb-1 text-4xl" 
+                    style={{position: "relative", left: "-50%", textStroke: "2px white", borderTop: "1px solid gray", borderLeft: "1px solid gray"}}>
                     PAUSED
-                </div>
+                </button>
             </div>
             {row}
             </div> : <></>}
