@@ -30,7 +30,7 @@ const Sky = () => {
             onClick={clickSky}
             className="z-0 mx-auto lg:mr-auto h-full bg-blue-400 relative absolute w-full overflow-hidden focus:outline-none">
             {/* <div className="absolute w-screen transition" style={ hour <== 6 && hour >== 16 ? {transform: "translateY(200px)"} : {transform: "translateY(0px)"}}> */}
-            {speed === 123456789 ? <Static /> : <></>}
+            {/* {speed === 123456789 ? <Static /> : <></>} */}
             <div className={`absolute w-screen transition ${speed === 1000 ? 'duration-slow' : 'duration-2000'}`} style={sun}>
                 <div className="w-20 h-20 bg-yellow-200 shadow-glow rounded-full mx-auto">
 

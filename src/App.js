@@ -35,7 +35,7 @@ const App = () => {
         </div>
       </header>
       <Game messageChange={(e) => handleMessageChange(e)} toggleGraph={toggleGraph} />
-      <GenerateMatrix height={4} width={100} />
+      {/* <GenerateMatrix height={4} width={100} /> */}
     </div>
   )
 }
