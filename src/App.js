@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectDay } from './redux/daySlice';
 import {getSeason} from './utils/getSeason';
-import GenerateMatrix from './components/sky/GenerateMatrix';
+// import GenerateMatrix from './components/sky/GenerateMatrix';
 
 import TimeControls from './components/header/TimeControls';
 import ClockService from './components/header/ClockService';

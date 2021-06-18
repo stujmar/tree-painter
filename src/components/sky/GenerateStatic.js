@@ -1,6 +1,13 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { coinFlip } from '../../utils/coinFlip';
 
 const GenerateStatic = () => {
+
+        const [row, setRow] = useState([]);
+
+        useEffect(() => {
+            setRow(<div className="bg-white h-2 w-2"></div>)
+        },[])
 
         function useInterval(callback, delay) {
             const savedCallback = useRef();
@@ -22,11 +29,11 @@ const GenerateStatic = () => {
             }, [delay]);
         }
         useInterval(() => {
-            console.log('tlock');
+            coinFlip() ? console.log('tick') : console.log('tock');
         }, 500);
     return (
         <div id="static" className="h-full w-full border border-red-600 z-50 absolute top-0">
-
+            {row}
         </div>
     )
 }
