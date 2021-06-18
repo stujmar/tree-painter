@@ -6,7 +6,6 @@ const GenerateStatic = ({ isPaused }) => {
         const [row, setRow] = useState([]);
 
         useEffect(() => {
-            console.log('onload');
             updateGrid();
             // eslint-disable-next-line react-hooks/exhaustive-deps
         },[])
@@ -16,7 +15,6 @@ const GenerateStatic = ({ isPaused }) => {
         }
 
         function updateGrid(){
-            console.log('onload');
             let array = [];
             let parentDimensions = document.getElementById('static');
             for (let i = 0; i < (Math.floor(parentDimensions.clientWidth/4) * Math.floor(parentDimensions.clientHeight/4)); i++) {

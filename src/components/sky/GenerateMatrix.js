@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 
 const GenerateMatrix = ({height, width}) => {
 
-    let tileCount = height * width;
+    // let tileCount = height * width;
     const [ rowCount, setRowCount ] = useState(0);
     let [tiles, setTiles] = useState([]);
 
@@ -46,7 +46,6 @@ const GenerateMatrix = ({height, width}) => {
         }, [delay]);
     }
     useInterval(() => {
-      console.log("here");
     }, 1000);
 
     return <div id="matrix" className="flex flex-wrap justify-center bg-black text-green-400 w-full">
