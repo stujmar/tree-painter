@@ -24,7 +24,11 @@ const GenerateStatic = () => {
         useInterval(() => {
             console.log('tlock');
         }, 500);
-    return (<></>)
+    return (
+        <div id="static" className="h-full w-full border border-red-600 z-50 absolute top-0">
+
+        </div>
+    )
 }
 
 export default GenerateStatic;
