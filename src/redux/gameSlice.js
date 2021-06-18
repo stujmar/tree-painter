@@ -30,12 +30,12 @@ export const gameSlice = createSlice({
         },
         ageTrees: (state) => {
             state.trees = state.trees.map(tree => {
-                return tree.age < 40 ? {...tree, age: tree.age + 1} : tree
+                return tree.age < 80 ? {...tree, age: tree.age + 1} : tree
             })
         },
         growTrees: (state, action) => {
             state.trees = state.trees.map(tree => {
-                return tree.growth.length < 40 ? {...tree, growth: tree.growth.concat(action.payload)} : tree;
+                return tree.growth.length < 40 && tree.age < 80 ? {...tree, growth: tree.growth.concat(action.payload)} : tree;
             })
         },
         removeTreeById: (state, action) => {
