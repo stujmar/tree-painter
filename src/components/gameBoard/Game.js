@@ -13,8 +13,6 @@ import { setSpeed } from '../../redux/clockSlice';
 
 const Game = ( { messageChange, toggleGraph } ) => {
     const [ mouse, setMouse] = useState({ x: 0, y: 0, xMax: 0, yMax: 0});
-    const [ stars, setStars ] = useState(10);
-    const [ water, setWater ] = useState(10);
     const [ drawTrees, setDrawTrees ] = useState([]);
     const [ infoPanel, setInfoPanel ] = useState([]);
 
@@ -107,8 +105,8 @@ const Game = ( { messageChange, toggleGraph } ) => {
     const reset = () => {
         dispatch(resetTrees());
         dispatch(resetResource('seeds'));
-        setStars(10);
-        setWater(10);
+        dispatch(resetResource('water'));
+        dispatch(resetResource('stars'));
         dispatch(setSpeed(1000));
         dispatch(setMode("PLANTING"));
     }
