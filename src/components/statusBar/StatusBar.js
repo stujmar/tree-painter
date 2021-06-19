@@ -3,12 +3,13 @@ import AcornIcon from './AcornIcon';
 import StarIcon from './StarIcon';
 import WaterIcon from './WaterIcon';
 import {useSelector} from 'react-redux';
+import {selectResources} from '../../redux/gameSlice';
 import {selectDay} from '../../redux/daySlice';
 import {getSeason} from '../../utils/getSeason';
 
-const StatusBar = ({seeds, water, stars,}) => {
+const StatusBar = () => {
     let day = useSelector(selectDay);
-
+    let { seeds, water, stars} = useSelector(selectResources);
     return (
         <div className={`w-full ${getSeason(day).dark}`}>
             {/* <div className="grid grid-cols-3 max-w-7xl mx-auto justify-start items-top py-1 w-max"> */}

@@ -115,7 +115,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
 
     return (
         <>
-            <StatusBar seeds={seeds} stars={stars} water={water}/>
+            <StatusBar />
                 <div className="w-full relative" style={{height: "100px"}}>
                     <Sky />
                 </div>
