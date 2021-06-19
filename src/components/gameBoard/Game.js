@@ -165,7 +165,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                             </div> 
                     </div>
             <div 
-                style={{ transform: debugModal ? "translateY(-200px)" : "translateY(0px)" }}
+                style={{ transform: debugModal ? "translateY(0px)" : "translateY(-300px)" }}
                 className="w-screen mx-auto absolute top-0 bg-blue-200 transition p-4"> {/* DeBug */}
                 <div className="flex justify-between mx-4">
                     <div>{grass ? `x: ${mouse.x}/${grass.clientWidth} y: ${mouse.y}/${grass.clientHeight}` : ""}</div>
