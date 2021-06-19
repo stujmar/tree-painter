@@ -115,9 +115,8 @@ const Game = ( { messageChange, toggleGraph } ) => {
     }
 
     return (
-        <>
-            <StatusBar />
-                <div className="w-full relative" style={{height: "100px"}}>
+        <div className="overflow-hidden">
+                <div className="w-full relative overflow-hidden" style={{height: "100px"}}>
                     <Well />
                     <Sky />
                 </div>
@@ -175,7 +174,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                 </div>
                 <Debug infoPanel={infoPanel} />
             </div>
-        </>
+        </div>
     )
 }
 
