@@ -15,6 +15,7 @@ const Tree = ({treeData}) => {
     const handleClick = (id) => {
         if (mode === "CHOPPING") {
             dispatch(removeTreeById(id)); 
+            dispatch(updateResource({type: "seeds", amount: 1}));
         } else if (mode === "WATERING") {
             dispatch(updateResource({type: 'water', amount: -1}));
         }
