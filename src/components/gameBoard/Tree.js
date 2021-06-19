@@ -31,8 +31,8 @@ const Tree = ({treeData}) => {
             onClick={() => handleClick(treeData.id)}
             className="absolute focus:outline-none"
             style={{
-                top: treeData.y, 
-                left: treeData.x, 
+                left: `${treeData.x}%`, 
+                top: `${treeData.y}%`, 
                 height: `24px`,
                 width: `40px`,
                 overflow: {seedCrop}

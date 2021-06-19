@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PlantedTreeInfo = ({ x, y, color, age, id, onDelete }) => {
+const PlantedTreeInfo = ({ x, y, age, id, onDelete }) => {
     return (
         <>
             <div className="p-1 m-1 rounded shadow w-36 relative border bg-white border-green-400">

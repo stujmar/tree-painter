@@ -10,6 +10,7 @@ import Sky from '../sky/Sky';
 import Tree from './Tree';
 import HUD from './HUD';
 import { setSpeed } from '../../redux/clockSlice';
+import { parse } from 'postcss';
 
 const Game = ( { messageChange, toggleGraph } ) => {
     const [ mouse, setMouse] = useState({ x: 0, y: 0, xMax: 0, yMax: 0});
@@ -54,7 +55,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
 
     useEffect(() => {
         let sortedTrees = trees.slice().sort((a, b) => {
-            return a.y.slice(0, -1) - b.y.slice(0, -1);
+            return a.y - b.y
         }); // frozen in strict mode?
         setDrawTrees(sortedTrees.map(tree => {
             return <Tree key={tree.id} treeData={tree} />
@@ -63,8 +64,8 @@ const Game = ( { messageChange, toggleGraph } ) => {
         setInfoPanel(trees.map(tree => {
             return <PlantedTreeInfo
                         key={tree.id} 
-                        x={tree.x} 
-                        y={tree.y} 
+                        x={`${tree.x}%`} 
+                        y={`${tree.y}%`} 
                         age={tree.age} 
                         id={tree.id}
                         onDelete={(id) => handleDelete(id)}/>
@@ -92,8 +93,8 @@ const Game = ( { messageChange, toggleGraph } ) => {
             // Set Trees in Redux state.
             dispatch( addTree({
                 id: randomId,
-                x: `${(mouse.x/grass.clientWidth* 100).toFixed()}%`,
-                y: `${(mouse.y/grass.clientHeight * 100).toFixed()}%`,
+                x: parseInt((mouse.x/grass.clientWidth* 100).toFixed()),
+                y: parseInt((mouse.y/grass.clientHeight * 100).toFixed()),
                 age: 0,
                 growth: []
             }) );
