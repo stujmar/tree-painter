@@ -46,6 +46,23 @@ export const gameSlice = createSlice({
         updateSeeds: (state, action) => {
             state.resources.seeds = state.resources.seeds + action.payload;
         },
+        updateResource: (state, action) => {
+            let amount = action.payload.amount;
+            console.log(state.resources.water, amount)
+            switch(action.payload.type) {
+                case 'seeds':
+                    state.resources.seeds = state.resources.seeds + amount;
+                    break;
+                case 'water':
+                    state.resources.water = state.resources.water + amount;
+                    break;
+                case 'stars':
+                    state.resources.stars = state.resources.stars + amount;
+                    break;
+                default:
+                    break;
+            }
+        },
         resetResource: (state, action) => {
             switch(action.payload) {
                 case 'seeds':
@@ -74,6 +91,7 @@ export const {
     growTrees,
     removeTreeById,
     updateSeeds,
+    updateResource,
     resetResource
     } = gameSlice.actions;
 

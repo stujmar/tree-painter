@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { updateResource } from '../../redux/gameSlice';
 import { removeTreeById, selectMode } from '../../redux/gameSlice';
 import Trunk from './Trunk';
 import Canopy from './Canopy';
@@ -16,7 +16,7 @@ const Tree = ({treeData}) => {
         if (mode === "CHOPPING") {
             dispatch(removeTreeById(id)); 
         } else if (mode === "WATERING") {
-            console.log("you watered tree:", id);
+            dispatch(updateResource({type: 'water', amount: -1}));
         }
     };
 
