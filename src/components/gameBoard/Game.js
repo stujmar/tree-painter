@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addTree, removeTree, resetTrees, ageTrees, selectMode, setMode, selectTrees, growTrees } from '../../redux/gameSlice';
+import { addTree, resetSeeds, updateSeeds, removeTree, resetTrees, ageTrees, selectMode, setMode, selectTrees, growTrees, selectResources } from '../../redux/gameSlice';
 import { selectHour } from '../../redux/hourSlice';
 
 import PlantedTreeInfo from '../debug/PlantedTreeInfo';
@@ -13,7 +13,6 @@ import { setSpeed } from '../../redux/clockSlice';
 
 const Game = ( { messageChange, toggleGraph } ) => {
     const [ mouse, setMouse] = useState({ x: 0, y: 0, xMax: 0, yMax: 0});
-    const [ seeds, setSeeds ] = useState(10);
     const [ stars, setStars ] = useState(10);
     const [ water, setWater ] = useState(10);
     const [ drawTrees, setDrawTrees ] = useState([]);
@@ -22,11 +21,12 @@ const Game = ( { messageChange, toggleGraph } ) => {
     let hour = useSelector(selectHour);
     let mode = useSelector(selectMode);
     let trees = useSelector(selectTrees);
-
+    let resources = useSelector(selectResources);
+    let seeds = resources.seeds;
     const dispatch = useDispatch();
 
     const handleDelete = (id) => {
-        setSeeds(seeds + 1);
+        dispatch(updateSeeds(1));
         dispatch(removeTree(id));
     } 
 
@@ -100,13 +100,13 @@ const Game = ( { messageChange, toggleGraph } ) => {
                 growth: []
             }) );
 
-            setSeeds(seeds - 1);
+            dispatch(updateSeeds(-1));
         }
     }
 
     const reset = () => {
         dispatch(resetTrees());
-        setSeeds(10);
+        dispatch(resetSeeds());
         setStars(10);
         setWater(10);
         dispatch(setSpeed(1000));

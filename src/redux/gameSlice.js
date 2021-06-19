@@ -42,6 +42,12 @@ export const gameSlice = createSlice({
             state.trees = state.trees.filter(tree => {
                 return tree.id !== action.payload;
             })
+        },
+        updateSeeds: (state, action) => {
+            state.resources.seeds = state.resources.seeds + action.payload;
+        },
+        resetSeeds: (state) => {
+            state.resources.seeds = 10;
         }
     }
 });
@@ -53,7 +59,9 @@ export const {
     resetTrees, 
     ageTrees, 
     growTrees,
-    removeTreeById
+    removeTreeById,
+    updateSeeds,
+    resetSeeds
     } = gameSlice.actions;
 
 export const selectGame = (state) => state.game;
