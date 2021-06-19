@@ -10,6 +10,7 @@ import Sky from '../sky/Sky';
 import Tree from './Tree';
 import HUD from './HUD';
 import { setSpeed } from '../../redux/clockSlice';
+import Well from '../farm/Well';
 
 
 const Game = ( { messageChange, toggleGraph } ) => {
@@ -117,6 +118,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
         <>
             <StatusBar />
                 <div className="w-full relative" style={{height: "100px"}}>
+                    <Well />
                     <Sky />
                 </div>
                     <div className=""> {/* GAME FIELD */}

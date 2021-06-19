@@ -6,13 +6,14 @@ const Well = () => {
     const dispatch = useDispatch();
 
     const drawWater = () => {
-        dispatch(updateResource('water', 1));
+        dispatch(updateResource({type:'water', amount: 1} ));
     };
 
     return(
         <button 
-            type="button"
             onClick={drawWater}
+            className="absolute bottom-0 right-12 z-20 focus:outline-none"
+            style={{zIndex: 10}}
             >
             <svg width="47" height="50" viewBox="0 0 47 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M36.0477 38.0697H11.7827V50H36.0477V38.0697Z" fill="#BF5C49"/>

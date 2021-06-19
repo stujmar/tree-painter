@@ -48,7 +48,6 @@ export const gameSlice = createSlice({
         },
         updateResource: (state, action) => {
             let amount = action.payload.amount;
-            console.log(state.resources.water, amount)
             switch(action.payload.type) {
                 case 'seeds':
                     state.resources.seeds = state.resources.seeds + amount;
