@@ -5,7 +5,6 @@ import { selectHour } from '../../redux/hourSlice';
 
 import PlantedTreeInfo from '../debug/PlantedTreeInfo';
 import Debug from '../debug/Debug';
-import StatusBar from '../statusBar/StatusBar';
 import Sky from '../sky/Sky';
 import Tree from './Tree';
 import HUD from './HUD';
