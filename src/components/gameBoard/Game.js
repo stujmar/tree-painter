@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addTree, resetSeeds, updateSeeds, removeTree, resetTrees, ageTrees, selectMode, setMode, selectTrees, growTrees, selectResources } from '../../redux/gameSlice';
+import { addTree, resetResource, updateSeeds, removeTree, resetTrees, ageTrees, selectMode, setMode, selectTrees, growTrees, selectResources } from '../../redux/gameSlice';
 import { selectHour } from '../../redux/hourSlice';
 
 import PlantedTreeInfo from '../debug/PlantedTreeInfo';
@@ -106,7 +106,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
 
     const reset = () => {
         dispatch(resetTrees());
-        dispatch(resetSeeds());
+        dispatch(resetResource('seeds'));
         setStars(10);
         setWater(10);
         dispatch(setSpeed(1000));
