@@ -2,7 +2,7 @@ import React from 'react';
 
 const Debug = ({infoPanel}) => {
     return (
-        <div className="w-full flex flex-wrap w-screen">
+        <div className="flex flex-wrap">
             {infoPanel}
         </div>
     )
