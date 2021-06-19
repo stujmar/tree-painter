@@ -10,9 +10,10 @@ import Sky from '../sky/Sky';
 import Tree from './Tree';
 import HUD from './HUD';
 import { setSpeed } from '../../redux/clockSlice';
-import { parse } from 'postcss';
+
 
 const Game = ( { messageChange, toggleGraph } ) => {
+    const [ debugModal, setDebugModal ] = useState(false);
     const [ mouse, setMouse] = useState({ x: 0, y: 0, xMax: 0, yMax: 0});
     const [ drawTrees, setDrawTrees ] = useState([]);
     const [ infoPanel, setInfoPanel ] = useState([]);
@@ -143,7 +144,9 @@ const Game = ( { messageChange, toggleGraph } ) => {
                                         <path d="M24 9.2712L22.8263 0L16.4515 5.80651L19.2029 7.0696L15.3707 18.1769L7.68919 2.75585L0 21.9927L1.99984 23.0549L7.90363 8.28523L15.7316 24L21.2487 8.0081L24 9.2712Z" fill="white"/>
                                     </svg>
                                 </button>
-                                <button className="border-4 rounded-lg hover:bg-green-600 border-white z-10 px-1 shadow focus:outline-none">
+                                <button 
+                                    onClick={() => setDebugModal(!debugModal)}
+                                    className="border-4 rounded-lg hover:bg-green-600 border-white z-10 px-1 shadow focus:outline-none">
                                     <svg width="22" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g>
                                             <path d="M4.65183 11.5393C4.8337 10.6647 5.12545 9.83135 5.52613 9.03719C5.56307 8.96351 5.53844 8.93002 5.4854 8.88696C4.68498 8.24302 3.8912 8.1483 2.97997 8.72335C2.66359 8.92332 2.38511 9.16827 2.14451 9.45914C1.83382 9.83518 1.32326 9.91364 0.939632 9.65147C0.553162 9.38738 0.41013 8.86687 0.650726 8.46692C0.782391 8.24876 0.967102 8.0574 1.14992 7.87752C1.69836 7.33595 2.32827 6.91782 3.06711 6.6901C4.21705 6.33607 5.28079 6.54849 6.2697 7.21348C6.35117 7.26802 6.43073 7.32639 6.52167 7.38954C6.60881 7.27663 6.68933 7.16181 6.78121 7.05752C7.10611 6.6901 7.4348 6.32459 7.76443 5.96196C7.80801 5.91316 7.82316 5.88158 7.78811 5.81652C7.04075 4.43582 7.16105 3.09436 7.97851 1.79021C8.27404 1.31849 8.63873 0.905145 9.06782 0.552077C9.46661 0.22293 10.0387 0.287037 10.3523 0.691774C10.6611 1.09173 10.5768 1.64955 10.1846 1.98253C9.68637 2.40736 9.30842 2.92213 9.1455 3.57373C9.05646 3.92871 9.08772 4.27986 9.21749 4.62145C9.22791 4.64919 9.24306 4.67503 9.2478 4.6846C9.67595 4.43295 10.1013 4.18418 10.5247 3.93349C10.5881 3.89617 10.6317 3.89426 10.6904 3.95358C12.0952 5.37638 13.5018 6.79631 14.9085 8.21719C14.9246 8.23345 14.9407 8.24972 14.9643 8.27364C11.9161 11.3527 8.87269 14.427 5.81503 17.5156C5.71747 17.3759 5.61517 17.24 5.52328 17.0975C4.82802 16.0153 4.5088 14.8193 4.4747 13.539C4.4728 13.4596 4.44534 13.4252 4.37998 13.3946C3.71976 13.0874 3.09742 13.1994 2.49688 13.563C2.15019 13.7735 1.8556 14.0462 1.58754 14.3514C1.28253 14.6978 0.831647 14.7733 0.456544 14.5552C-0.0312803 14.272 -0.152526 13.6204 0.215 13.1783C0.7966 12.4789 1.4985 11.9392 2.3548 11.6225C3.08037 11.3546 3.81732 11.3183 4.56469 11.5288C4.58647 11.5345 4.60826 11.5393 4.63099 11.5441C4.63289 11.5441 4.63668 11.5421 4.65183 11.5393Z" fill="white"/>
@@ -161,7 +164,9 @@ const Game = ( { messageChange, toggleGraph } ) => {
                             </div>
                             </div> 
                     </div>
-            <div className="w-max mx-auto absolute top-0 hidden"> {/* DeBug */}
+            <div 
+                style={{ transform: debugModal ? "translateY(-200px)" : "translateY(0px)" }}
+                className="w-screen mx-auto absolute top-0 bg-blue-200 transition p-4"> {/* DeBug */}
                 <div className="flex justify-between mx-4">
                     <div>{grass ? `x: ${mouse.x}/${grass.clientWidth} y: ${mouse.y}/${grass.clientHeight}` : ""}</div>
                     <div>{grass ? `x: ${(mouse.x/grass.clientWidth* 100).toFixed()}% y: ${(mouse.y/grass.clientHeight * 100).toFixed()}%` : ""}</div>
