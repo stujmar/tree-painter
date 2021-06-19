@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateResource } from '../../redux/gameSlice';
+import { selectResources, updateResource } from '../../redux/gameSlice';
 import { removeTreeById, selectMode } from '../../redux/gameSlice';
 import Trunk from './Trunk';
 import Canopy from './Canopy';
@@ -11,12 +11,13 @@ const Tree = ({treeData}) => {
     const [ trunks, setTrunks ] = useState([]);
     let seedCrop = treeData.age === 0 ? "overflow-hidden" : "overflow-visible";
     let mode = useSelector(selectMode);
+    let resources = useSelector(selectResources);
 
     const handleClick = (id) => {
         if (mode === "CHOPPING") {
             dispatch(removeTreeById(id)); 
             dispatch(updateResource({type: "seeds", amount: 1}));
-        } else if (mode === "WATERING") {
+        } else if (mode === "WATERING" && resources.water > 0) {
             dispatch(updateResource({type: 'water', amount: -1}));
         }
     };
