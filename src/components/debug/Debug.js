@@ -2,8 +2,10 @@ import React from 'react';
 
 const Debug = ({infoPanel}) => {
     return (
-        <div className="flex flex-wrap">
-            {infoPanel}
+        <div className="pl-2">
+            <div className="flex flex-wrap ">
+                {infoPanel}
+            </div>
         </div>
     )
 }

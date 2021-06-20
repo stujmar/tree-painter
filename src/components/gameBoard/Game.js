@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addTree, resetResource, updateSeeds, removeTree, resetTrees, ageTrees, selectMode, setMode, selectTrees, growTrees, selectResources } from '../../redux/gameSlice';
 import { selectHour } from '../../redux/hourSlice';
+import {selectDay} from '../../redux/daySlice';
+import {getSeason} from '../../utils/getSeason';
 
 import PlantedTreeInfo from '../debug/PlantedTreeInfo';
 import Debug from '../debug/Debug';
@@ -18,6 +20,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
     const [ drawTrees, setDrawTrees ] = useState([]);
     const [ infoPanel, setInfoPanel ] = useState([]);
 
+    let day = useSelector(selectDay);
     let hour = useSelector(selectHour);
     let mode = useSelector(selectMode);
     let trees = useSelector(selectTrees);
@@ -166,7 +169,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                     </div>
             <div 
                 style={{ transform: debugModal ? "translateY(0px)" : "translateY(-300px)" }}
-                className="w-screen mx-auto absolute top-0 bg-blue-200 transition p-4 border-box"> {/* DeBug */}
+                className={`w-screen absolute top-0 ${getSeason(day).light} transition border-b-2 ${getSeason(day).border} p-2 border-box overflow-y-auto h-56`}> {/* DeBug */}
                 <div className="flex justify-between mx-4">
                     <div>{grass ? `x: ${mouse.x}/${grass.clientWidth} y: ${mouse.y}/${grass.clientHeight}` : ""}</div>
                     <div>{grass ? `x: ${(mouse.x/grass.clientWidth* 100).toFixed()}% y: ${(mouse.y/grass.clientHeight * 100).toFixed()}%` : ""}</div>
