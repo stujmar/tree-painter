@@ -11,7 +11,7 @@ const StatusBar = () => {
     let day = useSelector(selectDay);
     let { seeds, water, stars} = useSelector(selectResources);
     return (
-        <div className={`w-full ${getSeason(day).dark}`}>
+        <div className={`w-full comfortaa ${getSeason(day).dark}`}>
             {/* <div className="grid grid-cols-3 max-w-7xl mx-auto justify-start items-top py-1 w-max"> */}
             <div className="flex pl-3 mx-auto justify-start items-top py-1 justify-start gap-3">
                 <AcornIcon amount={seeds} color={getSeason(day).text} />

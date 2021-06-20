@@ -31,7 +31,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
     } 
 
     const messageCenter = {
-        "welcome": <p><span  className="font-medium">Welcome to Tree Painter Studio.</span><br/> Click on the green grass to plant a seed.</p>,
+        "welcome": <p><span  className="font-medium">Welcome to Tree Painter Studio.</span><br/> Click below to plant a seed.</p>,
         "first_seed" : "Wow, you are planting now!",
         "first_water" : "Yum that tree was thirsty!",
         "no_seeds" : "Oops all out of seeds",

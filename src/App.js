@@ -31,7 +31,7 @@ const App = () => {
       <ClockService />
       <header 
         className={`${getSeason(day).light} h-48 flex items-center justify-center text-lg font-sans text-white`}>
-        <div className="w-96 text-center pt-12 md:pt-0">{message}</div>
+        <div className="w-96 text-center pt-12 md:pt-0 comfortaa">{message}</div>
         <div className="absolute top-0 left-0">
           <TimeControls />
         </div>

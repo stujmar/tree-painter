@@ -25,7 +25,7 @@ const TimeControls = () => {
     }
 
     return (    
-        <div className="flex w-screen justify-between p-3">
+        <div className="flex w-screen justify-between p-3 comfortaa text-lg">
             <div className="flex md:flex-col w-max items-start"> {/* LEFT SECTION */}
                 <div>{getDate(day)}</div>
                 <div className="ml-2 md:ml-0">{getTime(hour)}</div>
