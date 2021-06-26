@@ -77,7 +77,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[trees])
 
-    const _onMouseMove = (e) => {
+    const handleMouseMove = (e) => {
         if (!!grass) { // Shot in the dark to avoid "Cannot read property 'clientWidth' of null"
             setMouse({
                 x:e.nativeEvent.offsetX > 0 ? e.nativeEvent.offsetX : 0,
@@ -129,7 +129,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                                     id="grass"
                                     className={`absolute top-0 opacity-0 bg-black z-10 w-full ${seeds ? "seed-cursor" : "no-seed-cursor"} ${mode === "PLANTING" ? "" : "hidden" }`} 
                                     style={{height: "calc(100vh - 324px)"}}
-                                    onMouseMove={(e) => _onMouseMove(e)}
+                                    onMouseMove={(e) => handleMouseMove(e)}
                                     onClick={(e) => plant(e)} 
                                     >
                                     </div>
