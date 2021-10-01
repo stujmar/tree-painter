@@ -20,6 +20,7 @@ const Sky = () => {
     },[hour])
 
     const clickSky = () => {
+        console.log("clicked sky")
         if (stars > 0) {
             setStars(stars - 1);
         }
