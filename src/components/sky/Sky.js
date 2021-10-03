@@ -13,9 +13,10 @@ const Sky = () => {
     const [sun, setSun] = useState({transform: "translateY(-170px)"})
     const [sky, setSky] = useState({opacity: 0})
     const [sunSet, setSunSet] = useState(0);
-    const [stars, setStars] = useState(10);
+    // const [stars, setStars] = useState(10);
     let hour = useSelector(selectHour);
     let speed = useSelector(selectSpeed);
+    let stars = useSelector(selectResources).stars;
 
     useEffect(() => {
        setSun(hour <= 6 || hour >= 18 ?  {transform: "translateY(150px)"} : {transform: "translateY(-170px)"});
