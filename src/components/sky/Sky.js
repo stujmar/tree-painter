@@ -24,7 +24,7 @@ const Sky = () => {
     },[hour])
 
     const clickSky = () => {
-        if (stars > 0) {
+        if (stars > 0 && (hour <= 6 || hour >= 20)) {
             dispatch(updateResource({type: 'stars', amount: -1}));
         }
     }
