@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectResources, updateResource } from '../../redux/gameSlice';
-import { removeTreeById, selectMode } from '../../redux/gameSlice';
+import { selectResources, updateResource, selectMode } from '../../redux/gameSlice';
+import { removeTreeById } from '../../redux/treeSlice';
 import Trunk from './Trunk';
 import Canopy from './Canopy';
 

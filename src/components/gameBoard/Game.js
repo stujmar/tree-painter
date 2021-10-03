@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addTree, resetResource, updateSeeds, removeTree, resetTrees, ageTrees, selectMode, setMode, selectTrees, growTrees, selectResources } from '../../redux/gameSlice';
+import { resetResource, updateSeeds, selectMode, setMode, selectResources } from '../../redux/gameSlice';
+import { addTree, removeTree, resetTrees, ageTrees, selectTrees, growTrees} from '../../redux/treeSlice';
 import { selectHour } from '../../redux/hourSlice';
 import {selectDay} from '../../redux/daySlice';
 import {getSeason} from '../../utils/getSeason';
@@ -58,6 +59,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
     },[hour])
 
     useEffect(() => {
+        console.log(trees)
         let sortedTrees = trees.slice().sort((a, b) => {
             return a.y - b.y
         }); // frozen in strict mode?
