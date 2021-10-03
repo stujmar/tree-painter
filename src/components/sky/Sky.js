@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import Sunset from './Sunset'
-import { useSelector } from 'react-redux'
 import { selectHour } from '../../redux/hourSlice';
 import { selectSpeed } from '../../redux/clockSlice';
 import GenerateStatic from './GenerateStatic';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { selectResources, updateResource } from '../../redux/gameSlice';
+
 const Sky = () => {
+
+    const dispatch = useDispatch();    
     const [sun, setSun] = useState({transform: "translateY(-170px)"})
     const [sky, setSky] = useState({opacity: 0})
     const [sunSet, setSunSet] = useState(0);
@@ -20,9 +24,9 @@ const Sky = () => {
     },[hour])
 
     const clickSky = () => {
-        console.log("clicked sky")
+        console.log("clicked sky");
         if (stars > 0) {
-            setStars(stars - 1);
+            dispatch(updateResource({type: 'stars', amount: -1}));
         }
     }
 
