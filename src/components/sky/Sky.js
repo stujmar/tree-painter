@@ -12,6 +12,7 @@ const Sky = () => {
     const dispatch = useDispatch();    
     const [sun, setSun] = useState({transform: "translateY(-170px)"})
     const [sky, setSky] = useState({opacity: 0})
+    const [mouse, setMouse] = useState({x: 0, y: 0})
     const [sunSet, setSunSet] = useState(0);
     let hour = useSelector(selectHour);
     let speed = useSelector(selectSpeed);
@@ -30,7 +31,8 @@ const Sky = () => {
     }
 
     const handleMouseMove = (e) =>{
-        // console.log(e.clientX, e.clientY);
+        setMouse({x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY});
+        console.log(mouse);
     }
 
     return (
