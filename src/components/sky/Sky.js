@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Sunset from './Sunset'
 import { selectHour } from '../../redux/hourSlice';
 import { selectSpeed } from '../../redux/clockSlice';
+import { addStar } from '../../redux/skySlice';
 import GenerateStatic from './GenerateStatic';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -26,6 +27,7 @@ const Sky = () => {
 
     const clickSky = () => {
         if (stars > 0 && (hour <= 6 || hour >= 20)) {
+            dispatch(addStar(mouse));
             dispatch(updateResource({type: 'stars', amount: -1}));
         }
     }
