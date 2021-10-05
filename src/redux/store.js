@@ -4,6 +4,7 @@ import daysReducer from './daySlice';
 import clocksReducer from './clockSlice';
 import gamesReducer from './gameSlice';
 import treeReducer from './treeSlice';
+import skyReducer from './skySlice';
 
 export const store = configureStore({
     reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
         clock: clocksReducer,
         hour: hoursReducer,
         day: daysReducer,
-        tree: treeReducer
+        tree: treeReducer,
+        sky: skyReducer
     },
 });
