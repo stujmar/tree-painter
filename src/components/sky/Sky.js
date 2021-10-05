@@ -29,9 +29,14 @@ const Sky = () => {
         }
     }
 
+    const handleMouseMove = (e) =>{
+        // console.log(e.clientX, e.clientY);
+    }
+
     return (
         <button 
             onClick={clickSky}
+            onMouseMove={(e) => handleMouseMove(e)}
             className="z-0 mx-auto lg:mr-auto h-full bg-blue-400 relative absolute w-full overflow-hidden focus:outline-none">
             {/* <div className="absolute w-screen transition" style={ hour <== 6 && hour >== 16 ? {transform: "translateY(200px)"} : {transform: "translateY(0px)"}}> */}
             <GenerateStatic isPaused= {speed === 123456789 ? true : false} />

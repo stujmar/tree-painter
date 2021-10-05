@@ -59,7 +59,6 @@ const Game = ( { messageChange, toggleGraph } ) => {
     },[hour])
 
     useEffect(() => {
-        console.log(trees)
         let sortedTrees = trees.slice().sort((a, b) => {
             return a.y - b.y
         }); // frozen in strict mode?
