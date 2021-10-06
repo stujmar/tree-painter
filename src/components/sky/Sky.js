@@ -34,9 +34,7 @@ const Sky = () => {
     },[hour])
 
     const clickSky = () => {
-        console.log('clicked sky');
         if (starResources > 0 && (hour <= 6 || hour >= 20)) {
-            console.log('at night');
             dispatch(addStar(mouse));
             dispatch(updateResource({type: 'stars', amount: -1}));
         }
