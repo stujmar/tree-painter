@@ -7,15 +7,19 @@ const Star = ({starData}) => {
     let hour = useSelector(selectHour);
 
     useEffect(() => {
-        console.log(hour, opacity);
         setOpacity(hour <= 6 || hour >= 20 ?  1.0 : 0);
         // eslint-disable-next-line react-hooks/exhaustive-deps
      },[hour])
 
+    const handleStarClick = () => {
+        console.log(starData);
+    }
+
     return (
         <div 
             key={`${starData.x} + ${starData.y}`} 
-            className="absolute w-1 h-1 bg-white border transition duration-slow rounded-full"
+            className="absolute w-1 h-1 focus:outline-none bg-white border transition duration-slow rounded-full"
+            onClick={() => {handleStarClick()}}
             style={{
                 left: `${starData.x}%`, 
                 top: `${starData.y}%`, 
