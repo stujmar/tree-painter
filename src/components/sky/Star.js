@@ -20,6 +20,7 @@ const Star = ({starData}) => {
                 left: `${starData.x}%`, 
                 top: `${starData.y}%`, 
                 opacity: opacity,
+                zIndex: 90
             }}
             ></div>
     );
