@@ -7,13 +7,15 @@ const Star = ({starData}) => {
     let hour = useSelector(selectHour);
 
     useEffect(() => {
-        setOpacity(hour <= 6 || hour >= 20 ?  1 : 0);
+        console.log(hour, opacity);
+        setOpacity(hour <= 6 || hour >= 20 ?  1.0 : 0);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
      },[hour])
 
     return (
         <div 
             key={`${starData.x} + ${starData.y}`} 
-            className="absolute"
+            className="absolute w-1 h-1 bg-white border rounded-full"
             style={{
                 left: `${starData.x}%`, 
                 top: `${starData.y}%`, 

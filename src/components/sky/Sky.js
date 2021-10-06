@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Sunset from './Sunset'
+import Sunset from './Sunset';
+import Star from './Star';
 import { selectHour } from '../../redux/hourSlice';
 import { selectSpeed } from '../../redux/clockSlice';
 import { addStar, selectStars } from '../../redux/skySlice';
@@ -23,7 +24,7 @@ const Sky = () => {
 
     useEffect(() => {
         setDrawStars(stars.map(star => {
-            return <div key={`${star.x + star.y}`}></div>
+            return <Star key={`${star.x} + ${star.y}`} starData={star} />
         }));
     }, [stars])
 
@@ -35,13 +36,20 @@ const Sky = () => {
 
     const clickSky = () => {
         if (starResources > 0 && (hour <= 6 || hour >= 20)) {
-            dispatch(addStar(mouse));
+            dispatch(addStar({x: mouse.xRatio, y: mouse.yRatio}));
             dispatch(updateResource({type: 'stars', amount: -1}));
         }
     }
 
     const handleMouseMove = (e) =>{
-        setMouse({x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY});
+        setMouse({
+            x: e.nativeEvent.offsetX, 
+            y: e.nativeEvent.offsetY,
+            xRatio: (e.nativeEvent.offsetX / window.innerWidth * 100).toFixed(),
+            yRatio: (e.nativeEvent.offsetY).toFixed()
+            // xRatio: parseInt((mouse.x/grass.clientWidth* 100).toFixed()),
+            // yRatio: parseInt((mouse.y/grass.clientHeight * 100).toFixed()),
+        });
     }
 
     return (
