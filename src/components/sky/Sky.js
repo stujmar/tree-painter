@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Sunset from './Sunset'
 import { selectHour } from '../../redux/hourSlice';
 import { selectSpeed } from '../../redux/clockSlice';
-import { addStar } from '../../redux/skySlice';
+import { addStar, selectStars } from '../../redux/skySlice';
 import GenerateStatic from './GenerateStatic';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,10 +14,18 @@ const Sky = () => {
     const [sun, setSun] = useState({transform: "translateY(-170px)"})
     const [sky, setSky] = useState({opacity: 0})
     const [mouse, setMouse] = useState({x: 0, y: 0})
+    const [drawStars, setDrawStars] = useState([]);
     const [sunSet, setSunSet] = useState(0);
     let hour = useSelector(selectHour);
     let speed = useSelector(selectSpeed);
-    let stars = useSelector(selectResources).stars;
+    let stars = useSelector(selectStars);
+    let starResources = useSelector(selectResources).stars;
+
+    useEffect(() => {
+        setDrawStars(stars.map(star => {
+            return <div key={`${star.x + star.y}`}></div>
+        }));
+    }, [stars])
 
     useEffect(() => {
        setSun(hour <= 6 || hour >= 18 ?  {transform: "translateY(150px)"} : {transform: "translateY(-170px)"});
@@ -26,7 +34,9 @@ const Sky = () => {
     },[hour])
 
     const clickSky = () => {
-        if (stars > 0 && (hour <= 6 || hour >= 20)) {
+        console.log('clicked sky');
+        if (starResources > 0 && (hour <= 6 || hour >= 20)) {
+            console.log('at night');
             dispatch(addStar(mouse));
             dispatch(updateResource({type: 'stars', amount: -1}));
         }
@@ -34,7 +44,6 @@ const Sky = () => {
 
     const handleMouseMove = (e) =>{
         setMouse({x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY});
-        console.log(mouse);
     }
 
     return (
@@ -51,6 +60,7 @@ const Sky = () => {
             </div>
             <div className={`bg-blue-900 w-full h-full absolute transition top-0 ${speed === 1000 ? 'duration-5000' : 'duration-2000'} z-20`} style={sky}></div>
             <Sunset sunSet={sunSet} />
+            {drawStars}
         </button> 
     )   
 }
