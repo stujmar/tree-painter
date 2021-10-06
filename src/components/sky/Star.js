@@ -15,7 +15,7 @@ const Star = ({starData}) => {
     return (
         <div 
             key={`${starData.x} + ${starData.y}`} 
-            className="absolute w-1 h-1 bg-white border rounded-full"
+            className="absolute w-1 h-1 bg-white border transition duration-slow rounded-full"
             style={{
                 left: `${starData.x}%`, 
                 top: `${starData.y}%`, 
