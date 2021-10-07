@@ -39,7 +39,8 @@ const Game = ( { messageChange, toggleGraph } ) => {
         "first_seed" : "Wow, you are planting now!",
         "first_water" : "Yum that tree was thirsty!",
         "no_seeds" : "Oops all out of seeds",
-        "no_water" : "Oops all out of water"
+        "no_water" : "Oops all out of water",
+        "no_trees" : "Oops all out of trees! Switch to planting mode",
     };
 
     let grass = document.getElementById('grass');
@@ -92,7 +93,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
 
     const handleStrayClick = (e) => {
         if (trees.length === 0 && mode === "CHOPPING") {
-            console.log("No trees to chop");
+            messageChange(messageCenter.no_trees);
         }
     }
 
