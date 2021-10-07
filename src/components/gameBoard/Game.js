@@ -90,9 +90,14 @@ const Game = ( { messageChange, toggleGraph } ) => {
         }
     }
 
+    const handleStrayClick = (e) => {
+        if (trees.length === 0 && mode === "CHOPPING") {
+            console.log("No trees to chop");
+        }
+    }
+
     const plant = (e) => {
         messageChange(messageCenter.first_seed);
-
         if (seeds > 0) {
             let randomId = Math.floor(Math.random() * 10000)
             // Set Trees in Redux state.
@@ -125,7 +130,10 @@ const Game = ( { messageChange, toggleGraph } ) => {
                 </div>
                     <div className=""> {/* GAME FIELD */}
                             
-                            <div className="mx-auto lg:mr-auto w-full z-10 relative"> {/* Gameboard Wrapper */}
+                            <div 
+                                className="mx-auto lg:mr-auto w-full z-10 relative"
+                                onClick={() => handleStrayClick()}
+                                > {/* Gameboard Wrapper */}
                                 <div 
                                     id="grass"
                                     className={`absolute top-0 opacity-0 bg-black z-10 w-full ${seeds ? "seed-cursor" : "no-seed-cursor"} ${mode === "PLANTING" ? "" : "hidden" }`} 
