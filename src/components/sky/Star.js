@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { selectMode } from '../../redux/gameSlice';
 import { selectHour } from '../../redux/hourSlice';
+import { removeStarById } from '../../redux/skySlice';
 
 const Star = ({starData}) => {
+
+    const dispatch = useDispatch();
 
     const [opacity, setOpacity] = useState(1);
 
@@ -18,6 +21,9 @@ const Star = ({starData}) => {
 
     const handleStarClick = () => {
         console.log(starData, mode);
+        if(mode === 'CHOPPING') {
+            dispatch(removeStarById(starData.id));
+        }
     }
 
     return (

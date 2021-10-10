@@ -4,7 +4,6 @@ import Star from './Star';
 import { selectHour } from '../../redux/hourSlice';
 import { selectSpeed } from '../../redux/clockSlice';
 import { addStar, selectStars } from '../../redux/skySlice';
-import { selectMode } from '../../redux/gameSlice';
 
 import GenerateStatic from './GenerateStatic';
 
