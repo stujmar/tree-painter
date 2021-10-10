@@ -37,8 +37,14 @@ const Sky = () => {
        setSunSet(hour <= 7 || hour >= 19 ? 1.0 : 0);
     },[hour])
 
+    /**
+     * Click Sky to add a star.
+     */
     const clickSky = () => {
-        if (starResources > 0 && mode === "PLANTING" && (hour <= 6 || hour >= 20)) {
+        if (starResources > 0 // If there are stars to add
+        && mode === "PLANTING" // If we are in the planting mode
+        && (hour <= 6 || hour >= 20)) // If it is night
+        {
             dispatch(addStar({x: mouse.xRatio, y: mouse.yRatio, id: (Math.random() * 10000).toFixed()}));
             dispatch(updateResource({type: 'stars', amount: -1}));
         }
