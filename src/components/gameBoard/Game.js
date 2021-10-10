@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { resetResource, updateSeeds, selectMode, setMode, selectResources } from '../../redux/gameSlice';
 import { addTree, removeTree, resetTrees, ageTrees, selectTrees, growTrees} from '../../redux/treeSlice';
+import { resetStars } from '../../redux/skySlice';
 import { selectHour } from '../../redux/hourSlice';
 import { selectDay } from '../../redux/daySlice';
 import { getSeason } from '../../utils/getSeason';
@@ -116,6 +117,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
 
     const reset = () => {
         dispatch(resetTrees());
+        dispatch(resetStars());
         dispatch(resetResource('seeds'));
         dispatch(resetResource('water'));
         dispatch(resetResource('stars'));

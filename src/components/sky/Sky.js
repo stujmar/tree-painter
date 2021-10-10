@@ -26,7 +26,7 @@ const Sky = () => {
 
     useEffect(() => {
         setDrawStars(stars.map(star => {
-            return <Star key={`${star.x} + ${star.y}`} starData={star} />
+            return <Star key={star.id} starData={star} />
         }));
     }, [stars])
 
