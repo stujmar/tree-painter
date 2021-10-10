@@ -38,7 +38,7 @@ const Sky = () => {
     },[hour])
 
     const clickSky = () => {
-        if (starResources > 0 && (hour <= 6 || hour >= 20)) {
+        if (starResources > 0 && mode === "PLANTING" && (hour <= 6 || hour >= 20)) {
             dispatch(addStar({x: mouse.xRatio, y: mouse.yRatio, id: (Math.random() * 10000).toFixed()}));
             dispatch(updateResource({type: 'stars', amount: -1}));
         }
