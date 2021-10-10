@@ -6,6 +6,7 @@ import { selectSpeed } from '../../redux/clockSlice';
 import { addStar, selectStars } from '../../redux/skySlice';
 
 import GenerateStatic from './GenerateStatic';
+import { getRandomId } from '../../utils/getRandomId';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { selectResources, updateResource, selectMode } from '../../redux/gameSlice';
@@ -41,11 +42,11 @@ const Sky = () => {
      * Click Sky to add a star.
      */
     const clickSky = () => {
-        if (starResources > 0 // If there are stars to add
-        && mode === "PLANTING" // If we are in the planting mode
-        && (hour <= 6 || hour >= 20)) // If it is night
+        if (starResources > 0 && // If there are stars to add
+            mode === "PLANTING" && // If we are in the planting mode
+           (hour <= 6 || hour >= 20)) // If it is night
         {
-            dispatch(addStar({x: mouse.xRatio, y: mouse.yRatio, id: (Math.random() * 10000).toFixed()}));
+            dispatch(addStar({x: mouse.xRatio, y: mouse.yRatio, id: getRandomId()}));
             dispatch(updateResource({type: 'stars', amount: -1}));
         }
     }
