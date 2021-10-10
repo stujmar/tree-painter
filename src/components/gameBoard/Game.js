@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { resetResource, updateSeeds, selectMode, setMode, selectResources } from '../../redux/gameSlice';
 import { addTree, removeTree, resetTrees, ageTrees, selectTrees, growTrees} from '../../redux/treeSlice';
 import { selectHour } from '../../redux/hourSlice';
-import {selectDay} from '../../redux/daySlice';
-import {getSeason} from '../../utils/getSeason';
+import { selectDay } from '../../redux/daySlice';
+import { getSeason } from '../../utils/getSeason';
 
 import PlantedTreeInfo from '../debug/PlantedTreeInfo';
 import Debug from '../debug/Debug';

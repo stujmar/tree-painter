@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { selectHour } from '../../redux/hourSlice';
 import { useSelector } from 'react-redux';
 
+import { selectMode } from '../../redux/gameSlice';
+import { selectHour } from '../../redux/hourSlice';
+
 const Star = ({starData}) => {
+
     const [opacity, setOpacity] = useState(1);
+
+    let mode = useSelector(selectMode);
     let hour = useSelector(selectHour);
 
     useEffect(() => {
@@ -12,7 +17,7 @@ const Star = ({starData}) => {
      },[hour])
 
     const handleStarClick = () => {
-        console.log(starData);
+        console.log(starData, mode);
     }
 
     return (
