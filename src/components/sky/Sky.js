@@ -8,7 +8,7 @@ import { addStar, selectStars } from '../../redux/skySlice';
 import GenerateStatic from './GenerateStatic';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { selectResources, updateResource } from '../../redux/gameSlice';
+import { selectResources, updateResource, selectMode } from '../../redux/gameSlice';
 
 const Sky = () => {
 
@@ -19,6 +19,7 @@ const Sky = () => {
     const [drawStars, setDrawStars] = useState([]);
     const [sunSet, setSunSet] = useState(0);
     
+    let mode = useSelector(selectMode);
     let hour = useSelector(selectHour);
     let speed = useSelector(selectSpeed);
     let stars = useSelector(selectStars);
