@@ -1,8 +1,12 @@
 import React from 'React';
 
-const DebugModal = () => {
-    return (<>
-
+/**
+ * 
+ * debugModal is a boolean that is used to determine if the debug modal is open or not.
+ * @returns 
+ */
+const DebugModal = ( { debugModal } ) => {
+    return (
         <div 
             style={{ transform: debugModal ? "translateY(0px)" : "translateY(-300px)" }}
             className={`w-screen absolute top-0 ${getSeason(day).light} transition border-b-4 ${getSeason(day).border} p-2 border-box overflow-y-auto h-56`}> {/* DeBug */}
@@ -13,8 +17,7 @@ const DebugModal = () => {
             </div>
             <Debug infoPanel={infoPanel} />
         </div>
-
-    </>)
+)
 }
 
 export default DebugModal;
