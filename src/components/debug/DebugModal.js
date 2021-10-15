@@ -1,6 +1,7 @@
-import React, { useState } from 'React';
+import React, { useState, useEffect } from 'React';
 import { useSelector } from 'react-redux';
 import { selectTrees } from '../../redux/treeSlice';
+import { selectGrassLoaded } from '../../redux/gameSlice';
 
 /**
  * 
@@ -10,7 +11,11 @@ import { selectTrees } from '../../redux/treeSlice';
 const DebugModal = ( { debugModal } ) => {
     let [ infoPanels, setInfoPanels ] = useState( [] ); // array of info panels
     let trees = useSelector(selectTrees); // Grab tree data from Redux store
+    let grass = useSelector(selectGrassLoaded); // Grab grassLoaded data from Redux store
 
+    useEffect(() => {
+        console.log("modal mapping trees");
+    }, [trees])
 
     return (
         <div 
