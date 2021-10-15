@@ -1,4 +1,6 @@
-import React from 'React';
+import React, { useState } from 'React';
+import { useSelector } from 'react-redux';
+import { selectTrees } from '../../redux/treeSlice';
 
 /**
  * 
@@ -6,6 +8,10 @@ import React from 'React';
  * @returns 
  */
 const DebugModal = ( { debugModal } ) => {
+    let [ infoPanels, setInfoPanels ] = useState( [] ); // array of info panels
+    let trees = useSelector(selectTrees); // Grab tree data from Redux store
+
+    
     return (
         <div 
             style={{ transform: debugModal ? "translateY(0px)" : "translateY(-300px)" }}
