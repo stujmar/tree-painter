@@ -190,7 +190,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                     <div className="w-32 text-left">{grass ? `x: ${(mouse.x/grass.clientWidth* 100).toFixed()}% y: ${(mouse.y/grass.clientHeight * 100).toFixed()}%` : ""}</div>
                 </div>
                 <Debug infoPanel={infoPanel} />
-                <DebugModal isActive={infoPanel} />
+                <DebugModal isActive={infoPanel} mouse={mouse} />
             </div>
         </div>
     )

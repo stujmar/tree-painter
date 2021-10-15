@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectTrees } from '../../redux/treeSlice';
 import { selectGrassLoaded } from '../../redux/gameSlice';
+import { selectDay } from '../../redux/daySlice';
+import { getSeason } from '../../utils/getSeason';
 
 /**
  * 
@@ -12,6 +14,7 @@ const DebugModal = ( { isActive, mouse } ) => {
     let [ infoPanels, setInfoPanels ] = useState( [] ); // array of info panels
     let trees = useSelector(selectTrees); // Grab tree data from Redux store
     let grass = useSelector(selectGrassLoaded); // Grab grassLoaded data from Redux store
+    let day = useSelector(selectDay); // Grab day data from Redux store
 
     useEffect(() => {
         console.log("modal mapping trees");
@@ -26,7 +29,7 @@ const DebugModal = ( { isActive, mouse } ) => {
                 <button className="bg-green-200 px-1 rounded border shadow">Print Tree Data</button>
                 <div>{grass ? `x: ${(mouse.x/grass.clientWidth* 100).toFixed()}% y: ${(mouse.y/grass.clientHeight * 100).toFixed()}%` : ""}</div>
             </div>
-            <Debug infoPanel={infoPanel} />
+            {/* <Debug infoPanel={infoPanel} /> */}
         </div>
 )
 }
