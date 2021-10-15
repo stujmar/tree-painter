@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { resetResource, updateSeeds, selectMode, setMode, selectResources } from '../../redux/gameSlice';
+import { resetResource, updateSeeds, selectMode, setMode, selectResources, setGrassLoaded } from '../../redux/gameSlice';
 import { addTree, removeTree, resetTrees, ageTrees, selectTrees, growTrees} from '../../redux/treeSlice';
 import { resetStars } from '../../redux/skySlice';
 import { selectHour } from '../../redux/hourSlice';
@@ -45,6 +45,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
     };
 
     let grass = document.getElementById('grass');
+    grass ? dispatch(setGrassLoaded(true)) : dispatch(setGrassLoaded(false)); 
 
     useEffect(() => {
         messageChange(messageCenter.welcome);
