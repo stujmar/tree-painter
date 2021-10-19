@@ -184,12 +184,12 @@ const Game = ( { messageChange, toggleGraph } ) => {
             <div 
                 style={{ transform: debugModal ? "translateY(0px)" : "translateY(-300px)" }}
                 className={`w-screen absolute top-0 ${getSeason(day).light} transition border-b-4 ${getSeason(day).border} p-2 border-box overflow-y-auto h-56`}> {/* DeBug */}
-                <div className="flex justify-between mx-4">
+                {/* <div className="flex justify-between mx-4">
                     <div className="w-48">{grass ? `x: ${mouse.x}/${grass.clientWidth} y: ${mouse.y}/${grass.clientHeight}` : ""}</div>
                     <button className="bg-green-200 px-1 rounded border shadow">Print Tree Data</button>
                     <div className="w-32 text-left">{grass ? `x: ${(mouse.x/grass.clientWidth* 100).toFixed()}% y: ${(mouse.y/grass.clientHeight * 100).toFixed()}%` : ""}</div>
-                </div>
-                <Debug infoPanel={infoPanel} />
+                </div> */}
+                {/* <Debug infoPanel={infoPanel} /> */}
                 <DebugModal isActive={infoPanel} mouse={mouse} />
             </div>
         </div>
