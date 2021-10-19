@@ -5,6 +5,8 @@ import { selectGrassLoaded } from '../../redux/gameSlice';
 import { selectDay } from '../../redux/daySlice';
 import { getSeason } from '../../utils/getSeason';
 
+import Debug from './Debug';
+
 /**
  * 
  * isActive is a boolean that is used to determine if the debug modal is open or not.
@@ -17,7 +19,10 @@ const DebugModal = ( { isActive, mouse } ) => {
     let day = useSelector(selectDay); // Grab day data from Redux store
 
     useEffect(() => {
-        console.log("modal mapping trees");
+        setInfoPanels(trees.map((item) =>
+            <div key={item.id}>{item.id}</div>
+        )
+            )
     }, [trees])
 
     return (
@@ -29,7 +34,7 @@ const DebugModal = ( { isActive, mouse } ) => {
                 <button className="bg-green-200 px-1 rounded border shadow">Print Tree Data</button>
                 <div>{grass ? `x: ${(mouse.x/grass.clientWidth* 100).toFixed()}% y: ${(mouse.y/grass.clientHeight * 100).toFixed()}%` : ""}</div>
             </div>
-            {/* <Debug infoPanel={infoPanel} /> */}
+            <Debug infoPanel={infoPanels} />
         </div>
 )
 }
