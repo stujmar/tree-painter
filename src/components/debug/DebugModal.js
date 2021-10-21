@@ -34,7 +34,11 @@ const DebugModal = ( { isActive, mouse, grass } ) => {
                 {/* <button className="bg-green-200 px-1 rounded border shadow">Print Tree Data</button> */}
                 <div className="w-28 pl-1 font-medium text-green-50" >{isGrassLoaded ? `x: ${(mouse.x/grass.clientWidth* 100).toFixed()}% y: ${(mouse.y/grass.clientHeight * 100).toFixed()}%` : ""}</div>
             </div>
-            <Debug infoPanel={infoPanels} />
+            <div className="pl-2">
+            <div className="flex flex-wrap ">
+                {infoPanels}
+            </div>
+        </div>
         </div>
 )
 }
