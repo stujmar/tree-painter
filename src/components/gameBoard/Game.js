@@ -8,7 +8,6 @@ import { selectDay } from '../../redux/daySlice';
 import { getSeason } from '../../utils/getSeason';
 
 import PlantedTreeInfo from '../debug/PlantedTreeInfo';
-import Debug from '../debug/Debug';
 import Sky from '../sky/Sky';
 import Tree from './Tree';
 import HUD from './HUD';

@@ -5,8 +5,6 @@ import { selectGrassLoaded } from '../../redux/gameSlice';
 import { selectDay } from '../../redux/daySlice';
 import { getSeason } from '../../utils/getSeason';
 
-import Debug from './Debug';
-
 /**
  * 
  * isActive is a boolean that is used to determine if the debug modal is open or not.
