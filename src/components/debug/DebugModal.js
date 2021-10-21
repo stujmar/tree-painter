@@ -28,9 +28,9 @@ const DebugModal = ( { isActive, mouse, grass } ) => {
             style={{ transform: isActive ? "translateY(0px)" : "translateY(-300px)" }}
             className={`w-screen absolute top-0 ${getSeason(day).light} transition border-b-4 ${getSeason(day).border} border-box overflow-y-auto h-56`}> {/* DeBug */}
             <div className={`flex p-2 justify-between ${getSeason(day).dark}`}>
-                <div className="w-30 font-medium text-green-50" >{isGrassLoaded ? `x: ${mouse.x}/${grass.clientWidth} y: ${mouse.y}/${grass.clientHeight}` : ""}</div>
+                <div className="w-30 comfortaa text-green-50" >{isGrassLoaded ? `x: ${mouse.x}/${grass.clientWidth} y: ${mouse.y}/${grass.clientHeight}` : ""}</div>
                 {/* <button className="bg-green-200 px-1 rounded border shadow">Print Tree Data</button> */}
-                <div className="w-28 pl-1 font-medium text-green-50" >{isGrassLoaded ? `x: ${(mouse.x/grass.clientWidth* 100).toFixed()}% y: ${(mouse.y/grass.clientHeight * 100).toFixed()}%` : ""}</div>
+                <div className="w-30 comfortaa pl-1 text-green-50" >{isGrassLoaded ? `x: ${(mouse.x/grass.clientWidth* 100).toFixed()}% y: ${(mouse.y/grass.clientHeight * 100).toFixed()}%` : ""}</div>
             </div>
             <div className="pl-2">
             <div className="flex flex-wrap ">
