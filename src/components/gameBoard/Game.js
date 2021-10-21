@@ -13,7 +13,7 @@ import Tree from './Tree';
 import HUD from './HUD';
 import { setSpeed } from '../../redux/clockSlice';
 import Well from '../farm/Well';
-import DebugModal from '../debug/DebugModal';
+import DebugPanel from '../debug/DebugPanel';
 
 
 const Game = ( { messageChange, toggleGraph } ) => {
@@ -190,7 +190,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                 </div> */}
                 {/* <Debug infoPanel={infoPanel} /> */}
             </div>
-            <DebugModal isActive={debugModal} mouse={mouse} grass={grass} />
+            <DebugPanel isActive={debugModal} mouse={mouse} grass={grass} />
         </div>
     )
 }

@@ -10,7 +10,7 @@ import { getSeason } from '../../utils/getSeason';
  * isActive is a boolean that is used to determine if the debug modal is open or not.
  * @returns 
  */
-const DebugModal = ( { isActive, mouse, grass } ) => {
+const DebugPanel = ( { isActive, mouse, grass } ) => {
     let [ infoPanels, setInfoPanels ] = useState( [] ); // array of info panels
     let trees = useSelector(selectTrees); // Grab tree data from Redux store
     let isGrassLoaded = useSelector(selectGrassLoaded); // Grab grassLoaded data from Redux store
@@ -41,4 +41,4 @@ const DebugModal = ( { isActive, mouse, grass } ) => {
 )
 }
 
-export default DebugModal;
+export default DebugPanel;
