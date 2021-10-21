@@ -18,8 +18,8 @@ const DebugPanel = ( { isActive, mouse, grass } ) => {
     let day = useSelector(selectDay); // Grab day data from Redux store
 
     useEffect(() => {
-        setInfoPanels(trees.map((item) =>
-            <PlantedTreeInfo key={item.id} props={item}/>
+        setInfoPanels(trees.map((tree) =>
+            <PlantedTreeInfo key={tree.id} x={tree.x} y={tree.y} age={tree.age} id={tree.id}/>
         )
             )
     }, [trees])

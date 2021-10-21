@@ -1,9 +1,14 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { removeTree } from '../../redux/treeSlice.js'
+import { updateSeeds } from '../../redux/gameSlice.js'
 
 const PlantedTreeInfo = ({ x, y, age, id }) => {
+    const dispatch = useDispatch()
 
     const onDelete = (id) => {
-        console.log('delete tree:', id)
+        dispatch(updateSeeds(1));
+        dispatch(removeTree(id));
     }
 
     return (
