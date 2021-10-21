@@ -4,6 +4,7 @@ import { selectTrees } from '../../redux/treeSlice';
 import { selectGrassLoaded } from '../../redux/gameSlice';
 import { selectDay } from '../../redux/daySlice';
 import { getSeason } from '../../utils/getSeason';
+import PlantedTreeInfo from './PlantedTreeInfo';
 
 /**
  * 
@@ -18,7 +19,7 @@ const DebugPanel = ( { isActive, mouse, grass } ) => {
 
     useEffect(() => {
         setInfoPanels(trees.map((item) =>
-            <div key={item.id}>{item.id}</div>
+            <PlantedTreeInfo key={item.id} props={item}/>
         )
             )
     }, [trees])

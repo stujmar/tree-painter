@@ -1,6 +1,11 @@
 import React from 'react'
 
-const PlantedTreeInfo = ({ x, y, age, id, onDelete }) => {
+const PlantedTreeInfo = ({ x, y, age, id }) => {
+
+    const onDelete = (id) => {
+        console.log('delete tree:', id)
+    }
+
     return (
         <>
             <div className="p-1 m-1 rounded shadow w-32 relative border bg-white border-green-400">
