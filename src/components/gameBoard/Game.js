@@ -93,13 +93,13 @@ const Game = ( { messageChange, toggleGraph } ) => {
 
     const handleMouseMove = (e) => {
         if (!!grass) { // Shot in the dark to avoid "Cannot read property 'clientWidth' of null"
-            setMouse({
+            dispatch(setMouse({
                 x:e.nativeEvent.offsetX > 0 ? e.nativeEvent.offsetX : 0,
                 y:e.nativeEvent.offsetY > 0 ? e.nativeEvent.offsetY : 0,
                 xMax: grass.clientWidth,
                 yMax: grass.clientWidth
                 
-            })
+            }))
         }
     }
 
