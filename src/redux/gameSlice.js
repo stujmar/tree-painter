@@ -7,6 +7,12 @@ const initialState = {
         seeds: 10,
         stars: 10,
         water: 10
+    },
+    mouse: {    
+        x: 0,
+        y: 0,
+        xMax: 0,
+        yMax: 0
     }
 };
 
