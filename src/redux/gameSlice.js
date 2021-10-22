@@ -20,14 +20,14 @@ export const gameSlice = createSlice({
     name: 'game',
     initialState,
     reducers: {
-        setMouse: (state, action) => {
-            state.mouse = action.payload;
-        },
         setGrassLoaded: (state, action) => {
             state.grassLoaded = action.payload;
         },
         setMode: (state, action) => {
             state.mode = action.payload;
+        },
+        setMouse: (state, action) => {
+            state.mouse = action.payload;
         },
         updateSeeds: (state, action) => {
             state.resources.seeds = state.resources.seeds + action.payload;
@@ -67,8 +67,9 @@ export const gameSlice = createSlice({
     }
 });
 
-export const { 
+export const {
     setMode, 
+    setMouse,
     updateSeeds,
     updateResource,
     resetResource,
