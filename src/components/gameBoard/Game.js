@@ -190,6 +190,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                 </div> */}
                 {/* <Debug infoPanel={infoPanel} /> */}
             </div>
+            {/* <DebugPanel isActive={debugModal} mouse={mouse} grass={grass} /> */}
             <DebugPanel isActive={debugModal} mouse={mouse} grass={grass} />
         </div>
     )

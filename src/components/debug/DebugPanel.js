@@ -17,12 +17,26 @@ const DebugPanel = ( { isActive, mouse, grass } ) => {
     let isGrassLoaded = useSelector(selectGrassLoaded); // Grab grassLoaded data from Redux store
     let day = useSelector(selectDay); // Grab day data from Redux store
 
+    if (!grass) {
+        grass = <div id="grass" class="absolute top-0 opacity-0 bg-black z-10 w-full seed-cursor"></div>;
+    }
+    if (!mouse) {
+        mouse = {
+            "x": 842,
+            "y": 302,
+            "xMax": 1385,
+            "yMax": 1385
+        }
+    }
+
     useEffect(() => {
         setInfoPanels(trees.map((tree) =>
             <PlantedTreeInfo key={tree.id} x={tree.x} y={tree.y} age={tree.age} id={tree.id}/>
         )
             )
     }, [trees])
+
+
 
     return (
         <div 
