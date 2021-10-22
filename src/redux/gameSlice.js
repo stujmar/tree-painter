@@ -20,6 +20,9 @@ export const gameSlice = createSlice({
     name: 'game',
     initialState,
     reducers: {
+        setMouse: (state, action) => {
+            state.mouse = action.payload;
+        },
         setGrassLoaded: (state, action) => {
             state.grassLoaded = action.payload;
         },
