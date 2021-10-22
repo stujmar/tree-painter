@@ -55,7 +55,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
     };
 
     let grass = document.getElementById('grass');
-    grass ? dispatch(setGrassLoaded(true)) : dispatch(setGrassLoaded(false)); 
+    grass ? dispatch(setGrassLoaded({ clientHeight: grass.clientHeight, clientWidth: grass.clientWidth})) : dispatch(setGrassLoaded(false)); 
 
     useEffect(() => {
         messageChange(messageCenter.welcome);
@@ -201,7 +201,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                 {/* <Debug infoPanel={infoPanel} /> */}
             </div>
             {/* <DebugPanel isActive={debugModal} mouse={mouse} grass={grass} /> */}
-            <DebugPanel isActive={debugModal} grass={grass} />
+            <DebugPanel isActive={debugModal} />
         </div>
     )
 }
