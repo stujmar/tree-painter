@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { resetResource, updateSeeds, selectMode, setMode, selectResources, setGrassLoaded } from '../../redux/gameSlice';
+import {
+    setMouse,
+    resetResource, 
+    updateSeeds, 
+    selectMode, 
+    setMode, 
+    selectResources,
+    setGrassLoaded 
+    } from '../../redux/gameSlice';
 import { addTree, removeTree, resetTrees, ageTrees, selectTrees, growTrees} from '../../redux/treeSlice';
 import { resetStars } from '../../redux/skySlice';
 import { selectHour } from '../../redux/hourSlice';
@@ -18,7 +26,7 @@ import DebugPanel from '../debug/DebugPanel';
 
 const Game = ( { messageChange, toggleGraph } ) => {
     const [ debugModal, setDebugModal ] = useState(false);
-    const [ mouse, setMouse] = useState({ x: 0, y: 0, xMax: 0, yMax: 0});
+    // const [ mouse, setMouse] = useState({ x: 0, y: 0, xMax: 0, yMax: 0});
     const [ drawTrees, setDrawTrees ] = useState([]);
     const [ infoPanel, setInfoPanel ] = useState([]);
 
