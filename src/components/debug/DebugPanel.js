@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectTrees } from '../../redux/treeSlice';
-import { selectGrassLoaded } from '../../redux/gameSlice';
+import { selectMouse, selectGrassLoaded } from '../../redux/gameSlice';
 import { selectDay } from '../../redux/daySlice';
 import { getSeason } from '../../utils/getSeason';
 import PlantedTreeInfo from './PlantedTreeInfo';
@@ -11,8 +11,10 @@ import PlantedTreeInfo from './PlantedTreeInfo';
  * isActive is a boolean that is used to determine if the debug modal is open or not.
  * @returns 
  */
-const DebugPanel = ( { isActive, mouse, grass } ) => {
+const DebugPanel = ( { isActive, grass } ) => {
     let [ infoPanels, setInfoPanels ] = useState( [] ); // array of info panels
+
+    let mouse = useSelector( selectMouse );
     let trees = useSelector(selectTrees); // Grab tree data from Redux store
     let isGrassLoaded = useSelector(selectGrassLoaded); // Grab grassLoaded data from Redux store
     let day = useSelector(selectDay); // Grab day data from Redux store
@@ -20,14 +22,7 @@ const DebugPanel = ( { isActive, mouse, grass } ) => {
     if (!grass) {
         grass = <div id="grass" class="absolute top-0 opacity-0 bg-black z-10 w-full seed-cursor"></div>;
     }
-    if (!mouse) {
-        mouse = {
-            "x": 842,
-            "y": 302,
-            "xMax": 1385,
-            "yMax": 1385
-        }
-    }
+
 
     useEffect(() => {
         setInfoPanels(trees.map((tree) =>
