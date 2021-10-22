@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
     setMouse,
+    selectMouse,
     resetResource, 
     updateSeeds, 
     selectMode, 
@@ -34,6 +35,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
     let hour = useSelector(selectHour);
     let mode = useSelector(selectMode);
     let trees = useSelector(selectTrees);
+    let mouse = useSelector(selectMouse);
     let resources = useSelector(selectResources);
     let seeds = resources.seeds;
     const dispatch = useDispatch();
