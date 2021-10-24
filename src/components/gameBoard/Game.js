@@ -8,15 +8,16 @@ import {
     selectMode, 
     setMode, 
     selectResources,
-    setGrassLoaded 
+    setGrassLoaded,
+    selectDebug,
+    toggleDebug
     } from '../../redux/gameSlice';
-import { addTree, removeTree, resetTrees, ageTrees, selectTrees, growTrees} from '../../redux/treeSlice';
+import { addTree, resetTrees, ageTrees, selectTrees, growTrees} from '../../redux/treeSlice';
 import { resetStars } from '../../redux/skySlice';
 import { selectHour } from '../../redux/hourSlice';
 import { selectDay } from '../../redux/daySlice';
 import { getSeason } from '../../utils/getSeason';
 
-import PlantedTreeInfo from '../debug/PlantedTreeInfo';
 import Sky from '../sky/Sky';
 import Tree from './Tree';
 import HUD from './HUD';
@@ -26,10 +27,10 @@ import DebugPanel from '../debug/DebugPanel';
 
 
 const Game = ( { messageChange, toggleGraph } ) => {
-    const [ debugModal, setDebugModal ] = useState(false);
+    // const [ debugModal, setDebugModal ] = useState(false);
     // const [ mouse, setMouse] = useState({ x: 0, y: 0, xMax: 0, yMax: 0});
     const [ drawTrees, setDrawTrees ] = useState([]);
-    const [ infoPanel, setInfoPanel ] = useState([]);
+    // const [ infoPanel, setInfoPanel ] = useState([]);
 
     let day = useSelector(selectDay);
     let hour = useSelector(selectHour);
@@ -37,13 +38,14 @@ const Game = ( { messageChange, toggleGraph } ) => {
     let trees = useSelector(selectTrees);
     let mouse = useSelector(selectMouse);
     let resources = useSelector(selectResources);
+    let isDebugActive = useSelector(selectDebug);
     let seeds = resources.seeds;
     const dispatch = useDispatch();
 
-    const handleDelete = (id) => {
-        dispatch(updateSeeds(1));
-        dispatch(removeTree(id));
-    } 
+    // const handleDelete = (id) => {
+    //     dispatch(updateSeeds(1));
+    //     dispatch(removeTree(id));
+    // } 
 
     const messageCenter = {
         "welcome": <p><span  className="font-medium">Welcome to Tree Painter Studio.</span><br/> Click below to plant a seed.</p>,
@@ -79,15 +81,6 @@ const Game = ( { messageChange, toggleGraph } ) => {
             return <Tree key={tree.id} treeData={tree} />
         }));
 
-        setInfoPanel(trees.map(tree => {
-            return <PlantedTreeInfo
-                        key={tree.id} 
-                        x={`${tree.x}%`} 
-                        y={`${tree.y}%`} 
-                        age={tree.age} 
-                        id={tree.id}
-                        onDelete={(id) => handleDelete(id)}/>
-        }));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[trees])
 
@@ -124,6 +117,11 @@ const Game = ( { messageChange, toggleGraph } ) => {
 
             dispatch(updateSeeds(-1));
         }
+    }
+
+    const handleToggleDebug = () => {
+        console.log("toggle debug", isDebugActive);
+        dispatch(toggleDebug(!isDebugActive));
     }
 
     const reset = () => {
@@ -171,7 +169,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                                     </svg>
                                 </button>
                                 <button 
-                                    onClick={() => setDebugModal(!debugModal)}
+                                    onClick={() => handleToggleDebug()}
                                     className="border-4 rounded-lg hover:bg-green-600 border-white z-10 px-1 shadow focus:outline-none">
                                     <svg width="22" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g>
@@ -191,7 +189,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                             </div> 
                     </div>
             <div 
-                style={{ transform: debugModal ? "translateY(0px)" : "translateY(-300px)" }}
+                style={{ transform: isDebugActive ? "translateY(0px)" : "translateY(-300px)" }}
                 className={`w-screen absolute top-0 ${getSeason(day).light} transition border-b-4 ${getSeason(day).border} p-2 border-box overflow-y-auto h-56`}> {/* DeBug */}
                 {/* <div className="flex justify-between mx-4">
                     <div className="w-48">{grass ? `x: ${mouse.x}/${grass.clientWidth} y: ${mouse.y}/${grass.clientHeight}` : ""}</div>
@@ -201,7 +199,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                 {/* <Debug infoPanel={infoPanel} /> */}
             </div>
             {/* <DebugPanel isActive={debugModal} mouse={mouse} grass={grass} /> */}
-            <DebugPanel isActive={debugModal} />
+            <DebugPanel />
         </div>
     )
 }
