@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     mode: "PLANTING",
+    isDebugActive: false,
     grassLoaded: {
         clientHeight: 0,
         clientWidth: 0,
@@ -23,6 +24,9 @@ export const gameSlice = createSlice({
     name: 'game',
     initialState,
     reducers: {
+        toggleDebug: (state) => {
+            state.isDebugActive = !state.isDebugActive;
+        },
         setGrassLoaded: (state, action) => {
             state.grassLoaded = action.payload;
         },
@@ -76,10 +80,12 @@ export const {
     updateSeeds,
     updateResource,
     resetResource,
-    setGrassLoaded
+    setGrassLoaded,
+    toggleDebug
     } = gameSlice.actions;
 
 export const selectGame = (state) => state.game;
+export const selectToggleDebug = (state) => state.isDebugActive;
 export const selectMode = (state) => state.game.mode;
 export const selectMouse = (state) => state.game.mouse;
 export const selectResources = (state) => state.game.resources;
