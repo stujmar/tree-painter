@@ -24,9 +24,8 @@ export const gameSlice = createSlice({
     name: 'game',
     initialState,
     reducers: {
-        toggleDebug: (state, action) => {
-            console.log('hello from inside redux')
-            state.isDebugActive = action.payload;
+        toggleDebug: (state) => {
+            state.isDebugActive = !state.isDebugActive;
         },
         setGrassLoaded: (state, action) => {
             state.grassLoaded = action.payload;
