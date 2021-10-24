@@ -15,7 +15,7 @@ const Star = ({starData}) => {
     let hour = useSelector(selectHour);
 
     useEffect(() => {
-        setOpacity(hour <= 6 || hour >= 20 ?  1.0 : 0);
+        setOpacity(hour <= 4 || hour >= 18 ?  1.0 : 0);
         // eslint-disable-next-line react-hooks/exhaustive-deps
      },[hour])
 
