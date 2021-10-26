@@ -8,7 +8,7 @@ import TimeControls from './components/header/TimeControls';
 import ClockService from './components/header/ClockService';
 import Game from './components/gameBoard/Game';
 import StatusBar from './components/statusBar/StatusBar';
-import Graph from './components/debug/Graph';
+import GraphPanel from './components/debug/GraphPanel';
 
 const App = () => {
   const day = useSelector(selectDay);
@@ -27,7 +27,7 @@ const App = () => {
 
   return (
     <div className="App">
-      {graph ? <Graph toggleGraph={toggleGraph}/> : <></>}
+      {graph ? <GraphPanel toggleGraph={toggleGraph}/> : <></>}
       <ClockService />
       <header 
         className={`${getSeason(day).light} h-48 flex items-center justify-center text-lg font-sans text-white`}>

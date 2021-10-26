@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Graph = ({toggleGraph}) => {
+const GraphPanel = ({toggleGraph}) => {
     return (
         // <div className="absolute">
         //     <button
@@ -30,4 +30,4 @@ const Graph = ({toggleGraph}) => {
     )
 }
 
-export default Graph;
+export default GraphPanel;
