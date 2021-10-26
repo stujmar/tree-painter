@@ -6,13 +6,17 @@ import {useSelector} from 'react-redux';
 import {selectResources} from '../../redux/gameSlice';
 import {selectDay} from '../../redux/daySlice';
 import {getSeason} from '../../utils/getSeason';
+import {useDispatch} from 'react-redux';
+import {updateResource} from '../../redux/gameSlice';
 
 const StatusBar = () => {
+
     let day = useSelector(selectDay);
     let { seeds, water, stars} = useSelector(selectResources);
+    let dispatch = useDispatch();
 
     const addAcorn = () => {
-        console.log("Acorn Added");
+        dispatch(updateResource({type: 'seeds', amount: 1}));
     }
 
     return (
