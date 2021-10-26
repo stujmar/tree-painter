@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { getRandomId } from '../../utils/getRandomId';
+
 import { useSelector, useDispatch } from 'react-redux';
 import {
     setMouse,
@@ -97,10 +99,10 @@ const Game = ( { messageChange, toggleGraph } ) => {
     const plant = (e) => {
         messageChange(messageCenter.first_seed);
         if (seeds > 0) {
-            let randomId = Math.floor(Math.random() * 10000)
             // Set Trees in Redux state.
+            let newId = getRandomId();
             dispatch( addTree({
-                id: randomId,
+                id: newId,
                 x: parseInt((mouse.x/grass.clientWidth* 100).toFixed()),
                 y: parseInt((mouse.y/grass.clientHeight * 100).toFixed()),
                 age: 0,
