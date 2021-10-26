@@ -1,4 +1,5 @@
 import React from 'react';
+import Graph from './Graph';
 
 const GraphPanel = ({toggleGraph}) => {
     return (
@@ -17,7 +18,7 @@ const GraphPanel = ({toggleGraph}) => {
         //     <div className="w-24 h-24 border bg-white"></div>
         // </div>
         <div className="absolute inset-0 bg-red-500 w-full h-screen z-50">
-            <div className="relative w-full h-full bg-gray-200">
+            <div className="relative w-full h-full bg-gray-200 pt-48">
                 <button
                     className="absolute bg-gray-300 hover:bg-gray-200 right-2 top-2 rounded-md z-50 opacity-100"
                     onClick={toggleGraph}>
@@ -25,6 +26,7 @@ const GraphPanel = ({toggleGraph}) => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button> 
+                <Graph />
             </div>
         </div>
     )
