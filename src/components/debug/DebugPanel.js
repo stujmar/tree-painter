@@ -11,7 +11,7 @@ import PlantedTreeInfo from './PlantedTreeInfo';
  * isActive is a boolean that is used to determine if the debug modal is open or not.
  * @returns 
  */
-const DebugPanel = () => {
+const DebugPanel = ( { handleClose }) => {
     let [ infoPanels, setInfoPanels ] = useState( [] ); // array of info panels
 
     let mouse = useSelector( selectMouse );
@@ -34,16 +34,18 @@ const DebugPanel = () => {
         <div 
             style={{ transform: isActive ? "translateY(0px)" : "translateY(-300px)" }}
             className={`w-screen absolute top-0 ${getSeason(day).light} transition border-b-4 ${getSeason(day).border} border-box overflow-y-auto h-56`}> {/* DeBug */}
-            <div className={`flex p-2 justify-between ${getSeason(day).dark}`}>
+            <button 
+                className={`flex p-2 justify-between w-full focus:outline-none ${getSeason(day).dark}`}
+                onClick={handleClose}>
                 <div className="w-30 comfortaa text-green-50" >{grass ? `x: ${mouse.x}/${grass.clientWidth} y: ${mouse.y}/${grass.clientHeight}` : ""}</div>
                 {/* <button className="bg-green-200 px-1 rounded border shadow">Print Tree Data</button> */}
                 <div className="w-30 comfortaa pl-1 text-green-50" >{grass ? `x: ${(mouse.x/grass.clientWidth* 100).toFixed()}% y: ${(mouse.y/grass.clientHeight * 100).toFixed()}%` : ""}</div>
-            </div>
+            </button>
             <div className="pl-2">
-            <div className="flex flex-wrap ">
-                {infoPanels}
+                <div className="flex flex-wrap ">
+                    {infoPanels}
+                </div>
             </div>
-        </div>
         </div>
 )
 }

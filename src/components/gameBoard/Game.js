@@ -184,7 +184,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
 
                         </div>
                 </div> 
-            {grass ? <DebugPanel /> : <></>}
+            {grass ? <DebugPanel handleClose={handleToggleDebug} /> : <></>}
         </div>
     )
 }
