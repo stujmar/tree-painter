@@ -27,6 +27,7 @@ import DebugPanel from '../debug/DebugPanel';
 
 const Game = ( { messageChange, toggleGraph } ) => {
     const [ drawTrees, setDrawTrees ] = useState([]);
+    const [ hasLoaded, setHasLoaded ] = useState(false);
 
     let hour = useSelector(selectHour);
     let mode = useSelector(selectMode);
