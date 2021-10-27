@@ -52,7 +52,13 @@ const Game = ( { messageChange, toggleGraph } ) => {
     };
 
     let grass = document.getElementById('grass');
-    grass ? dispatch(setGrassLoaded({ clientHeight: grass.clientHeight, clientWidth: grass.clientWidth})) : dispatch(setGrassLoaded(false)); 
+
+    if (!!grass && !hasLoaded) {
+        dispatch(setGrassLoaded({ clientHeight: grass.clientHeight, clientWidth: grass.clientWidth}));
+        setHasLoaded(true);
+        console.log('grass loaded:', grass);
+    }
+    // grass ? dispatch(setGrassLoaded({ clientHeight: grass.clientHeight, clientWidth: grass.clientWidth})) : dispatch(setGrassLoaded(false)); 
 
     useEffect(() => {
         messageChange(messageCenter.welcome);
