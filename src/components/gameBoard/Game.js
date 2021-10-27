@@ -184,7 +184,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
 
                         </div>
                 </div> 
-            <DebugPanel />
+            {grass ? <DebugPanel /> : <></>}
         </div>
     )
 }
