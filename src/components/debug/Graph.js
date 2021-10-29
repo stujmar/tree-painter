@@ -8,7 +8,7 @@ const Graph = () => {
 
   const getHorizontalLines = (density) => {
     console.log("getting horizontal lines")
-    setHorizontalLines([...Array(density - 1)].map((elementInArray, index) => {
+    setHorizontalLines([...Array(density - 1)].map((_element, index) => {
       return <div 
         key={index} 
         style={{top: getPercentage(index + 1, density)}}
@@ -17,7 +17,7 @@ const Graph = () => {
   };
 
   const getVerticalLines = (density) => {
-    setVerticalLines([...Array(density - 1)].map((elementInArray, index) => {
+    setVerticalLines([...Array(density - 1)].map((_element, index) => {
       return <div 
         key={index} 
         style={{left: getPercentage(index + 1, density)}}
