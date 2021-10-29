@@ -5,14 +5,18 @@ import { useDispatch, useSelector } from 'react-redux';
 const Graph = () => {
     const dispatch = useDispatch();
     const [verticalLines, setVerticalLines] = useState([]);
-    const [horizontalLines, setHorizonalLines] = useState([]);
+    const [horizontalLines, setHorizontalLines] = useState([]);
+
     const getHorizontalLines = (density) => {
         console.log("getting horizontal lines")
+        setHorizontalLines([...Array(density)].map((elementInArray, index) => {
+            return <div key={index}>{`h: ${index}`}</div>
+        }));
     };
 
     const getVerticalLines = (density) => {
         setVerticalLines([...Array(density)].map((elementInArray, index) => {
-            return <div key={index}>{`index: ${index}`}</div>
+            return <div key={index}>{`v: ${index}`}</div>
         }));
         console.log("getting vertical lines")
     };
