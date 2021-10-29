@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 
 const Graph = () => {
     const dispatch = useDispatch();
+
+    const getHorizontalLines = () => {
+        console.log("getting horizontal lines")
+    };
+
+    const getVerticalLines = () => {
+        console.log("getting vertical lines")
+    };
+
+    useEffect(() => {
+        console.log("Graph component mounted");
+        getHorizontalLines();
+        getVerticalLines();
+    },[])
 
     return (
         <div className="border-2 border-black w-96 h-96 bg-white mx-auto text-center relative">
