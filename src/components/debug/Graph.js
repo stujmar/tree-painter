@@ -9,13 +9,16 @@ const Graph = () => {
 
     const getHorizontalLines = (density) => {
         console.log("getting horizontal lines")
-        setHorizontalLines([...Array(density)].map((elementInArray, index) => {
-            return <div key={index} className="border-t-2 border-green-500 absolute w-full">{`h: ${getPercentage(index, density)}`}</div>
+        setHorizontalLines([...Array(density - 1)].map((elementInArray, index) => {
+            return <div 
+                key={index} 
+                style={{top: getPercentage(index + 1, density)}}
+                className="border-t-2 border-green-500 absolute w-full"></div>
         }));
     };
 
     const getVerticalLines = (density) => {
-        setVerticalLines([...Array(density)].filter((e, i) => i !== 0).map((elementInArray, index) => {
+        setVerticalLines([...Array(density - 1)].map((elementInArray, index) => {
             return <div 
                 key={index} 
                 style={{left: getPercentage(index + 1, density)}}
