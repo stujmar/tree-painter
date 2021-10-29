@@ -16,7 +16,7 @@ const Graph = () => {
 
     const getVerticalLines = (density) => {
         setVerticalLines([...Array(density)].map((elementInArray, index) => {
-            return <div key={index}>{`v: ${index}`}</div>
+            return <div key={index}>{`v: ${getPercentage(index, density)}`}</div>
         }));
         console.log("getting vertical lines")
     };
@@ -28,7 +28,8 @@ const Graph = () => {
     },[])
 
     function getPercentage(current, total) {
-        let value = (total / current) * 100;
+        let value = current === 0 ? 0 : ((current + 1) / total);
+        console.log(total, current + 1, value);
         return `${value}%`;
     }
 
