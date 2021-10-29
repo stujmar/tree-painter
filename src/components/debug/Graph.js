@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const Graph = () => {
     const dispatch = useDispatch();
     const [verticalLines, setVerticalLines] = useState([]);
+    const [horizontalLines, setHorizonalLines] = useState([]);
     const getHorizontalLines = (density) => {
         console.log("getting horizontal lines")
     };
@@ -27,6 +28,7 @@ const Graph = () => {
             <div className="h-2 w-2 rounded-full bg-red-500 absolute" style={{top: '0%', left: '0%'}}></div>
             <h1 className="mt-12">Graphs Go Here</h1>
             {verticalLines}
+            {horizontalLines}
         </div>
     );
 }
