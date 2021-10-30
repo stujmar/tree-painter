@@ -57,7 +57,7 @@ const Graph = () => {
 
   return (
     <div>
-      <div className="w-96 h-96 bg-amber-100 mx-auto text-center relative">
+      <div className="w-96 h-96 bg-amber-100 mx-auto text-center relative shadow-lg">
         <div className="h-3 w-3 rounded-full bg-lime-500 absolute shadow-lg" style={{top: '0%', left: '0%'}}></div>
         {/* <h1 className="mt-12">Graphs Go Here</h1> */}
         {verticalLines}
