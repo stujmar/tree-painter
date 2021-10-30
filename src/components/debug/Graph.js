@@ -14,7 +14,7 @@ const Graph = () => {
       return <div 
         key={index} 
         style={{top: getPercentage(index + 1, density)}}
-        className="border-t-2 border-green-500 absolute w-full"></div>
+        className="border-t-2 border-amber-600 absolute w-full"></div>
     }));
   };
 
@@ -23,7 +23,7 @@ const Graph = () => {
       return <div 
         key={index} 
         style={{left: getPercentage(index + 1, density)}}
-        className="border-r-2 border-red-500 absolute h-full"
+        className="border-r-2 border-amber-600 absolute h-full"
         ></div>
     }));
     console.log(horizontalLines)
@@ -57,8 +57,8 @@ const Graph = () => {
 
   return (
     <div>
-      <div className="border-2 border-black w-96 h-96 bg-white mx-auto text-center relative">
-        <div className="h-2 w-2 rounded-full bg-red-500 absolute" style={{top: '0%', left: '0%'}}></div>
+      <div className="w-96 h-96 bg-amber-100 mx-auto text-center relative">
+        <div className="h-3 w-3 rounded-full bg-lime-500 absolute shadow-lg" style={{top: '0%', left: '0%'}}></div>
         {/* <h1 className="mt-12">Graphs Go Here</h1> */}
         {verticalLines}
         {horizontalLines}

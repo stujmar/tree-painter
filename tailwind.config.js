@@ -14,13 +14,16 @@ module.exports = {
       yellow: colors.amber,
       blue: colors.blue,
       orange: colors.orange,
-      green: colors.green
+      green: colors.green,
+      amber: colors.amber,
+      lime: colors.lime,
     },
     extend: {
       colors: {
         'acorn-top': '#ECA76D',
         'acorn-bottom': '#945E42',
-        'water-blue' : '#75b4e3'
+        'water-blue' : '#75b4e3',
+        'purple-grad': 'linear-gradient(0deg, rgba(192,0,255,1) 0%, rgba(37,9,121,1) 100%)'
       },
       transitionDuration: {
         '0': '0ms',
