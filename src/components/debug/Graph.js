@@ -14,8 +14,10 @@ const Graph = () => {
   let trees = useSelector(selectTrees);
 
   const getHorizontalLines = (density) => {
-    console.log("getting horizontal lines")
-    setHorizontalLines([...Array(density - 1)].map((_element, index) => {
+    density = density >= 1 ? (density) : 1;
+    let grid_array = [...Array(parseInt(density))]
+    grid_array.pop();
+    setHorizontalLines(grid_array.map((_element, index) => {
       return <div 
         key={index} 
         style={{top: getPercentage(index + 1, density)}}
@@ -24,17 +26,18 @@ const Graph = () => {
   };
 
   const getVerticalLines = (density) => {
-    setVerticalLines([...Array(density - 1)].map((_element, index) => {
+    density = density >= 1 ? density : 1;
+    let grid_array = [...Array(parseInt(density))]
+    grid_array.pop();
+     setVerticalLines(grid_array.map((_element, index) => {
       return <div 
         key={index} 
         style={{left: getPercentage(index + 1, density)}}
         className="border-r-2 border-amber-600 absolute h-full"
         ></div>
-    }));
-  };
-
+    }))
+  }
   useEffect(() => {
-    console.log(trees)
     if (trees.length > 0) {
       setDots(trees.map((tree) => {
         return <div className="h-3 w-3 rounded-full bg-lime-600 absolute shadow-lg" style={{top: `${tree.y}%`, left: `${tree.x}%`}}></div>
@@ -82,36 +85,40 @@ const Graph = () => {
         {dots}
       </div>
       {lockAxis ? 
-        <div className="w-max mx-auto mt-4 flex">
-        <div className="ml-2 bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-l px-1">X/Y</div>
-        <input 
-          type="number" 
-          name="xy" 
-          value={xCount} onChange={(e) => handleInputs(e)}
-          className="bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-r"/>
-      </div>
+        <div className="w-96 mx-auto mt-4 flex">
+          <div className="bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-l px-1">X/Y</div>
+          <input 
+            type="number" 
+            name="xy" 
+            value={xCount} onChange={(e) => handleInputs(e)}
+            className="bg-amber-100 focus:outline-none text-amber-800 font-bold text-right pr-2 rounded-r"/>
+                  <button 
+            onClick={toggleLock}
+            className="bg-amber-100 focus:outline-none block ml-auto text-amber-800 font-bold text-right rounded px-1"
+            >{lockAxis ? "unlock" : "lock"}</button>
+          </div>
       :
-      <div className="w-max mx-auto mt-4 flex">
-        <div className="ml-2 bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-l px-1">X</div>
+      <div className="mx-auto mt-4 flex w-96 justify-start">
+        <div className="bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-l px-1">X</div>
         <input 
           type="number" 
           name="x" 
           value={xCount} onChange={(e) => handleInputs(e)}
-          className="bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-r"/>
+          className="bg-amber-100 focus:outline-none text-amber-800 w-24 font-bold text-right rounded-r pr-2"/>
         <div className="ml-2 bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-l px-1">Y</div>
         <input 
           type="number"
           name="y"
           value={yCount} onChange={(e) => handleInputs(e)}
-          className="bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-r"/>
+          className="bg-amber-100 focus:outline-none text-amber-800 w-24 font-bold text-right rounded-r pr-2"/>
+      <button 
+          onClick={toggleLock}
+          className="bg-amber-100 focus:outline-none block ml-auto text-amber-800 font-bold text-right rounded px-1"
+          >{lockAxis ? "unlock" : "lock"}</button>
       </div>
       
       } 
       <div className="w-full">
-      <button 
-          onClick={toggleLock}
-          className="bg-amber-100 focus:outline-none block mt-4 mx-auto text-amber-800 font-bold text-right rounded px-1"
-          >{lockAxis ? "unlock" : "lock"}</button>
       </div>
     </div>
   );
