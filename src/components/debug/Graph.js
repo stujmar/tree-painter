@@ -88,8 +88,9 @@ const Graph = () => {
         <div className="w-96 mx-auto mt-4 flex">
           <div className="bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-l px-1">X/Y</div>
           <input 
-            type="number" 
-            name="xy" 
+            type="number"
+            min="0" max="100"
+            name="xy"
             value={xCount} onChange={(e) => handleInputs(e)}
             className="bg-amber-100 focus:outline-none text-amber-800 font-bold text-right pr-2 rounded-r"/>
                   <button 
@@ -101,13 +102,15 @@ const Graph = () => {
       <div className="mx-auto mt-4 flex w-96 justify-start">
         <div className="bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-l px-1">X</div>
         <input 
-          type="number" 
-          name="x" 
+          type="number"
+          min="0" max="100"
+          name="x"
           value={xCount} onChange={(e) => handleInputs(e)}
           className="bg-amber-100 focus:outline-none text-amber-800 w-24 font-bold text-right rounded-r pr-2"/>
         <div className="ml-2 bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-l px-1">Y</div>
         <input 
           type="number"
+          min="0" max="100"
           name="y"
           value={yCount} onChange={(e) => handleInputs(e)}
           className="bg-amber-100 focus:outline-none text-amber-800 w-24 font-bold text-right rounded-r pr-2"/>
