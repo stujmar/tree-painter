@@ -63,9 +63,19 @@ const Graph = () => {
         {verticalLines}
         {horizontalLines}
       </div>
-      <div className="w-max mx-auto mt-4">
-        X<input type="number" name="x" value={xCount} onChange={(e) => handleInputs(e)}/>
-        Y<input type="number" name="y" value={yCount} onChange={(e) => handleInputs(e)}/>
+      <div className="w-max mx-auto mt-4 flex">
+        <div className="ml-2 bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-l px-1">X</div>
+        <input 
+          type="number" 
+          name="x" 
+          value={xCount} onChange={(e) => handleInputs(e)}
+          className="bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-r"/>
+        <div className="ml-2 bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-l px-1">Y</div>
+        <input 
+          type="number"
+          name="y"
+          value={yCount} onChange={(e) => handleInputs(e)}
+          className="bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-r"/>
       </div>
     </div>
   );
