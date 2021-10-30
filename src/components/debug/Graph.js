@@ -7,6 +7,7 @@ const Graph = () => {
   const [horizontalLines, setHorizontalLines] = useState([]);
   const [xCount, setXCount] = useState(10);
   const [yCount, setYCount] = useState(10);
+  const [lockAxis, setLockAxis] = useState(false);
 
   const getHorizontalLines = (density) => {
     console.log("getting horizontal lines")
@@ -51,8 +52,15 @@ const Graph = () => {
       setXCount(value);
     } else if (name === 'y') {
       setYCount(value);
+    } else if (name === 'xy') {
+      setXCount(value);
+      setYCount(value);
     }
     console.log(name, value);
+  }
+
+  function toggleLock() {
+    setLockAxis(!lockAxis);
   }
 
   return (
@@ -63,6 +71,16 @@ const Graph = () => {
         {verticalLines}
         {horizontalLines}
       </div>
+      {lockAxis ? 
+        <div className="w-max mx-auto mt-4 flex">
+        <div className="ml-2 bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-l px-1">X/Y</div>
+        <input 
+          type="number" 
+          name="xy" 
+          value={xCount} onChange={(e) => handleInputs(e)}
+          className="bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-r"/>
+      </div>
+      :
       <div className="w-max mx-auto mt-4 flex">
         <div className="ml-2 bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-l px-1">X</div>
         <input 
@@ -76,6 +94,14 @@ const Graph = () => {
           name="y"
           value={yCount} onChange={(e) => handleInputs(e)}
           className="bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-r"/>
+      </div>
+      
+      } 
+      <div className="w-full">
+      <button 
+          onClick={toggleLock}
+          className="bg-amber-100 focus:outline-none block mt-4 mx-auto text-amber-800 font-bold text-right rounded px-1"
+          >{lockAxis ? "unlock" : "lock"}</button>
       </div>
     </div>
   );
