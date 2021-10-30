@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { selectTrees } from '../../redux/treeSlice';
 
 const Graph = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [verticalLines, setVerticalLines] = useState([]);
   const [horizontalLines, setHorizontalLines] = useState([]);
   const [xCount, setXCount] = useState(10);
   const [yCount, setYCount] = useState(10);
-  const [lockAxis, setLockAxis] = useState(false);
+  const [lockAxis, setLockAxis] = useState(true);
+  const [dots, setDots] = useState([]);
+
+  let trees = useSelector(selectTrees);
 
   const getHorizontalLines = (density) => {
     console.log("getting horizontal lines")
@@ -27,11 +31,19 @@ const Graph = () => {
         className="border-r-2 border-amber-600 absolute h-full"
         ></div>
     }));
-    console.log(horizontalLines)
   };
 
   useEffect(() => {
-    console.log("Graph component mounted");
+    console.log(trees)
+    if (trees.length > 0) {
+      setDots(trees.map((tree) => {
+        return <div className="h-3 w-3 rounded-full bg-lime-600 absolute shadow-lg" style={{top: `${tree.y}%`, left: `${tree.x}%`}}></div>
+      }))
+    }
+    }, [trees]);
+  
+
+  useEffect(() => {
     getHorizontalLines(yCount);
     getVerticalLines(xCount);
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -39,7 +51,6 @@ const Graph = () => {
 
   function getPercentage(current, total) {
     let value = current === 0 ? 0 : ((current) / total);
-    console.log(total, current, `${value * 100}%`);
     if (value === 0) {
       return '0%';
     }
@@ -66,10 +77,9 @@ const Graph = () => {
   return (
     <div>
       <div className="w-96 h-96 bg-amber-100 mx-auto text-center relative shadow-lg">
-        <div className="h-3 w-3 rounded-full bg-lime-500 absolute shadow-lg" style={{top: '0%', left: '0%'}}></div>
-        {/* <h1 className="mt-12">Graphs Go Here</h1> */}
         {verticalLines}
         {horizontalLines}
+        {dots}
       </div>
       {lockAxis ? 
         <div className="w-max mx-auto mt-4 flex">
