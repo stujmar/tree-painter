@@ -77,6 +77,11 @@ const Graph = () => {
     setLockAxis(!lockAxis);
   }
 
+  function reset() {
+    setXCount(10);
+    setYCount(10);
+  }
+
   return (
     <div>
       <div className="w-96 h-96 bg-amber-100 mx-auto text-center relative shadow-lg">
@@ -95,7 +100,7 @@ const Graph = () => {
             className="bg-amber-100 focus:outline-none text-amber-800 font-bold text-right pr-2 rounded-r"/>
             <div className="flex ml-auto gap-2">
               <button 
-                  onClick={toggleLock}
+                  onClick={reset}
                   className="bg-amber-100 focus:outline-none block  text-amber-800 font-bold text-right rounded px-1"
                   >reset</button>
               <button 
@@ -122,7 +127,7 @@ const Graph = () => {
           className="bg-amber-100 focus:outline-none text-amber-800 w-24 font-bold text-right rounded-r pr-2"/>
           <div className="flex ml-auto gap-2">
             <button 
-                onClick={toggleLock}
+                onClick={reset}
                 className="bg-amber-100 focus:outline-none block  text-amber-800 font-bold text-right rounded px-1"
                 >reset</button>
             <button 
