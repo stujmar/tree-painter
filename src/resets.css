@@ -9,3 +9,9 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+/* hopefully eliminating default rounding on iphone inputs */
+input {
+    -webkit-border-radius:0; 
+    border-radius:0;
+}
