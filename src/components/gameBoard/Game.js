@@ -157,7 +157,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                                 style={{height: "calc(100vh - 324px)"}}
                                 ></div>
                         <HUD />
-                        <div className="flex flex-row fixed bottom-3 right-3 gap-2">
+                        <div className="flex flex-row fixed bottom-3 right-3 gap-2" style={{ zIndex: 49 }}>
                             <button 
                                 className="border-4 rounded-lg hover:bg-green-600 border-white z-10 px-1 shadow focus:outline-none"
                                 onClick={toggleGraph}>
@@ -181,7 +181,6 @@ const Game = ( { messageChange, toggleGraph } ) => {
                                 className="border-4 hover:bg-green-600 rounded-lg font-medium text-white border-white px-2 z-10 shadow focus:outline-none"
                                 onClick={reset}
                             >RESET</button>
-
                         </div>
                 </div> 
             {grass ? <DebugPanel handleClose={handleToggleDebug} /> : <></>}

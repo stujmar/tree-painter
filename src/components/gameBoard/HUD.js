@@ -12,7 +12,7 @@ const HUD = () => {
     }
 
     return (
-        <div className="absolute bottom-0 left-0 z-10 flex gap-1 p-3">
+        <div className="fixed bottom-0 left-0 z-10 flex gap-1 p-3" style={{ zIndex: 49 }}>
             <button 
                 className={`focus:outline-none bg-black p-1 rounded-lg ${mode === "PLANTING" ? "bg-opacity-25" : "bg-opacity-0"}`}
                 onClick={() => toggleMode("PLANTING")}
