@@ -89,29 +89,27 @@ const Graph = () => {
         {horizontalLines}
         {dots}
       </div>
-      {lockAxis ? 
-        <div className="w-96 mx-auto mt-4 flex">
-          <div className="bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-l px-1">X/Y</div>
+      <div className="w-96 mx-auto mt-4 flex">
+      {lockAxis ? <>
+        <div className="bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-l px-1">X/Y</div>
           <input 
             type="number"
             min="1" max="100"
             name="xy"
             value={xCount} onChange={(e) => handleInputs(e)}
             className="bg-amber-100 focus:outline-none text-amber-800 font-bold text-right pr-2 rounded-r"/>
-            <div className="flex ml-auto gap-2">
-              <button 
-                  onClick={reset}
-                  className="bg-amber-100 focus:outline-none block  text-amber-800 font-bold text-right rounded px-1"
-                  >reset</button>
-              <button 
-                  onClick={toggleLock}
-                  className="bg-amber-100 focus:outline-none block  text-amber-800 font-bold text-right rounded px-1"
-                  >{lockAxis ? "unlock" : "lock"}</button>
-            </div>
-          </div>
-      :
-      <div className="mx-auto mt-4 flex w-96 justify-start">
-        <div className="bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-l px-1">X</div>
+          <div className="flex ml-auto gap-2">
+            <button 
+              onClick={reset}
+              className="bg-amber-100 focus:outline-none block  text-amber-800 font-bold text-right rounded px-1"
+              >reset</button>
+            <button 
+              onClick={toggleLock}
+              className="bg-amber-100 focus:outline-none block  text-amber-800 font-bold text-right rounded px-1"
+              >{lockAxis ? "unlock" : "lock"}</button>
+        </div></>
+      : 
+      <><div className="bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-l px-1">X</div>
         <input 
           type="number"
           min="1" max="100"
@@ -125,20 +123,16 @@ const Graph = () => {
           name="y"
           value={yCount} onChange={(e) => handleInputs(e)}
           className="bg-amber-100 focus:outline-none text-amber-800 w-24 font-bold text-right rounded-r pr-2"/>
-          <div className="flex ml-auto gap-2">
+        <div className="flex ml-auto gap-2">
             <button 
-                onClick={reset}
-                className="bg-amber-100 focus:outline-none block  text-amber-800 font-bold text-right rounded px-1"
-                >reset</button>
+              onClick={reset}
+              className="bg-amber-100 focus:outline-none block  text-amber-800 font-bold text-right rounded px-1"
+              >reset</button>
             <button 
-                onClick={toggleLock}
-                className="bg-amber-100 focus:outline-none block  text-amber-800 font-bold text-right rounded px-1"
-                >{lockAxis ? "unlock" : "lock"}</button>
-          </div>
-      </div>
-      
-      } 
-      <div className="w-full">
+              onClick={toggleLock}
+              className="bg-amber-100 focus:outline-none block  text-amber-800 font-bold text-right rounded px-1"
+              >{lockAxis ? "unlock" : "lock"}</button>
+        </div></>}
       </div>
     </div>
   );
