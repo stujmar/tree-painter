@@ -157,7 +157,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                                 style={{height: "calc(100vh - 324px)"}}
                                 ></div>
                         <HUD />
-                        <div className="flex flex-row absolute bottom-3 right-3 gap-2">
+                        <div className="flex flex-row fixed bottom-3 right-3 gap-2">
                             <button 
                                 className="border-4 rounded-lg hover:bg-green-600 border-white z-10 px-1 shadow focus:outline-none"
                                 onClick={toggleGraph}>
