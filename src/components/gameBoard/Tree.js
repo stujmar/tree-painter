@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectResources, updateResource, selectMode } from '../../redux/gameSlice';
 import { removeTreeById } from '../../redux/treeSlice';
 
-import { getRandomId } from '../../utils/getRandomId';
-
 import Trunk from './Trunk';
 import Canopy from './Canopy';
 
@@ -27,7 +25,7 @@ const Tree = ({treeData}) => {
 
     useEffect(() => {
         setTrunks(treeData.growth.map((trunk) => {
-            return <Trunk key={getRandomId()} trunkData={trunk} />
+            return <Trunk key={trunk.id} trunkData={trunk} />
         }))
     },[treeData])
 
