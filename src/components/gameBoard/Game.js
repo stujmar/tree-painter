@@ -107,7 +107,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
         messageChange(messageCenter.first_seed);
         if (seeds > 0) {
             // Set Trees in Redux state.
-            let newId = getRandomId();
+            let newId = "tree_" + getRandomId();
             dispatch( addTree({
                 id: newId,
                 x: parseInt((mouse.x/grass.clientWidth* 100).toFixed()),
