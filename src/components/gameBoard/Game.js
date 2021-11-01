@@ -13,7 +13,7 @@ import {
     setGrassLoaded,
     toggleDebug
     } from '../../redux/gameSlice';
-import { addTree, resetTrees, ageTrees, selectTrees, growTrees} from '../../redux/treeSlice';
+import { addTree, resetTrees, ageTrees, selectTrees, growTreeById} from '../../redux/treeSlice';
 import { resetStars } from '../../redux/skySlice';
 import { selectHour } from '../../redux/hourSlice';
 
@@ -69,7 +69,11 @@ const Game = ( { messageChange, toggleGraph } ) => {
     useEffect(() => {
         if (!!trees.length) {
             dispatch(ageTrees());
-            dispatch(growTrees({id: "trunk_" + getRandomId(), left: 0, right: 0}));
+            trees.forEach((tree) => {
+                let updatedTree = { id: tree.id, growth: {id: "trunk_" + getRandomId(), left: 0, right: 0}};
+                dispatch(growTreeById(updatedTree)); 
+            })
+            // dispatch(growTrees({id: "trunk_" + getRandomId(), left: 0, right: 0}));
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[hour])
