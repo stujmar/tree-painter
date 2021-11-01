@@ -67,8 +67,8 @@ const Game = ( { messageChange, toggleGraph } ) => {
     )
 
     useEffect(() => {
-        dispatch(ageTrees());
         if (!!trees.length) {
+            dispatch(ageTrees());
             dispatch(growTrees({id: "trunk_" + getRandomId(), left: 0, right: 0}));
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
