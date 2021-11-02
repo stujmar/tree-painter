@@ -62,11 +62,11 @@ const Graph = () => {
 
   function handleInputs(e) {
     const { name, value } = e.target;
-    if (name === 'x') {
+    if (name === 'x' && value <= 100) {
       setXCount(value);
-    } else if (name === 'y') {
+    } else if (name === 'y'  && value <= 100) {
       setYCount(value);
-    } else if (name === 'xy') {
+    } else if (name === 'xy'  && value <= 100) {
       setXCount(value);
       setYCount(value);
     }

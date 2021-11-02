@@ -69,8 +69,11 @@ const Game = ( { messageChange, toggleGraph } ) => {
     useEffect(() => {
         if (!!trees.length) {
             dispatch(ageTrees());
+            // For each tree.
             trees.forEach((tree) => {
+                // updated some data on the tree.
                 let updatedTree = { id: tree.id, growth: {id: "trunk_" + getRandomId(), left: 0, right: 0}};
+                // and send it off to the tree.
                 dispatch(growTreeById(updatedTree)); 
             })
             // dispatch(growTrees({id: "trunk_" + getRandomId(), left: 0, right: 0}));
