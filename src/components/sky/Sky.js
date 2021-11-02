@@ -46,7 +46,7 @@ const Sky = () => {
             mode === "PLANTING" && // If we are in the planting mode
            (hour <= 6 || hour >= 20)) // If it is night
         {
-            dispatch(addStar({x: mouse.xRatio, y: mouse.yRatio, id: getRandomId()}));
+            dispatch(addStar({x: mouse.xRatio, y: mouse.yRatio, id: "star_" + getRandomId()}));
             dispatch(updateResource({type: 'stars', amount: -1}));
         }
     }
