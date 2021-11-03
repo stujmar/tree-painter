@@ -23,6 +23,7 @@ import HUD from './HUD';
 import { setSpeed } from '../../redux/clockSlice';
 import Well from '../farm/Well';
 import DebugPanel from '../debug/DebugPanel';
+import { coinFlipRatio } from '../../utils/coinFlip';
 
 
 const Game = ( { messageChange, toggleGraph } ) => {
@@ -72,6 +73,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
             // For each tree.
             trees.forEach((tree) => {
                 // updated some data on the tree.
+                console.log(coinFlipRatio(0.5));
                 let updatedTree = { id: tree.id, growth: {id: "trunk_" + getRandomId(), left: 0, right: 0}};
                 // and send it off to the tree.
                 dispatch(growTreeById(updatedTree)); 
