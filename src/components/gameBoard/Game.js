@@ -72,11 +72,14 @@ const Game = ( { messageChange, toggleGraph } ) => {
             dispatch(ageTrees());
             // For each tree.
             trees.forEach((tree) => {
-                // updated some data on the tree.
-                console.log(coinFlipRatio(0.5));
-                let updatedTree = { id: tree.id, growth: {id: "trunk_" + getRandomId(), left: 0, right: 0}};
-                // and send it off to the tree.
-                dispatch(growTreeById(updatedTree)); 
+                if (coinFlipRatio(0.5)) {
+                    // updated some data on the tree.
+                    let updatedTree = { id: tree.id, growth: {id: "trunk_" + getRandomId(), left: 0, right: 0}};
+                    // and send it off to the tree.
+                    dispatch(growTreeById(updatedTree)); 
+                } else {
+                    console.log("no growth today");
+                }
             })
             // dispatch(growTrees({id: "trunk_" + getRandomId(), left: 0, right: 0}));
         }
