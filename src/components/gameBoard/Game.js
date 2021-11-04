@@ -27,6 +27,8 @@ import { coinFlipRatio } from '../../utils/coinFlip';
 
 
 const Game = ( { messageChange, toggleGraph } ) => {
+    const MAX_TREE_HEIGHT = 15;
+
     const [ drawTrees, setDrawTrees ] = useState([]);
     const [ hasLoaded, setHasLoaded ] = useState(false);
 
@@ -72,7 +74,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
             dispatch(ageTrees());
             // For each tree.
             trees.forEach((tree) => {
-                if (coinFlipRatio(0.5)) {
+                if (coinFlipRatio(0.5) && tree.growth.length <= MAX_TREE_HEIGHT) {
                     // updated some data on the tree.
                     let updatedTree = { id: tree.id, growth: {id: "trunk_" + getRandomId(), left: 0, right: 0}};
                     // and send it off to the tree.
