@@ -13,7 +13,7 @@ import {
     setGrassLoaded,
     toggleDebug
     } from '../../redux/gameSlice';
-import { addTree, resetTrees, ageTrees, selectTrees, growTreeById} from '../../redux/treeSlice';
+import { addTree, addBranch, resetTrees, ageTrees, selectTrees, growTreeById} from '../../redux/treeSlice';
 import { resetStars } from '../../redux/skySlice';
 import { selectHour } from '../../redux/hourSlice';
 
@@ -84,7 +84,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                     let growthIndex = getRandomInt(0, tree.growth.length - 1);
                     let growthSide = coinFlipRatio(0.5) ? "left" : "right";
                     let growthProfile = {treeId: tree.id, growthIndex: growthIndex, growthSide: growthSide};
-                    console.log("no growth today", growthProfile);
+                    dispatch(addBranch(growthProfile));
                 }
             })
             // dispatch(growTrees({id: "trunk_" + getRandomId(), left: 0, right: 0}));

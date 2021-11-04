@@ -28,7 +28,7 @@ export const treeSlice = createSlice({
             // payload = {treeId: string, growthIndex: string, growthSide: string}
             // find the tree with the id
             const tree = state.trees.find(tree => tree.id === action.payload.treeId);
-            console.log(tree, "didn't grow this hour");
+            console.log(action.payload, "didn't grow this hour");
             if (action.payload.side === 'left') {
             // add branch to left side of growth of given id
             } else {
@@ -52,7 +52,8 @@ export const treeSlice = createSlice({
 });
 
 export const { 
-    addTree, 
+    addTree,
+    addBranch,
     removeTree, 
     resetTrees, 
     ageTrees, 
