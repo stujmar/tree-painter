@@ -24,11 +24,6 @@ export const treeSlice = createSlice({
                 return tree.age < 80 ? {...tree, age: tree.age + 1} : tree
             })
         },
-        growTrees: (state, action) => {
-            state.trees = state.trees.map(tree => {
-                return tree.growth.length < 40 && tree.age < 80 ? {...tree, growth: tree.growth.concat(action.payload)} : tree;
-            })
-        },
         growTreeById: (state, action) => {
             state.trees = state.trees.map(tree => {
                 return tree.id !== action.payload.id ? tree : {...tree, growth: tree.growth.concat(action.payload.growth)}; 
