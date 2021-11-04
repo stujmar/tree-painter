@@ -80,7 +80,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                     // and send it off to the tree.
                     dispatch(growTreeById(updatedTree)); 
                 } else {
-                    let growthProfile = {treeId: "", growthId: "", growthSide: ""};
+                    let growthProfile = {treeId: tree.id, growthId: "", growthSide: ""};
                     console.log("no growth today", growthProfile);
                 }
             })
