@@ -24,6 +24,7 @@ import { setSpeed } from '../../redux/clockSlice';
 import Well from '../farm/Well';
 import DebugPanel from '../debug/DebugPanel';
 import { coinFlipRatio } from '../../utils/coinFlip';
+import { getRandomInt } from '../../utils/getRandomInt';
 
 
 const Game = ( { messageChange, toggleGraph } ) => {
@@ -80,7 +81,8 @@ const Game = ( { messageChange, toggleGraph } ) => {
                     // and send it off to the tree.
                     dispatch(growTreeById(updatedTree)); 
                 } else {
-                    let growthProfile = {treeId: tree.id, growthId: "", growthSide: ""};
+                    let growthIndex = getRandomInt(0, tree.growth.length - 1);
+                    let growthProfile = {treeId: tree.id, growthIndex: growthIndex, growthSide: ""};
                     console.log("no growth today", growthProfile);
                 }
             })
