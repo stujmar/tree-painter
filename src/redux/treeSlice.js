@@ -24,6 +24,16 @@ export const treeSlice = createSlice({
                 return tree.age < 80 ? {...tree, age: tree.age + 1} : tree
             })
         },
+        addBranch: (state, action) => {
+            // find the tree with the id
+            const tree = state.trees.find(tree => tree.id === action.payload.treeId);
+            console.log(tree);
+            if (action.payload.side === 'left') {
+            // add branch to left side of growth of given id
+            } else {
+            // add branch to right side of growth of given id
+            }
+        },
         growTreeById: (state, action) => {
             state.trees = state.trees.map(tree => {
                 return tree.id !== action.payload.id ? tree : {...tree, growth: tree.growth.concat(action.payload.growth)}; 
