@@ -82,7 +82,8 @@ const Game = ( { messageChange, toggleGraph } ) => {
                     dispatch(growTreeById(updatedTree)); 
                 } else {
                     let growthIndex = getRandomInt(0, tree.growth.length - 1);
-                    let growthProfile = {treeId: tree.id, growthIndex: growthIndex, growthSide: ""};
+                    let growthSide = coinFlipRatio(0.5) ? "left" : "right";
+                    let growthProfile = {treeId: tree.id, growthIndex: growthIndex, growthSide: growthSide};
                     console.log("no growth today", growthProfile);
                 }
             })
