@@ -1,4 +1,4 @@
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     trees: [],
@@ -28,7 +28,7 @@ export const treeSlice = createSlice({
             // payload = {treeId: string, growthIndex: string, growthSide: string}
             state.trees = state.trees.map(_tree => { 
                 if (_tree.id === action.payload.treeId) {
-                    let oldGrowth = _tree.growth;
+                    let oldGrowth = [..._tree.growth];
                     if (action.payload.growthSide === 'left') {
                         oldGrowth[action.payload.growthIndex].left++;
                     } else {
