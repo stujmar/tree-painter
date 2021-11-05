@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
+    sandboxMode: true,
     mode: "PLANTING",
     isDebugActive: false,
     grassLoaded: {
@@ -90,5 +91,6 @@ export const selectMode = (state) => state.game.mode;
 export const selectMouse = (state) => state.game.mouse;
 export const selectResources = (state) => state.game.resources;
 export const selectGrassLoaded = (state) => state.game.grassLoaded;
+export const selectSandboxMode = (state) => state.game.sandboxMode;
 
 export default gameSlice.reducer;

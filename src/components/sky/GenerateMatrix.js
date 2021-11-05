@@ -18,7 +18,6 @@ const GenerateMatrix = ({height, width}) => {
       let matrix = document.getElementById('matrix');
       let matrixWidth = !!matrix ? matrix.clientWidth : "";
       setRowCount(Math.floor(matrixWidth/9));
-      console.log('onload');
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     

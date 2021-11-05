@@ -70,7 +70,6 @@ const Graph = () => {
       setXCount(value);
       setYCount(value);
     }
-    console.log(name, value);
   }
 
   function toggleLock() {
