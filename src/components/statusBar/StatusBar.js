@@ -3,7 +3,7 @@ import AcornIcon from './AcornIcon';
 import StarIcon from './StarIcon';
 import WaterIcon from './WaterIcon';
 import {useSelector} from 'react-redux';
-import {selectResources} from '../../redux/gameSlice';
+import {selectResources, selectSandboxMode } from '../../redux/gameSlice';
 import {selectDay} from '../../redux/daySlice';
 import {getSeason} from '../../utils/getSeason';
 import {useDispatch} from 'react-redux';
@@ -12,10 +12,12 @@ import {updateResource} from '../../redux/gameSlice';
 const StatusBar = () => {
 
     let day = useSelector(selectDay);
+    let isSandboxMode = useSelector(selectSandboxMode);
     let { seeds, water, stars} = useSelector(selectResources);
     let dispatch = useDispatch();
 
     const addAcorn = () => {
+        console.log(isSandboxMode);
         dispatch(updateResource({type: 'seeds', amount: 1}));
     }
 
