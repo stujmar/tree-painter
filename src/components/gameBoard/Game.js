@@ -75,13 +75,13 @@ const Game = ( { messageChange, toggleGraph } ) => {
             dispatch(ageTrees());
             // For each tree.
             trees.forEach((tree) => {
-                growTrees(tree);
+                growTree(tree);
             })
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[hour])
 
-    function growTrees(tree) {
+    function growTree(tree) {
         if (coinFlipRatio(0.5) && tree.growth.length <= MAX_TREE_HEIGHT) {
             // updated some data on the tree.
             let updatedTree = { id: tree.id, growth: {id: "trunk_" + getRandomId(), left: 0, right: 0}};
@@ -125,7 +125,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
     }
 
     const handleWater = (treeData) => {
-        console.log('watering', treeData);
+        growTree(treeData);
     }
 
     const plant = (e) => {
