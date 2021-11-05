@@ -18,7 +18,7 @@ const GraphPanel = ({toggleGraph}) => {
         //     <div className="w-24 h-24 border bg-white"></div>
         // </div>
         <div className="absolute inset-0 bg-red-500 w-full h-screen z-50">
-            <div className="relative w-full h-full pt-48 bg-gradient-to-b from-lime-800 to-lime-500">
+            <div className="relative w-full h-full pt-32 bg-gradient-to-b from-lime-800 to-lime-500">
                 <button
                     className="fixed bg-amber-100 hover:bg-amber-200 focus:outline-none right-2 top-2 rounded-full z-50 opacity-100"
                     onClick={toggleGraph}>

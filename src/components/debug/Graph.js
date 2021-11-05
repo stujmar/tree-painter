@@ -84,6 +84,9 @@ const Graph = () => {
 
   return (
     <div>
+    <div className="w-96 mx-auto mb-2 comfortaa font-bold text-amber-100">
+      trees: {trees.length}
+    </div>
       <div className="w-96 h-96 bg-amber-100 mx-auto text-center relative shadow-lg">
         {verticalLines}
         {horizontalLines}
