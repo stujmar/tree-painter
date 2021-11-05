@@ -29,11 +29,12 @@ export const treeSlice = createSlice({
             state.trees = state.trees.map(_tree => { 
                 if (_tree.id === action.payload.treeId) {
                     let oldGrowth = _tree.growth;
-
-                    oldGrowth.length  ? console.log(current(oldGrowth[action.payload.growthIndex].left)) :
-                    console.log('no length yet')
-                    // let newGrowth = oldGrowth[action.payload.growthIndex][action.payload.growthSide]++;
-                    // _tree = {..._tree, growth: newGrowth }
+                    if (action.payload.growthSide === 'left') {
+                        oldGrowth[action.payload.growthIndex].left++;
+                    } else {
+                        oldGrowth[action.payload.growthIndex].right++;
+                    }
+                    _tree = {..._tree, growth: oldGrowth }
                     return _tree;
                 } else {
                     return _tree;
