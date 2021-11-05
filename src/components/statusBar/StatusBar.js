@@ -18,7 +18,9 @@ const StatusBar = () => {
 
     const addResource = (resourceType) => {
         console.log(isSandboxMode);
-        dispatch(updateResource({type: resourceType, amount: 1}));
+        if (isSandboxMode) {
+            dispatch(updateResource({type: resourceType, amount: 1}));
+        }
     }
 
     return (
