@@ -124,8 +124,8 @@ const Game = ( { messageChange, toggleGraph } ) => {
         }
     }
 
-    const handleWater = () => {
-        console.log('watering');
+    const handleWater = (treeData) => {
+        console.log('watering', treeData);
     }
 
     const plant = (e) => {
