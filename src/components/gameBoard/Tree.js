@@ -26,7 +26,7 @@ const Tree = ({treeData}) => {
     useEffect(() => {
         setTrunks(treeData.growth.map((trunk) => {
             return <Trunk key={trunk.id} trunkData={trunk} />
-        }))
+        }).reverse()); // hacky fix this in the treeSlice
     },[treeData])
 
     return (
