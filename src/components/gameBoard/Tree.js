@@ -6,7 +6,7 @@ import { removeTreeById } from '../../redux/treeSlice';
 import Trunk from './Trunk';
 import Canopy from './Canopy';
 
-const Tree = ({treeData}) => {
+const Tree = ({treeData, onWater }) => {
 
     const dispatch = useDispatch();
     const [ trunks, setTrunks ] = useState([]);
@@ -19,6 +19,7 @@ const Tree = ({treeData}) => {
             dispatch(removeTreeById(id)); 
             dispatch(updateResource({type: "seeds", amount: 1}));
         } else if (mode === "WATERING" && resources.water > 0) {
+            onWater()
             dispatch(updateResource({type: 'water', amount: -1}));
         }
     };

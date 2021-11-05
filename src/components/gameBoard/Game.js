@@ -97,7 +97,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
             return a.y - b.y
         }); // frozen in strict mode?
         setDrawTrees(sortedTrees.map(tree => {
-            return <Tree key={tree.id} treeData={tree} />
+            return <Tree key={tree.id} treeData={tree} onWater={handleWater} />
         }));
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -119,6 +119,10 @@ const Game = ( { messageChange, toggleGraph } ) => {
         if (trees.length === 0 && mode === "CHOPPING") {
             messageChange(messageCenter.no_trees);
         }
+    }
+
+    const handleWater = () => {
+        console.log('watering');
     }
 
     const plant = (e) => {
