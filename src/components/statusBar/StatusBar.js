@@ -16,18 +16,18 @@ const StatusBar = () => {
     let { seeds, water, stars} = useSelector(selectResources);
     let dispatch = useDispatch();
 
-    const addAcorn = () => {
+    const addResource = (resourceType) => {
         console.log(isSandboxMode);
-        dispatch(updateResource({type: 'seeds', amount: 1}));
+        dispatch(updateResource({type: resourceType, amount: 1}));
     }
 
     return (
         <div className={`w-full comfortaa ${getSeason(day).dark}`}>
             {/* <div className="grid grid-cols-3 max-w-7xl mx-auto justify-start items-top py-1 w-max"> */}
             <div className="flex pl-3 mx-auto justify-start items-top py-1 justify-start gap-3">
-                <button className="focus:outline-none" onClick={() => addAcorn()}><AcornIcon amount={seeds} color={getSeason(day).text} /></button>
-                <WaterIcon amount={water} color={getSeason(day).text}/>
-                <StarIcon amount={stars} color={getSeason(day).text}/>
+                <button className="focus:outline-none" onClick={() => addResource('seeds')}><AcornIcon amount={seeds} color={getSeason(day).text} /></button>
+                <button className="focus:outline-none" onClick={() => addResource('water')}><WaterIcon amount={water} color={getSeason(day).text}/></button>
+                <button className="focus:outline-none" onClick={() => addResource('stars')}><StarIcon amount={stars} color={getSeason(day).text}/></button>
             </div>
         </div>
     )
