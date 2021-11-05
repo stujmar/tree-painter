@@ -80,7 +80,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                     let updatedTree = { id: tree.id, growth: {id: "trunk_" + getRandomId(), left: 0, right: 0}};
                     // and send it off to the tree.
                     dispatch(growTreeById(updatedTree)); 
-                } else if (tree.growth.length > 2) {
+                } else if (tree.growth.length > 2 && tree.growth.length <= MAX_TREE_HEIGHT) {
                     let growthIndex = getRandomInt(0, tree.growth.length - 1);
                     let growthSide = coinFlipRatio(0.5) ? "left" : "right";
                     let growthProfile = {treeId: tree.id, growthIndex: growthIndex, growthSide: growthSide};
