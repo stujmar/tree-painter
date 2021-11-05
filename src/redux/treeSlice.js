@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, current } from '@reduxjs/toolkit';
 
 const initialState = {
     trees: [],
@@ -26,14 +26,19 @@ export const treeSlice = createSlice({
         },
         addBranch: (state, action) => {
             // payload = {treeId: string, growthIndex: string, growthSide: string}
-            // find the tree with the id
-            const tree = state.trees.find(tree => tree.id === action.payload.treeId);
-            console.log(action.payload, tree);
-            if (action.payload.side === 'left') {
-            // add branch to left side of growth of given id
-            } else {
-            // add branch to right side of growth of given id
-            }
+            state.trees = state.trees.map(_tree => { 
+                if (_tree.id === action.payload.treeId) {
+                    let oldGrowth = _tree.growth;
+
+                    oldGrowth.length  ? console.log(current(oldGrowth[action.payload.growthIndex].left)) :
+                    console.log('no length yet')
+                    // let newGrowth = oldGrowth[action.payload.growthIndex][action.payload.growthSide]++;
+                    // _tree = {..._tree, growth: newGrowth }
+                    return _tree;
+                } else {
+                    return _tree;
+                }
+            })
         },
         growTreeById: (state, action) => {
             state.trees = state.trees.map(tree => {
