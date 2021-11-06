@@ -12,7 +12,7 @@ const Tree = ({treeData, onWater }) => {
     const dispatch = useDispatch();
     const [ trunks, setTrunks ] = useState([]);
     let canopyColor = getSeason(treeData.birthDay).canopy;
-    let seedCrop = treeData.age === 0 ? "overflow-hidden" : "overflow-visible";
+    let seedCrop = treeData.growth.length === 0 ? "overflow-hidden" : "overflow-visible";
     let mode = useSelector(selectMode);
     let resources = useSelector(selectResources);
 
@@ -47,10 +47,10 @@ const Tree = ({treeData, onWater }) => {
             <div className={`w-full h-full relative ${seedCrop}`}>
                 <div className="flex flex-col-reverse items-center absolute bottom-0">
                         {trunks}
-                        <Canopy age={treeData.age} color={canopyColor} />
+                        <Canopy age={treeData.growth.length} color={canopyColor} />
                     {/* <div className={`rounded-full ${treeData.age <= 2 ? '-ml-1 h-6 w-6' : '-ml-2 h-8 w-8'} bg-green-300 ${treeData.age === 0 ? "hidden" : ""}`}></div> */}
                 </div>
-                <div className={`bg-orange-500 absolute -bottom-2 left-1 rounded-2xl h-4 w-4 ${treeData.age > 0 ? "hidden" : ""}`}></div>
+                <div className={`bg-orange-500 absolute -bottom-2 left-1 rounded-2xl h-4 w-4 ${treeData.growth.length > 0 ? "hidden" : ""}`}></div>
             </div>
         </button>
     )
