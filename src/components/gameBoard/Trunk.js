@@ -1,5 +1,4 @@
 import React from 'react';
-import { getSeason } from '../../utils/getSeason';
 
 const Trunk = ({trunkData, color}) => {
 
@@ -11,7 +10,6 @@ const Trunk = ({trunkData, color}) => {
             return base + (branchLength)
         }
     }
-
 
     return (
         <div className="w-10 h-2 -ml-2">

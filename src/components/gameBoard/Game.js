@@ -26,8 +26,6 @@ import Well from '../farm/Well';
 import DebugPanel from '../debug/DebugPanel';
 import { coinFlipRatio } from '../../utils/coinFlip';
 import { getRandomInt } from '../../utils/getRandomInt';
-import { getSeason } from '../../utils/getSeason';
-
 
 const Game = ( { messageChange, toggleGraph } ) => {
     const MAX_TREE_HEIGHT = 15;
