@@ -15,6 +15,7 @@ const Tree = ({treeData, onWater }) => {
     let seedCrop = treeData.growth.length === 0 ? "overflow-hidden" : "overflow-visible";
     let mode = useSelector(selectMode);
     let resources = useSelector(selectResources);
+    let trunkWidth = 16;
 
     const handleClick = (id) => {
         if (mode === "CHOPPING") {
@@ -29,7 +30,7 @@ const Tree = ({treeData, onWater }) => {
     useEffect(() => {
         setTrunks(treeData.growth.map((trunk) => {
             return <Trunk key={trunk.id} color={canopyColor} trunkData={trunk} />
-        }).reverse()); // hacky fix this in the treeSlice
+        }));
     },[treeData, canopyColor])
 
     return (
@@ -39,18 +40,22 @@ const Tree = ({treeData, onWater }) => {
             style={{
                 left: `${treeData.x}%`, 
                 top: `${treeData.y}%`, 
-                height: `24px`,
-                width: `40px`,
-                overflow: {seedCrop}
+                overflow: {seedCrop},
+                width: "20px",
+                height: "20px",
                 }}
             >
-            <div className={`w-full h-full relative ${seedCrop}`}>
-                <div className="flex flex-col-reverse items-center absolute bottom-0">
+            <div className={`bg-orange-500 absolute semi-circle rounded-2xl h-4 w-4 ${treeData.growth.length > 0 ? "hidden" : ""}`}></div>
+            <div 
+            style={{width: trunkWidth}}
+            className={`relative mx-auto ${seedCrop}`}>
+                <div 
+                    className="flex flex-col-reverse items-center mx-auto absolute bottom-0">
+                    <div className="relative w-100 h-100">
                         {trunks}
-                        <Canopy age={treeData.growth.length} color={canopyColor} />
-                    {/* <div className={`rounded-full ${treeData.age <= 2 ? '-ml-1 h-6 w-6' : '-ml-2 h-8 w-8'} bg-green-300 ${treeData.age === 0 ? "hidden" : ""}`}></div> */}
+                        <Canopy height={treeData.growth.length} color={canopyColor} />
+                    </div>
                 </div>
-                <div className={`bg-orange-500 absolute -bottom-2 left-1 rounded-2xl h-4 w-4 ${treeData.growth.length > 0 ? "hidden" : ""}`}></div>
             </div>
         </button>
     )
