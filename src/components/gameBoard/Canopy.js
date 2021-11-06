@@ -10,8 +10,10 @@ const Canopy = ({age}) => {
             return <div style={{zIndex: 50}} className={`rounded-full -ml-2 -mb-1 h-7 w-7 bg-green-300`}></div>
         case 3:
             return <div style={{zIndex: 50}} className={`rounded-full -ml-2 -mb-1 h-8 w-8 bg-green-300`}></div>
-        default:
+        case 4:
             return <div style={{zIndex: 50}} className={`rounded-full -ml-2 -mb-1 h-9 w-9 bg-green-300`}></div>
+        default:
+            return <div style={{zIndex: 50}} className={`rounded-full -ml-2 -mb-1 h-10 w-10 bg-green-300`}></div>
     }
 }
 
