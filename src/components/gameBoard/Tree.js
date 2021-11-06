@@ -21,7 +21,7 @@ const Tree = ({treeData, onWater }) => {
         if (mode === "CHOPPING") {
             dispatch(removeTreeById(id)); 
             dispatch(updateResource({type: "seeds", amount: 1}));
-        } else if (mode === "WATERING" && resources.water > 0) {
+        } else if (mode === "WATERING" && resources.water > 0 && treeData.growth.length < 15) {
             onWater(treeData)
             dispatch(updateResource({type: 'water', amount: -1}));
         }

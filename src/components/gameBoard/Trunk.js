@@ -2,7 +2,7 @@ import React from 'react';
 
 const Trunk = ({trunkData, color}) => {
 
-    let trunkWidth = 20
+    // let trunkWidth = 20
 
     function returnBranchWidth(branchLength) {
         let base = 8;
