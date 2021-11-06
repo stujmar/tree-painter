@@ -5,11 +5,13 @@ import { removeTreeById } from '../../redux/treeSlice';
 
 import Trunk from './Trunk';
 import Canopy from './Canopy';
+import { getSeason } from '../../utils/getSeason';
 
 const Tree = ({treeData, onWater }) => {
 
     const dispatch = useDispatch();
     const [ trunks, setTrunks ] = useState([]);
+    let canopyColor = getSeason(treeData.birthDay).light;
     let seedCrop = treeData.age === 0 ? "overflow-hidden" : "overflow-visible";
     let mode = useSelector(selectMode);
     let resources = useSelector(selectResources);
@@ -26,9 +28,9 @@ const Tree = ({treeData, onWater }) => {
 
     useEffect(() => {
         setTrunks(treeData.growth.map((trunk) => {
-            return <Trunk key={trunk.id} trunkData={trunk} />
+            return <Trunk key={trunk.id} color={canopyColor} trunkData={trunk} />
         }).reverse()); // hacky fix this in the treeSlice
-    },[treeData])
+    },[treeData, canopyColor])
 
     return (
         <button
@@ -45,7 +47,7 @@ const Tree = ({treeData, onWater }) => {
             <div className={`w-full h-full relative ${seedCrop}`}>
                 <div className="flex flex-col-reverse items-center absolute bottom-0">
                         {trunks}
-                        <Canopy age={treeData.age} />
+                        <Canopy age={treeData.age} color={canopyColor} />
                     {/* <div className={`rounded-full ${treeData.age <= 2 ? '-ml-1 h-6 w-6' : '-ml-2 h-8 w-8'} bg-green-300 ${treeData.age === 0 ? "hidden" : ""}`}></div> */}
                 </div>
                 <div className={`bg-orange-500 absolute -bottom-2 left-1 rounded-2xl h-4 w-4 ${treeData.age > 0 ? "hidden" : ""}`}></div>

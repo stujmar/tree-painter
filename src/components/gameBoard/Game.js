@@ -16,6 +16,7 @@ import {
 import { addTree, addBranch, resetTrees, ageTrees, selectTrees, growTreeById} from '../../redux/treeSlice';
 import { resetStars } from '../../redux/skySlice';
 import { selectHour } from '../../redux/hourSlice';
+import { selectDay } from '../../redux/daySlice';
 
 import Sky from '../sky/Sky';
 import Tree from './Tree';
@@ -25,6 +26,7 @@ import Well from '../farm/Well';
 import DebugPanel from '../debug/DebugPanel';
 import { coinFlipRatio } from '../../utils/coinFlip';
 import { getRandomInt } from '../../utils/getRandomInt';
+import { getSeason } from '../../utils/getSeason';
 
 
 const Game = ( { messageChange, toggleGraph } ) => {
@@ -34,6 +36,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
     const [ hasLoaded, setHasLoaded ] = useState(false);
 
     let hour = useSelector(selectHour);
+    let day = useSelector(selectDay);
     let mode = useSelector(selectMode);
     let trees = useSelector(selectTrees);
     let mouse = useSelector(selectMouse);
@@ -135,6 +138,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
             let newId = "tree_" + getRandomId();
             dispatch( addTree({
                 id: newId,
+                birthDay: day,
                 x: parseInt((mouse.x/grass.clientWidth* 100).toFixed()),
                 y: parseInt((mouse.y/grass.clientHeight * 100).toFixed()),
                 age: 0,
