@@ -5,7 +5,7 @@ import { selectHour } from '../../redux/hourSlice';
 import { selectSpeed } from '../../redux/clockSlice';
 import { addStar, selectStars } from '../../redux/skySlice';
 
-import GenerateStatic from './GenerateStatic';
+// import GenerateStatic from './GenerateStatic';
 import { getRandomId } from '../../utils/getRandomId';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -68,7 +68,7 @@ const Sky = () => {
             onMouseMove={(e) => handleMouseMove(e)}
             className="z-0 mx-auto lg:mr-auto h-full bg-blue-400 relative absolute w-full overflow-hidden focus:outline-none">
             {/* <div className="absolute w-screen transition" style={ hour <== 6 && hour >== 16 ? {transform: "translateY(200px)"} : {transform: "translateY(0px)"}}> */}
-            <GenerateStatic isPaused= {speed === 123456789 ? true : false} />
+            {/* <GenerateStatic isPaused= {speed === 123456789 ? true : false} /> */}
             <div className={`absolute w-screen transition ${speed === 1000 ? 'duration-slow' : 'duration-2000'}`} style={sun}>
                 <div className="w-20 h-20 bg-yellow-200 shadow-glow rounded-full mx-auto">
 

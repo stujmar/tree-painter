@@ -15,7 +15,7 @@ const Tree = ({treeData, onWater }) => {
     let seedCrop = treeData.growth.length === 0 ? "overflow-hidden" : "overflow-visible";
     let mode = useSelector(selectMode);
     let resources = useSelector(selectResources);
-    let trunkWidth = 16;
+    let trunkWidth = trunkGirth();
 
     const handleClick = (id) => {
         if (mode === "CHOPPING") {
@@ -27,10 +27,21 @@ const Tree = ({treeData, onWater }) => {
         }
     };
 
+    function trunkGirth() {
+        if (treeData.age <= 5) {
+            return 5
+        } else if (treeData.age > 80) {
+            return 20
+        } else {
+        return 5 + (treeData.age/4)
+        }
+    }
+
     useEffect(() => {
         setTrunks(treeData.growth.map((trunk) => {
-            return <Trunk key={trunk.id} color={canopyColor} trunkData={trunk} />
+            return <Trunk key={trunk.id} color={canopyColor} trunkData={trunk} girth={trunkWidth} />
         }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[treeData, canopyColor])
 
     return (
@@ -45,15 +56,14 @@ const Tree = ({treeData, onWater }) => {
                 height: "20px",
                 }}
             >
-            <div className={`bg-orange-500 absolute semi-circle rounded-2xl h-4 w-4 ${treeData.growth.length > 0 ? "hidden" : ""}`}></div>
+            <div className={`bg-orange-500 absolute -bottom-3 semi-circle rounded-2xl h-4 w-4 ${treeData.growth.length > 0 ? "hidden" : ""}`}></div>
             <div 
-            style={{width: trunkWidth}}
-            className={`relative mx-auto ${seedCrop}`}>
+            className={`relative h-full mx-auto`} style={{width: trunkWidth}}>
                 <div 
                     className="flex flex-col-reverse items-center mx-auto absolute bottom-0">
                     <div className="relative w-100 h-100">
                         {trunks}
-                        <Canopy height={treeData.growth.length} color={canopyColor} />
+                        <Canopy height={treeData.growth.length} color={canopyColor} girth={trunkWidth} />
                     </div>
                 </div>
             </div>
