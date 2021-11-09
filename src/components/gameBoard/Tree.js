@@ -28,12 +28,14 @@ const Tree = ({treeData, onWater }) => {
     };
 
     function trunkGirth() {
-        if (treeData.age <= 5) {
-            return 5
-        } else if (treeData.age > 80) {
+        let girth = (treeData.age - treeData.growth.length)/2;
+        console.log(girth)
+        if (girth < 6) {
+            return 6
+        } else if (girth > 20) {
             return 20
         } else {
-        return 5 + (treeData.age/4)
+        return girth
         }
     }
 
