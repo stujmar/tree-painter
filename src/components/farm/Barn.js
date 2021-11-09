@@ -1,9 +1,15 @@
 import React from 'react';
 
 const Barn = () => {
+
+    let barnStyle = {
+        transform: "translateY(75px)"
+    }
+
+
     return (
         <div className="absolute bottom-0 left-0 z-50">
-        <div className="">  
+        <div className="transition" style={barnStyle}>  
             <svg width="150" height="75" viewBox="0 0 150 75" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M126.648 74.9844H121.559C121.559 74.9844 121.741 69.0072 125.286 68.2123C127.9 67.6273 130.124 68.5003 130.373 68.708C130.373 68.708 130.373 62.8535 135.734 62.4561C141.095 62.0587 142.019 66.3479 142.019 66.3479C142.019 66.3479 144.226 64.9591 146.314 67.1428C148.402 69.3265 147.395 71.5079 147.395 71.5079C148.038 71.8689 148.601 72.3646 149.048 72.9632C149.494 73.5619 149.815 74.2503 149.989 74.9844H126.648Z" fill="#498E1C"/>
                 <path d="M83.5738 28.5308H11.8014V74.942H83.5738V28.5308Z" fill="#C62626"/>
