@@ -9,7 +9,7 @@ const Barn = () => {
 
 
     let barnStyle = {
-        transform: trees.length >= 5 ? "" : "translateY(75px)"
+        transform: trees.length >= 15 ? "" : "translateY(75px)"
     }
 
 
