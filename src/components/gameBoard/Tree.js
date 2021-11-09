@@ -29,7 +29,6 @@ const Tree = ({treeData, onWater }) => {
 
     function trunkGirth() {
         let girth = (treeData.age - treeData.growth.length)/2;
-        console.log(girth)
         if (girth < 6) {
             return 6
         } else if (girth > 20) {
