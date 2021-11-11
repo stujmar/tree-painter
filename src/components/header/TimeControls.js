@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTime, getDate } from '../../utils/dateTimeConverters';
 import { selectDay, setDay } from '../../redux/daySlice';
-import { selectMode } from '../../redux/gameSlice';
 import { selectHour } from '../../redux/hourSlice';
 import { setSpeed, selectSpeed } from '../../redux/clockSlice';
 import { getSeason } from '../../utils/getSeason';
@@ -11,7 +10,6 @@ const TimeControls = () => {
     const day = useSelector(selectDay);
     const hour = useSelector(selectHour);
     const speed = useSelector(selectSpeed);
-    const mode = useSelector(selectMode);
 
     let stop = 123456789;
 
@@ -26,7 +24,8 @@ const TimeControls = () => {
         dispatch(setSpeed(_speed));
     }
 
-    return (    
+    return (
+        <div className="absolute top-0 left-0">
         <div className="flex w-screen justify-between p-3 comfortaa text-lg">
             <div className="flex md:flex-col w-max items-start"> {/* LEFT SECTION */}
                 <div>{getDate(day)}</div>
@@ -111,6 +110,7 @@ const TimeControls = () => {
                 </div>
             </div>
         </div>
+        </div>    
     )
 }
 
