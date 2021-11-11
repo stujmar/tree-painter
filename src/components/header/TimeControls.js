@@ -28,11 +28,6 @@ const TimeControls = () => {
 
     return (    
         <div className="flex w-screen justify-between p-3 comfortaa text-lg">
-            <div className="absolute w-full -mt-4 h-14 rounded-b-lg">
-                <div className="w-max mx-auto h-full bg-white opacity-60 rounded-b-lg">
-                    <div className="p-4"><span className={`font-bold ${getSeason(day).darkText}`}>{mode} MODE</span></div>
-                </div>
-            </div>
             <div className="flex md:flex-col w-max items-start"> {/* LEFT SECTION */}
                 <div>{getDate(day)}</div>
                 <div className="ml-2 md:ml-0">{getTime(hour)}</div>
