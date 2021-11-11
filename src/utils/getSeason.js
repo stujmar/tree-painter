@@ -13,6 +13,7 @@ export function getSeason(day){
                 border: "border-blue-500",
                 light: "bg-blue-400",
                 text: "text-blue-50",
+                darkText: "text-blue-500",
                 canopy: "bg-green-600",
             }
         case "March":
@@ -24,6 +25,7 @@ export function getSeason(day){
                 border: "border-green-500",
                 light: "bg-green-400",
                 text: "text-green-50",
+                darkText: "text-green-500",
                 canopy: "bg-pink-200",
             }
         case "June":
@@ -35,6 +37,7 @@ export function getSeason(day){
                 border: "border-yellow-500",
                 light: "bg-yellow-400",
                 text: "text-yellow-50",
+                darkText: "text-yellow-500",
                 canopy: "bg-green-300",
             }
         case "September":
@@ -46,6 +49,7 @@ export function getSeason(day){
                 border: "border-orange-500",
                 light: "bg-orange-400",
                 text: "text-orange-50",
+                darkText: "text-orange-500",
                 canopy: "bg-yellow-400",
             }
         default:
@@ -54,7 +58,8 @@ export function getSeason(day){
                 dark: "bg-gray-500",
                 border: "border-gray-500",
                 light: "bg-gray-400",
-                text: "text-gray-50"
+                text: "text-gray-50",
+                darkText: "text-gray-500",
             }
     }
 
