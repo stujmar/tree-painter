@@ -23,7 +23,7 @@ const DebugPanel = ( { handleClose }) => {
 
     useEffect(() => {
         setInfoPanels(trees.map((tree) =>
-            <PlantedTreeInfo key={tree.id} x={tree.x} y={tree.y} age={tree.age} id={tree.id}/>
+            <PlantedTreeInfo key={tree.id} tree={tree}/>
         )
             )
     }, [trees])

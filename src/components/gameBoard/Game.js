@@ -137,7 +137,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
             let newId = "tree_" + getRandomId();
             dispatch( addTree({
                 id: newId,
-                birthDay: day,
+                birthday: day,
                 x: parseInt((mouse.x/grass.clientWidth* 100).toFixed()),
                 y: parseInt((mouse.y/grass.clientHeight * 100).toFixed()),
                 age: 0,

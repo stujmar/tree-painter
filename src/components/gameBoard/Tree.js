@@ -11,7 +11,7 @@ const Tree = ({treeData, onWater }) => {
 
     const dispatch = useDispatch();
     const [ trunks, setTrunks ] = useState([]);
-    let canopyColor = getSeason(treeData.birthDay).canopy;
+    let canopyColor = getSeason(treeData.birthday).canopy;
     let seedCrop = treeData.growth.length === 0 ? "overflow-hidden" : "overflow-visible";
     let mode = useSelector(selectMode);
     let resources = useSelector(selectResources);
