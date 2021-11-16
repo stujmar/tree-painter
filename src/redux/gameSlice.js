@@ -28,6 +28,9 @@ export const gameSlice = createSlice({
         toggleDebug: (state) => {
             state.isDebugActive = !state.isDebugActive;
         },
+        setSandbox: (state) => {
+            state.sandboxMode = !state.sandboxMode;
+        },
         setGrassLoaded: (state, action) => {
             state.grassLoaded = action.payload;
         },
