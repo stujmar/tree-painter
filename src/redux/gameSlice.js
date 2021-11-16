@@ -81,6 +81,7 @@ export const gameSlice = createSlice({
 export const {
     setMode, 
     setMouse,
+    setSandbox,
     updateSeeds,
     updateResource,
     resetResource,
