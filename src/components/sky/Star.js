@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { updateResource } from '../../redux/gameSlice';
+import { selectSandboxMode, updateResource } from '../../redux/gameSlice';
 import { selectMode } from '../../redux/gameSlice';
 import { selectHour } from '../../redux/hourSlice';
 import { removeStarById } from '../../redux/skySlice';
@@ -12,6 +12,7 @@ const Star = ({starData}) => {
 
     const [opacity, setOpacity] = useState(1);
 
+    let isSandbox = useSelector(selectSandboxMode);
     let mode = useSelector(selectMode);
     let hour = useSelector(selectHour);
 
@@ -23,7 +24,9 @@ const Star = ({starData}) => {
     const handleStarClick = () => {
         if(mode === 'CHOPPING') {
             dispatch(removeStarById(starData.id));
-            dispatch(updateResource({type: "stars", amount: 1}));
+            if (!isSandbox) {
+                dispatch(updateResource({type: "stars", amount: 1}));
+            }
         }
     }
 

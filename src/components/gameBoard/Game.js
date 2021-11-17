@@ -11,7 +11,8 @@ import {
     setMode, 
     selectResources,
     setGrassLoaded,
-    toggleDebug
+    toggleDebug,
+    selectSandboxMode
     } from '../../redux/gameSlice';
 import { addTree, addBranch, resetTrees, ageTrees, selectTrees, growTreeById} from '../../redux/treeSlice';
 import { resetStars } from '../../redux/skySlice';
@@ -35,6 +36,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
     const [ hasLoaded, setHasLoaded ] = useState(false);
 
     let hour = useSelector(selectHour);
+    let isSandbox = useSelector(selectSandboxMode);
     let day = useSelector(selectDay);
     let mode = useSelector(selectMode);
     let trees = useSelector(selectTrees);
@@ -132,7 +134,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
 
     const plant = (e) => {
         messageChange(messageCenter.first_seed);
-        if (seeds > 0) {
+        if (seeds > 0 || isSandbox) {
             // Set Trees in Redux state.
             let newId = "tree_" + getRandomId();
             dispatch( addTree({
@@ -143,8 +145,9 @@ const Game = ( { messageChange, toggleGraph } ) => {
                 age: 0,
                 growth: []
             }) );
-
-            dispatch(updateSeeds(-1));
+            if (!isSandbox) {
+                dispatch(updateSeeds(-1));
+            }
         }
     }
 

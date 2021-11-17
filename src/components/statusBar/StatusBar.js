@@ -12,12 +12,12 @@ import {updateResource} from '../../redux/gameSlice';
 const StatusBar = () => {
 
     let day = useSelector(selectDay);
-    let isSandboxMode = useSelector(selectSandboxMode);
+    let isSandbox = useSelector(selectSandboxMode);
     let { seeds, water, stars} = useSelector(selectResources);
     let dispatch = useDispatch();
 
     const addResource = (resourceType) => {
-        if (isSandboxMode) {
+        if (!isSandbox) {
             dispatch(updateResource({type: resourceType, amount: 1}));
         }
     }

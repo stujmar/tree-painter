@@ -9,7 +9,7 @@ import { addStar, selectStars } from '../../redux/skySlice';
 import { getRandomId } from '../../utils/getRandomId';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { selectResources, updateResource, selectMode } from '../../redux/gameSlice';
+import { selectResources, updateResource, selectMode, selectSandboxMode } from '../../redux/gameSlice';
 
 const Sky = () => {
 
@@ -21,6 +21,7 @@ const Sky = () => {
     const [sunSet, setSunSet] = useState(0);
     
     let mode = useSelector(selectMode);
+    let isSandbox = useSelector(selectSandboxMode);
     let hour = useSelector(selectHour);
     let speed = useSelector(selectSpeed);
     let stars = useSelector(selectStars);
@@ -47,7 +48,9 @@ const Sky = () => {
            (hour <= 6 || hour >= 20)) // If it is night
         {
             dispatch(addStar({x: mouse.xRatio, y: mouse.yRatio, id: "star_" + getRandomId()}));
-            dispatch(updateResource({type: 'stars', amount: -1}));
+            if (!isSandbox) {
+                dispatch(updateResource({type: 'stars', amount: -1}));
+            }
         }
     }
 

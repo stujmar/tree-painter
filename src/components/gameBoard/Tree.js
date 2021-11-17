@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectResources, updateResource, selectMode } from '../../redux/gameSlice';
+import { selectResources, updateResource, selectMode, selectSandboxMode } from '../../redux/gameSlice';
 import { removeTreeById } from '../../redux/treeSlice';
 
 import Trunk from './Trunk';
@@ -14,16 +14,21 @@ const Tree = ({treeData, onWater }) => {
     let canopyColor = getSeason(treeData.birthday).canopy;
     let seedCrop = treeData.growth.length === 0 ? "overflow-hidden" : "overflow-visible";
     let mode = useSelector(selectMode);
+    let isSandbox = useSelector(selectSandboxMode);
     let resources = useSelector(selectResources);
     let trunkWidth = trunkGirth();
 
     const handleClick = (id) => {
         if (mode === "CHOPPING") {
             dispatch(removeTreeById(id)); 
-            dispatch(updateResource({type: "seeds", amount: 1}));
+            if (!isSandbox) {
+                dispatch(updateResource({type: "seeds", amount: 1}));
+            }
         } else if (mode === "WATERING" && resources.water > 0 && treeData.growth.length < 15) {
             onWater(treeData)
-            dispatch(updateResource({type: 'water', amount: -1}));
+            if (!isSandbox) {
+                dispatch(updateResource({type: 'water', amount: -1}));
+            }
         }
     };
 
