@@ -1,7 +1,7 @@
 import React from 'react';
 
 import TimeControls from './TimeControls';
-import { selectMode } from '../../redux/gameSlice';
+import { selectMode} from '../../redux/gameSlice';
 import { useSelector } from 'react-redux';
 import { selectDay } from '../../redux/daySlice';
 import { getSeason } from '../../utils/getSeason';
