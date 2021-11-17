@@ -18,10 +18,10 @@ const GraphPanel = ({toggleGraph}) => {
                 <div className="relative w-full h-full pt-32 bg-green-500">
                     <button type="button" className={`p-2 block w-max mx-auto rounded focus:outline-none ${isSandbox ? "bg-red-400" : "bg-green-200"}`} onClick={toggleSandbox}>Toggle Sandbox Mode</button>
                     <button
-                        className="fixed bg-amber-100 hover:bg-amber-200 focus:outline-none right-2 top-2 rounded-full z-50 opacity-100"
+                        className="fixed bg-white bg-opacity-0 hover:bg-opacity-30 focus:outline-none left-2 top-2 rounded-full z-50 opacity-100"
                         onClick={toggleGraph}>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-amber-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 fill text-white" fill="none"  viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
                     </button> 
                     <Graph />
