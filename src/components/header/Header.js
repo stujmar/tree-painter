@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TimeControls from './TimeControls';
+import Temp from './Temp';
 import { selectMode} from '../../redux/gameSlice';
 import { useSelector } from 'react-redux';
 import { selectDay } from '../../redux/daySlice';
@@ -19,7 +19,7 @@ const Header = ({message}) => {
                     <div className="p-1 sm:p-4 text-center"><span className={`font-bold ${getSeason(day).darkText}`}>{mode} MODE</span></div>
                 </div>
             </div>
-          <TimeControls />
+          <Temp />
       </header>
     )
 }
