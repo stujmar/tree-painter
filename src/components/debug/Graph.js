@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectTrees } from '../../redux/treeSlice';
+import { getSeason } from '../../utils/getSeason';
 
 const Graph = () => {
   // const dispatch = useDispatch();
@@ -40,7 +41,8 @@ const Graph = () => {
   useEffect(() => {
     if (trees.length > 0) {
       setDots(trees.map((tree) => {
-        return <div key={`dot_${tree.id}`} className="h-3 w-3 rounded-full bg-lime-600 absolute shadow-lg" style={{top: `${tree.y}%`, left: `${tree.x}%`}}></div>
+        let treeStyle = getSeason(tree.birthday);
+        return <div key={`dot_${tree.id}`} className={`h-4 w-4 rounded-full border-2 ${treeStyle.canopy} ${treeStyle.border} absolute shadow`} style={{top: `${tree.y}%`, left: `${tree.x}%`}}></div>
       }))
     }
     }, [trees]);
