@@ -162,7 +162,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
         dispatch(resetResource('water'));
         dispatch(resetResource('stars'));
         dispatch(setSpeed(1000));
-        dispatch(setMode("PLANTING"));
+        dispatch(setMode("NO_MODE"));
     }
 
     return (

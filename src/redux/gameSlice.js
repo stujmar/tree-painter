@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     sandboxMode: false,
-    mode: "PLANTING",
+    mode: "NO_MODE",
     isDebugActive: false,
     grassLoaded: {
         clientHeight: 0,
