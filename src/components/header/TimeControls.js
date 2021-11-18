@@ -5,14 +5,17 @@ import { selectDay } from '../../redux/daySlice';
 import { selectHour } from '../../redux/hourSlice';
 import { setSpeed, selectSpeed } from '../../redux/clockSlice';
 import SeasonControls from './SeasonControls';
+import { selectSandboxMode } from '../../redux/gameSlice';
 const TimeControls = () => {
+    const dispatch = useDispatch();
+
     const day = useSelector(selectDay);
     const hour = useSelector(selectHour);
     const speed = useSelector(selectSpeed);
 
+    let isSandbox = useSelector(selectSandboxMode);
     let stop = 123456789;
 
-    const dispatch = useDispatch();
 
     const changeSpeed = (_speed) => {
         setSpeed(_speed);
@@ -46,7 +49,7 @@ const TimeControls = () => {
                             </svg>
                         </button>
                     </div>
-                    <SeasonControls />
+                    {isSandbox ? <SeasonControls /> : null}
             </div>
         </div>
         </div>    
