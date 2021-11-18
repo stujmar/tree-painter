@@ -11,8 +11,8 @@ const ToggleButton = ({ value, onClick }) => {
         <button type="button" className="focus:outline-none" onClick={handleClick}>
         <div className="w-16 h-8 bg-green-700 shadow-lg rounded-full">
             <div 
-                style={{ transform: `${value ? 'translateX(0)' : 'translateX(32px)'}`,
-                background: `${value ? '#E4E4E7' : '#A3E635'}` }}
+                style={{ transform: `${value ? 'translateX(32px)' : 'translateX(0)'}`,
+                background: `${value ? '#A3E635' : '#E4E4E7'}` }}
                 className="w-8 h-8 focus:outline-none ease-in-out duration-200 shadow-lg transform rounded-full"></div>
         </div>
         </button>
