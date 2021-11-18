@@ -40,7 +40,7 @@ const Graph = () => {
   useEffect(() => {
     if (trees.length > 0) {
       setDots(trees.map((tree) => {
-        return <div className="h-3 w-3 rounded-full bg-lime-600 absolute shadow-lg" style={{top: `${tree.y}%`, left: `${tree.x}%`}}></div>
+        return <div key={`dot_${tree.id}`} className="h-3 w-3 rounded-full bg-lime-600 absolute shadow-lg" style={{top: `${tree.y}%`, left: `${tree.x}%`}}></div>
       }))
     }
     }, [trees]);
