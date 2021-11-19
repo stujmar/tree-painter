@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     sandboxMode: false,
+    message: '',
     mode: "NO_MODE",
     isDebugActive: false,
     grassLoaded: {
@@ -33,6 +34,9 @@ export const gameSlice = createSlice({
         },
         setGrassLoaded: (state, action) => {
             state.grassLoaded = action.payload;
+        },
+        setMessage: (state, action) => {
+            state.message = action.payload;
         },
         setMode: (state, action) => {
             state.mode = action.payload;
@@ -86,10 +90,12 @@ export const {
     updateResource,
     resetResource,
     setGrassLoaded,
-    toggleDebug
+    toggleDebug,
+    setMessage
     } = gameSlice.actions;
 
 export const selectGame = (state) => state.game;
+export const selectMessage = (state) => state.game.message;
 export const selectDebug = (state) => state.game.isDebugActive;
 export const selectMode = (state) => state.game.mode;
 export const selectMouse = (state) => state.game.mouse;
