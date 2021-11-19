@@ -1,8 +1,12 @@
 import React from 'react';
 import {useDispatch, useSelector } from 'react-redux';
 import { updateResource, selectSandboxMode } from '../../redux/gameSlice';
+import { selectTrees } from '../../redux/treeSlice';
+
 const Well = () => {
 
+    let trees = useSelector(selectTrees);
+    let isActive = trees.length >= 5
     let isSandbox = useSelector(selectSandboxMode);
     const dispatch = useDispatch();
 
@@ -12,11 +16,15 @@ const Well = () => {
         }
     };
 
+    let wellStyle = {
+        transform: isActive ? "" : "translateY(75px)"
+    }
+
     return(
         <button 
             onClick={drawWater}
-            className="absolute bottom-0 right-12 z-20 focus:outline-none no-select"
-            style={{zIndex: 10}}
+            style={wellStyle}
+            className={`z-10 absolute bottom-0 right-12 z-20 focus:outline-none no-select${isActive ? " transition duration-2000" : ""}`}
             >
             <svg width="47" height="50" viewBox="0 0 47 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M36.0477 38.0697H11.7827V50H36.0477V38.0697Z" fill="#BF5C49"/>
