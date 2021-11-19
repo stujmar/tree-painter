@@ -2,12 +2,20 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMode, setMode } from '../../redux/gameSlice';
 
-const HUD = () => {
+const HUD = ({onMessageChange}) => {
     const dispatch = useDispatch();
     let mode = useSelector(selectMode);
 
+    const modeMessages = {
+        PLANTING: 'Plant a tree!',
+        WATERING: 'Click a tree to help it grow!',
+        HARVESTING: 'Harvest your first tree!',
+        CHOPPING: 'Click a tree to chop it down!',
+    }
+
 
     const toggleMode = (_mode) => {
+        onMessageChange(modeMessages[_mode]);
         dispatch(setMode(_mode));
     }
 

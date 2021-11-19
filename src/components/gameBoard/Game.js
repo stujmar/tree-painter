@@ -51,7 +51,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
     // } 
 
     const messageCenter = {
-        "welcome": <p><span  className="font-medium">Great! you are in "planting mode" now.</span><br/> Click below to plant a seed.</p>,
+        "welcome": <p><span  className="font-medium">Great! you are in "planting mode".</span><br/> Click below to plant a seed.</p>,
         "first_seed" : "Wow, you are planting now!",
         "first_water" : "Yum that tree was thirsty!",
         "no_seeds" : "Oops all out of seeds",
@@ -188,7 +188,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                                 className="mx-auto bg-green-500 w-full h-72 overflow-hidden"
                                 style={{height: "calc(100vh - 324px)"}}
                                 ></div>
-                        <HUD />
+                        <HUD onMessageChange={messageChange} />
                         <div className="flex flex-row fixed bottom-3 right-3 gap-2" style={{ zIndex: 49 }}>
                             <button 
                                 className="border-4 rounded-lg hover:bg-green-600 border-white z-10 px-1 shadow focus:outline-none"
