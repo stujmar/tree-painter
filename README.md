@@ -1,8 +1,8 @@
-![treeplanter](./readme.png)
+![treelapse](./readme.png)
 
 This project was built in react.
 See a live demo at 
-> [tree-painter-netlify.app](https://tree-painter.netlify.app)
+> [treelapse.netlify.app](https://treelapse.netlify.app)
 
 ## Available Scripts
 
