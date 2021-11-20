@@ -24,7 +24,7 @@ const App = () => {
 
 
   return (
-    <div className="App relative">
+    <div className="relative">
       {graph ? <GraphPanel toggleGraph={toggleGraph}/> : <></>}
       <ClockService />
       {gameMode === "NO_MODE" ? <MessageModal /> : null}

@@ -8,15 +8,15 @@ const ToggleButton = ({ value, onClick }) => {
     }
 
     return (
-        <button type="button" className="focus:outline-none" onClick={handleClick}>
-        <div className="w-16 h-8 bg-green-700 shadow-lg rounded-full">
+        <button type="button" className="focus:outline-none select-none" onClick={handleClick}>
+        <div className="w-16 h-8 bg-green-700 shadow-lg rounded-full select-none">
             <div 
                 style={{ 
-                transform: `${value ? 'translateX(32px)' : 'translateX(0)'}`,
-                WebKitTransform: `${value ? 'translateX(32px)' : 'translateX(0)'}`,
+                transform: `${value ? 'translateX(32px)' : 'translateX(0px)'}`,
+                WebKitTransform: `${value ? 'translateX(32px)' : 'translateX(0px)'}`,
                 background: `${value ? '#A3E635' : '#E4E4E7'}`
                 }}
-                className="w-8 h-8 focus:outline-none ease-in-out duration-200 shadow-lg transform rounded-full"></div>
+                className="w-8 h-8 focus:outline-none ease-in-out duration-200 shadow-lg transform rounded-full select-none"></div>
         </div>
         </button>
     )

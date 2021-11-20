@@ -14,9 +14,8 @@ const GraphPanel = ({toggleGraph}) => {
     }
 
     return (
-        <div className="container mx-auto border">
-            <div className="absolute inset-0 w-full h-screen z-50">
-                <div className="relative w-full h-full pt-10 bg-green-500">
+        <div className="absolute inset-0 z-50">
+                <div className="relative w-full pt-10 bg-green-400">
                     <div className="mx-auto flex justify-center py-4 items-center">
                         <div className="font-bold text-green-800 text-xl comfortaa mr-4">Toggle Sandbox Mode</div>
                         <ToggleButton value={isSandbox} onClick={toggleSandbox} />
@@ -30,7 +29,6 @@ const GraphPanel = ({toggleGraph}) => {
                     </button> 
                     <Graph />
                 </div>
-            </div>
         </div>
     )
 }
