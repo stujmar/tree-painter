@@ -85,15 +85,15 @@ const Graph = () => {
 
   return (
     <div>
-    <div className="w-96 mx-auto mb-2 comfortaa font-bold text-amber-100">
+    <div className="w-80 sm:w-96 mx-auto mb-2 comfortaa font-bold text-amber-100">
       trees: {trees.length}
     </div>
-      <div className="w-96 h-96 bg-amber-100 mx-auto text-center relative shadow-lg">
+      <div className="w-80 sm:w-96 h-80 sm:h-96 bg-amber-100 mx-auto text-center relative shadow-lg">
         {verticalLines}
         {horizontalLines}
         {dots}
       </div>
-      <div className="w-96 mx-auto mt-4 flex">
+      <div className="w-80 sm:w-96 mx-auto mt-4 flex">
       {lockAxis ? <>
         <div className="bg-amber-100 focus:outline-none text-amber-800 font-bold text-right rounded-l px-1">X/Y</div>
           <input 
