@@ -6,11 +6,14 @@ import SeasonControls from './SeasonControls';
 import { selectMode} from '../../redux/gameSlice';
 import { useSelector } from 'react-redux';
 import { selectDay } from '../../redux/daySlice';
+import { selectTrees } from '../../redux/treeSlice';
 import { getSeason } from '../../utils/getSeason';
 import { selectSandboxMode, selectMessage } from '../../redux/gameSlice';
+import { getMilestones } from '../../utils/getMilestones';
 
 const Header = () => {
     let isSandbox = useSelector(selectSandboxMode);
+    let treeCount = useSelector(selectTrees).length;
     const day = useSelector(selectDay);
     const mode = useSelector(selectMode);
     let message = useSelector(selectMessage);
@@ -30,7 +33,7 @@ const Header = () => {
                     <TimeDisplay />
                 </div>
                 <div className="flex flex-col items-end"> {/*RIGHT SECTION*/}
-                    {isSandbox ? <SpeedControls /> : null }
+                    {isSandbox || getMilestones("speed", treeCount ) ? <SpeedControls /> : null }
                     {isSandbox ? <SeasonControls /> : null}
                 </div>
             </div>
