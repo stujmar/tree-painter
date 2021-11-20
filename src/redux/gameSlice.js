@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     sandboxMode: false,
-    message: '',
+    message: 'Message from Redux State',
     mode: "NO_MODE",
     isDebugActive: false,
     grassLoaded: {

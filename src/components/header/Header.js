@@ -7,12 +7,13 @@ import { selectMode} from '../../redux/gameSlice';
 import { useSelector } from 'react-redux';
 import { selectDay } from '../../redux/daySlice';
 import { getSeason } from '../../utils/getSeason';
-import { selectSandboxMode } from '../../redux/gameSlice';
+import { selectSandboxMode, selectMessage } from '../../redux/gameSlice';
 
-const Header = ({message}) => {
+const Header = () => {
     let isSandbox = useSelector(selectSandboxMode);
     const day = useSelector(selectDay);
     const mode = useSelector(selectMode);
+    let message = useSelector(selectMessage);
 
     return (
         <header 
