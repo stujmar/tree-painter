@@ -14,7 +14,7 @@ import { selectResources, updateResource, selectMode, selectSandboxMode } from '
 const Sky = () => {
 
     const dispatch = useDispatch();    
-    const [sun, setSun] = useState({transform: "translateY(-170px)"})
+    const [sun, setSun] = useState({transform: "translateY(-170px)", "WebKitTransform": "translateY(-170px)"})
     const [sky, setSky] = useState({opacity: 0})
     const [mouse, setMouse] = useState({x: 0, y: 0})
     const [drawStars, setDrawStars] = useState([]);
@@ -34,7 +34,11 @@ const Sky = () => {
     }, [stars])
 
     useEffect(() => {
-       setSun(hour <= 6 || hour >= 18 ?  {transform: "translateY(150px)"} : {transform: "translateY(-170px)"});
+       setSun(hour <= 6 || hour >= 18 ?  {
+           transform: "translateY(150px)", "WebKitTransform": "translateY(150px)"
+        } : {
+            transform: "translateY(-170px)", "WebKitTransform": "translateY(-170px)"
+        });
        setSky(hour <= 6 || hour >= 20 ?  {opacity: 1.0} : {opacity: 0});
        setSunSet(hour <= 7 || hour >= 19 ? 1.0 : 0);
     },[hour])

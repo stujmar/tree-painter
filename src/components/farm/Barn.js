@@ -8,7 +8,8 @@ const Barn = () => {
     let isActive = trees.length >= 15
 
     let barnStyle = {
-        transform: isActive ? "" : "translateY(75px)"
+        transform: isActive ? "translateY(0px)" : "translateY(75px)",
+        "WebKitTransform": isActive ? "translateY(0px)" : "translateY(75px)",
     }
 
     const handleBarnClick = () => {
