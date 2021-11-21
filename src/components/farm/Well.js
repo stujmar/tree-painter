@@ -1,12 +1,11 @@
 import React from 'react';
 import {useDispatch, useSelector } from 'react-redux';
 import { updateResource, selectSandboxMode } from '../../redux/gameSlice';
-import { selectTrees } from '../../redux/treeSlice';
+import { getMilestones } from '../../utils/settings';
 
 const Well = () => {
 
-    let trees = useSelector(selectTrees);
-    let isActive = trees.length >= 5
+    let isActive = getMilestones('water');
     let isSandbox = useSelector(selectSandboxMode);
     const dispatch = useDispatch();
 
