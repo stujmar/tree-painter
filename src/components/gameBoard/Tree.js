@@ -17,6 +17,7 @@ const Tree = ({treeData, onWater }) => {
     let isSandbox = useSelector(selectSandboxMode);
     let resources = useSelector(selectResources);
     let trunkWidth = trunkGirth();
+    let isDead = treeData.age === 80;
 
     const handleClick = (id) => {
         if (mode === "HARVEST") {
@@ -45,7 +46,7 @@ const Tree = ({treeData, onWater }) => {
 
     useEffect(() => {
         setTrunks(treeData.growth.map((trunk) => {
-            return <Trunk key={trunk.id} color={canopyColor} trunkData={trunk} girth={trunkWidth} />
+            return <Trunk key={trunk.id} color={canopyColor} isDead={isDead} trunkData={trunk} girth={trunkWidth} />
         }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[treeData, canopyColor])
@@ -69,7 +70,7 @@ const Tree = ({treeData, onWater }) => {
                     className="flex flex-col-reverse items-center mx-auto absolute bottom-0">
                     <div className="relative w-100 h-100">
                         {trunks}
-                        <Canopy height={treeData.growth.length} color={canopyColor} girth={trunkWidth} />
+                        <Canopy height={treeData.growth.length} isDead={isDead} color={canopyColor} girth={trunkWidth} />
                     </div>
                 </div>
             </div>
