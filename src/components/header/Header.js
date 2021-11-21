@@ -9,7 +9,7 @@ import { selectDay } from '../../redux/daySlice';
 import { selectTrees } from '../../redux/treeSlice';
 import { getSeason } from '../../utils/getSeason';
 import { selectSandboxMode, selectMessage } from '../../redux/gameSlice';
-import { getMilestones } from '../../utils/getMilestones';
+import { getMilestones } from '../../utils/settings';
 
 const Header = () => {
     let isSandbox = useSelector(selectSandboxMode);
@@ -34,7 +34,7 @@ const Header = () => {
                 </div>
                 <div className="flex flex-col items-end"> {/*RIGHT SECTION*/}
                     {isSandbox || getMilestones("speed", treeCount ) ? <SpeedControls /> : null }
-                    {isSandbox ? <SeasonControls /> : null}
+                    {isSandbox || getMilestones("seasons", treeCount ) ? <SeasonControls /> : null}
                 </div>
             </div>
         </div>    

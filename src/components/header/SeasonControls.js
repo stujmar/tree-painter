@@ -13,7 +13,7 @@ const SeasonControls = () => {
   };
 
     return (
-        <div className="mt-3 flex"> {/* SEASON CONTROLS */}
+        <div className="mt-2 flex"> {/* SEASON CONTROLS */}
           <button
               className={`focus:outline-none select-none bg-black p-1 rounded-xl ${getSeason(day).name === 'spring' ? "bg-opacity-10" : 'bg-opacity-0'}`}
               type="button"

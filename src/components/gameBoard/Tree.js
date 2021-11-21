@@ -23,7 +23,7 @@ const Tree = ({treeData, onWater }) => {
         if (mode === "HARVEST") {
             dispatch(removeTreeById(id)); 
             if (isDead) {
-                dispatch(setMessage("You harvested the dead tree!"));
+                dispatch(setMessage("You harvested a dead tree!"));
             }
             if (!isSandbox) {
                 dispatch(updateResource({type: "seeds", amount: 1}));
