@@ -2,7 +2,7 @@ import React from 'react';
 
 const Trunk = ({trunkData, color, girth, isDead}) => {
 
-    let trunkColor = isDead ? "bg-orange-500" : "bg-orange-400";
+    let trunkColor = isDead ? "bg-yellow-600" : "bg-orange-400";
     let isHidden = isDead ? "hidden" : "";
 
     function returnBranchWidth(branchLength) {
