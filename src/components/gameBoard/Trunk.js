@@ -18,7 +18,7 @@ const Trunk = ({trunkData, color, girth, isDead}) => {
 
             <div style={{width: girth}} className="h-2 opacity-100 text-green-100 relative">
             <div className={`h-3 -mt-1 ${trunkColor}`}>
-
+                <div className={`h-full w-6/12 bg-black bg-opacity-10`}></div>
               {trunkData.left ? <div style={{width: trunkData.left*3, zIndex: 0,  transform: "rotate(20deg)", right: girth - 2 }}className="h-1 absolute top-1">
                   <div className="relative w-full h-full">
 
