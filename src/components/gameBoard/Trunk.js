@@ -20,8 +20,9 @@ const Trunk = ({trunkData, color, girth, isDead}) => {
             <div className={`h-3 -mt-1 ${trunkColor}`}>
                 <div className={`h-full w-6/12 bg-black bg-opacity-10`}></div>
               {trunkData.left ? <div style={{width: trunkData.left*3, zIndex: 0,  transform: "rotate(20deg)", right: girth - 2 }}className="h-1 absolute top-1">
+              
                   <div className="relative w-full h-full">
-
+                  <div className="absolute h-0.5 w-full bottom-0 bg-opacity-10 z-10 bg-black"></div>
                   {trunkData.left > 5 ? <div 
                         style={{transform: "rotate(55deg)"}}
                         className={`absolute right-2 -top-1 w-2 h-1 ${trunkColor}`}>
@@ -36,7 +37,7 @@ const Trunk = ({trunkData, color, girth, isDead}) => {
               </div> : null}
               {trunkData.right ? <div style={{width: trunkData.right*3, zIndex: 0, transform: "rotate(-20deg)", left: girth - 2}}className="h-1 absolute top-1">
                 <div className="relative w-full h-full">
-
+                    <div className="absolute h-0.5 w-full bottom-0 bg-opacity-10 z-10 bg-black"></div>
                     {trunkData.right > 5 ? <div 
                         style={{transform: "rotate(-50deg)"}}
                         className={`absolute left-2 -top-1 w-2 h-1 ${trunkColor}`}>
