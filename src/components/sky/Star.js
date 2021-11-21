@@ -22,7 +22,7 @@ const Star = ({starData}) => {
      },[hour])
 
     const handleStarClick = () => {
-        if(mode === 'CHOPPING') {
+        if(mode === 'HARVEST') {
             dispatch(removeStarById(starData.id));
             if (!isSandbox) {
                 dispatch(updateResource({type: "stars", amount: 1}));

@@ -123,7 +123,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
     }
 
     const handleStrayClick = (e) => {
-        if (trees.length === 0 && mode === "CHOPPING") {
+        if (trees.length === 0 && mode === "HARVEST") {
             messageChange(messageCenter.no_trees);
         }
     }

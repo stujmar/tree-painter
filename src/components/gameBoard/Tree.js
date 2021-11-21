@@ -19,7 +19,7 @@ const Tree = ({treeData, onWater }) => {
     let trunkWidth = trunkGirth();
 
     const handleClick = (id) => {
-        if (mode === "CHOPPING") {
+        if (mode === "HARVEST") {
             dispatch(removeTreeById(id)); 
             if (!isSandbox) {
                 dispatch(updateResource({type: "seeds", amount: 1}));

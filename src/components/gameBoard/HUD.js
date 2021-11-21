@@ -34,8 +34,8 @@ const HUD = ({onMessageChange}) => {
                 </svg>
             </button>
             <button
-                className={`focus:outline-none bg-black py-1 px-1 rounded-lg ${mode === "CHOPPING" ? "bg-opacity-25" : "bg-opacity-0"}`}
-                onClick={() => toggleMode("CHOPPING")}
+                className={`focus:outline-none bg-black py-1 px-1 rounded-lg ${mode === "HARVEST" ? "bg-opacity-25" : "bg-opacity-0"}`}
+                onClick={() => toggleMode("HARVEST")}
                 >
                 <svg width="26" height="24" viewBox="0 0 28 24" className={`text-white fill-current`} fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g>
