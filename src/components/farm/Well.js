@@ -1,11 +1,10 @@
 import React from 'react';
 import {useDispatch, useSelector } from 'react-redux';
-import { updateResource, selectSandboxMode } from '../../redux/gameSlice';
-import { getMilestones } from '../../utils/settings';
+import { updateResource, selectSandboxMode, selectMilestones } from '../../redux/gameSlice';
 
 const Well = () => {
 
-    let isActive = getMilestones('water');
+    let isWaterUnlocked = useSelector(selectMilestones).water;
     let isSandbox = useSelector(selectSandboxMode);
     const dispatch = useDispatch();
 
@@ -16,15 +15,15 @@ const Well = () => {
     };
 
     let wellStyle = {
-        transform: isActive ? "translateY(0px)" : "translateY(75px)",
-        "WebKitTransform": isActive ? "translateY(0px)" : "translateY(75px)"
+        transform: isWaterUnlocked ? "translateY(0px)" : "translateY(75px)",
+        "WebKitTransform": isWaterUnlocked ? "translateY(0px)" : "translateY(75px)"
     }
 
     return(
         <button 
             onClick={drawWater}
             style={wellStyle}
-            className={`z-10 absolute bottom-0 right-12 z-20 focus:outline-none no-select${isActive ? " transition duration-2000" : ""}`}
+            className={`z-10 absolute bottom-0 right-12 z-20 focus:outline-none no-select transition duration-2000`}
             >
             <svg width="47" height="50" viewBox="0 0 47 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M36.0477 38.0697H11.7827V50H36.0477V38.0697Z" fill="#BF5C49"/>

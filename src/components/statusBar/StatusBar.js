@@ -16,6 +16,7 @@ const StatusBar = () => {
     let day = useSelector(selectDay);
     let isSandbox = useSelector(selectSandboxMode);
     let treeCount = useSelector(selectTrees).length;
+    let isWaterUnlocked = useSelector(selectResources).water;
     let { seeds, water, stars} = useSelector(selectResources);
     let dispatch = useDispatch();
 
@@ -29,7 +30,7 @@ const StatusBar = () => {
         <div className={`w-full h-8 comfortaa ${getSeason(day).dark}`}>
             <div className="flex pl-3 mx-auto justify-start items-top py-1 justify-start gap-3">
                 <button className="focus:outline-none" onClick={() => addResource('seeds')}><AcornIcon amount={seeds} color={getSeason(day).text} /></button>
-                {isSandbox || getMilestones("water", treeCount) ? <button className="focus:outline-none" onClick={() => addResource('water')}><WaterIcon amount={water} color={getSeason(day).text}/></button> : null}
+                {isSandbox || isWaterUnlocked ? <button className="focus:outline-none" onClick={() => addResource('water')}><WaterIcon amount={water} color={getSeason(day).text}/></button> : null}
                 {isSandbox || getMilestones("stars", treeCount) ? <button className="focus:outline-none" onClick={() => addResource('stars')}><StarIcon amount={stars} color={getSeason(day).text}/></button> : null}
             </div>
         </div>

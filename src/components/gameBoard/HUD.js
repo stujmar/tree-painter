@@ -1,14 +1,14 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectMode, setMode, setMessage, selectSandboxMode } from '../../redux/gameSlice';
+import { selectMode, setMode, setMessage, selectSandboxMode, selectMilestones } from '../../redux/gameSlice';
 import { getMessages } from '../../utils/getMessages';
-import { getMilestones } from '../../utils/settings';
 
 const HUD = ({onMessageChange}) => {
     const dispatch = useDispatch();
     let mode = useSelector(selectMode);
     let isSandbox = useSelector(selectSandboxMode);
-
+    let isWaterUnlocked = useSelector(selectMilestones).water;
+    let showWater = isSandbox || isWaterUnlocked
     const toggleMode = (_mode) => {
         dispatch(setMessage(getMessages[_mode]));
         dispatch(setMode(_mode));
@@ -25,7 +25,7 @@ const HUD = ({onMessageChange}) => {
                     <path d="M3.51051 3.42429C2.68577 2.67468 2.77376 2.49737 1.58661 2.55215C1.33158 2.56368 1.11533 2.36907 1.09743 2.12256C1.07655 1.82127 1.17498 1.02409 1.26148 0.731451C1.47326 0.0178771 1.96691 -0.074383 2.25774 0.0423837C3.59851 0.578646 4.12795 0.708387 5.04069 1.70162C5.49109 2.19176 5.57312 2.27248 6.15924 1.94669C9.59244 0.0409421 13.1718 -0.367021 16.8078 1.33547C17.7966 1.79821 18.4901 2.26239 19.3029 3.00912C19.8592 3.52232 19.8488 4.41032 19.6087 4.76783C19.1076 5.51312 18.7332 5.79278 18.1218 6.44581C14.3261 10.5024 9.93695 13.8454 4.94375 16.4272C4.22937 16.7962 3.66562 17.184 2.89456 17.4464C2.41583 17.6093 1.84611 17.2619 1.57617 16.8308C-0.699708 13.2082 -0.399936 9.61149 1.76259 6.08686C2.30844 5.19742 2.85728 4.81973 3.54332 4.04417C3.70589 3.86253 3.69097 3.58863 3.51051 3.42429Z" />
                 </svg>
             </button>
-            {isSandbox || getMilestones('water') ? <button
+            {showWater ? <button
                 className={`focus:outline-none bg-black py-1 px-1.5 rounded-lg ${mode === "WATERING" ? "bg-opacity-25" : "bg-opacity-0"}`}
                 onClick={() => toggleMode("WATERING")}
                 >

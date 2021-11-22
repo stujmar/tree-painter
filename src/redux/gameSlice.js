@@ -14,6 +14,13 @@ const initialState = {
         stars: 10,
         water: 10
     },
+    milestones: {
+        water: false,
+        stars: false,
+        barn: false,
+        seasons: false,
+        speed: false,
+    },
     mouse: {    
         x: 0,
         y: 0,
@@ -26,6 +33,9 @@ export const gameSlice = createSlice({
     name: 'game',
     initialState,
     reducers: {
+        setMilestone: (state, action) => {
+            state.milestones[action.payload] = true;
+        },
         toggleDebug: (state) => {
             state.isDebugActive = !state.isDebugActive;
         },
@@ -91,10 +101,12 @@ export const {
     resetResource,
     setGrassLoaded,
     toggleDebug,
-    setMessage
+    setMessage,
+    setMilestone
     } = gameSlice.actions;
 
 export const selectGame = (state) => state.game;
+export const selectMilestones = (state) => state.game.milestones;
 export const selectMessage = (state) => state.game.message;
 export const selectDebug = (state) => state.game.isDebugActive;
 export const selectMode = (state) => state.game.mode;

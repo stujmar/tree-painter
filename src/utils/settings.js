@@ -7,10 +7,11 @@ const WATER_UNLOCK = 10;
 const SEASONS_UNLOCK = 5;
 const STARS_UNLOCK = 20;
 
+
 const getMilestones = ( unlock ) => {
     let state = store.getState();
     let treeCount = state.tree.trees.length;
-
+    console.log(state.tree)
     switch(unlock) {
         case "speed":
             return treeCount >= SPEED_UNLOCK;
@@ -25,4 +26,6 @@ const getMilestones = ( unlock ) => {
       }
 }
 
-export { getMilestones, MAX_TREE_HEIGHT };
+let conditionsToBeMet = ["water", "speed", "seasons", "stars"];
+
+export { getMilestones, MAX_TREE_HEIGHT, conditionsToBeMet };
