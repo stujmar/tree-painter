@@ -2,6 +2,7 @@ import { store } from '../redux/store';
 
 const MAX_TREE_HEIGHT = 15;
 
+const BARN_UNLOCK = 15;
 const SPEED_UNLOCK = 2;
 const WATER_UNLOCK = 10;
 const SEASONS_UNLOCK = 5;
@@ -20,11 +21,13 @@ const getMilestones = ( unlock ) => {
             return treeCount >= STARS_UNLOCK;
         case "water":
             return treeCount >= WATER_UNLOCK;
+        case "barn":
+            return treeCount >= BARN_UNLOCK;
         default:
           // code block
       }
 }
 
-let conditionsToBeMet = ["water", "speed", "seasons", "stars"];
+let conditionsToBeMet = ["water", "speed", "seasons", "stars", "barn"];
 
 export { getMilestones, MAX_TREE_HEIGHT, conditionsToBeMet };
