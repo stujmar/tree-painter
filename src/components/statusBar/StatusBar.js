@@ -2,8 +2,9 @@ import React from 'react';
 import AcornIcon from './AcornIcon';
 import StarIcon from './StarIcon';
 import WaterIcon from './WaterIcon';
+import WoodIcon from './WoodIcon';
 import {useSelector} from 'react-redux';
-import {selectResources, selectSandboxMode } from '../../redux/gameSlice';
+import {selectMilestones, selectResources, selectSandboxMode } from '../../redux/gameSlice';
 import {selectDay} from '../../redux/daySlice';
 import {getSeason} from '../../utils/getSeason';
 import {useDispatch} from 'react-redux';
@@ -16,8 +17,9 @@ const StatusBar = () => {
     let day = useSelector(selectDay);
     let isSandbox = useSelector(selectSandboxMode);
     let treeCount = useSelector(selectTrees).length;
-    let isWaterUnlocked = useSelector(selectResources).water;
-    let { seeds, water, stars} = useSelector(selectResources);
+    let isWaterUnlocked = useSelector(selectMilestones).water;
+    let isWoodUnlocked = useSelector(selectMilestones).wood;
+    let { seeds, water, stars, wood} = useSelector(selectResources);
     let dispatch = useDispatch();
 
     const addResource = (resourceType) => {
@@ -32,6 +34,7 @@ const StatusBar = () => {
                 <button className="focus:outline-none" onClick={() => addResource('seeds')}><AcornIcon amount={seeds} color={getSeason(day).text} /></button>
                 {isSandbox || isWaterUnlocked ? <button className="focus:outline-none" onClick={() => addResource('water')}><WaterIcon amount={water} color={getSeason(day).text}/></button> : null}
                 {isSandbox || getMilestones("stars", treeCount) ? <button className="focus:outline-none" onClick={() => addResource('stars')}><StarIcon amount={stars} color={getSeason(day).text}/></button> : null}
+                {isSandbox || isWoodUnlocked ? <button className="focus:outline-none" onClick={() => addResource('wood')}><WoodIcon amount={wood} color={getSeason(day).text} /></button> : null}
             </div>
         </div>
     )

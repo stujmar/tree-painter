@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectResources, updateResource, selectMode, selectSandboxMode, setMessage } from '../../redux/gameSlice';
+import { selectResources, updateResource, setMilestone, selectMode, selectSandboxMode, setMessage, selectMilestones } from '../../redux/gameSlice';
 import { removeTreeById } from '../../redux/treeSlice';
 
 import Trunk from './Trunk';
@@ -18,12 +18,17 @@ const Tree = ({treeData, onWater }) => {
     let resources = useSelector(selectResources);
     let trunkWidth = trunkGirth();
     let isDead = treeData.age === 80;
+    let isWoodUnlocked = useDispatch(selectMilestones).wood
 
     const handleClick = (id) => {
         if (mode === "HARVEST") {
             dispatch(removeTreeById(id)); 
             if (isDead) {
                 dispatch(setMessage("You harvested a dead tree!"));
+                dispatch(updateResource({type: "wood", amount: 1}));
+                if (!isWoodUnlocked) {
+                    dispatch(setMilestone("wood"));
+                }
             }
             if (!isSandbox) {
                 dispatch(updateResource({type: "seeds", amount: 1}));

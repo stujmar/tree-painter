@@ -12,7 +12,8 @@ const initialState = {
     resources: {
         seeds: 10,
         stars: 10,
-        water: 10
+        water: 10,
+        wood: 0,
     },
     milestones: {
         water: false,
@@ -20,6 +21,7 @@ const initialState = {
         barn: false,
         seasons: false,
         speed: false,
+        wood: false,
     },
     mouse: {    
         x: 0,
@@ -59,19 +61,20 @@ export const gameSlice = createSlice({
         },
         updateResource: (state, action) => {
             let amount = action.payload.amount;
-            switch(action.payload.type) {
-                case 'seeds':
-                    state.resources.seeds = state.resources.seeds + amount;
-                    break;
-                case 'water':
-                    state.resources.water = state.resources.water + amount;
-                    break;
-                case 'stars':
-                    state.resources.stars = state.resources.stars + amount;
-                    break;
-                default:
-                    break;
-            }
+            state.resources[action.payload.type] = state.resources[action.payload.type] + amount;
+            // switch(action.payload.type) {
+            //     case 'seeds':
+            //         state.resources.seeds = state.resources.seeds + amount;
+            //         break;
+            //     case 'water':
+            //         state.resources.water = state.resources.water + amount;
+            //         break;
+            //     case 'stars':
+            //         state.resources.stars = state.resources.stars + amount;
+            //         break;
+            //     default:
+            //         break;
+            //}
         },
         resetResource: (state, action) => {
             switch(action.payload) {
