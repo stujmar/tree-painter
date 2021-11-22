@@ -6,7 +6,7 @@ const BARN_UNLOCK = 15;
 const SPEED_UNLOCK = 2;
 const WATER_UNLOCK = 10;
 const SEASONS_UNLOCK = 5;
-const STARS_UNLOCK = 20;
+const STARS_UNLOCK = 35;
 
 
 const getMilestones = ( unlock ) => {

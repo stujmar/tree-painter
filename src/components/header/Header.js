@@ -3,15 +3,16 @@ import React from 'react';
 import TimeDisplay from './TimeDisplay';
 import SpeedControls from './SpeedControls';
 import SeasonControls from './SeasonControls';
-import { selectMode} from '../../redux/gameSlice';
+import { selectMilestones, selectMode} from '../../redux/gameSlice';
 import { useSelector } from 'react-redux';
 import { selectDay } from '../../redux/daySlice';
 import { getSeason } from '../../utils/getSeason';
 import { selectSandboxMode, selectMessage } from '../../redux/gameSlice';
-import { getMilestones } from '../../utils/settings';
 
 const Header = () => {
     let isSandbox = useSelector(selectSandboxMode);
+    let isSpeedUnlocked = useSelector(selectMilestones).speed
+    let isSeasonUnlocked = useSelector(selectMilestones).seasons
     const day = useSelector(selectDay);
     const mode = useSelector(selectMode);
     let message = useSelector(selectMessage);
@@ -31,8 +32,8 @@ const Header = () => {
                     <TimeDisplay />
                 </div>
                 <div className="flex flex-col items-end"> {/*RIGHT SECTION*/}
-                    {isSandbox || getMilestones("speed") ? <SpeedControls /> : null }
-                    {isSandbox || getMilestones("seasons") ? <SeasonControls /> : null}
+                    {isSandbox || isSpeedUnlocked ? <SpeedControls /> : null }
+                    {isSandbox || isSeasonUnlocked ? <SeasonControls /> : null}
                 </div>
             </div>
         </div>    
