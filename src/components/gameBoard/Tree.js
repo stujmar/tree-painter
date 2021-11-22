@@ -28,6 +28,7 @@ const Tree = ({treeData, onWater }) => {
                 dispatch(updateResource({type: "wood", amount: 1}));
                 if (!isWoodUnlocked) {
                     dispatch(setMilestone("wood"));
+                    dispatch(setMilestone('barn'));
                 }
             }
             if (!isSandbox) {
