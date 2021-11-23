@@ -178,6 +178,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                     > {/* Gameboard Wrapper */}
                         <div 
                             id="grass"
+                            aria-label="Grass field"
                             className={`absolute top-0 opacity-0 bg-black z-10 w-full ${seeds ? "seed-cursor" : "no-seed-cursor"} ${mode === "PLANTING" ? "" : "hidden" }`} 
                             style={{height: "calc(100vh - 324px)"}}
                             onMouseMove={(e) => handleMouseMove(e)}
@@ -190,8 +191,9 @@ const Game = ( { messageChange, toggleGraph } ) => {
                                 ></div>
                         <HUD onMessageChange={messageChange} />
                         <div className="flex flex-row fixed bottom-3 right-3 gap-2" style={{ zIndex: 49 }}>
-                            <button 
-                                className="border-4 rounded-lg hover:bg-green-600 border-white z-10 px-1 shadow focus:outline-none"
+                            <button
+                                aria-label="Settings"
+                                className="border-4 rounded-lg bg-green-600 hover:bg-green-700 border-white z-10 px-1 shadow focus:outline-none"
                                 onClick={toggleGraph}>
                                 <svg width="20" height="20" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clipPath="url(#clip0_114_2)">
@@ -213,7 +215,8 @@ const Game = ( { messageChange, toggleGraph } ) => {
                             </button> */}
                             <button 
                                 type="button"
-                                className="border-4 hover:bg-green-600 rounded-lg font-medium text-white border-white px-2 z-10 shadow focus:outline-none"
+                                aria-label="Reset button"
+                                className="border-4 bg-green-600 hover:bg-green-700 rounded-lg font-medium text-white border-white px-2 z-10 shadow focus:outline-none"
                                 onClick={reset}
                             >RESET</button>
                         </div>

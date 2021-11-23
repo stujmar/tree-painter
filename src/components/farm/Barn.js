@@ -26,7 +26,12 @@ const Barn = () => {
 
     return (
         <div className="absolute bottom-0 left-0 z-10">
-            <button type="button" onClick={handleBarnClick} className={`block relative focus:outline-none transition duration-2000`} style={barnStyle}>  
+            <button 
+                type="button"
+                aria-label="Barn"
+                onClick={handleBarnClick}
+                className={`block relative focus:outline-none transition duration-2000`}
+                style={barnStyle}>  
                 <svg className={`absolute z-30 bottom-0 ${isOpen ? " hidden": " block"}`} width="150" height="72" viewBox="0 0 150 72" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M126.648 71.9848H121.559C121.559 71.9848 121.741 66.1687 125.286 65.3953C127.9 64.8261 130.124 65.6755 130.373 65.8776C130.373 65.8776 130.373 60.181 135.734 59.7943C141.095 59.4076 142.019 63.5812 142.019 63.5812C142.019 63.5812 144.226 62.2298 146.314 64.3546C148.402 66.4794 147.395 68.602 147.395 68.602C148.038 68.9533 148.601 69.4356 149.048 70.0181C149.494 70.6006 149.815 71.2705 149.989 71.9848H126.648Z" fill="#498E1C"/>
                     <path d="M83.5738 26.7838H11.8014V71.9435H83.5738V26.7838Z" fill="#C62626"/>

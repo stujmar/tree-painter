@@ -20,7 +20,8 @@ const Well = () => {
     }
 
     return(
-        <button 
+        <button
+            aria-label="Harvesting mode"
             onClick={drawWater}
             style={wellStyle}
             className={`z-10 absolute bottom-0 right-12 z-19 focus:outline-none no-select transition duration-2000`}
