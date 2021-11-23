@@ -155,6 +155,10 @@ const Game = ( { messageChange, toggleGraph } ) => {
         dispatch(toggleDebug());
     }
 
+    const toggleStore = () => {
+        console.log('toggleStore');
+    }
+
     const reset = () => {
         dispatch(resetTrees());
         dispatch(resetStars());
@@ -202,6 +206,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                             </button>
                             <button
                                 aria-label="Store"
+                                onClick={toggleStore}
                                 className="border-4 rounded-lg bg-green-600 hover:bg-green-700 border-white z-10 px-1 shadow focus:outline-none"
                                 >
                                 <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
