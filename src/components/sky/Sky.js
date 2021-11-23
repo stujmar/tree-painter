@@ -72,6 +72,7 @@ const Sky = () => {
     return (
         <button 
             onClick={clickSky}
+            aria-label="Click to add a star to the Sky"
             onMouseMove={(e) => handleMouseMove(e)}
             className="z-0 mx-auto lg:mr-auto h-full bg-blue-400 relative absolute w-full overflow-hidden focus:outline-none">
             {/* <div className="absolute w-screen transition" style={ hour <== 6 && hour >== 16 ? {transform: "translateY(200px)"} : {transform: "translateY(0px)"}}> */}
