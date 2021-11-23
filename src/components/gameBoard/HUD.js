@@ -16,7 +16,8 @@ const HUD = ({onMessageChange}) => {
 
     return (
         <div className="fixed bottom-0 left-0 z-10 flex gap-1 p-3" style={{ zIndex: 49 }}>
-            <button 
+            <button
+                aria-label="Planting mode"
                 className={`focus:outline-none bg-black p-1 rounded-lg ${mode === "PLANTING" ? "bg-opacity-25" : "bg-opacity-0"}`}
                 onClick={() => toggleMode("PLANTING")}
                 >
@@ -26,6 +27,7 @@ const HUD = ({onMessageChange}) => {
                 </svg>
             </button>
             {showWater ? <button
+                aria-label="Watering mode"
                 className={`focus:outline-none bg-black py-1 px-1.5 rounded-lg ${mode === "WATERING" ? "bg-opacity-25" : "bg-opacity-0"}`}
                 onClick={() => toggleMode("WATERING")}
                 >
@@ -36,6 +38,7 @@ const HUD = ({onMessageChange}) => {
                 </svg>
             </button> : null}
             <button
+                aria-label="Harvesting mode"
                 className={`focus:outline-none bg-black py-1 px-1 rounded-lg ${mode === "HARVEST" ? "bg-opacity-25" : "bg-opacity-0"}`}
                 onClick={() => toggleMode("HARVEST")}
                 >
