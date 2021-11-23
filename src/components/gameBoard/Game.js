@@ -21,6 +21,7 @@ import { selectDay } from '../../redux/daySlice';
 
 import Sky from '../sky/Sky';
 import Tree from './Tree';
+import Store from './Store';
 import HUD from './HUD';
 import { setSpeed } from '../../redux/clockSlice';
 import Well from '../farm/Well';
@@ -34,6 +35,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
 
     const [ drawTrees, setDrawTrees ] = useState([]);
     const [ hasLoaded, setHasLoaded ] = useState(false);
+    const [ isStoreActive, setIsStoreActive ] = useState(false);
 
     let hour = useSelector(selectHour);
     let isSandbox = useSelector(selectSandboxMode);
@@ -156,7 +158,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
     }
 
     const toggleStore = () => {
-        console.log('toggleStore');
+        setIsStoreActive(!isStoreActive);
     }
 
     const reset = () => {
@@ -171,6 +173,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
 
     return (
         <div className="overflow-hidden">
+            {isStoreActive && <Store onClick={toggleStore} />}
             <div className="w-full relative overflow-hidden" style={{height: "100px"}}> {/* SKY FIELD */}
                 <Barn />
                 <Well />
