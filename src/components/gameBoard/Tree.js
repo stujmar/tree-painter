@@ -23,6 +23,7 @@ const Tree = ({treeData, onWater }) => {
 
     const handleClick = (id) => {
         if (mode === "HARVEST") {
+            dispatch(setMessage(getMessages.HARVESTING))
             dispatch(removeTreeById(id)); 
             if (isDead) {
                 dispatch(setMessage("You harvested a dead tree!"));

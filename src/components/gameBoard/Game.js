@@ -12,7 +12,8 @@ import {
     selectResources,
     setGrassLoaded,
     toggleDebug,
-    selectSandboxMode
+    selectSandboxMode,
+    setMessage
     } from '../../redux/gameSlice';
 import { addTree, addBranch, resetTrees, ageTrees, selectTrees, growTreeById} from '../../redux/treeSlice';
 import { resetStars } from '../../redux/skySlice';
@@ -28,6 +29,7 @@ import Barn from '../farm/Barn';
 import DebugPanel from '../debug/DebugPanel';
 import { coinFlipRatio } from '../../utils/coinFlip';
 import { getNumberWithinRange, getRandomInt } from '../../utils/getRandomInt';
+import { getMessages } from '../../utils/getMessages';
 
 const Game = ( { messageChange, toggleGraph } ) => {
     const MAX_TREE_HEIGHT = 15;
@@ -50,15 +52,6 @@ const Game = ( { messageChange, toggleGraph } ) => {
     //     dispatch(removeTree(id));
     // } 
 
-    const messageCenter = {
-        "welcome": <p><span  className="font-medium">Great! you are in "planting mode".</span><br/> Click below to plant a seed.</p>,
-        "first_seed" : "Wow, you are planting now!",
-        "first_water" : "Yum that tree was thirsty!",
-        "no_seeds" : "Oops all out of seeds",
-        "no_water" : "Oops all out of water",
-        "no_trees" : "Oops all out of trees! Switch to planting mode",
-    };
-
     let grass = document.getElementById('grass');
 
     if (!!grass && !hasLoaded) {
@@ -69,10 +62,9 @@ const Game = ( { messageChange, toggleGraph } ) => {
     // grass ? dispatch(setGrassLoaded({ clientHeight: grass.clientHeight, clientWidth: grass.clientWidth})) : dispatch(setGrassLoaded(false)); 
 
     useEffect(() => {
-        messageChange(messageCenter.welcome);
+        dispatch(setMessage(getMessages.welcome));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]
-    )
+    },[])
 
     useEffect(() => {
         if (!!trees.length) {
@@ -128,14 +120,13 @@ const Game = ( { messageChange, toggleGraph } ) => {
                 y:e.nativeEvent.offsetY > 0 ? e.nativeEvent.offsetY : 0,
                 xMax: grass.clientWidth,
                 yMax: grass.clientWidth
-                
             }))
         }
     }
 
     const handleStrayClick = (e) => {
         if (trees.length === 0 && mode === "HARVEST") {
-            messageChange(messageCenter.no_trees);
+            dispatch(setMessage(getMessages.NO_TREES))
         }
     }
 
@@ -144,7 +135,6 @@ const Game = ( { messageChange, toggleGraph } ) => {
     }
 
     const plant = (e) => {
-        messageChange(messageCenter.first_seed);
         if (seeds > 0 || isSandbox) {
             // Set Trees in Redux state.
             let newId = "tree_" + getRandomId();
