@@ -27,11 +27,11 @@ const Trunk = ({trunkData, color, girth, isDead}) => {
                         style={{transform: "rotate(55deg)"}}
                         className={`absolute right-2 -top-1 w-2 h-1 ${trunkColor}`}>
                             <div className="relative w-full h-full">
-                                <div className={`h-2 absolute -left-2 -top-0.5 rounded-full w-2 ${isHidden} ${color}`}></div>
+                                <div className={`h-2 absolute -left-2 -top-0.5 rounded-full border-r-2 border-black border-opacity-10 w-2 ${isHidden} ${color}`}></div>
                             </div>
                         </div> : <></>}
 
-                    <div style={{height:  returnBranchWidth(trunkData.left), width: returnBranchWidth(trunkData.left), top: -trunkData.left/2 -3}} className={`h-3 w-3 ${isHidden} ${color} absolute rounded-full -left-2`}></div>
+                    <div style={{height:  returnBranchWidth(trunkData.left), width: returnBranchWidth(trunkData.left), top: -trunkData.left/2 -3}} className={`h-3 w-3 ${isHidden} ${color} border-b-4 border-black border-opacity-10 absolute rounded-full -left-2`}></div>
                   </div>
                   <div className={`absolute inset-0 w-full h-full ${trunkColor}`}></div>
               </div> : null}
@@ -42,11 +42,11 @@ const Trunk = ({trunkData, color, girth, isDead}) => {
                         style={{transform: "rotate(-50deg)"}}
                         className={`absolute left-2 -top-1 w-2 h-1 ${trunkColor}`}>
                             <div className="relative w-full h-full">
-                                <div className={`h-2 absolute -right-2 -top-0.5 rounded-full w-2 ${color} ${isHidden}`}></div>
+                                <div className={`h-2 absolute -right-2 -top-0.5 border-l-4 border-black border-opacity-10 rounded-full w-2 ${color} ${isHidden}`}></div>
                             </div>
                         </div> : <></>}
 
-                    <div style={{height: returnBranchWidth(trunkData.right), width: returnBranchWidth(trunkData.right), top: -trunkData.right/2 - 3}} className={`h-3 w-3 ${isHidden} ${color} absolute rounded-full -right-2`}></div>
+                    <div style={{height: returnBranchWidth(trunkData.right), width: returnBranchWidth(trunkData.right), top: -trunkData.right/2 - 3}} className={`h-3 w-3 ${isHidden} ${color} absolute border-b-4 border-black border-opacity-10 rounded-full -right-2`}></div>
                   </div>
                   <div className={`absolute inset-0 w-full h-full ${trunkColor}`}></div>
               </div> : null}
