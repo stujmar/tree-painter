@@ -27,7 +27,7 @@ import Well from '../farm/Well';
 import Barn from '../farm/Barn';
 import DebugPanel from '../debug/DebugPanel';
 import { coinFlipRatio } from '../../utils/coinFlip';
-import { getRandomInt } from '../../utils/getRandomInt';
+import { getNumberWithinRange, getRandomInt } from '../../utils/getRandomInt';
 
 const Game = ( { messageChange, toggleGraph } ) => {
     const MAX_TREE_HEIGHT = 15;
@@ -79,6 +79,17 @@ const Game = ( { messageChange, toggleGraph } ) => {
             dispatch(ageTrees());
             // For each tree.
             trees.forEach((tree) => {
+                if (tree.age > 10 && coinFlipRatio(0.01)) {
+                    let newId = "tree_" + getRandomId();
+                    dispatch(addTree({
+                        id: newId,
+                        birthday: tree.birthday,
+                        x: getNumberWithinRange(tree.x - 5, tree.x + 5),
+                        y: getNumberWithinRange(tree.y - 5, tree.y + 5),
+                        age: 0,
+                        growth: []
+                    }))
+                }
                 growTree(tree);
             })
         }
