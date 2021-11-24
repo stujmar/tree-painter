@@ -5,12 +5,46 @@ import {setMilestone, toggleStore} from '../../redux/gameSlice'
 const Store = () => {
 
     const dispatch = useDispatch();
+    
     const onExit = () => {
         dispatch(toggleStore());
     }
 
+    const prices = {
+      "speed": {
+        name: "speed",
+        price: 1,
+        currency: "seeds"
+      },
+      "seasons": {
+        name: "seasons",
+        price: 1,
+        currency: "seeds"
+      },
+      "water": {
+        name: "water",
+        price: 1,
+        currency: "seeds"
+      },
+      "barn": {
+        name: "barn",
+        price: 1,
+        currency: "seeds"
+      },
+      "silo": {
+        name: "silo",
+        price: 1,
+        currency: "seeds"
+      },
+      "stars": {
+        name: "stars",
+        price: 1,
+        currency: "seeds"
+      }
+    };
+
     const handleBuy = (item) => {
-        dispatch(setMilestone(item))
+        dispatch(setMilestone(item.name))
     }
 
     return (
@@ -19,27 +53,27 @@ const Store = () => {
             <span className="px-4">Click to buy buildings which unlock new game features</span>
             <div className="w-full grid gap-2 grid-cols-2 sm:grid-cols-3 mt-3">
               <button
-                onClick={() => handleBuy('speed')}
+                onClick={() => handleBuy(prices.speed)}
                 className="focus:outline-none h-20 aspect-h-1 aspect-w-1 bg-green-300 hover:bg-green-400 rounded-lg"><div className="flex flex-col justify-center">Unlock Speed</div>
               </button>
               <button
-                onClick={() => handleBuy('seasons')}
+                onClick={() => handleBuy(prices.seasons)}
                 className="focus:outline-none h-20 aspect-h-1 aspect-w-1 bg-green-300 hover:bg-green-400 rounded-lg"><div className="flex flex-col justify-center">Unlock Seasons</div>
               </button>
               <button
-                onClick={() => handleBuy('water')}
+                onClick={() => handleBuy(prices.water)}
                 className="focus:outline-none h-20 aspect-h-1 aspect-w-1 bg-green-300 hover:bg-green-400 rounded-lg"><div className="flex flex-col justify-center">Unlock Well</div>
               </button>
               <button
-                onClick={() => handleBuy('barn')}
+                onClick={() => handleBuy(prices.barn)}
                 className="focus:outline-none h-20 aspect-h-1 aspect-w-1 bg-green-300 hover:bg-green-400 rounded-lg"><div className="flex flex-col justify-center">Unlock Barn</div>
               </button>
               <button
-                onClick={() => handleBuy('silo')}
+                onClick={() => handleBuy(prices.silo)}
                 className="focus:outline-none h-20 aspect-h-1 aspect-w-1 bg-green-300 hover:bg-green-400 rounded-lg"><div className="flex flex-col justify-center">Unlock Silo</div>
               </button>
               <button
-                onClick={() => handleBuy('stars')}
+                onClick={() => handleBuy(prices.stars)}
                 className="focus:outline-none h-20 aspect-h-1 aspect-w-1 bg-green-300 hover:bg-green-400 rounded-lg"><div className="flex flex-col justify-center">Unlock Stars</div>
               </button>
             </div>
