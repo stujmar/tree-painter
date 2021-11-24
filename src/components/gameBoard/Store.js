@@ -1,10 +1,11 @@
 import React from "react";
-import {useDispatch} from "react-redux";
-import {setMilestone, toggleStore} from '../../redux/gameSlice'
+import { useDispatch, useSelector } from "react-redux";
+import {selectMilestones, setMilestone, toggleStore} from '../../redux/gameSlice'
 
 const Store = () => {
 
     const dispatch = useDispatch();
+    let isSpeedBought =  useSelector(selectMilestones).speed
     
     const onExit = () => {
         dispatch(toggleStore());
@@ -54,7 +55,7 @@ const Store = () => {
             <div className="w-full grid gap-2 grid-cols-2 sm:grid-cols-3 mt-3">
               <button
                 onClick={() => handleBuy(prices.speed)}
-                className="focus:outline-none h-20 aspect-h-1 aspect-w-1 bg-green-300 hover:bg-green-400 rounded-lg"><div className="flex flex-col justify-center">Unlock Speed</div>
+                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isSpeedBought ? "bg-gray-400" : "bg-green-300 hover:bg-green-400"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Speed</div>
               </button>
               <button
                 onClick={() => handleBuy(prices.seasons)}
