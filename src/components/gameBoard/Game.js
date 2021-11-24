@@ -140,7 +140,6 @@ const Game = ( { messageChange, toggleGraph } ) => {
     }
 
     const handleWater = (treeData) => {
-        console.log("this is the handle water method?")
         growTree(treeData);
     }
 

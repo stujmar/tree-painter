@@ -37,6 +37,7 @@ const Tree = ({treeData, onWater }) => {
             }
         } else if (mode === "WATERING" && resources.water > 0 && treeData.growth.length < 15) {
             onWater(treeData)
+            dispatch(setMessage(getMessages.WATERED));
             if (!isSandbox) {
                 dispatch(updateResource({type: 'water', amount: -1}));
             }
