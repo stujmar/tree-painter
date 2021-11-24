@@ -6,6 +6,11 @@ const Store = () => {
 
     const dispatch = useDispatch();
     let isSpeedBought =  useSelector(selectMilestones).speed
+    let isSeasonsBought =  useSelector(selectMilestones).seasons
+    let isWaterBought =  useSelector(selectMilestones).water
+    let isBarnBought =  useSelector(selectMilestones).barn
+    let isSiloBought =  useSelector(selectMilestones).silo
+    let isStarsBought =  useSelector(selectMilestones).stars
     
     const onExit = () => {
         dispatch(toggleStore());
@@ -59,23 +64,23 @@ const Store = () => {
               </button>
               <button
                 onClick={() => handleBuy(prices.seasons)}
-                className="focus:outline-none h-20 aspect-h-1 aspect-w-1 bg-green-300 hover:bg-green-400 rounded-lg"><div className="flex flex-col justify-center">Unlock Seasons</div>
+                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isSeasonsBought ? "bg-gray-400" : "bg-green-300 hover:bg-green-400"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Seasons</div>
               </button>
               <button
                 onClick={() => handleBuy(prices.water)}
-                className="focus:outline-none h-20 aspect-h-1 aspect-w-1 bg-green-300 hover:bg-green-400 rounded-lg"><div className="flex flex-col justify-center">Unlock Well</div>
+                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isWaterBought ? "bg-gray-400" : "bg-green-300 hover:bg-green-400"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Well</div>
               </button>
               <button
                 onClick={() => handleBuy(prices.barn)}
-                className="focus:outline-none h-20 aspect-h-1 aspect-w-1 bg-green-300 hover:bg-green-400 rounded-lg"><div className="flex flex-col justify-center">Unlock Barn</div>
+                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isBarnBought ? "bg-gray-400" : "bg-green-300 hover:bg-green-400"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Barn</div>
               </button>
               <button
                 onClick={() => handleBuy(prices.silo)}
-                className="focus:outline-none h-20 aspect-h-1 aspect-w-1 bg-green-300 hover:bg-green-400 rounded-lg"><div className="flex flex-col justify-center">Unlock Silo</div>
+                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isSiloBought ? "bg-gray-400" : "bg-green-300 hover:bg-green-400"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Silo</div>
               </button>
               <button
                 onClick={() => handleBuy(prices.stars)}
-                className="focus:outline-none h-20 aspect-h-1 aspect-w-1 bg-green-300 hover:bg-green-400 rounded-lg"><div className="flex flex-col justify-center">Unlock Stars</div>
+                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isStarsBought ? "bg-gray-400" : "bg-green-300 hover:bg-green-400"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Stars</div>
               </button>
             </div>
           <button className="block mx-auto w-min text-base comfortaa font-bold pt-1 focus:outline-none text-green-50 bg-green-600 hover:bg-green-700 px-2 font-medium rounded mt-4" aria-label="Exit Store" onClick={onExit} >EXIT</button>
