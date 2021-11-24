@@ -5,6 +5,7 @@ const initialState = {
     message: 'Message from Redux State',
     mode: "NO_MODE",
     isDebugActive: false,
+    isStoreActive: false,
     grassLoaded: {
         clientHeight: 0,
         clientWidth: 0,
@@ -40,6 +41,9 @@ export const gameSlice = createSlice({
         },
         toggleDebug: (state) => {
             state.isDebugActive = !state.isDebugActive;
+        },
+        toggleStore: (state) => {
+            state.isStoreActive = !state.isStoreActive;
         },
         setSandbox: (state) => {
             state.sandboxMode = !state.sandboxMode;
@@ -104,6 +108,7 @@ export const {
     resetResource,
     setGrassLoaded,
     toggleDebug,
+    toggleStore,
     setMessage,
     setMilestone
     } = gameSlice.actions;
@@ -112,6 +117,7 @@ export const selectGame = (state) => state.game;
 export const selectMilestones = (state) => state.game.milestones;
 export const selectMessage = (state) => state.game.message;
 export const selectDebug = (state) => state.game.isDebugActive;
+export const selectStore = (state) => state.game.isStoreActive;
 export const selectMode = (state) => state.game.mode;
 export const selectMouse = (state) => state.game.mouse;
 export const selectResources = (state) => state.game.resources;

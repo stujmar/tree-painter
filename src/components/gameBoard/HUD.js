@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectMode, setMode, setMessage, selectSandboxMode, selectMilestones } from '../../redux/gameSlice';
+import { selectMode, setMode, setMessage, selectSandboxMode, selectMilestones, toggleStore } from '../../redux/gameSlice';
 import { getMessages } from '../../utils/getMessages';
 
-const HUD = ({toggleGraph, toggleStore, reset}) => {
+const HUD = ({toggleGraph, reset}) => {
     const dispatch = useDispatch();
     let mode = useSelector(selectMode);
     let isSandbox = useSelector(selectSandboxMode);
@@ -12,6 +12,10 @@ const HUD = ({toggleGraph, toggleStore, reset}) => {
     const toggleMode = (_mode) => {
         dispatch(setMessage(getMessages[_mode]));
         dispatch(setMode(_mode));
+    }
+    const handleStoreToggle = () => {
+
+        dispatch(toggleStore());
     }
 
     return (
@@ -64,7 +68,7 @@ const HUD = ({toggleGraph, toggleStore, reset}) => {
             </button>
             {isSandbox ? <button
                 aria-label="Store"
-                onClick={toggleStore}
+                onClick={handleStoreToggle}
                 className="border-4 rounded-lg bg-green-600 hover:bg-green-700 border-white z-10 px-1 shadow focus:outline-none"
                 >
                 <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">

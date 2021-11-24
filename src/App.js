@@ -8,8 +8,9 @@ import Header from './components/header/Header';
 import MessageModal from './components/gameBoard/MessageModal';
 import { useSelector, useDispatch } from 'react-redux';
 import { conditionsToBeMet, getMilestones } from './utils/settings';
-import { setMilestone, selectMode } from './redux/gameSlice';
+import { setMilestone, selectMode, selectStore, toggleStore } from './redux/gameSlice';
 import { selectTrees } from './redux/treeSlice';
+import Store from './components/gameBoard/Store';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const App = () => {
 
   let gameMode = useSelector(selectMode);
   let trees = useSelector(selectTrees);
+  let isStoreActive = useSelector(selectStore)
 
   useEffect(() => {
     conditionsToBeMet.forEach(condition => {
@@ -36,9 +38,14 @@ const App = () => {
     setGraph(!graph);
   }
 
+  const handleStoreToggle = () => {
+    dispatch(toggleStore);
+  }
+
 
   return (
     <div className="relative">
+      {isStoreActive && <Store toggleStore={handleStoreToggle} />}
       {graph ? <GraphPanel toggleGraph={toggleGraph}/> : <></>}
       <ClockService />
       {gameMode === "NO_MODE" ? <MessageModal /> : null}
