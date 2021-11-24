@@ -6,6 +6,7 @@ import { removeTreeById } from '../../redux/treeSlice';
 import Trunk from './Trunk';
 import Canopy from './Canopy';
 import { getSeason } from '../../utils/getSeason';
+import { getMessages } from '../../utils/getMessages';
 
 const Tree = ({treeData, onWater }) => {
 
@@ -39,6 +40,8 @@ const Tree = ({treeData, onWater }) => {
             if (!isSandbox) {
                 dispatch(updateResource({type: 'water', amount: -1}));
             }
+        } else if (mode === "WATERING" && resources.water === 0) {
+            dispatch(setMessage(getMessages.NO_WATER));
         }
     };
 
