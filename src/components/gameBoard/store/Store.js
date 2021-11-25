@@ -14,7 +14,7 @@ const Store = () => {
 
     const dispatch = useDispatch();
     let isSpeedBought =  useSelector(selectMilestones).speed
-    let isSeasonsBought =  useSelector(selectMilestones).seasons
+    let isTractorBought =  useSelector(selectMilestones).tractor
     let isWaterBought =  useSelector(selectMilestones).water
     let isBarnBought =  useSelector(selectMilestones).barn
     let isSiloBought =  useSelector(selectMilestones).silo
@@ -31,7 +31,7 @@ const Store = () => {
         currency: "seeds"
       },
       "seasons": {
-        name: "seasons",
+        name: "tractor",
         price: 1,
         currency: "seeds"
       },
@@ -71,8 +71,8 @@ const Store = () => {
                 className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isSpeedBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Speed</div>
               </button>
               <button
-                onClick={() => handleBuy(prices.seasons)}
-                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isSeasonsBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Seasons</div>
+                onClick={() => handleBuy(prices.tractor)}
+                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isTractorBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Tractor</div>
               </button>
               <button
                 onClick={() => handleBuy(prices.water)}
