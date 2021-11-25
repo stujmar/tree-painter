@@ -74,8 +74,8 @@ const Store = () => {
                   <div className="mx-auto">
                     {isWaterBought ?  wellColorSVG : wellWhiteSVG}
                   </div>
-                  <div className="mt-2 text-white font-medium comfortaa">Unlock Well</div>
-                  <div className="text-sm font-bold text-white comfortaa">two acrorns</div>
+                  <div className="mt-2 text-white font-medium comfortaa">{isWaterBought ? "Unlocked" : "Unlock Well"}</div>
+                  <div className="text-sm font-bold text-white comfortaa h-2">{isWaterBought ? " " : "two acrorns"}</div>
                 </div>
               </button>
               <button
@@ -85,8 +85,8 @@ const Store = () => {
                   <div className="mx-auto">
                     {isBarnBought ?  barnColorSVG : barnWhiteSVG}
                   </div>
-                  <div className="mt-2 text-white font-medium comfortaa">Unlock Barn</div>
-                  <div className="text-sm font-bold text-white comfortaa">two acrorns</div>
+                  <div className="mt-2 text-white font-medium comfortaa">{isBarnBought ? "Unlocked" : "Unlock Barn"}</div>
+                  <div className="text-sm font-bold text-white comfortaa h-2">{isBarnBought ? " " : "two acrorns"}</div>
                 </div>
               </button>
               <button
