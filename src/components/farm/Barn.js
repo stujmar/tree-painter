@@ -29,7 +29,7 @@ const Barn = () => {
     }
 
     return (
-        <div className="absolute bottom-0 left-0 z-10">
+        <div className="absolute bottom-0 left-8 z-10">
             <button 
                 type="button"
                 aria-label="Barn"

@@ -25,6 +25,7 @@ import Tree from './Tree';
 import HUD from './HUD';
 import { setSpeed } from '../../redux/clockSlice';
 import Well from '../farm/Well';
+import Silo from '../farm/Silo';
 import Barn from '../farm/Barn';
 import DebugPanel from '../debug/DebugPanel';
 import { coinFlipRatio } from '../../utils/coinFlip';
@@ -174,6 +175,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
     return (
         <div className="overflow-hidden">
             <div className="w-full relative overflow-hidden" style={{height: "100px"}}> {/* SKY FIELD */}
+                <Silo />
                 <Barn />
                 <Well />
                 <Sky />
