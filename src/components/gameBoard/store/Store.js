@@ -30,7 +30,7 @@ const Store = () => {
         price: 1,
         currency: "seeds"
       },
-      "seasons": {
+      "tractor": {
         name: "tractor",
         price: 1,
         currency: "seeds"
