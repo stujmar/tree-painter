@@ -174,7 +174,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
 
     return (
         <div className="overflow-hidden">
-            <div className="w-full relative overflow-hidden" style={{height: "100px"}}> {/* SKY FIELD */}
+            <div className="w-full relative overflow-hidden" style={{height: "125px"}}> {/* SKY FIELD */}
                 <Silo />
                 <Barn />
                 <Well />
@@ -187,7 +187,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                         <div 
                             id="grass"
                             aria-label="Grass field"
-                            className={`absolute top-0 opacity-0 bg-black z-10 w-full ${seeds ? "seed-cursor" : "no-seed-cursor"} ${mode === "PLANTING" ? "" : "hidden" }`} 
+                            className={`absolute top-0 opacity-0 bg-black z-10 w-full cursor-pointer ${mode === "PLANTING" ? "" : "hidden" }`} 
                             style={{height: "calc(100vh - 324px)"}}
                             onMouseMove={(e) => handleMouseMove(e)}
                             onClick={(e) => plant(e)} 
