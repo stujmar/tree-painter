@@ -15,7 +15,7 @@ import {
     selectSandboxMode,
     setMessage
     } from '../../redux/gameSlice';
-import { addTree, addBranch, resetTrees, ageTrees, selectTrees, growTreeById} from '../../redux/treeSlice';
+import { addTree, addBranch, resetTrees, ageTrees, selectTrees, growTreeById, removeTreeById} from '../../redux/treeSlice';
 import { resetStars } from '../../redux/skySlice';
 import { selectHour } from '../../redux/hourSlice';
 import { selectDay } from '../../redux/daySlice';
@@ -71,18 +71,23 @@ const Game = ( { messageChange, toggleGraph } ) => {
             dispatch(ageTrees());
             // For each tree.
             trees.forEach((tree) => {
-                if (tree.age > 10 && coinFlipRatio(0.01)) {
-                    let newId = "tree_" + getRandomId();
-                    dispatch(addTree({
-                        id: newId,
-                        birthday: tree.birthday,
-                        x: getNumberWithinRange(tree.x - 5, tree.x + 5),
-                        y: getNumberWithinRange(tree.y - 5, tree.y + 5),
-                        age: 0,
-                        growth: []
-                    }))
+                if (tree.age === 100) {
+                    console.log('tree feel down')
+                    dispatch(removeTreeById(tree.id));
+                } else {
+                    if (tree.age > 10 && coinFlipRatio(0.01)) {
+                        let newId = "tree_" + getRandomId();
+                        dispatch(addTree({
+                            id: newId,
+                            birthday: tree.birthday,
+                            x: getNumberWithinRange(tree.x - 5, tree.x + 5),
+                            y: getNumberWithinRange(tree.y - 5, tree.y + 5),
+                            age: 0,
+                            growth: []
+                        }))
+                    }
+                    growTree(tree);
                 }
-                growTree(tree);
             })
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps

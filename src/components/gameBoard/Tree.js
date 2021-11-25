@@ -18,7 +18,7 @@ const Tree = ({treeData, onWater }) => {
     let isSandbox = useSelector(selectSandboxMode);
     let resources = useSelector(selectResources);
     let trunkWidth = trunkGirth();
-    let isDead = treeData.age === 80;
+    let isDead = treeData.age >= 80;
     let isWoodUnlocked = useDispatch(selectMilestones).wood
 
     const handleClick = (id) => {

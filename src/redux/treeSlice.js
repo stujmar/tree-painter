@@ -21,7 +21,7 @@ export const treeSlice = createSlice({
         },
         ageTrees: (state) => {
             state.trees = state.trees.map(tree => {
-                return tree.age < 80 ? {...tree, age: tree.age + 1} : tree
+                return tree.age < 100 ? {...tree, age: tree.age + 1} : tree
             })
         },
         addBranch: (state, action) => {
