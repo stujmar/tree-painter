@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { conditionsToBeMet, getMilestones } from './utils/settings';
 import { setMilestone, selectMode, selectStore, toggleStore } from './redux/gameSlice';
 import { selectTrees } from './redux/treeSlice';
-import Store from './components/gameBoard/Store';
+import Store from './components/gameBoard/store/Store';
 
 const App = () => {
   const dispatch = useDispatch();

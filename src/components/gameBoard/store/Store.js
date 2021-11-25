@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {selectMilestones, setMilestone, toggleStore} from '../../redux/gameSlice'
+import {selectMilestones, setMilestone, toggleStore} from '../../../redux/gameSlice'
+import { barnSvgWhite, barnSvgColor } from "./storeSvgs";
 
 const Store = () => {
 
@@ -72,7 +73,14 @@ const Store = () => {
               </button>
               <button
                 onClick={() => handleBuy(prices.barn)}
-                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isBarnBought ? "bg-gray-400" : "bg-green-300 hover:bg-green-400"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Barn</div>
+                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isBarnBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}><div className="flex flex-col justify-center">
+                <div className="mx-auto">
+                {isBarnBought ? barnSvgColor : barnSvgWhite}
+                </div>
+                <div className="mt-2 text-white font-medium comfortaa">Unlock Barn</div>
+                <div className="text-sm font-bold text-white comfortaa">two acrorns</div>
+                
+                </div>
               </button>
               <button
                 onClick={() => handleBuy(prices.silo)}
