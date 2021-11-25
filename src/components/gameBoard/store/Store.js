@@ -1,7 +1,14 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {selectMilestones, setMilestone, toggleStore} from '../../../redux/gameSlice'
-import { barnWhiteSVG, barnColorSVG, wellWhiteSVG, wellColorSVG } from "./storeSvgs";
+import { 
+  barnWhiteSVG,
+  barnColorSVG,
+  wellWhiteSVG,
+  wellColorSVG,
+  siloWhiteSVG,
+  siloColorSVG
+} from "./storeSvgs";
 
 const Store = () => {
 
@@ -91,7 +98,14 @@ const Store = () => {
               </button>
               <button
                 onClick={() => handleBuy(prices.silo)}
-                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isSiloBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Silo</div>
+                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isSiloBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}>
+                <div className="flex flex-col justify-start pt-2">
+                  <div className="mx-auto">
+                    {isSiloBought ?  siloColorSVG : siloWhiteSVG}
+                  </div>
+                  <div className="mt-2 text-white font-medium comfortaa">{isSiloBought ? "" : "ACORNS: 30"}</div>
+                  <div className="text-sm font-medium text-white comfortaa px-1">{isSiloBought ? "Winter is coming, seasons unlocked" : ""}</div>
+                </div>
               </button>
               <button
                 onClick={() => handleBuy(prices.stars)}

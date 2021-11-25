@@ -60,7 +60,22 @@ const wellColorSVG = <svg width="47" height="50" viewBox="0 0 47 50" fill="none"
 <path d="M27.2839 22.7463H20.5443V24.5885H27.2839V22.7463Z" fill="#4319F4"/>
 </svg>
 
+const siloWhiteSVG = <svg width="35" height="83" viewBox="0 0 35 83" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 16.1827V83H6V16.1827H10V83H35V16H34.9883C34.8915 8.22653 28.8686 1.76367 20.9028 0.307262C19.7813 0.100108 18.639 -0.00349218 17.4904 1.56034e-05C7.8311 1.56034e-05 -0.00436401 7.2494 -0.00436401 16.1827L0 16.1827Z" fill="white"/>
+</svg>
 
 
 
-export { barnWhiteSVG, barnColorSVG, wellWhiteSVG, wellColorSVG };
+const siloColorSVG = <svg width="35" height="83" viewBox="0 0 35 83" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M26 16H0V83H26V16Z" fill="#C62626"/>
+<path d="M35 16H17V83H35V16Z" fill="#CC4242"/>
+<path d="M17.4948 4.3869e-05C7.83328 4.3869e-05 0 7.24943 0 16.1827H34.9895C34.9851 7.24943 27.154 4.3869e-05 17.4948 4.3869e-05Z" fill="#93897F"/>
+<path d="M26.2378 2.17154C23.5459 0.736726 20.5407 -0.00929961 17.4904 1.56034e-05C7.8311 1.56034e-05 -0.00436401 7.24941 -0.00436401 16.1827H17.4904C17.4904 10.1995 21.0112 4.9707 26.2378 2.17154Z" fill="#82786E"/>
+<path d="M10 16H8V83H10V16Z" fill="#93897F"/>
+<path d="M8 16H6V83H8V16Z" fill="#82786E"/>
+</svg>
+
+
+
+
+export { barnWhiteSVG, barnColorSVG, wellWhiteSVG, wellColorSVG, siloWhiteSVG, siloColorSVG };
