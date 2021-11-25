@@ -12,7 +12,7 @@ import { selectSandboxMode, selectMessage } from '../../redux/gameSlice';
 const Header = () => {
     let isSandbox = useSelector(selectSandboxMode);
     let isSpeedUnlocked = useSelector(selectMilestones).speed
-    let isSeasonUnlocked = useSelector(selectMilestones).seasons
+    let isSiloUnlocked = useSelector(selectMilestones).silo
     const day = useSelector(selectDay);
     const mode = useSelector(selectMode);
     let message = useSelector(selectMessage);
@@ -33,7 +33,7 @@ const Header = () => {
                 </div>
                 <div className="flex flex-col items-end"> {/*RIGHT SECTION*/}
                     {isSandbox || isSpeedUnlocked ? <SpeedControls /> : null }
-                    {isSandbox || isSeasonUnlocked ? <SeasonControls /> : null}
+                    {isSandbox || isSiloUnlocked ? <SeasonControls /> : null}
                 </div>
             </div>
         </div>    
