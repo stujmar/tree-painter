@@ -16,8 +16,12 @@ const Barn = () => {
     }
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        wood = wood <= 50 ? wood : 50;
         let woodArray = Array.from({length: wood}, (v, k) => k);
-        setWoodPile(woodArray.map(_pile => <div key={_pile} className="w-3 h-1 bg-orange-500 border-t border-l-2 border-orange-700"></div>))
+        setWoodPile(woodArray.map(_pile => <div key={_pile} className="w-3 h-1 bg-orange-500 border-t border-l-2 border-orange-700 relative">
+            <div className="h-1 w-1 rounded-full bg-orange-500 border border-orange-600 absolute right-0"></div>
+        </div>))
     },[wood]);
 
     const handleBarnClick = () => {
@@ -64,7 +68,7 @@ const Barn = () => {
                     <path d="M142.038 30.0688H139.494V26.7838L142.038 30.0688Z" fill="#664922"/>
                 </svg>
                 <div className="left-6 z-20 absolute bottom-0">
-                    <div className="grid grid-cols-4 row-end-auto transform rotate-180">
+                    <div className="grid grid-cols-5 row-end-auto transform rotate-180">
                         {woodPile}
                     </div>
                 </div>
