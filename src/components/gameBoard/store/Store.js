@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {selectMilestones, setMilestone, toggleStore} from '../../../redux/gameSlice'
-import { barnSvgWhite, barnSvgColor } from "./storeSvgs";
+import { barnWhiteSVG, barnColorSVG, wellWhiteSVG, wellColorSVG } from "./storeSvgs";
 
 const Store = () => {
 
@@ -61,34 +61,41 @@ const Store = () => {
             <div className="w-full grid gap-2 grid-cols-2 sm:grid-cols-3 mt-3">
               <button
                 onClick={() => handleBuy(prices.speed)}
-                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isSpeedBought ? "bg-gray-400" : "bg-green-300 hover:bg-green-400"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Speed</div>
+                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isSpeedBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Speed</div>
               </button>
               <button
                 onClick={() => handleBuy(prices.seasons)}
-                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isSeasonsBought ? "bg-gray-400" : "bg-green-300 hover:bg-green-400"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Seasons</div>
+                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isSeasonsBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Seasons</div>
               </button>
               <button
                 onClick={() => handleBuy(prices.water)}
-                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isWaterBought ? "bg-gray-400" : "bg-green-300 hover:bg-green-400"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Well</div>
+                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isWaterBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}>
+                <div className="flex flex-col justify-center">
+                  <div className="mx-auto">
+                    {isWaterBought ?  wellColorSVG : wellWhiteSVG}
+                  </div>
+                  <div className="mt-2 text-white font-medium comfortaa">Unlock Well</div>
+                  <div className="text-sm font-bold text-white comfortaa">two acrorns</div>
+                </div>
               </button>
               <button
                 onClick={() => handleBuy(prices.barn)}
-                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isBarnBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}><div className="flex flex-col justify-center">
-                <div className="mx-auto">
-                {isBarnBought ? barnSvgColor : barnSvgWhite}
-                </div>
-                <div className="mt-2 text-white font-medium comfortaa">Unlock Barn</div>
-                <div className="text-sm font-bold text-white comfortaa">two acrorns</div>
-                
+                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isBarnBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}>
+                <div className="flex flex-col justify-center">
+                  <div className="mx-auto">
+                    {isBarnBought ?  barnColorSVG : barnWhiteSVG}
+                  </div>
+                  <div className="mt-2 text-white font-medium comfortaa">Unlock Barn</div>
+                  <div className="text-sm font-bold text-white comfortaa">two acrorns</div>
                 </div>
               </button>
               <button
                 onClick={() => handleBuy(prices.silo)}
-                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isSiloBought ? "bg-gray-400" : "bg-green-300 hover:bg-green-400"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Silo</div>
+                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isSiloBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Silo</div>
               </button>
               <button
                 onClick={() => handleBuy(prices.stars)}
-                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isStarsBought ? "bg-gray-400" : "bg-green-300 hover:bg-green-400"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Stars</div>
+                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isStarsBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Stars</div>
               </button>
             </div>
           <button className="block mx-auto w-min text-base comfortaa font-bold pt-1 focus:outline-none text-green-50 bg-green-600 hover:bg-green-700 px-2 font-medium rounded mt-4" aria-label="Exit Store" onClick={onExit} >EXIT</button>
