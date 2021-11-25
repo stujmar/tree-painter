@@ -69,13 +69,13 @@ const Store = () => {
               </button>
               <button
                 onClick={() => handleBuy(prices.water)}
-                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isWaterBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}>
-                <div className="flex flex-col justify-center">
-                  <div className="mx-auto">
+                className={`focus:outline-none aspect-h-1 aspect-w-1 ${isWaterBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}>
+                <div className="flex flex-col justify-start">
+                  <div className="mx-auto h-20 pt-6">
                     {isWaterBought ?  wellColorSVG : wellWhiteSVG}
                   </div>
-                  <div className="mt-2 text-white font-medium comfortaa">{isWaterBought ? "Unlocked" : "Unlock Well"}</div>
-                  <div className="text-sm font-bold text-white comfortaa h-2">{isWaterBought ? " " : "two acrorns"}</div>
+                  <div className="mt-2 text-white font-medium comfortaa">{isWaterBought ? "" : "ACORNS: 30"}</div>
+                  <div className="text-sm font-medium text-white comfortaa px-2">{isWaterBought ? "Click the well to draw more water." : ""}</div>
                 </div>
               </button>
               <button
@@ -85,8 +85,8 @@ const Store = () => {
                   <div className="mx-auto">
                     {isBarnBought ?  barnColorSVG : barnWhiteSVG}
                   </div>
-                  <div className="mt-2 text-white font-medium comfortaa">{isBarnBought ? "Unlocked" : "Unlock Barn"}</div>
-                  <div className="text-sm font-bold text-white comfortaa h-2">{isBarnBought ? " " : "two acrorns"}</div>
+                  <div className="mt-2 text-white font-medium comfortaa">{isBarnBought ? "" : "ACORNS: 30"}</div>
+                  <div className="text-sm font-medium text-white comfortaa px-2">{isBarnBought ? "Store wood in your barn." : ""}</div>
                 </div>
               </button>
               <button
