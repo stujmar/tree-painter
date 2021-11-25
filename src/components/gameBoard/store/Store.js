@@ -61,8 +61,6 @@ const Store = () => {
     const handleBuy = (item) => {
        if ( reasources[item.currency] >= item.price ) {
         dispatch(setMilestone(item.name))
-       } else {
-         console.log("can't afford");
        }
     }
 
@@ -103,7 +101,8 @@ const Store = () => {
               </button>
               <button
                 onClick={() => handleBuy(prices.silo)}
-                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isSiloBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}>
+                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isSiloBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}
+                style={{ background: prices.silo.price >= reasources[prices.silo.currency] ? "#E06C6C" : "" }}>
                 <div className="flex flex-col justify-start pt-2">
                   <div className="mx-auto">
                     {isSiloBought ?  siloColorSVG : siloWhiteSVG}
