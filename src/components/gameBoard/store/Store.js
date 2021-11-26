@@ -7,18 +7,25 @@ import {
   wellWhiteSVG,
   wellColorSVG,
   siloWhiteSVG,
-  siloColorSVG
+  siloColorSVG,
+  starsWhiteSVG,
+  starsColorSVG,
 } from "./storeSvgs";
 
 const Store = () => {
 
     const dispatch = useDispatch();
+    
+    const tooExpensive = "#ED7A7A";
+
     let reasources = useSelector(selectResources);
     // let isSpeedBought =  useSelector(selectMilestones).speed
     // let isTractorBought =  useSelector(selectMilestones).tractor
     let isWaterBought =  useSelector(selectMilestones).water
     let isBarnBought =  useSelector(selectMilestones).barn
+    let isStarsBought =  useSelector(selectMilestones).stars
     let isSiloBought =  useSelector(selectMilestones).silo
+
     // let isStarsBought =  useSelector(selectMilestones).stars
     
     const onExit = () => {
@@ -53,7 +60,7 @@ const Store = () => {
       },
       "stars": {
         name: "stars",
-        price: 1,
+        price: 20,
         currency: "seeds"
       }
     };
@@ -81,7 +88,7 @@ const Store = () => {
                 onClick={() => handleBuy(prices.water)}
                 className={`focus:outline-none aspect-h-1 aspect-w-1 ${isWaterBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}>
                 <div className="flex flex-col justify-start">
-                  <div className="mx-auto h-20 pt-6">
+                  <div className="mx-auto pt-14">
                     {isWaterBought ?  wellColorSVG : wellWhiteSVG}
                   </div>
                   <div className="mt-2 text-white font-medium comfortaa">{isWaterBought ? "" : "ACORNS: 5"}</div>
@@ -91,7 +98,7 @@ const Store = () => {
               <button
                 onClick={() => handleBuy(prices.barn)}
                 className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isBarnBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}>
-                <div className="flex flex-col justify-center">
+                <div className="flex flex-col justify-start pt-12">
                   <div className="mx-auto">
                     {isBarnBought ?  barnColorSVG : barnWhiteSVG}
                   </div>
@@ -102,19 +109,27 @@ const Store = () => {
               <button
                 onClick={() => handleBuy(prices.silo)}
                 className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isSiloBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}
-                style={{ background: prices.silo.price >= reasources[prices.silo.currency] ? "#E06C6C" : "" }}>
-                <div className="flex flex-col justify-start pt-2">
+                style={{ background: prices.silo.price >= reasources[prices.silo.currency] ? tooExpensive : "" }}>
+                <div className="flex flex-col justify-start pt-6">
                   <div className="mx-auto">
                     {isSiloBought ?  siloColorSVG : siloWhiteSVG}
                   </div>
                   <div className="mt-2 text-white font-medium comfortaa">{isSiloBought ? "" : "ACORNS: 15"}</div>
-                  <div className="text-sm font-medium text-white comfortaa px-1">{isSiloBought ? "Winter is coming, seasons unlocked" : ""}</div>
+                  <div className="text-sm font-medium text-white comfortaa px-1">{isSiloBought ? "Winter is coming, seasons unlocked." : ""}</div>
                 </div>
               </button>
-              {/* <button
+              <button
                 onClick={() => handleBuy(prices.stars)}
-                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isStarsBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Stars</div>
-              </button> */}
+                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isStarsBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}
+                style={{ background: prices.stars.price >= reasources[prices.stars.currency] ? tooExpensive : "" }}>
+                <div className="flex flex-col justify-start pt-6">
+                  <div className="mx-auto">
+                    {isStarsBought ?  starsColorSVG : starsWhiteSVG}
+                  </div>
+                  <div className="mt-2 text-white font-medium comfortaa">{isStarsBought ? "" : "ACORNS: 20"}</div>
+                  <div className="text-sm font-medium text-white comfortaa px-1">{isStarsBought ? "Click the sky at night!" : ""}</div>
+                </div>
+              </button>
             </div>
           <button className="block mx-auto w-min text-base comfortaa font-bold pt-1 focus:outline-none text-green-50 bg-green-600 hover:bg-green-700 px-2 font-medium rounded mt-4" aria-label="Exit Store" onClick={onExit} >EXIT</button>
           </div>
