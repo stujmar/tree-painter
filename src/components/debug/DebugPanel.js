@@ -33,7 +33,7 @@ const DebugPanel = ( { handleClose }) => {
     return (
         <div 
             style={{ transform: isActive ? "translateY(0px)" : "translateY(-300px)" }}
-            className={`w-screen absolute top-0 ${getSeason(day).light} transition border-b-4 ${getSeason(day).border} border-box overflow-y-auto h-56`}> {/* DeBug */}
+            className={`w-full absolute top-0 ${getSeason(day).light} transition border-b-4 ${getSeason(day).border} border-box overflow-y-auto h-56`}> {/* DeBug */}
             <button 
                 className={`flex p-2 justify-between w-full focus:outline-none ${getSeason(day).dark}`}
                 onClick={handleClose}>

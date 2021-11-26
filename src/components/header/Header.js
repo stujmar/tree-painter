@@ -26,8 +26,8 @@ const Header = () => {
                     <div className="p-1 sm:p-4 text-center"><span className={`font-bold ${getSeason(day).darkText}`}>{mode} MODE</span></div>
                 </div>
             </div>
-            <div className="absolute top-0 left-0">
-            <div className="flex w-screen justify-between p-3 comfortaa text-lg">
+            <div className="absolute top-0 left-0 w-full">
+            <div className="flex w-full justify-between p-3 comfortaa text-lg">
                 <div className="flex md:flex-col w-max items-start"> {/* LEFT SECTION */}
                     <TimeDisplay />
                 </div>
