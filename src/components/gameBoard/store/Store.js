@@ -14,12 +14,12 @@ const Store = () => {
 
     const dispatch = useDispatch();
     let reasources = useSelector(selectResources);
-    let isSpeedBought =  useSelector(selectMilestones).speed
-    let isTractorBought =  useSelector(selectMilestones).tractor
+    // let isSpeedBought =  useSelector(selectMilestones).speed
+    // let isTractorBought =  useSelector(selectMilestones).tractor
     let isWaterBought =  useSelector(selectMilestones).water
     let isBarnBought =  useSelector(selectMilestones).barn
     let isSiloBought =  useSelector(selectMilestones).silo
-    let isStarsBought =  useSelector(selectMilestones).stars
+    // let isStarsBought =  useSelector(selectMilestones).stars
     
     const onExit = () => {
         dispatch(toggleStore());
