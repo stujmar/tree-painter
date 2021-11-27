@@ -78,7 +78,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                     dispatch(removeTreeById(tree.id));
                 } else {
                     if (tree.age > 10 && coinFlipRatio(0.01)) {
-                        let newId = "tree_" + getRandomId();
+                        let newId = "tree_" + getRandomId();                     
                         dispatch(addTree({
                             id: newId,
                             birthday: tree.birthday,

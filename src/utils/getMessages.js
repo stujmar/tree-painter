@@ -10,6 +10,7 @@ export const getMessages = {
     "WATERING":"Click a tree to watch it grow!",
     "WATERED": "Look at that tree grow!",
     "NO_WATER": "Out of water? Oh well.",
+    "HARVEST": "Click a tree to chop it down.",
     "HARVESTING": "Chop chop.",
     "NO_TREES": "Oops! No trees to harvest.",
 };

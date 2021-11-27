@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { selectMilestones, selectResources } from '../../redux/gameSlice';
+import { selectMilestones, selectResources, selectSandboxMode } from '../../redux/gameSlice';
 
 const Barn = () => {
 
     const [isOpen, setIsOpen] = useState(false);
     const [woodPile, setWoodPile] = useState([]);
     let wood = useSelector(selectResources).wood;
+    let isSandbox = useSelector(selectSandboxMode);
     let isBarnUnlocked = useSelector(selectMilestones).barn;
     let barnStyle = {
-        transform: isBarnUnlocked ? "translateY(0px)" : "translateY(75px)",
-        "WebKitTransform": isBarnUnlocked ? "translateY(0px)" : "translateY(75px)",
+        transform: isBarnUnlocked || isSandbox ? "translateY(0px)" : "translateY(75px)",
+        "WebKitTransform": isBarnUnlocked || isSandbox ? "translateY(0px)" : "translateY(75px)",
         width: "150px",
         height: "72px"
     }

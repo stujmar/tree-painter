@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {selectMilestones, selectResources, setMilestone, toggleStore} from '../../../redux/gameSlice'
+import StoreItem from "./StoreItem";
 import { 
   barnWhiteSVG,
   barnColorSVG,
@@ -14,11 +15,10 @@ import {
 
 const Store = () => {
 
+    const [items, setItems] = useState([]);
     const dispatch = useDispatch();
     
-    const tooExpensive = "#ED7A7A";
-
-    let reasources = useSelector(selectResources);
+    let resources = useSelector(selectResources);
     // let isSpeedBought =  useSelector(selectMilestones).speed
     // let isTractorBought =  useSelector(selectMilestones).tractor
     let isWaterBought =  useSelector(selectMilestones).water
@@ -32,106 +32,70 @@ const Store = () => {
         dispatch(toggleStore());
     }
 
-    const prices = {
-      "speed": {
-        name: "speed",
-        price: 1,
-        currency: "seeds"
-      },
-      "tractor": {
-        name: "tractor",
-        price: 1,
-        currency: "seeds"
-      },
-      "water": {
+    useEffect(() => {
+      setItems(storeData.map(_item => {
+        return <StoreItem key={_item.name} item={_item} resources={resources} handleBuy={handleBuy} />
+      }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [ isBarnBought, isSiloBought, isStarsBought, isWaterBought ]);
+
+    const storeData = [
+      {
         name: "water",
         price: 5,
-        currency: "seeds"
+        currency: "seeds",
+        whiteSVG: wellWhiteSVG(125),
+        colorSVG: wellColorSVG(125),
+        description: "Water is used to grow crops and animals",
+        isBought: isWaterBought
       },
-      "barn": {
+      {
         name: "barn",
         price: 10,
-        currency: "seeds"
+        currency: "seeds",
+        whiteSVG: barnWhiteSVG(125),
+        colorSVG: barnColorSVG(125),
+        description: "A barn is needed to store animals",
+        isBought: isBarnBought
       },
-      "silo": {
+      {
         name: "silo",
         price: 15,
-        currency: "seeds"
+        currency: "seeds",
+        whiteSVG: siloWhiteSVG(125),
+        colorSVG: siloColorSVG(125),
+        description: "A silo is needed to store crops",
+        isBought: isSiloBought
       },
-      "stars": {
+      {
         name: "stars",
         price: 20,
-        currency: "seeds"
+        currency: "seeds",
+        whiteSVG: starsWhiteSVG(125),
+        colorSVG: starsColorSVG(125),
+        description: "A star is needed to harvest crops",
+        isBought: isStarsBought
       }
-    };
+    ];
 
     const handleBuy = (item) => {
-       if ( reasources[item.currency] >= item.price ) {
+       if ( resources[item.currency] >= item.price ) {
+         console.log("buy", item.name)
         dispatch(setMilestone(item.name))
        }
     }
 
     return (
         <div className="absolute z-20 w-full">
-          <div className="w-11/12 sm:w-10/12 md:max-w-lg bg-green-100 font-bold text-green-800 shadow-lg comfortaa p-4 text-center mt-2 md:mt-10 rounded-lg text-lg sm:text-xl shadow mx-auto">
-            <span className="px-4">Click to buy buildings which unlock new game features</span>
-            <div className="w-full grid gap-2 grid-cols-2 sm:grid-cols-3 mt-3">
-              {/* <button
-                onClick={() => handleBuy(prices.speed)}
-                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isSpeedBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Speed</div>
-              </button> */}
-              {/* <button
-                onClick={() => handleBuy(prices.tractor)}
-                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isTractorBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}><div className="flex flex-col justify-center">Unlock Tractor</div>
-              </button> */}
-              <button
-                onClick={() => handleBuy(prices.water)}
-                className={`focus:outline-none aspect-h-1 aspect-w-1 ${isWaterBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}>
-                <div className="flex flex-col justify-start">
-                  <div className="mx-auto pt-14">
-                    {isWaterBought ?  wellColorSVG : wellWhiteSVG}
-                  </div>
-                  <div className="mt-2 text-white font-medium comfortaa">{isWaterBought ? "" : "ACORNS: 5"}</div>
-                  <div className="text-sm font-medium text-white comfortaa px-2">{isWaterBought ? "Click the well to draw more water." : ""}</div>
-                </div>
-              </button>
-              <button
-                onClick={() => handleBuy(prices.barn)}
-                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isBarnBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}>
-                <div className="flex flex-col justify-start pt-12">
-                  <div className="mx-auto">
-                    {isBarnBought ?  barnColorSVG : barnWhiteSVG}
-                  </div>
-                  <div className="mt-2 text-white font-medium comfortaa">{isBarnBought ? "" : "ACORNS: 10"}</div>
-                  <div className="text-sm font-medium text-white comfortaa px-2">{isBarnBought ? "Store wood in your barn." : ""}</div>
-                </div>
-              </button>
-              <button
-                onClick={() => handleBuy(prices.silo)}
-                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isSiloBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}
-                style={{ background: prices.silo.price >= reasources[prices.silo.currency] ? tooExpensive : "" }}>
-                <div className="flex flex-col justify-start pt-6">
-                  <div className="mx-auto">
-                    {isSiloBought ?  siloColorSVG : siloWhiteSVG}
-                  </div>
-                  <div className="mt-2 text-white font-medium comfortaa">{isSiloBought ? "" : "ACORNS: 15"}</div>
-                  <div className="text-sm font-medium text-white comfortaa px-1">{isSiloBought ? "Winter is coming, seasons unlocked." : ""}</div>
-                </div>
-              </button>
-              <button
-                onClick={() => handleBuy(prices.stars)}
-                className={`focus:outline-none h-20 aspect-h-1 aspect-w-1 ${isStarsBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}
-                style={{ background: prices.stars.price >= reasources[prices.stars.currency] ? tooExpensive : "" }}>
-                <div className="flex flex-col justify-start pt-6">
-                  <div className="mx-auto">
-                    {isStarsBought ?  starsColorSVG : starsWhiteSVG}
-                  </div>
-                  <div className="mt-2 text-white font-medium comfortaa">{isStarsBought ? "" : "ACORNS: 20"}</div>
-                  <div className="text-sm font-medium text-white comfortaa px-1">{isStarsBought ? "Click the sky at night!" : ""}</div>
-                </div>
-              </button>
+          <div className="w-11/12 bg-green-100 mx-auto mt-4 p-4 pb-6 rounded-lg shadow-lg">
+            <span className="px-4 block font-bold text-lg sm:text-xl text-green-800 w-full comfortaa text-center">Click to buy buildings which unlock new game features</span>
+
+          <div className="w-full sm:w-10/12 md:max-w-lg h-80 overflow-y-auto pr-4 mx-auto">
+            <div className="w-full grid gap-2 grid-cols-1">
+              {items}
             </div>
-          <button className="block mx-auto w-min text-base comfortaa font-bold pt-1 focus:outline-none text-green-50 bg-green-600 hover:bg-green-700 px-2 font-medium rounded mt-4" aria-label="Exit Store" onClick={onExit} >EXIT</button>
+          </div>
+          <button className="block mx-auto w-max text-base comfortaa font-bold pt-1 focus:outline-none text-green-50 bg-green-600 hover:bg-green-700 px-2 font-medium rounded mt-4" aria-label="Exit Store" onClick={onExit} >EXIT STORE</button>
           </div>
         </div>
     );

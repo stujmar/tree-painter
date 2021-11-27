@@ -7,5 +7,3 @@ export function coinFlipRatio(ratio) {
     // This is copilot code, double check it. and get it returning the correct value.
     return Math.random() < ratio;
 }
-
-

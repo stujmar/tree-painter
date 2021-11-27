@@ -2,7 +2,7 @@ import React from 'react';
 
 const MessageModal = () => {
     return (
-        <div className="absolute z-10 w-full">
+        <div className="absolute z-10 mt-4 w-full">
             <div className="sm:w-11/12 md:max-w-lg bg-green-100 font-bold text-green-800 comfortaa p-4 text-center mt-2 mx-2 sm:mt-16 rounded-lg text-xl sm:text-2xl shadow sm:mx-auto">
                 <span>Welcome to Treelapse, the entirely accurate simulation of a forest growing. Click the acorn button in the bottom left corner of the screen to start planting!</span>
                 <div className="mx-auto w-min bg-green-600 p-2 mt-2 rounded-lg">

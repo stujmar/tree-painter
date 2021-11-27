@@ -15,7 +15,6 @@ const Trunk = ({trunkData, color, girth, isDead}) => {
     }
 
     return (
-
             <div style={{width: girth}} className="h-2 opacity-100 text-green-100 relative">
             <div className={`h-3 -mt-1 ${trunkColor}`}>
                 <div className={`h-full w-6/12 bg-black bg-opacity-10`}></div>

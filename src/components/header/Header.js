@@ -18,8 +18,8 @@ const Header = () => {
     let message = useSelector(selectMessage);
 
     return (
-        <header 
-        className={`${getSeason(day).light} h-44 relative flex items-center justify-center text-lg font-sans text-white`}>
+        <header
+        className={`${getSeason(day).light} h-44 -mt-3 relative flex items-center justify-center text-lg font-sans text-white`}>
         <div className="w-96 text-center pt-12 md:pt-0 comfortaa">{message}</div>
             <div className="absolute comfortaa w-full bottom-0 sm:top-0 -4 sm:h-14">
                 <div className={`f-full sm:w-max mx-auto h-full bg-white opacity-60 rounded-none sm:rounded-b-lg ${mode === "NO_MODE" ? " hidden" : " block"}`}>
@@ -28,10 +28,10 @@ const Header = () => {
             </div>
             <div className="absolute top-0 left-0 w-full">
             <div className="flex w-full justify-between p-3 comfortaa text-lg">
-                <div className="flex md:flex-col w-max items-start"> {/* LEFT SECTION */}
+                <div className="flex md:flex-col mt-3 w-max items-start"> {/* LEFT SECTION */}
                     <TimeDisplay />
                 </div>
-                <div className="flex flex-col items-end"> {/*RIGHT SECTION*/}
+                <div className="flex flex-col mt-3 items-end"> {/*RIGHT SECTION*/}
                     {isSandbox || isSpeedUnlocked ? <SpeedControls /> : null }
                     {isSandbox || isSiloUnlocked ? <SeasonControls /> : null}
                 </div>
