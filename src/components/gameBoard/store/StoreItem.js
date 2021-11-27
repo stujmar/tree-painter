@@ -1,6 +1,9 @@
 import React from 'react';
 
 const StoreItem = ({item, resources, handleBuy }) => {
+
+    let canAfford = resources[item.currency] >= item.price;
+
     return (
         <button
         onClick={() => handleBuy(item)}
@@ -13,8 +16,9 @@ const StoreItem = ({item, resources, handleBuy }) => {
                 {item.isBought ?  item.colorSVG : item.whiteSVG}
             </div>
           </div>
-          <div className="border w-full">
-            <div className="mt-2 text-white font-medium comfortaa">{item.isBought ? "" : "ACORNS: 15"}</div>
+          <div className="w-full p-2">
+            <h3 className={`w-min capitalize text-left text-xl comfortaa text-green-50 ${canAfford ? "bg-green-500" : "bg-red-500"} rounded-md px-2 pt-1`}>{item.name}</h3>
+            <div className="mt-2 px-2 text-white font-medium text-left comfortaa">{item.isBought ? "" : "ACORNS: 15"}</div>
             <div className="text-sm font-medium text-white text-left comfortaa px-1">{item.isBought ? item.description : ""}</div>
           </div>
         </div>
