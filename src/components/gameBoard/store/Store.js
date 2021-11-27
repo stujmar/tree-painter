@@ -127,7 +127,7 @@ const Store = () => {
             <div className="mt-2 block font-bold text-lg sm:text-xl text-green-800 mx-auto w-11/12 comfortaa text-center">Click to buy buildings which unlock new game features</div>
 
           <div className="w-full sm:w-11/12 md:max-w-xl h-96 overflow-y-auto mt-6 mx-auto">
-            <div className="w-full grid gap-2 bg-green-200 px-3 py-2 grid-cols-1">
+            <div className="w-full grid gap-2 px-3 grid-cols-1">
               {items}
             </div>
           </div>

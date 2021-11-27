@@ -26,6 +26,7 @@ const StoreItem = ({item, resources, handleBuy }) => {
                 let isRed = resources[currency.resource] < currency.amount;
                 return (
                 <div
+                    key={currency.resource}
                     className={`mt-1 px-2 text-white font-medium text-left pt-1 w-max rounded comfortaa ${isRed && !item.isBought ? "bg-red-400" : "bg-green-500"}`}
                 >{`${currency.resource}: ${resources[currency.resource]}/${currency.amount}`}</div>
                 )

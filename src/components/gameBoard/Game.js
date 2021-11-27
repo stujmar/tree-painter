@@ -5,26 +5,21 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
     setMouse,
     selectMouse,
-    resetResource, 
     updateAcorns, 
     selectMode, 
-    setMode, 
     selectResources,
     setGrassLoaded,
     toggleDebug,
     selectSandboxMode,
     setMessage,
-    resetMileStones
     } from '../../redux/gameSlice';
-import { addTree, addBranch, resetTrees, ageTrees, selectTrees, growTreeById, removeTreeById} from '../../redux/treeSlice';
-import { resetStars } from '../../redux/skySlice';
+import { addTree, addBranch, ageTrees, selectTrees, growTreeById, removeTreeById} from '../../redux/treeSlice';
 import { selectHour } from '../../redux/hourSlice';
 import { selectDay } from '../../redux/daySlice';
 
 import Sky from '../sky/Sky';
 import Tree from './Tree';
 import HUD from './HUD';
-import { setSpeed } from '../../redux/clockSlice';
 import Well from '../farm/Well';
 import Silo from '../farm/Silo';
 import Barn from '../farm/Barn';
@@ -164,17 +159,6 @@ const Game = ( { messageChange, toggleGraph } ) => {
         dispatch(toggleDebug());
     }
 
-    const reset = () => {
-        dispatch(resetTrees());
-        dispatch(resetStars());
-        dispatch(resetResource('acorns'));
-        dispatch(resetResource('water'));
-        dispatch(resetResource('stars'));
-        dispatch(setSpeed(1000));
-        dispatch(setMode("NO_MODE"));
-        dispatch(resetMileStones());
-    }
-
     return (
         <div className="overflow-hidden">
             <div className="w-full relative overflow-hidden" style={{height: "125px"}}> {/* SKY FIELD */}
@@ -201,7 +185,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                                 className="mx-auto bg-green-500 w-full h-72 overflow-hidden"
                                 style={{height: "calc(100vh - 324px)"}}
                                 ></div>
-                        <HUD toggleGraph={toggleGraph} toggleDebug={toggleDebug} reset={reset} />
+                        <HUD toggleGraph={toggleGraph} toggleDebug={toggleDebug}/>
                         
                 </div> 
             {grass ? <DebugPanel handleClose={handleToggleDebug} /> : <></>}
