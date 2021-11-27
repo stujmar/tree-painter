@@ -43,6 +43,12 @@ const Store = () => {
       {
         name: "water",
         alias: "Well",
+        cost: [
+          {
+            amount: 5,
+            resource: "acorns"
+          }
+        ],
         price: 5,
         currency: "acorns",
         whiteSVG: wellWhiteSVG(125),
@@ -53,6 +59,12 @@ const Store = () => {
       {
         name: "wood",
         alias: "Barn",
+        cost: [
+          {
+            amount: 10,
+            resource: "acorns"
+          }
+        ],
         price: 10,
         currency: "acorns",
         whiteSVG: barnWhiteSVG(70),
@@ -63,6 +75,16 @@ const Store = () => {
       {
         name: "seasons",
         alias: "Silo",
+        cost: [
+          {
+            amount: 15,
+            resource: "acorns"
+          },
+          {
+            amount: 5,
+            resource: "water"
+          }
+        ],
         price: 15,
         currency: "acorns",
         whiteSVG: siloWhiteSVG(70),
@@ -73,6 +95,16 @@ const Store = () => {
       {
         name: "stars",
         alias: "Observatory",
+        cost: [
+          {
+            amount: 5,
+            resource: "acorns"
+          },
+          {
+            amount: 5,
+            resource: "wood"
+          }
+        ],
         price: 20,
         currency: "acorns",
         whiteSVG: starsWhiteSVG(70),
@@ -95,7 +127,7 @@ const Store = () => {
             <div className="mt-2 block font-bold text-lg sm:text-xl text-green-800 mx-auto w-11/12 comfortaa text-center">Click to buy buildings which unlock new game features</div>
 
           <div className="w-full sm:w-11/12 md:max-w-xl h-96 overflow-y-auto mt-6 mx-auto">
-            <div className="w-full grid gap-2 bg-green-200 px-3 pt-2 grid-cols-1">
+            <div className="w-full grid gap-2 bg-green-200 px-3 py-2 grid-cols-1">
               {items}
             </div>
           </div>

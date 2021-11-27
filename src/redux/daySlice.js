@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    value: 60
+    value: 152
 };
 
 export const daySlice = createSlice({
