@@ -12,8 +12,8 @@ const initialState = {
     },
     resources: {
         acorns: 10,
-        stars: 10,
-        water: 10,
+        stars: 0,
+        water: 0,
         wood: 0,
     },
     milestones: {

@@ -14,7 +14,7 @@ const HUD = ({toggleGraph, reset}) => {
         dispatch(setMode(_mode));
     }
     const handleStoreToggle = () => {
-
+        dispatch(setMode("PLANTING"));
         dispatch(toggleStore());
     }
 
