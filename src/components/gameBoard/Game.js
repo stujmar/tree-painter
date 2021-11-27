@@ -70,7 +70,6 @@ const Game = ( { messageChange, toggleGraph } ) => {
             // For each tree.
             trees.forEach((tree) => {
                 if (tree.age === 100) {
-                    console.log('tree feel down')
                     dispatch(removeTreeById(tree.id));
                 } else {
                     if (tree.age > 10 && coinFlipRatio(0.01)) {
