@@ -86,11 +86,11 @@ const Store = () => {
     }
 
     return (
-        <div className="absolute z-20 w-full">
+        <div className="absolute z-20 mt-4 w-full">
           <div className="w-11/12 md:w-max bg-green-100 mx-auto mt-4 p-4 pb-6 rounded-lg shadow-lg">
-            <span className="px-4 block font-bold text-lg sm:text-xl text-green-800 w-full comfortaa text-center">Click to buy buildings which unlock new game features</span>
+            <div className="mt-2 block font-bold text-lg sm:text-xl text-green-800 mx-auto w-11/12 comfortaa text-center">Click to buy buildings which unlock new game features</div>
 
-          <div className="w-full sm:w-10/12 md:max-w-lg h-80 overflow-y-auto pr-4 mx-auto">
+          <div className="w-full sm:w-11/12 md:max-w-lg h-80 overflow-y-auto pr-4 mt-8 mx-auto">
             <div className="w-full grid gap-2 grid-cols-1">
               {items}
             </div>
