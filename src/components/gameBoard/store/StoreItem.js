@@ -9,7 +9,7 @@ const StoreItem = ({item, resources, handleBuy }) => {
         >
         <div className="flex flex-row justify-start">
           <div className={`w-24 h-24 border ${item.isBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}>
-            <div className="w-full h-full mx-auto flex flex-col justify-center">
+            <div className="w-min h-full mx-auto flex flex-col justify-center">
                 {item.isBought ?  item.colorSVG : item.whiteSVG}
             </div>
           </div>

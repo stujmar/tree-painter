@@ -53,8 +53,8 @@ const Store = () => {
         name: "barn",
         price: 10,
         currency: "seeds",
-        whiteSVG: barnWhiteSVG(125),
-        colorSVG: barnColorSVG(125),
+        whiteSVG: barnWhiteSVG(70),
+        colorSVG: barnColorSVG(70),
         description: "A barn is needed to store animals",
         isBought: isBarnBought
       },
@@ -62,8 +62,8 @@ const Store = () => {
         name: "silo",
         price: 15,
         currency: "seeds",
-        whiteSVG: siloWhiteSVG(125),
-        colorSVG: siloColorSVG(125),
+        whiteSVG: siloWhiteSVG(70),
+        colorSVG: siloColorSVG(70),
         description: "A silo is needed to store crops",
         isBought: isSiloBought
       },
@@ -71,8 +71,8 @@ const Store = () => {
         name: "stars",
         price: 20,
         currency: "seeds",
-        whiteSVG: starsWhiteSVG(125),
-        colorSVG: starsColorSVG(125),
+        whiteSVG: starsWhiteSVG(70),
+        colorSVG: starsColorSVG(70),
         description: "A star is needed to harvest crops",
         isBought: isStarsBought
       }
@@ -87,7 +87,7 @@ const Store = () => {
 
     return (
         <div className="absolute z-20 w-full">
-          <div className="w-11/12 md:w-max bg-green-100  border border-red-600 mx-auto mt-4 p-4 pb-6 rounded-lg shadow-lg">
+          <div className="w-11/12 md:w-max bg-green-100 mx-auto mt-4 p-4 pb-6 rounded-lg shadow-lg">
             <span className="px-4 block font-bold text-lg sm:text-xl text-green-800 w-full comfortaa text-center">Click to buy buildings which unlock new game features</span>
 
           <div className="w-full sm:w-10/12 md:max-w-lg h-80 overflow-y-auto pr-4 mx-auto">
