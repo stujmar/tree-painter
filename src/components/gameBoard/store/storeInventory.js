@@ -24,7 +24,7 @@ export const inventory = [
       ],
       whiteSVG: scareCrowWhiteSVG(50),
       colorSVG: scareCrowColorSVG(50),
-      description: "Water is used to grow crops and animals",
+      description: "Scarecrow has watched the forest for eons, you now control the flow of time.",
     },
     {
       name: "water",

@@ -39,22 +39,22 @@ const StoreItem = ({item, resources }) => {
                 {isBought ?  item.colorSVG : item.whiteSVG}
             </div>
           </div>
-          <div className="w-full ml-2">
-            <h3 className={`w-max capitalize text-left text-lg comfortaa text-green-50 ${!canAfford(item) && !isBought ? "bg-trueGray-400" : "bg-green-500"} rounded-md px-2 pt-1`}>{item.alias}</h3>
-            {isBought ? <div className="text-sm font-medium text-white text-left comfortaa mt-1 px-2">{item.description}</div> : null}
+          <div className="ml-2">
+            <h3 className={`w-min text-left text-lg comfortaa text-green-50 ${!canAfford(item) && !isBought ? "bg-trueGray-400" : "bg-green-500"} rounded-md px-2 pt-1`}>{item.alias}</h3>
+
+            {isBought ? <div className="pl-2 text-sm font-medium text-white text-left comfortaa mt-1">{item.description}</div> : null}
             {!isBought ? item.cost.map((currency) => {
                 let isRed = resources[currency.resource] < currency.amount;
                 return (
-                <div
-                    key={currency.resource}
-                    className={`mt-1 px-2 text-white text-sm font-medium text-left pt-1 w-max rounded comfortaa ${isRed && !isBought ? "bg-red-400" : "bg-green-500"}`}
-                >{`${currency.resource}: ${resources[currency.resource]}/${currency.amount}`}</div>
-                )
-            }
-            )
-            : null}
+                <div> 
+                    <div
+                        key={currency.resource}
+                        className={`mt-1 text-white px-2 text-sm font-medium text-left pt-1 w-max rounded comfortaa ${isRed && !isBought ? "bg-red-400" : "bg-green-500"}`}
+                    >{`${currency.resource}: ${resources[currency.resource]}/${currency.amount}`}</div>
+                </div>
+                )}) : null}
+            </div>
           </div>
-        </div>
       </button>
     );
 }
