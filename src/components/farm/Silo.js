@@ -4,7 +4,7 @@ import { selectMilestones, selectSandboxMode } from '../../redux/gameSlice';
 
 const Silo = () => {
     let isSandbox = useSelector(selectSandboxMode);
-    let isSiloUnlocked = useSelector(selectMilestones).silo;
+    let isSiloUnlocked = useSelector(selectMilestones).seasons;
 
     return (
         <div className={`z-10 absolute bottom-0 left-4 focus:outline-none no-select transition duration-2000`}>

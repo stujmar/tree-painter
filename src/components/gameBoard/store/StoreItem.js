@@ -19,7 +19,7 @@ const StoreItem = ({item, resources, handleBuy }) => {
             </div>
           </div>
           <div className="w-full p-2">
-            <h3 className={`w-min capitalize text-left text-xl comfortaa text-green-50 ${!canAfford && !item.isBought ? "bg-red-500" : "bg-green-500"} rounded-md px-2 pt-1`}>{item.name}</h3>
+            <h3 className={`w-min capitalize text-left text-xl comfortaa text-green-50 ${!canAfford && !item.isBought ? "bg-red-500" : "bg-green-500"} rounded-md px-2 pt-1`}>{item.alias}</h3>
             <div className="mt-2 px-2 text-white font-medium text-left comfortaa">{item.isBought ? "" : `${item.currency}: ${item.price}`}</div>
             <div className="text-sm font-medium text-white text-left comfortaa px-1">{item.isBought ? item.description : ""}</div>
           </div>

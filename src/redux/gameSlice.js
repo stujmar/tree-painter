@@ -19,11 +19,10 @@ const initialState = {
     milestones: {
         water: false,
         stars: false,
-        barn: false,
-        tractor: false,
-        silo: false,
-        speed: false,
         wood: false,
+        tractor: false,
+        seasons: false,
+        speed: false,
     },
     mouse: {    
         x: 0,

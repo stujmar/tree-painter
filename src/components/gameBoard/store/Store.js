@@ -22,9 +22,9 @@ const Store = () => {
     // let isSpeedBought =  useSelector(selectMilestones).speed
     // let isTractorBought =  useSelector(selectMilestones).tractor
     let isWaterBought =  useSelector(selectMilestones).water
-    let isBarnBought =  useSelector(selectMilestones).barn
+    let isBarnBought =  useSelector(selectMilestones).wood
     let isStarsBought =  useSelector(selectMilestones).stars
-    let isSiloBought =  useSelector(selectMilestones).silo
+    let isSiloBought =  useSelector(selectMilestones).seasons
 
     // let isStarsBought =  useSelector(selectMilestones).stars
     
@@ -42,6 +42,7 @@ const Store = () => {
     const storeData = [
       {
         name: "water",
+        alias: "Well",
         price: 5,
         currency: "seeds",
         whiteSVG: wellWhiteSVG(125),
@@ -50,7 +51,8 @@ const Store = () => {
         isBought: isWaterBought
       },
       {
-        name: "barn",
+        name: "wood",
+        alias: "Barn",
         price: 10,
         currency: "seeds",
         whiteSVG: barnWhiteSVG(70),
@@ -59,7 +61,8 @@ const Store = () => {
         isBought: isBarnBought
       },
       {
-        name: "silo",
+        name: "seasons",
+        alias: "Silo",
         price: 15,
         currency: "seeds",
         whiteSVG: siloWhiteSVG(70),
@@ -69,6 +72,7 @@ const Store = () => {
       },
       {
         name: "stars",
+        alias: "Observatory",
         price: 20,
         currency: "seeds",
         whiteSVG: starsWhiteSVG(70),
@@ -90,7 +94,7 @@ const Store = () => {
           <div className="w-11/12 md:w-max bg-green-100 mx-auto mt-4 p-4 pb-6 rounded-lg shadow-lg">
             <div className="mt-2 block font-bold text-lg sm:text-xl text-green-800 mx-auto w-11/12 comfortaa text-center">Click to buy buildings which unlock new game features</div>
 
-          <div className="w-full sm:w-11/12 md:max-w-lg h-80 overflow-y-auto pr-4 mt-8 mx-auto">
+          <div className="w-full sm:w-11/12 md:max-w-lg h-96 overflow-y-auto pr-4 mt-8 mx-auto">
             <div className="w-full grid gap-2 grid-cols-1">
               {items}
             </div>

@@ -12,7 +12,7 @@ import { selectSandboxMode, selectMessage } from '../../redux/gameSlice';
 const Header = () => {
     let isSandbox = useSelector(selectSandboxMode);
     let isSpeedUnlocked = useSelector(selectMilestones).speed
-    let isSiloUnlocked = useSelector(selectMilestones).silo
+    let isSiloUnlocked = useSelector(selectMilestones).seasons
     const day = useSelector(selectDay);
     const mode = useSelector(selectMode);
     let message = useSelector(selectMessage);

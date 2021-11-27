@@ -8,7 +8,7 @@ const Barn = () => {
     const [woodPile, setWoodPile] = useState([]);
     let wood = useSelector(selectResources).wood;
     let isSandbox = useSelector(selectSandboxMode);
-    let isBarnUnlocked = useSelector(selectMilestones).barn;
+    let isBarnUnlocked = useSelector(selectMilestones).wood;
     let barnStyle = {
         transform: isBarnUnlocked || isSandbox ? "translateY(0px)" : "translateY(75px)",
         "WebKitTransform": isBarnUnlocked || isSandbox ? "translateY(0px)" : "translateY(75px)",
