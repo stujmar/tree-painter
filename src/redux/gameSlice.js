@@ -11,7 +11,7 @@ const initialState = {
         clientWidth: 0,
     },
     resources: {
-        seeds: 10,
+        acorns: 10,
         stars: 10,
         water: 10,
         wood: 0,
@@ -63,15 +63,15 @@ export const gameSlice = createSlice({
         setMouse: (state, action) => {
             state.mouse = action.payload;
         },
-        updateSeeds: (state, action) => {
-            state.resources.seeds = state.resources.seeds + action.payload;
+        updateAcorns: (state, action) => {
+            state.resources.acorns = state.resources.acorns + action.payload;
         },
         updateResource: (state, action) => {
             let amount = action.payload.amount;
             state.resources[action.payload.type] = state.resources[action.payload.type] + amount;
             // switch(action.payload.type) {
-            //     case 'seeds':
-            //         state.resources.seeds = state.resources.seeds + amount;
+            //     case 'acorns':
+            //         state.resources.acorns = state.resources.acorns + amount;
             //         break;
             //     case 'water':
             //         state.resources.water = state.resources.water + amount;
@@ -85,8 +85,8 @@ export const gameSlice = createSlice({
         },
         resetResource: (state, action) => {
             switch(action.payload) {
-                case 'seeds':
-                    state.resources.seeds = 10;
+                case 'acorns':
+                    state.resources.acorns = 10;
                     break;
                 case 'water':
                     state.resources.water = 10;
@@ -106,7 +106,7 @@ export const {
     setMode, 
     setMouse,
     setSandbox,
-    updateSeeds,
+    updateAcorns,
     updateResource,
     resetResource,
     setGrassLoaded,

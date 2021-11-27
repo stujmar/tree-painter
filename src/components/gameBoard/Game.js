@@ -6,7 +6,7 @@ import {
     setMouse,
     selectMouse,
     resetResource, 
-    updateSeeds, 
+    updateAcorns, 
     selectMode, 
     setMode, 
     selectResources,
@@ -47,11 +47,11 @@ const Game = ( { messageChange, toggleGraph } ) => {
     let trees = useSelector(selectTrees);
     let mouse = useSelector(selectMouse);
     let resources = useSelector(selectResources);
-    let seeds = resources.seeds;
+    let acorns = resources.acorns;
     const dispatch = useDispatch();
 
     // const handleDelete = (id) => {
-    //     dispatch(updateSeeds(1));
+    //     dispatch(updateAcorns(1));
     //     dispatch(removeTree(id));
     // } 
 
@@ -143,7 +143,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
     }
 
     const plant = (e) => {
-        if (seeds > 0 || isSandbox) {
+        if (acorns > 0 || isSandbox) {
             // Set Trees in Redux state.
             let newId = "tree_" + getRandomId();
             dispatch( addTree({
@@ -155,7 +155,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                 growth: []
             }) );
             if (!isSandbox) {
-                dispatch(updateSeeds(-1));
+                dispatch(updateAcorns(-1));
             }
         }
     }
@@ -167,7 +167,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
     const reset = () => {
         dispatch(resetTrees());
         dispatch(resetStars());
-        dispatch(resetResource('seeds'));
+        dispatch(resetResource('acorns'));
         dispatch(resetResource('water'));
         dispatch(resetResource('stars'));
         dispatch(setSpeed(1000));

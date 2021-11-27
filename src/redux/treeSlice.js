@@ -51,8 +51,8 @@ export const treeSlice = createSlice({
                 return tree.id !== action.payload;
             })
         },
-        updateSeeds: (state, action) => {
-            state.resources.seeds = state.resources.seeds + action.payload;
+        updateAcorns: (state, action) => {
+            state.resources.acorns = state.resources.acorns + action.payload;
         },
     }
 });

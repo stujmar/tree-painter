@@ -8,7 +8,7 @@ const StoreItem = ({item, resources, handleBuy }) => {
         <button
         onClick={() => handleBuy(item)}
         style={{ background: !item.isBought && item.price > resources[item.currency] ? "#ED7A7A" : "" }}
-        className={`focus:outline-none p-4 ${item.isBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}
+        className={`focus:outline-none p-2 ${item.isBought ? "bg-green-500" : "bg-green-400 hover:bg-green-500"} rounded-lg`}
         >
         <div className="flex flex-row justify-start">
           <div 
@@ -18,9 +18,9 @@ const StoreItem = ({item, resources, handleBuy }) => {
                 {item.isBought ?  item.colorSVG : item.whiteSVG}
             </div>
           </div>
-          <div className="w-full p-2">
-            <h3 className={`w-min capitalize text-left text-xl comfortaa text-green-50 ${!canAfford && !item.isBought ? "bg-red-500" : "bg-green-500"} rounded-md px-2 pt-1`}>{item.alias}</h3>
-            <div className="mt-2 px-2 text-white font-medium text-left comfortaa">{item.isBought ? "" : `${item.currency}: ${item.price}`}</div>
+          <div className="w-full ml-2">
+            <h3 className={`w-min capitalize text-left text-lg comfortaa text-green-50 ${!canAfford && !item.isBought ? "bg-red-500" : "bg-green-500"} rounded-md px-2 pt-1`}>{item.alias}</h3>
+            <div className="mt-2 px-2 text-white font-medium text-left comfortaa">{item.isBought ? "" : `${item.currency}: ${resources[item.currency]}/${item.price}`}</div>
             <div className="text-sm font-medium text-white text-left comfortaa px-1">{item.isBought ? item.description : ""}</div>
           </div>
         </div>

@@ -17,7 +17,7 @@ const StatusBar = () => {
     let isWaterUnlocked = useSelector(selectMilestones).water;
     let isWoodUnlocked = useSelector(selectMilestones).wood;
     let isStarsUnlocked = useSelector(selectMilestones).stars;
-    let { seeds, water, stars, wood} = useSelector(selectResources);
+    let { acorns, water, stars, wood} = useSelector(selectResources);
     let dispatch = useDispatch();
 
     const addResource = (resourceType) => {
@@ -29,7 +29,7 @@ const StatusBar = () => {
     return (
         <div className={`w-full h-8 comfortaa ${getSeason(day).dark}`}>
             <div className="flex pl-3 mx-auto justify-start items-top py-1 justify-start gap-3">
-                <button className="focus:outline-none" onClick={() => addResource('seeds')}><AcornIcon amount={seeds} color={getSeason(day).text} /></button>
+                <button className="focus:outline-none" onClick={() => addResource('acorns')}><AcornIcon amount={acorns} color={getSeason(day).text} /></button>
                 {isSandbox || isWaterUnlocked ? <button className="focus:outline-none" onClick={() => addResource('water')}><WaterIcon amount={water} color={getSeason(day).text}/></button> : null}
                 {isSandbox || isStarsUnlocked ? <button className="focus:outline-none" onClick={() => addResource('stars')}><StarIcon amount={stars} color={getSeason(day).text}/></button> : null}
                 {isSandbox || isWoodUnlocked ? <button className="focus:outline-none" onClick={() => addResource('wood')}><WoodIcon amount={wood} color={getSeason(day).text} /></button> : null}

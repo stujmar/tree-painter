@@ -34,7 +34,7 @@ const Tree = ({treeData, onWater }) => {
                 }
             }
             if (!isSandbox) {
-                dispatch(updateResource({type: "seeds", amount: 1}));
+                dispatch(updateResource({type: "acorns", amount: 1}));
             }
         } else if (mode === "WATERING" && resources.water > 0 && treeData.growth.length < 15) {
             onWater(treeData)

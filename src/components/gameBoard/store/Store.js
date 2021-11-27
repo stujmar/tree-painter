@@ -44,7 +44,7 @@ const Store = () => {
         name: "water",
         alias: "Well",
         price: 5,
-        currency: "seeds",
+        currency: "acorns",
         whiteSVG: wellWhiteSVG(125),
         colorSVG: wellColorSVG(125),
         description: "Water is used to grow crops and animals",
@@ -54,7 +54,7 @@ const Store = () => {
         name: "wood",
         alias: "Barn",
         price: 10,
-        currency: "seeds",
+        currency: "acorns",
         whiteSVG: barnWhiteSVG(70),
         colorSVG: barnColorSVG(70),
         description: "A barn is needed to store animals",
@@ -64,7 +64,7 @@ const Store = () => {
         name: "seasons",
         alias: "Silo",
         price: 15,
-        currency: "seeds",
+        currency: "acorns",
         whiteSVG: siloWhiteSVG(70),
         colorSVG: siloColorSVG(70),
         description: "A silo is needed to store crops",
@@ -74,7 +74,7 @@ const Store = () => {
         name: "stars",
         alias: "Observatory",
         price: 20,
-        currency: "seeds",
+        currency: "acorns",
         whiteSVG: starsWhiteSVG(70),
         colorSVG: starsColorSVG(70),
         description: "A star is needed to harvest crops",
@@ -94,8 +94,8 @@ const Store = () => {
           <div className="w-11/12 md:w-max bg-green-100 mx-auto mt-4 p-4 pb-6 rounded-lg shadow-lg">
             <div className="mt-2 block font-bold text-lg sm:text-xl text-green-800 mx-auto w-11/12 comfortaa text-center">Click to buy buildings which unlock new game features</div>
 
-          <div className="w-full sm:w-11/12 md:max-w-lg h-96 overflow-y-auto pr-4 mt-8 mx-auto">
-            <div className="w-full grid gap-2 grid-cols-1">
+          <div className="w-full sm:w-11/12 md:max-w-xl h-96 overflow-y-auto mt-6 mx-auto">
+            <div className="w-full grid gap-2 bg-green-200 px-3 pt-2 grid-cols-1">
               {items}
             </div>
           </div>
