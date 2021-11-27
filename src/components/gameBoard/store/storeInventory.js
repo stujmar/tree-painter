@@ -7,10 +7,25 @@ import {
     siloColorSVG,
     starsWhiteSVG,
     starsColorSVG,
+    scareCrowWhiteSVG,
+    scareCrowColorSVG,
   } from "./storeSvgs";
 
 
 export const inventory = [
+    {
+      name: "speed",
+      alias: "Scarecrow",
+      cost: [
+        {
+          amount: 1,
+          resource: "acorns"
+        }
+      ],
+      whiteSVG: scareCrowWhiteSVG(50),
+      colorSVG: scareCrowColorSVG(50),
+      description: "Water is used to grow crops and animals",
+    },
     {
       name: "water",
       alias: "Well",

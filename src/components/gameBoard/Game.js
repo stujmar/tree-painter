@@ -28,6 +28,7 @@ import { coinFlipRatio } from '../../utils/coinFlip';
 import { getNumberWithinRange, getRandomInt } from '../../utils/getRandomInt';
 import { getMessages } from '../../utils/getMessages';
 import Observatory from '../farm/Observatory';
+import ScareCrow from '../farm/ScareCrow';
 
 const Game = ( { messageChange, toggleGraph } ) => {
     const MAX_TREE_HEIGHT = 15;
@@ -161,6 +162,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
     return (
         <div className="overflow-hidden">
             <div className="w-full relative overflow-hidden" style={{height: "125px"}}> {/* SKY FIELD */}
+                <ScareCrow />
                 <Silo />
                 <Observatory />
                 <Barn />

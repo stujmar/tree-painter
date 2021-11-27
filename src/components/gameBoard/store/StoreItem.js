@@ -40,7 +40,7 @@ const StoreItem = ({item, resources }) => {
             </div>
           </div>
           <div className="w-full ml-2">
-            <h3 className={`w-min capitalize text-left text-lg comfortaa text-green-50 ${!canAfford(item) && !isBought ? "bg-trueGray-400" : "bg-green-500"} rounded-md px-2 pt-1`}>{item.alias}</h3>
+            <h3 className={`w-max capitalize text-left text-lg comfortaa text-green-50 ${!canAfford(item) && !isBought ? "bg-trueGray-400" : "bg-green-500"} rounded-md px-2 pt-1`}>{item.alias}</h3>
             {isBought ? <div className="text-sm font-medium text-white text-left comfortaa mt-1 px-2">{item.description}</div> : null}
             {!isBought ? item.cost.map((currency) => {
                 let isRed = resources[currency.resource] < currency.amount;
