@@ -13,7 +13,8 @@ import {
     setGrassLoaded,
     toggleDebug,
     selectSandboxMode,
-    setMessage
+    setMessage,
+    resetMileStones
     } from '../../redux/gameSlice';
 import { addTree, addBranch, resetTrees, ageTrees, selectTrees, growTreeById, removeTreeById} from '../../redux/treeSlice';
 import { resetStars } from '../../redux/skySlice';
@@ -171,6 +172,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
         dispatch(resetResource('stars'));
         dispatch(setSpeed(1000));
         dispatch(setMode("NO_MODE"));
+        dispatch(resetMileStones());
     }
 
     return (

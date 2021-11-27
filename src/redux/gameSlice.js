@@ -40,6 +40,9 @@ export const gameSlice = createSlice({
         setMilestone: (state, action) => {
             state.milestones[action.payload] = true;
         },
+        resetMileStones: (state) => {
+            state.milestones = initialState.milestones;
+        },
         toggleDebug: (state) => {
             state.isDebugActive = !state.isDebugActive;
         },
@@ -111,7 +114,8 @@ export const {
     toggleDebug,
     toggleStore,
     setMessage,
-    setMilestone
+    setMilestone,
+    resetMileStones
     } = gameSlice.actions;
 
 export const selectGame = (state) => state.game;

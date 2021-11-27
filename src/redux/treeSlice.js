@@ -57,12 +57,12 @@ export const treeSlice = createSlice({
     }
 });
 
-export const { 
+export const {
     addTree,
     addBranch,
-    removeTree, 
-    resetTrees, 
-    ageTrees, 
+    removeTree,
+    resetTrees,
+    ageTrees,
     growTreeById,
     removeTreeById,
     } = treeSlice.actions;
