@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMilestones, setMilestone, updateResource } from '../../../redux/gameSlice';
+import { getRandomId } from '../../../utils/getRandomId';
 
 const StoreItem = ({item, resources }) => {
 
+    const [prices, setPrices] = useState([]);
+
     let dispatch = useDispatch();
     let isBought = useSelector(selectMilestones)[item.name]
+
     const canAfford = (_item) => {
         let _canAfford = true;
         _item.cost.forEach(cost => {
@@ -25,6 +29,19 @@ const StoreItem = ({item, resources }) => {
         }
     }
 
+    useEffect(() => {
+        setPrices(item.cost.map(currency => {
+            let isRed = resources[currency.resource] < currency.amount;
+            return (
+                <div
+                    key={`price_${getRandomId()}`}
+                    className={`mt-1 text-white px-2 text-sm font-medium text-left pt-1 w-max rounded comfortaa ${isRed && !isBought ? "bg-red-400" : "bg-green-500"}`}
+                >{`${currency.resource}: ${resources[currency.resource]}/${currency.amount}`}</div>
+            )
+        }))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [resources])
+
     return (
         <button
         onClick={() => handleBuy()}
@@ -43,16 +60,7 @@ const StoreItem = ({item, resources }) => {
             <h3 className={`w-min text-left text-lg comfortaa text-green-50 ${!canAfford(item) && !isBought ? "bg-trueGray-400" : "bg-green-500"} rounded-md px-2 pt-1`}>{item.alias}</h3>
 
             {isBought ? <div className="pl-2 text-sm font-medium text-white text-left comfortaa mt-1">{item.description}</div> : null}
-            {!isBought ? item.cost.map((currency) => {
-                let isRed = resources[currency.resource] < currency.amount;
-                return (
-                <div> 
-                    <div
-                        key={currency.resource}
-                        className={`mt-1 text-white px-2 text-sm font-medium text-left pt-1 w-max rounded comfortaa ${isRed && !isBought ? "bg-red-400" : "bg-green-500"}`}
-                    >{`${currency.resource}: ${resources[currency.resource]}/${currency.amount}`}</div>
-                </div>
-                )}) : null}
+            {!isBought ? prices : null}
             </div>
           </div>
       </button>
