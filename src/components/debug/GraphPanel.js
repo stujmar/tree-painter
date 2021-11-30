@@ -9,7 +9,7 @@ import ToggleButton from './ToggleButton';
 import {
     resetResource, 
     setMode, 
-    resetMileStones
+    resetMilestones
     } from '../../redux/gameSlice';
 import { resetTrees} from '../../redux/treeSlice';
 import { resetStars } from '../../redux/skySlice';
@@ -32,7 +32,7 @@ const GraphPanel = ({toggleGraph}) => {
         dispatch(resetResource('stars'));
         dispatch(setSpeed(1000));
         dispatch(setMode("NO_MODE"));
-        dispatch(resetMileStones());
+        dispatch(resetMilestones());
     }
 
     return (
