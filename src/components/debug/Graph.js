@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { selectTrees } from '../../redux/treeSlice';
 import { getSeason } from '../../utils/getSeason';
 
-const Graph = () => {
+const Graph = ({resetGame}) => {
   // const dispatch = useDispatch();
   const [verticalLines, setVerticalLines] = useState([]);
   const [horizontalLines, setHorizontalLines] = useState([]);
@@ -83,6 +83,11 @@ const Graph = () => {
     setYCount(10);
   }
 
+  function handleResetGame() {
+    setDots([]);
+    resetGame();
+  }
+
   return (
     <div>
     <div className="w-80 sm:w-96 mx-auto mb-2 comfortaa font-bold text-amber-100">
@@ -138,6 +143,12 @@ const Graph = () => {
               >{lockAxis ? "unlock" : "lock"}</button>
         </div></>}
       </div>
+      <button 
+                    type="button"
+                    aria-label="Reset button"
+                    className="border-4 mt-4 block mx-auto bg-green-600 hover:bg-green-700 rounded-lg font-medium text-white border-white px-2 z-10 shadow focus:outline-none"
+                    onClick={handleResetGame}
+                >RESET GAME</button>
     </div>
   );
 }

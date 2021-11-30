@@ -49,13 +49,7 @@ const GraphPanel = ({toggleGraph}) => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
                     </button> 
-                    <button 
-                    type="button"
-                    aria-label="Reset button"
-                    className="border-4 block mx-auto bg-green-600 hover:bg-green-700 rounded-lg font-medium text-white border-white px-2 z-10 shadow focus:outline-none"
-                    onClick={reset}
-                >RESET GAME</button>
-                    <Graph />
+                    <Graph resetGame={reset} />
                 </div>
         </div>
     )
