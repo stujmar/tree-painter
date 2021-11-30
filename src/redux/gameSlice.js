@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// const persistedState = localStorage.getItem('reduxState') 
-//                        ? JSON.parse(localStorage.getItem('reduxState'))
-//                        : {}
+const persistedState = localStorage.getItem('reduxState') 
+                       ? JSON.parse(localStorage.getItem('reduxState'))
+                       : {}
 
-const initialState = {
+const initialState = !!persistedState.game ? persistedState.game : {
     sandboxMode: false,
     message: 'Message from Redux State',
     mode: "NO_MODE",
