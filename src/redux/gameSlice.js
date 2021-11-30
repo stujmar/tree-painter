@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// const persistedState = localStorage.getItem('reduxState') 
+//                        ? JSON.parse(localStorage.getItem('reduxState'))
+//                        : {}
+
 const initialState = {
     sandboxMode: false,
     message: 'Message from Redux State',

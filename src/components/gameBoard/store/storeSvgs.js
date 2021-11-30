@@ -1,4 +1,3 @@
-
 const barnWhiteSVG = (size) => {
     return (
         <svg width={size} viewBox="0 0 150 75" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13,7 +12,6 @@ const barnWhiteSVG = (size) => {
         </svg>
     )
 } 
-
 
 const barnColorSVG = (size) => { 
     return ( 
@@ -104,7 +102,6 @@ const starsWhiteSVG = (size) => {
         </svg>
     )
 };
-
 
 const starsColorSVG = (size) => {
     return (

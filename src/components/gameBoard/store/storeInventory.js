@@ -24,7 +24,7 @@ export const inventory = [
       ],
       whiteSVG: scareCrowWhiteSVG(50),
       colorSVG: scareCrowColorSVG(50),
-      description: "Scarecrow has watched the forest for eons, you now control the flow of time.",
+      description: "Scarecrow has watched the forest for eons, you now control the flow of time",
     },
     {
       name: "water",
@@ -37,7 +37,7 @@ export const inventory = [
       ],
       whiteSVG: wellWhiteSVG(125),
       colorSVG: wellColorSVG(125),
-      description: "Water is used to grow crops and animals",
+      description: "Click trees in watering mode to help them grow. More water can be found in the well.",
     },
     {
       name: "wood",
@@ -50,7 +50,7 @@ export const inventory = [
       ],
       whiteSVG: barnWhiteSVG(70),
       colorSVG: barnColorSVG(70),
-      description: "A barn is needed to store animals",
+      description: "A barn is needed to store wood. Only older trees can be harvested for wood.",
     },
     {
       name: "seasons",
@@ -67,7 +67,7 @@ export const inventory = [
       ],
       whiteSVG: siloWhiteSVG(70),
       colorSVG: siloColorSVG(70),
-      description: "A silo is needed to store crops",
+      description: "A silo is needed to store crops through the winter. You now control the seasons",
     },
     {
       name: "stars",
@@ -84,6 +84,6 @@ export const inventory = [
       ],
       whiteSVG: starsWhiteSVG(70),
       colorSVG: starsColorSVG(70),
-      description: "A star is needed to harvest crops",
+      description: "There is a legend that enough stars in the sky awakens an ancient evil.",
     }
   ];

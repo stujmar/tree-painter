@@ -18,3 +18,8 @@ export const store = configureStore({
         api: apiReducer
     },
 });
+
+store.subscribe(()=>{
+    console.log("storing state");
+    localStorage.setItem('reduxState', JSON.stringify(store.getState()))
+  })
