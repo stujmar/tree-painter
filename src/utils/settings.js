@@ -3,9 +3,9 @@ import { store } from '../redux/store';
 const MAX_TREE_HEIGHT = 15;
 
 const BARN_UNLOCK = 15;
-const SPEED_UNLOCK = 2;
+const SPEED_UNLOCK = 5;
 const WATER_UNLOCK = 10;
-const SEASONS_UNLOCK = 5;
+const SEASONS_UNLOCK = 20;
 const STARS_UNLOCK = 35;
 
 
