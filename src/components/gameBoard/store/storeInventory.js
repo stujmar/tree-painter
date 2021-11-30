@@ -85,5 +85,35 @@ export const inventory = [
       whiteSVG: starsWhiteSVG(70),
       colorSVG: starsColorSVG(70),
       description: "There is a legend that enough stars in the sky awakens an ancient evil.",
-    }
+    },
+    {
+      name: "stone",
+      alias: "Mine",
+      cost: [
+        {
+          amount: 50,
+          resource: "stars"
+        },
+        {
+          amount: 50,
+          resource: "wood"
+        }
+      ],
+      whiteSVG: starsWhiteSVG(70),
+      colorSVG: starsColorSVG(70),
+      description: "There is a legend that enough stars in the sky awakens an ancient evil.",
+    },
+    {
+      name: "altar",
+      alias: "Sacrificial Altar",
+      cost: [
+        {
+          amount: 100,
+          resource: "stone"
+        }
+      ],
+      whiteSVG: starsWhiteSVG(70),
+      colorSVG: starsColorSVG(70),
+      description: "There is a legend that enough stars in the sky awakens an ancient evil.",
+    },
   ];
