@@ -16,9 +16,10 @@ const initialState = !!persistedState.game ? persistedState.game : {
     },
     resources: {
         acorns: 10,
-        stars: 0,
         water: 0,
         wood: 0,
+        stars: 0,
+        stone: 0
     },
     milestones: {
         water: false,
@@ -80,35 +81,9 @@ export const gameSlice = createSlice({
         updateResource: (state, action) => {
             let amount = action.payload.amount;
             state.resources[action.payload.type] = state.resources[action.payload.type] + amount;
-            // switch(action.payload.type) {
-            //     case 'acorns':
-            //         state.resources.acorns = state.resources.acorns + amount;
-            //         break;
-            //     case 'water':
-            //         state.resources.water = state.resources.water + amount;
-            //         break;
-            //     case 'stars':
-            //         state.resources.stars = state.resources.stars + amount;
-            //         break;
-            //     default:
-            //         break;
-            //}
         },
         resetResource: (state, action) => {
-            switch(action.payload) {
-                case 'acorns':
-                    state.resources.acorns = 10;
-                    break;
-                case 'water':
-                    state.resources.water = 10;
-                    break;
-                case 'stars':
-                    state.resources.stars = 10;
-                    break;
-                default:
-                    break;
-
-            }
+            state.resources[action.payload] = 0;
         }
     }
 });

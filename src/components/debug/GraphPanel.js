@@ -30,6 +30,8 @@ const GraphPanel = ({toggleGraph}) => {
         dispatch(resetResource('acorns'));
         dispatch(resetResource('water'));
         dispatch(resetResource('stars'));
+        dispatch(resetResource('wood'));
+        dispatch(resetResource('stone'));
         dispatch(setSpeed(1000));
         dispatch(setMode("NO_MODE"));
         dispatch(resetMilestones());
