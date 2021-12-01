@@ -3,6 +3,7 @@ import {
     barnWhiteSVG,
     barnColorSVG,
     mineWhiteSVG,
+    mineColorSVG,
     wellWhiteSVG,
     wellColorSVG,
     siloWhiteSVG,
@@ -102,8 +103,8 @@ export const inventory = [
         }
       ],
       whiteSVG: mineWhiteSVG(50),
-      colorSVG: starsColorSVG(50),
-      description: "There is a legend that enough stars in the sky awakens an ancient evil.",
+      colorSVG: mineColorSVG(50),
+      description: "Don't go down that mine, gnomes live there.",
     },
     {
       name: "altar",
