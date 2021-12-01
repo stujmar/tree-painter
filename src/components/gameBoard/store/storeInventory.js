@@ -1,5 +1,6 @@
 import { 
     altarWhiteSVG,
+    altarColorSVG,
     barnWhiteSVG,
     barnColorSVG,
     mineWhiteSVG,
@@ -116,7 +117,7 @@ export const inventory = [
         }
       ],
       whiteSVG: altarWhiteSVG(60),
-      colorSVG: altarWhiteSVG(100),
+      colorSVG: altarColorSVG(60),
       description: "There is a legend that enough stars in the sky awakens an ancient evil.",
     },
   ];
