@@ -19,7 +19,7 @@ const StatusBar = () => {
     let isWoodUnlocked = useSelector(selectMilestones).wood;
     let isStarsUnlocked = useSelector(selectMilestones).stars;
     let isStoneUnlocked = useSelector(selectMilestones).stone;
-    let { acorns, water, stars, wood} = useSelector(selectResources);
+    let { acorns, water, stars, wood, stone } = useSelector(selectResources);
     let dispatch = useDispatch();
 
     const addResource = (resourceType) => {
@@ -35,7 +35,7 @@ const StatusBar = () => {
                 {isSandbox || isWaterUnlocked ? <button className="focus:outline-none" onClick={() => addResource('water')}><WaterIcon amount={water} color={getSeason(day).text}/></button> : null}
                 {isSandbox || isStarsUnlocked ? <button className="focus:outline-none" onClick={() => addResource('stars')}><StarIcon amount={stars} color={getSeason(day).text}/></button> : null}
                 {isSandbox || isWoodUnlocked ? <button className="focus:outline-none" onClick={() => addResource('wood')}><WoodIcon amount={wood} color={getSeason(day).text} /></button> : null}
-                {isSandbox || isStoneUnlocked ? <button className="focus:outline-none" onClick={() => addResource('wood')}><StoneIcon amount={wood} color={getSeason(day).text} /></button> : null}
+                {isSandbox || isStoneUnlocked ? <button className="focus:outline-none" onClick={() => addResource('stone')}><StoneIcon amount={stone} color={getSeason(day).text} /></button> : null}
             </div>
         </div>
     )
