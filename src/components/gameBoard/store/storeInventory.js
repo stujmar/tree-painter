@@ -1,4 +1,5 @@
 import { 
+    altarWhiteSVG,
     barnWhiteSVG,
     barnColorSVG,
     wellWhiteSVG,
@@ -112,8 +113,8 @@ export const inventory = [
           resource: "stone"
         }
       ],
-      whiteSVG: starsWhiteSVG(70),
-      colorSVG: starsColorSVG(70),
+      whiteSVG: altarWhiteSVG(60),
+      colorSVG: altarWhiteSVG(100),
       description: "There is a legend that enough stars in the sky awakens an ancient evil.",
     },
   ];
