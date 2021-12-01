@@ -28,6 +28,7 @@ const initialState = !!persistedState.game ? persistedState.game : {
         tractor: false,
         seasons: false,
         speed: false,
+        stone: true,
     },
     mouse: {    
         x: 0,
@@ -101,7 +102,7 @@ export const {
     setMessage,
     setMilestone,
     resetMilestones
-    } = gameSlice.actions;
+} = gameSlice.actions;
 
 export const selectGame = (state) => state.game;
 export const selectMilestones = (state) => state.game.milestones;
