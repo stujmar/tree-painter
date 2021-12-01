@@ -173,17 +173,26 @@ const altarWhiteSVG = (size) => {
     )
 }
 
+const mineWhiteSVG = (size) => {
+    return (
+        <svg height={size} viewBox="0 0 87 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M86.8396 50L84.0462 35.5692L78.0198 27.0019L77.5838 24.0308L67.6471 7.40159L45.2477 0L13.2634 13.8041L5.42022 35.9377L7.16772 48.071H0V49.8859H7.42965L7.44275 49.9757H47.7024L47.6968 50H86.8396Z" fill="white"/>
+        </svg>
+    )
+}
+
 
 export { 
     altarWhiteSVG,
     barnWhiteSVG,
     barnColorSVG,
-    wellWhiteSVG,
-    wellColorSVG,
+    mineWhiteSVG,
     siloWhiteSVG,
     siloColorSVG,
     starsWhiteSVG,
     starsColorSVG,
     scareCrowWhiteSVG,
     scareCrowColorSVG,
+    wellWhiteSVG,
+    wellColorSVG,
 };
