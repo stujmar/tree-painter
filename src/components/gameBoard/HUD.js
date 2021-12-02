@@ -8,7 +8,9 @@ const HUD = ({toggleGraph}) => {
     let mode = useSelector(selectMode);
     let isSandbox = useSelector(selectSandboxMode);
     let isWaterUnlocked = useSelector(selectMilestones).water;
+    let isStoneUnlocked = useSelector(selectMilestones).stone;
     let showWater = isSandbox || isWaterUnlocked
+    let showMallet = isSandbox || isStoneUnlocked
     const toggleMode = (_mode) => {
         dispatch(setMessage(getMessages[_mode]));
         dispatch(setMode(_mode));
@@ -55,7 +57,7 @@ const HUD = ({toggleGraph}) => {
                     </g>
                 </svg>
             </button>
-            <button
+            {showMallet ? <button
                 aria-label="gnome mode"
                 className={`focus:outline-none bg-black py-1 px-1 rounded-lg ${mode === "GNOME" ? "bg-opacity-25" : "bg-opacity-0"}`}
                 onClick={() => toggleMode("GNOME")}
@@ -65,7 +67,7 @@ const HUD = ({toggleGraph}) => {
                     <path d="M18.4186 3.44943C18.8199 2.96454 19.2726 3.09187 19.6057 3.41341C19.9388 3.73496 20.2488 4.0565 20.5523 4.38061C20.8559 4.70473 21.1157 4.91952 20.4919 5.55488C19.908 6.11436 19.6816 5.94845 18.8482 5.14074C17.7819 4.10537 17.9247 4.00762 18.4186 3.44943Z" fill="#FCFCFC"/>
                     <path d="M20.8186 6.11822L20.7105 6.23912C20.601 6.35611 20.4694 6.45028 20.3234 6.51623C20.1773 6.58217 20.0197 6.61858 19.8595 6.62336C19.6993 6.62814 19.5398 6.6012 19.3901 6.54409C19.2403 6.48697 19.1034 6.40081 18.9871 6.29057C18.5163 5.83526 18.0585 5.36581 17.6122 4.88736C17.4004 4.64804 17.291 4.33524 17.3074 4.01613C17.3237 3.69702 17.4645 3.39704 17.6996 3.18062L17.7909 3.09059L15.1543 0.453948C15.0109 0.310062 14.8405 0.195896 14.6529 0.117997C14.4653 0.0400988 14.2642 0 14.0611 0C13.8579 0 13.6568 0.0400988 13.4692 0.117997C13.2816 0.195896 13.1112 0.310062 12.9678 0.453948L9.23794 4.18383C9.09405 4.32722 8.97989 4.4976 8.90199 4.6852C8.82409 4.8728 8.78399 5.07394 8.78399 5.27707C8.78399 5.4802 8.82409 5.68134 8.90199 5.86894C8.97989 6.05654 9.09405 6.22692 9.23794 6.37031L17.2919 14.4256C17.4353 14.5695 17.6057 14.6836 17.7933 14.7615C17.9809 14.8394 18.182 14.8795 18.3851 14.8795C18.5883 14.8795 18.7894 14.8394 18.977 14.7615C19.1646 14.6836 19.335 14.5695 19.4784 14.4256L23.2018 10.7021C23.3457 10.5587 23.4599 10.3883 23.5378 10.2007C23.6157 10.0131 23.6558 9.81201 23.6558 9.60887C23.6558 9.40574 23.6157 9.20461 23.5378 9.017C23.4599 8.8294 23.3457 8.65902 23.2018 8.51563L20.8186 6.11822Z" fill="#FCFCFC"/>
                 </svg>
-            </button>
+            </button> : null }
         </div>
         <div className="flex flex-row fixed bottom-3 right-3 gap-2" style={{ zIndex: 49 }}>
             <button
