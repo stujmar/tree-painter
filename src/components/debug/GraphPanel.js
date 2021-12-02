@@ -35,6 +35,7 @@ const GraphPanel = ({toggleGraph}) => {
         dispatch(setSpeed(1000));
         dispatch(setMode("NO_MODE"));
         dispatch(resetMilestones());
+        localStorage.clear();
     }
 
     return (
