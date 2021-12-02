@@ -84,7 +84,7 @@ export const gameSlice = createSlice({
             state.resources[action.payload.type] = state.resources[action.payload.type] + amount;
         },
         resetResource: (state, action) => {
-            state.resources[action.payload] = 0;
+            state.resources[action.payload] = action.payload === 'acorns' ? 10 : 0;
         }
     }
 });
