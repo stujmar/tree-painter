@@ -25,6 +25,10 @@ const Barn = () => {
         </div>))
     },[wood]);
 
+    useEffect(() => {
+        setIsOpen(false);
+    },[isBarnUnlocked])
+
     const handleBarnClick = () => {
         setIsOpen(!isOpen);
     }
