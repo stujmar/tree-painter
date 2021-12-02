@@ -12,6 +12,7 @@ import {
     toggleDebug,
     selectSandboxMode,
     setMessage,
+    selectMilestones,
     } from '../../redux/gameSlice';
 import { addTree, addBranch, ageTrees, selectTrees, growTreeById, removeTreeById} from '../../redux/treeSlice';
 import { selectHour } from '../../redux/hourSlice';
@@ -43,6 +44,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
     let trees = useSelector(selectTrees);
     let mouse = useSelector(selectMouse);
     let resources = useSelector(selectResources);
+    let isAltar = useSelector(selectMilestones).altar;
     let acorns = resources.acorns;
     const dispatch = useDispatch();
 
@@ -177,14 +179,14 @@ const Game = ( { messageChange, toggleGraph } ) => {
                             id="grass"
                             aria-label="Grass field"
                             className={`absolute top-0 opacity-0 bg-black z-10 w-full cursor-pointer ${mode === "PLANTING" ? "" : "hidden" }`} 
-                            style={{height: "calc(100vh - 324px)"}}
+                            style={{height: "calc(100vh - 322px)"}}
                             onMouseMove={(e) => handleMouseMove(e)}
                             onClick={(e) => plant(e)} 
                             ></div> {/* Grass Mouse Sensor */}
                             {drawTrees} 
                             <div 
-                                className="mx-auto bg-green-500 w-full h-72 overflow-hidden"
-                                style={{height: "calc(100vh - 324px)"}}
+                                className={`mx-auto ${isAltar ? "bg-red-500" : "bg-green-500"} w-full h-72 overflow-hidden`}
+                                style={{height: "calc(100vh - 322px)"}}
                                 ></div>
                         <HUD toggleGraph={toggleGraph} toggleDebug={toggleDebug}/>
                         

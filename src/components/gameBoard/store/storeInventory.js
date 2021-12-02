@@ -95,11 +95,11 @@ export const inventory = [
       alias: "Mine",
       cost: [
         {
-          amount: 50,
+          amount: 25,
           resource: "stars"
         },
         {
-          amount: 50,
+          amount: 25,
           resource: "wood"
         }
       ],
@@ -112,12 +112,12 @@ export const inventory = [
       alias: "Sacrificial Altar",
       cost: [
         {
-          amount: 100,
+          amount: 10,
           resource: "stone"
         }
       ],
       whiteSVG: altarWhiteSVG(60),
       colorSVG: altarColorSVG(60),
-      description: "There is a legend that enough stars in the sky awakens an ancient evil.",
+      description: "The ground runs red with the blood of sacrificed gnomes. Great job.",
     },
   ];

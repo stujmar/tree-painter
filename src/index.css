@@ -31,10 +31,6 @@ code {
     monospace;
 }
 
-body {
-  background: #22C55E;
-}
-
 /* width */
 ::-webkit-scrollbar {
   width: 25px;
