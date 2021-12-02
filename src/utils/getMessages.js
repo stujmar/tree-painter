@@ -13,4 +13,5 @@ export const getMessages = {
     "HARVEST": "Click a tree to chop it down.",
     "HARVESTING": "Chop chop.",
     "NO_TREES": "Oops! No trees to harvest.",
+    "GNOME": "Bop those darn gnomes.",
 };
