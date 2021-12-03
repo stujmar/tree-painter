@@ -94,7 +94,7 @@ const Game = ( { toggleGraph } ) => {
                 } else {
                     console.log("we might have a gnome");
                 }
-                if (item.age > 10 && coinFlipRatio(0.005)) {
+                if (item.age > 10 && coinFlipRatio(0.002)) {
                     let newId = "gnome_" + getRandomId();                     
                     dispatch(addTree({
                         id: newId,
