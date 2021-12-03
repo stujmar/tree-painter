@@ -11,7 +11,7 @@ import {
     setMode, 
     resetMilestones
     } from '../../redux/gameSlice';
-import { resetTrees} from '../../redux/treeSlice';
+import { resetTrees} from '../../redux/itemSlice';
 import { resetStars } from '../../redux/skySlice';
 
 import { setSpeed } from '../../redux/clockSlice';

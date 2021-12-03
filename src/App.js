@@ -9,7 +9,7 @@ import MessageModal from './components/gameBoard/MessageModal';
 import { useSelector, useDispatch } from 'react-redux';
 import { conditionsToBeMet, getMilestones } from './utils/settings';
 import { setMilestone, selectMode, selectStore, toggleStore } from './redux/gameSlice';
-import { selectTrees } from './redux/treeSlice';
+import { selectItems } from './redux/itemSlice';
 import Store from './components/gameBoard/store/Store';
 
 const App = () => {
@@ -18,7 +18,7 @@ const App = () => {
   const [ graph, setGraph ] = useState(false);
 
   let gameMode = useSelector(selectMode);
-  let trees = useSelector(selectTrees);
+  let trees = useSelector(selectItems);
   let isStoreActive = useSelector(selectStore)
 
   useEffect(() => {

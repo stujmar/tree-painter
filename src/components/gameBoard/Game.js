@@ -14,7 +14,7 @@ import {
     setMessage,
     selectMilestones,
     } from '../../redux/gameSlice';
-import { addTree, addBranch, ageTrees, selectTrees, growTreeById, removeTreeById} from '../../redux/treeSlice';
+import { addTree, addBranch, ageTrees, selectItems, growTreeById, removeTreeById} from '../../redux/itemSlice';
 import { selectHour } from '../../redux/hourSlice';
 import { selectDay } from '../../redux/daySlice';
 
@@ -41,7 +41,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
     let isSandbox = useSelector(selectSandboxMode);
     let day = useSelector(selectDay);
     let mode = useSelector(selectMode);
-    let trees = useSelector(selectTrees);
+    let items = useSelector(selectItems);
     let mouse = useSelector(selectMouse);
     let resources = useSelector(selectResources);
     let isAltar = useSelector(selectMilestones).altar;
@@ -68,10 +68,10 @@ const Game = ( { messageChange, toggleGraph } ) => {
     },[])
 
     useEffect(() => {
-        if (!!trees.length) {
+        if (!!items.length) {
             dispatch(ageTrees());
             // For each tree.
-            trees.forEach((tree) => {
+            items.forEach((tree) => {
                 if (tree.age === 100) {
                     dispatch(removeTreeById(tree.id));
                 } else {
@@ -108,7 +108,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
     }
 
     useEffect(() => {
-        let sortedTrees = trees.slice().sort((a, b) => {
+        let sortedTrees = items.slice().sort((a, b) => {
             return a.y - b.y
         }); // frozen in strict mode?
         setDrawTrees(sortedTrees.map(tree => {
@@ -116,7 +116,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
         }));
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[trees])
+    },[items])
 
     const handleMouseMove = (e) => {
         if (!!grass) { // Shot in the dark to avoid "Cannot read property 'clientWidth' of null"
@@ -130,7 +130,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
     }
 
     const handleStrayClick = (e) => {
-        if (trees.length === 0 && mode === "HARVEST") {
+        if (items.length === 0 && mode === "HARVEST") {
             dispatch(setMessage(getMessages.NO_TREES))
         }
     }

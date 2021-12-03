@@ -3,7 +3,7 @@ import hoursReducer from './hourSlice';
 import daysReducer from './daySlice';
 import clocksReducer from './clockSlice';
 import gamesReducer from './gameSlice';
-import treeReducer from './treeSlice';
+import itemReducer from './itemSlice';
 import skyReducer from './skySlice';
 import apiReducer from './apiSlice';
 
@@ -13,7 +13,7 @@ export const store = configureStore({
         clock: clocksReducer,
         hour: hoursReducer,
         day: daysReducer,
-        tree: treeReducer,
+        item: itemReducer,
         sky: skyReducer,
         api: apiReducer
     },

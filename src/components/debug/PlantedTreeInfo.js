@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { removeTree } from '../../redux/treeSlice.js'
+import { removeTree } from '../../redux/itemSlice.js'
 import { updateAcorns } from '../../redux/gameSlice.js'
 import { getSeason } from '../../utils/getSeason.js'
 

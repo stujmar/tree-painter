@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectTrees } from '../../redux/treeSlice';
+import { selectItems } from '../../redux/itemSlice';
 import { getSeason } from '../../utils/getSeason';
 
 const Graph = ({resetGame}) => {
@@ -12,7 +12,7 @@ const Graph = ({resetGame}) => {
   const [lockAxis, setLockAxis] = useState(true);
   const [dots, setDots] = useState([]);
 
-  let trees = useSelector(selectTrees);
+  let trees = useSelector(selectItems);
 
   const getHorizontalLines = (density) => {
     density = density >= 1 ? (density) : 1;

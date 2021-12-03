@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { selectTrees } from '../../redux/treeSlice';
+import { selectItems } from '../../redux/itemSlice';
 import { selectMouse, selectGrassLoaded, selectDebug } from '../../redux/gameSlice';
 import { selectDay } from '../../redux/daySlice';
 import { getSeason } from '../../utils/getSeason';
@@ -15,7 +15,7 @@ const DebugPanel = ( { handleClose }) => {
     let [ infoPanels, setInfoPanels ] = useState( [] ); // array of info panels
 
     let mouse = useSelector( selectMouse );
-    let trees = useSelector(selectTrees); // Grab tree data from Redux store
+    let trees = useSelector(selectItems); // Grab tree data from Redux store
     let grass = useSelector(selectGrassLoaded); // Grab grassLoaded data from Redux store
     let day = useSelector(selectDay); // Grab day data from Redux store
     let isActive = useSelector(selectDebug); // Grab debug data from Redux store

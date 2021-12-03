@@ -4,33 +4,33 @@ const persistedState = localStorage.getItem('reduxState')
                        ? JSON.parse(localStorage.getItem('reduxState'))
                        : {}
 
-const initialState = !!persistedState.tree ? persistedState.tree : {
-    trees: [],
+const initialState = !!persistedState.item ? persistedState.item : {
+    items: [],
 };
 
-export const treeSlice = createSlice({
-    name: 'tree',
+export const itemSlice = createSlice({
+    name: 'item',
     initialState,
     reducers: {
         addTree: (state, action) => {
-            state.trees = state.trees.concat(action.payload)
+            state.items = state.items.concat(action.payload)
         },
         removeTree: (state, action) => {
-            state.trees = state.trees.filter(tree => {
+            state.items = state.items.filter(tree => {
                return tree.id !== action.payload;
             })        
         },
         resetTrees: (state) => {
-            state.trees = [];
+            state.items = [];
         },
         ageTrees: (state) => {
-            state.trees = state.trees.map(tree => {
+            state.items = state.items.map(tree => {
                 return tree.age < 100 ? {...tree, age: tree.age + 1} : tree
             })
         },
         addBranch: (state, action) => {
             // payload = {treeId: string, growthIndex: string, growthSide: string}
-            state.trees = state.trees.map(_tree => { 
+            state.items = state.items.map(_tree => { 
                 if (_tree.id === action.payload.treeId) {
                     let oldGrowth = [..._tree.growth];
                     if (action.payload.growthSide === 'left') {
@@ -46,17 +46,14 @@ export const treeSlice = createSlice({
             })
         },
         growTreeById: (state, action) => {
-            state.trees = state.trees.map(tree => {
+            state.items = state.items.map(tree => {
                 return tree.id !== action.payload.id ? tree : {...tree, growth: tree.growth.concat(action.payload.growth)}; 
             });
         },
         removeTreeById: (state, action) => {
-            state.trees = state.trees.filter(tree => {
+            state.items = state.items.filter(tree => {
                 return tree.id !== action.payload;
             })
-        },
-        updateAcorns: (state, action) => {
-            state.resources.acorns = state.resources.acorns + action.payload;
         },
     }
 });
@@ -69,9 +66,9 @@ export const {
     ageTrees,
     growTreeById,
     removeTreeById,
-    } = treeSlice.actions;
+    } = itemSlice.actions;
 
-export const selectTree = (state) => state.tree;
-export const selectTrees = (state) => state.tree.trees;
+export const selectItem = (state) => state.item;
+export const selectItems = (state) => state.item.items;
 
-export default treeSlice.reducer;
+export default itemSlice.reducer;

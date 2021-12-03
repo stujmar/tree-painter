@@ -11,7 +11,7 @@ const STARS_UNLOCK = 35;
 
 const getMilestones = ( unlock ) => {
     let state = store.getState();
-    let treeCount = state.tree.trees.length;
+    let treeCount = state.item.items.length;
     switch(unlock) {
         case "speed":
             return treeCount >= SPEED_UNLOCK;

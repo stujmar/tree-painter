@@ -9,7 +9,6 @@ const Store = () => {
     const [items, setItems] = useState([]);
     const dispatch = useDispatch();
     let resources = useSelector(selectResources);
-    console.log(resources);
     const onExit = () => {
         dispatch(toggleStore());
     }
