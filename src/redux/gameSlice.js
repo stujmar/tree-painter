@@ -64,6 +64,9 @@ export const gameSlice = createSlice({
         setSandbox: (state) => {
             state.sandboxMode = !state.sandboxMode;
         },
+        resetSandbox: (state) => {
+            state.sandboxMode = false;
+        },
         setGrassLoaded: (state, action) => {
             state.grassLoaded = action.payload;
         },
@@ -93,6 +96,7 @@ export const {
     setMode, 
     setMouse,
     setSandbox,
+    resetSandbox,
     updateAcorns,
     updateResource,
     resetResource,

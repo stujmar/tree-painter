@@ -2,7 +2,7 @@ import React from 'react';
 import Graph from './Graph';
 
 import {useDispatch, useSelector} from 'react-redux';
-import {setSandbox} from '../../redux/gameSlice';
+import {resetSandbox, setSandbox} from '../../redux/gameSlice';
 import { selectSandboxMode } from '../../redux/gameSlice';
 import ToggleButton from './ToggleButton';
 
@@ -35,6 +35,7 @@ const GraphPanel = ({toggleGraph}) => {
         dispatch(setSpeed(1000));
         dispatch(setMode("NO_MODE"));
         dispatch(resetMilestones());
+        dispatch(resetSandbox());
         localStorage.clear();
     }
 
