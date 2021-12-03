@@ -179,14 +179,14 @@ const Game = ( { messageChange, toggleGraph } ) => {
                             id="grass"
                             aria-label="Grass field"
                             className={`absolute top-0 opacity-0 bg-black z-10 w-full cursor-pointer ${mode === "PLANTING" ? "" : "hidden" }`} 
-                            style={{height: "calc(100vh - 322px)"}}
+                            style={{height: "calc(100vh - 321px)"}}
                             onMouseMove={(e) => handleMouseMove(e)}
                             onClick={(e) => plant(e)} 
                             ></div> {/* Grass Mouse Sensor */}
                             {drawTrees} 
                             <div 
                                 className={`mx-auto ${isAltar ? "bg-red-500" : "bg-green-500"} w-full h-72 overflow-hidden`}
-                                style={{height: "calc(100vh - 322px)"}}
+                                style={{height: "calc(100vh - 321px)"}}
                                 ></div>
                         <HUD toggleGraph={toggleGraph} toggleDebug={toggleDebug}/>
                         
