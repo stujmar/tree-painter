@@ -69,15 +69,13 @@ const Game = ( { toggleGraph } ) => {
     },[])
 
     useEffect(() => {
-        if (!!items.length) {
-            dispatch(ageItems());
-            // For each tree.
-            items.forEach((item) => {
-                if (item.type === 'tree' && item.age === 100) {
-                    dispatch(removeTreeById(item.id));
-                } else if (item.type === 'gnome' && item.age >= 6) {
-                    dispatch(removeTreeById(item.id));
-                } else if (item.type === 'tree') {
+        dispatch(ageItems()); // Age all items.
+        items.forEach((item) => { 
+            switch(item.type) {
+                case 'tree':
+                    // eslint-disable-next-line no-unused-expressions
+                    item.age >= 100 ? dispatch(removeTreeById(item.id)) : null;
+                    growTree(item);
                     if (item.age > 10 && coinFlipRatio(0.01)) {
                         let newId = "tree_" + getRandomId();                     
                         dispatch(addTree({
@@ -88,27 +86,30 @@ const Game = ( { toggleGraph } ) => {
                             y: getNumberWithinRange(item.y - 5, item.y + 5),
                             age: 0,
                             growth: []
-                        }))
-                    }
-                    growTree(item);
-                } else {
-                    console.log("we might have a gnome");
-                }
-                if (item.age > 10 && coinFlipRatio(0.002)) {
-                    let newId = "gnome_" + getRandomId();                     
-                    dispatch(addTree({
-                        id: newId,
-                        type: 'gnome',
-                        birthday: item.birthday,
-                        x: getNumberWithinRange(item.x - 5, item.x + 5),
-                        y: getNumberWithinRange(item.y - 5, item.y + 5),
-                        age: 0,
-                    }))
-                }
-            })
-        }
+                    }))}
+                    if (item.age > 10 && coinFlipRatio(0.002)) {
+                        let newId = "gnome_" + getRandomId();                     
+                        dispatch(addTree({
+                            id: newId,
+                            type: 'gnome',
+                            birthday: item.birthday,
+                            x: getNumberWithinRange(item.x - 5, item.x + 5),
+                            y: getNumberWithinRange(item.y - 5, item.y + 5),
+                            age: 0,
+                    }))}
+                    break;
+                case 'gnome':
+                    // eslint-disable-next-line no-unused-expressions
+                    item.age >= 6 ? dispatch(removeTreeById(item.id)) : null;
+                    break;
+                default:
+                    console.log("we might have a stray item");
+            }
+        })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[hour])
+    }, [hour]);
+
+
 
     function growTree(tree) {
         if (coinFlipRatio(0.25) && tree.growth.length <= MAX_TREE_HEIGHT) {
