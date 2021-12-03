@@ -1,5 +1,4 @@
 import React from 'react';
-import Tree from '../Tree';
 
 const Gnome = ({data}) => {
 

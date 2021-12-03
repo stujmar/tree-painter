@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import ClockService from './components/header/ClockService';
 import Game from './components/gameBoard/Game';
@@ -11,6 +11,7 @@ import { conditionsToBeMet, getMilestones } from './utils/settings';
 import { setMilestone, selectMode, selectStore, toggleStore } from './redux/gameSlice';
 import { selectItems } from './redux/itemSlice';
 import Store from './components/gameBoard/store/Store';
+import { selectSpeed, setSpeed } from './redux/clockSlice';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,8 @@ const App = () => {
 
   let gameMode = useSelector(selectMode);
   let trees = useSelector(selectItems);
-  let isStoreActive = useSelector(selectStore)
+  let isStoreActive = useSelector(selectStore);
+  let speed = useSelector(selectSpeed);
 
   useEffect(() => {
     conditionsToBeMet.forEach(condition => {
@@ -42,6 +44,20 @@ const App = () => {
     dispatch(toggleStore);
   }
 
+  const keyPress = useCallback(
+    (e) => {
+      if (e.key === " " ) {
+        speed !== 123456789 ? dispatch(setSpeed(123456789)) : dispatch(setSpeed(1000))
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [speed]
+  );
+
+  useEffect(() => {
+    document.addEventListener("keydown", keyPress);
+    return () => document.removeEventListener("keydown", keyPress);
+  }, [keyPress]);
 
   return (
     <div className="relative">
