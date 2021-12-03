@@ -75,6 +75,8 @@ const Game = ( { toggleGraph } ) => {
             items.forEach((item) => {
                 if (item.type === 'tree' && item.age === 100) {
                     dispatch(removeTreeById(item.id));
+                } else if (item.type === 'gnome' && item.age >= 5) {
+                    dispatch(removeTreeById(item.id));
                 } else if (item.type === 'tree') {
                     if (item.age > 10 && coinFlipRatio(0.01)) {
                         let newId = "tree_" + getRandomId();                     
