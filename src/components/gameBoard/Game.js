@@ -14,7 +14,7 @@ import {
     setMessage,
     selectMilestones,
     } from '../../redux/gameSlice';
-import { addTree, addBranch, ageTrees, selectItems, growTreeById, removeTreeById} from '../../redux/itemSlice';
+import { addTree, addBranch, ageItems, selectItems, growTreeById, removeTreeById} from '../../redux/itemSlice';
 import { selectHour } from '../../redux/hourSlice';
 import { selectDay } from '../../redux/daySlice';
 
@@ -30,11 +30,12 @@ import { getNumberWithinRange, getRandomInt } from '../../utils/getRandomInt';
 import { getMessages } from '../../utils/getMessages';
 import Observatory from '../farm/Observatory';
 import ScareCrow from '../farm/ScareCrow';
+import Gnome from './items/Gnome';
 
-const Game = ( { messageChange, toggleGraph } ) => {
+const Game = ( { toggleGraph } ) => {
     const MAX_TREE_HEIGHT = 15;
 
-    const [ drawTrees, setDrawTrees ] = useState([]);
+    const [ drawnItems, setDrawItems ] = useState([]);
     const [ hasLoaded, setHasLoaded ] = useState(false);
 
     let hour = useSelector(selectHour);
@@ -69,25 +70,38 @@ const Game = ( { messageChange, toggleGraph } ) => {
 
     useEffect(() => {
         if (!!items.length) {
-            dispatch(ageTrees());
+            dispatch(ageItems());
             // For each tree.
-            items.forEach((tree) => {
-                if (tree.age === 100) {
-                    dispatch(removeTreeById(tree.id));
-                } else {
-                    if (tree.age > 10 && coinFlipRatio(0.01)) {
+            items.forEach((item) => {
+                if (item.type === 'tree' && item.age === 100) {
+                    dispatch(removeTreeById(item.id));
+                } else if (item.type === 'tree') {
+                    if (item.age > 10 && coinFlipRatio(0.01)) {
                         let newId = "tree_" + getRandomId();                     
                         dispatch(addTree({
                             id: newId,
                             type: 'tree',
-                            birthday: tree.birthday,
-                            x: getNumberWithinRange(tree.x - 5, tree.x + 5),
-                            y: getNumberWithinRange(tree.y - 5, tree.y + 5),
+                            birthday: item.birthday,
+                            x: getNumberWithinRange(item.x - 5, item.x + 5),
+                            y: getNumberWithinRange(item.y - 5, item.y + 5),
                             age: 0,
                             growth: []
                         }))
                     }
-                    growTree(tree);
+                    growTree(item);
+                } else {
+                    console.log("we might have a gnome");
+                }
+                if (item.age > 10 && coinFlipRatio(0.005)) {
+                    let newId = "gnome_" + getRandomId();                     
+                    dispatch(addTree({
+                        id: newId,
+                        type: 'gnome',
+                        birthday: item.birthday,
+                        x: getNumberWithinRange(item.x - 5, item.x + 5),
+                        y: getNumberWithinRange(item.y - 5, item.y + 5),
+                        age: 0,
+                    }))
                 }
             })
         }
@@ -112,8 +126,12 @@ const Game = ( { messageChange, toggleGraph } ) => {
         let sortedTrees = items.slice().sort((a, b) => {
             return a.y - b.y
         }); // frozen in strict mode?
-        setDrawTrees(sortedTrees.map(tree => {
-            return <Tree key={tree.id} treeData={tree} onWater={handleWater} />
+        setDrawItems(sortedTrees.map(tree => {
+            if (tree.type === 'tree') {
+                return <Tree key={tree.id} treeData={tree} onWater={handleWater} />
+            } else {
+                return <Gnome data={tree} />
+            }
         }));
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -185,7 +203,7 @@ const Game = ( { messageChange, toggleGraph } ) => {
                             onMouseMove={(e) => handleMouseMove(e)}
                             onClick={(e) => plant(e)} 
                             ></div> {/* Grass Mouse Sensor */}
-                            {drawTrees} 
+                            {drawnItems} 
                             <div 
                                 className={`mx-auto ${isAltar ? "bg-red-500" : "bg-green-500"} w-full h-72 overflow-hidden`}
                                 style={{height: "calc(100vh - 321px)"}}

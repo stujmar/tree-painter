@@ -23,7 +23,7 @@ export const itemSlice = createSlice({
         resetTrees: (state) => {
             state.items = [];
         },
-        ageTrees: (state) => {
+        ageItems: (state) => {
             state.items = state.items.map(tree => {
                 return tree.age < 100 ? {...tree, age: tree.age + 1} : tree
             })
@@ -63,7 +63,7 @@ export const {
     addBranch,
     removeTree,
     resetTrees,
-    ageTrees,
+    ageItems,
     growTreeById,
     removeTreeById,
     } = itemSlice.actions;
