@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const ToolTips = ({onClose}) => {
 
+const [activeTip, setActiveTip] = useState("modes");
+const tipOrder = ["modes", "build", "settings"];
 const arrowBottomLeft = <div className="h-2 w-2 absolute -bottom-3" style={{ borderTop: "15px #BBF7D0 solid", borderLeft: "10px transparent solid", borderRight: "10px solid transparent"}} ></div>
+const arrowBottomRight = <div className="h-2 w-2 absolute right-2 -bottom-3" style={{ borderTop: "15px #BBF7D0 solid", borderLeft: "10px transparent solid", borderRight: "10px solid transparent"}} ></div>
+const isLastTip = tipOrder.indexOf(activeTip) === tipOrder.length - 1;
 
   const tips = {
     "modes": {
@@ -11,30 +15,48 @@ const arrowBottomLeft = <div className="h-2 w-2 absolute -bottom-3" style={{ bor
       content: "Click these buttons to switch modes!",
       arrow: arrowBottomLeft
     },
+    "build": {
+      x: "right-14",
+      y: "bottom-14",
+      content: "Buildings will unlock new game features.",
+      arrow: arrowBottomRight
+    },
     "settings": {
       x: "right-2",
       y: "bottom-14",
-      content: "Click this button to open the settings menu!"
+      content: "Settings and game info here.",
+      arrow: arrowBottomRight
     }
+  }
+
+
+  const nextTip = () => {
+    const nextTipIndex = tipOrder.indexOf(activeTip) + 1;
+    const nextTip = tipOrder[nextTipIndex];
+    setActiveTip(nextTip);
   }
 
   return (
     <div 
-      className={`absolute ${tips["modes"].x} ${tips["modes"].y} z-50 flex flex-col bg-green-200 shadow-lg p-2 rounded`}>
+      className={`absolute ${tips[activeTip].x} ${tips[activeTip].y} z-50 flex flex-col bg-green-200 shadow-lg p-2 rounded`}>
           <div className="comfortaa font-medium">
-            {tips["modes"].content}
+            {tips[activeTip].content}
           </div>
         <div className="flex mt-2 justify-between">
           <button 
             type="button" 
-            className="focus:outline-none leading-4 pb-1 text-green-100 font-bold px-2 rounded bg-green-600"
+            className="focus:outline-none leading-4 pb-1 text-green-50 font-medium px-2 rounded bg-green-600"
             onClick={onClose}>exit tour</button>
-          <button 
+          {isLastTip ? null : <button 
             type="button" 
-            className="focus:outline-none leading-4 pb-1 text-green-100 font-bold px-2 rounded ml-2 bg-green-600"
-            onClick={onClose}>next tip -></button>
+            className="focus:outline-none leading-4 flex items-center pb-1 pl-3 text-green-50 font-medium px-2 rounded ml-2 bg-green-600"
+            onClick={nextTip}>next tip 
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 pt-1 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+            </button>}
           </div>
-          {tips["modes"].arrow}
+          {tips[activeTip].arrow}
         </div> 
   )
 }
