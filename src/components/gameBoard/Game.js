@@ -31,6 +31,7 @@ import { getMessages } from '../../utils/getMessages';
 import Observatory from '../farm/Observatory';
 import ScareCrow from '../farm/ScareCrow';
 import Gnome from './items/Gnome';
+import GraveStone from './items/GraveStone';
 
 const Game = ( { toggleGraph } ) => {
     const MAX_TREE_HEIGHT = 15;
@@ -132,8 +133,10 @@ const Game = ( { toggleGraph } ) => {
         setDrawItems(sortedTrees.map(tree => {
             if (tree.type === 'tree') {
                 return <Tree key={tree.id} treeData={tree} onWater={handleWater} />
+            } else if (tree.type === 'gnome') {
+                return <Gnome key={tree.id} data={tree} />
             } else {
-                return <Gnome data={tree} />
+                return <GraveStone key={tree.id} data={tree} />
             }
         }));
 

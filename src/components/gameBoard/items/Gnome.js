@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMode, setMessage } from '../../../redux/gameSlice';
-import { removeItemById } from '../../../redux/itemSlice';
+import { addTree, removeItemById } from '../../../redux/itemSlice';
+import { getRandomId } from '../../../utils/getRandomId';
 
 const Gnome = ({data}) => {
   let dispatch = useDispatch();
@@ -9,6 +10,15 @@ const Gnome = ({data}) => {
 
   const handleClick = (id) => {
     if (mode === 'GNOME') {
+      let newId = "grave_" + getRandomId();                     
+      dispatch(addTree({
+        id: newId,
+        type: 'grave',
+        birthday: data.birthday,
+        x: data.x,
+        y: data.y,
+        age: 0,
+      }))
       dispatch(setMessage("Bad gnome go bye."));
       dispatch(removeItemById(id));
     } else {
