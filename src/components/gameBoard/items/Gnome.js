@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectMode, setMessage } from '../../../redux/gameSlice';
+import { selectMode, setMessage, updateResource } from '../../../redux/gameSlice';
 import { addTree, removeItemById } from '../../../redux/itemSlice';
 import { getRandomId } from '../../../utils/getRandomId';
 
@@ -20,6 +20,7 @@ const Gnome = ({data}) => {
         age: 0,
       }))
       dispatch(setMessage("Bad gnome go bye."));
+      dispatch(updateResource({type: 'stone', amount: 1 }))
       dispatch(removeItemById(id));
     } else {
       dispatch(setMessage("I wish I had a mallet to bop this gnome."));
