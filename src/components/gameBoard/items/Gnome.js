@@ -1,9 +1,14 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectMode, setMessage } from '../../../redux/gameSlice';
+import { removeItemById } from '../../../redux/itemSlice';
 
 const Gnome = ({data}) => {
+  let dispatch = useDispatch();
+  let mode = useSelector(selectMode);
 
   const handleClick = (id) => {
-    console.log('clicked', id);
+    mode === 'GNOME' ? dispatch(removeItemById(id)) : dispatch(setMessage("I wish I had a mallet to bop this gnome."));
   }
   return (
     <button
