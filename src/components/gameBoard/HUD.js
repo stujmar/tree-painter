@@ -9,6 +9,7 @@ const HUD = ({toggleGraph}) => {
     let isSandbox = useSelector(selectSandboxMode);
     let isWaterUnlocked = useSelector(selectMilestones).water;
     let isStoneUnlocked = useSelector(selectMilestones).stone;
+    let isAltarUnlocked = useSelector(selectMilestones).altar;
     let showWater = isSandbox || isWaterUnlocked
     let showMallet = isSandbox || isStoneUnlocked
     const toggleMode = (_mode) => {
@@ -22,7 +23,7 @@ const HUD = ({toggleGraph}) => {
 
     return (
         <>
-        <div className="fixed bottom-0 left-0 z-10 flex gap-1 p-3" style={{ zIndex: 49 }}>
+        <div className="fixed bottom-0 left-0 z-50 flex gap-1 p-2" style={{ zIndex: 49 }}>
             <button
                 aria-label="Planting mode"
                 className={`focus:outline-none bg-black p-1 rounded-lg ${mode === "PLANTING" ? "bg-opacity-25" : "bg-opacity-0"}`}
@@ -69,7 +70,7 @@ const HUD = ({toggleGraph}) => {
                 </svg>
             </button> : null }
         </div>
-        <div className="flex flex-row fixed bottom-3 right-3 gap-2" style={{ zIndex: 49 }}>
+        <div className="flex flex-row fixed bottom-0 p-2 right-0 gap-2" style={{ zIndex: 49 }}>
             <button
                 aria-label="Store"
                 onClick={handleStoreToggle}
@@ -107,6 +108,7 @@ const HUD = ({toggleGraph}) => {
                 onClick={reset}
             >RESET</button> */}
         </div>
+        <div className={`fixed bottom-0 z-40 w-full h-12 ${isAltarUnlocked ? "bg-red-400" : "bg-green-400" }`}></div>
         </>
     )
 }

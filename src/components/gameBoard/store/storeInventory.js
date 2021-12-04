@@ -95,11 +95,11 @@ export const inventory = [
       alias: "Mine",
       cost: [
         {
-          amount: 25,
+          amount: 15,
           resource: "stars"
         },
         {
-          amount: 25,
+          amount: 15,
           resource: "wood"
         }
       ],
