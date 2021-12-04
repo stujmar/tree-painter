@@ -50,11 +50,6 @@ const Game = ( { toggleGraph } ) => {
     let acorns = resources.acorns;
     const dispatch = useDispatch();
 
-    // const handleDelete = (id) => {
-    //     dispatch(updateAcorns(1));
-    //     dispatch(removeItem(id));
-    // } 
-
     let grass = document.getElementById('grass');
 
     if (!!grass && !hasLoaded) {
@@ -62,7 +57,6 @@ const Game = ( { toggleGraph } ) => {
         setHasLoaded(true);
         console.log('grass loaded:', grass);
     }
-    // grass ? dispatch(setGrassLoaded({ clientHeight: grass.clientHeight, clientWidth: grass.clientWidth})) : dispatch(setGrassLoaded(false)); 
 
     useEffect(() => {
         dispatch(setMessage(getMessages.welcome));

@@ -22,6 +22,8 @@ const Gnome = ({data}) => {
       dispatch(setMessage("Bad gnome go bye."));
       dispatch(updateResource({type: 'stone', amount: 1 }))
       dispatch(removeItemById(id));
+    } else if (mode === 'WATERING') {
+      dispatch(setMessage("Gnomes don't drink water, only glogg."));
     } else {
       dispatch(setMessage("I wish I had a mallet to bop this gnome."));
     }
