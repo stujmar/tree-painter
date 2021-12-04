@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectResources, updateResource, setMilestone, selectMode, selectSandboxMode, setMessage, selectMilestones } from '../../redux/gameSlice';
-import { removeItemById } from '../../redux/itemSlice';
+import { selectResources, updateResource, setMilestone, selectMode, selectSandboxMode, setMessage, selectMilestones } from '../../../redux/gameSlice';
+import { removeItemById } from '../../../redux/itemSlice';
 
 import Trunk from './Trunk';
 import Canopy from './Canopy';
-import { getSeason } from '../../utils/getSeason';
-import { getMessages } from '../../utils/getMessages';
+import { getSeason } from '../../../utils/getSeason';
+import { getMessages } from '../../../utils/getMessages';
 
 const Tree = ({treeData, onWater }) => {
 

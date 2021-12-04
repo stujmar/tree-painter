@@ -19,7 +19,7 @@ import { selectHour } from '../../redux/hourSlice';
 import { selectDay } from '../../redux/daySlice';
 
 import Sky from '../sky/Sky';
-import Tree from './Tree';
+import Tree from './items/Tree';
 import HUD from './HUD';
 import Well from '../farm/Well';
 import Silo from '../farm/Silo';
