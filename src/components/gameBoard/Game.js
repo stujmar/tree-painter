@@ -104,7 +104,6 @@ const Game = ( { toggleGraph } ) => {
                     item.age >= 6 ? dispatch(removeItemById(item.id)) : null;
                     break;
                 default:
-                    console.log("we might have a stray item");
             }
         })
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -127,16 +126,16 @@ const Game = ( { toggleGraph } ) => {
     }
 
     useEffect(() => {
-        let sortedTrees = items.slice().sort((a, b) => {
+        let sortedItems = items.slice().sort((a, b) => {
             return a.y - b.y
         }); // frozen in strict mode?
-        setDrawItems(sortedTrees.map(tree => {
-            if (tree.type === 'tree') {
-                return <Tree key={tree.id} treeData={tree} onWater={handleWater} />
-            } else if (tree.type === 'gnome') {
-                return <Gnome key={tree.id} data={tree} />
+        setDrawItems(sortedItems.map(_item => {
+            if (_item.type === 'tree') {
+                return <Tree key={_item.id} treeData={_item} onWater={handleWater} />
+            } else if (_item.type === 'gnome') {
+                return <Gnome key={_item.id} data={_item} />
             } else {
-                return <GraveStone key={tree.id} data={tree} />
+                return <GraveStone key={_item.id} data={_item} />
             }
         }));
 
