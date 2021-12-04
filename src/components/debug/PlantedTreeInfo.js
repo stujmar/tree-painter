@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { removeTreeById } from '../../redux/itemSlice.js'
+import { removeItemById } from '../../redux/itemSlice.js'
 import { updateAcorns } from '../../redux/gameSlice.js'
 import { getSeason } from '../../utils/getSeason.js'
 
@@ -9,7 +9,7 @@ const PlantedTreeInfo = ({ tree }) => {
     const season = getSeason(tree.birthday)
     const onDelete = (id) => {
         dispatch(updateAcorns(1));
-        dispatch(removeTreeById(id));
+        dispatch(removeItemById(id));
     }
 
     return (

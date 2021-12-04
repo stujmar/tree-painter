@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectResources, updateResource, setMilestone, selectMode, selectSandboxMode, setMessage, selectMilestones } from '../../redux/gameSlice';
-import { removeTreeById } from '../../redux/itemSlice';
+import { removeItemById } from '../../redux/itemSlice';
 
 import Trunk from './Trunk';
 import Canopy from './Canopy';
@@ -24,7 +24,7 @@ const Tree = ({treeData, onWater }) => {
     const handleClick = (id) => {
         if (mode === "HARVEST") {
             dispatch(setMessage(getMessages.HARVESTING))
-            dispatch(removeTreeById(id)); 
+            dispatch(removeItemById(id)); 
             if (isDead) {
                 dispatch(setMessage("You harvested a dead tree!"));
                 dispatch(updateResource({type: "wood", amount: 1}));

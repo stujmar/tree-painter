@@ -14,7 +14,7 @@ import {
     setMessage,
     selectMilestones,
     } from '../../redux/gameSlice';
-import { addTree, addBranch, ageItems, selectItems, growTreeById, removeTreeById} from '../../redux/itemSlice';
+import { addTree, addBranch, ageItems, selectItems, growTreeById, removeItemById} from '../../redux/itemSlice';
 import { selectHour } from '../../redux/hourSlice';
 import { selectDay } from '../../redux/daySlice';
 
@@ -51,7 +51,7 @@ const Game = ( { toggleGraph } ) => {
 
     // const handleDelete = (id) => {
     //     dispatch(updateAcorns(1));
-    //     dispatch(removeTree(id));
+    //     dispatch(removeItem(id));
     // } 
 
     let grass = document.getElementById('grass');
@@ -74,7 +74,7 @@ const Game = ( { toggleGraph } ) => {
             switch(item.type) {
                 case 'tree':
                     // eslint-disable-next-line no-unused-expressions
-                    item.age >= 100 ? dispatch(removeTreeById(item.id)) : null;
+                    item.age >= 100 ? dispatch(removeItemById(item.id)) : null;
                     growTree(item);
                     if (item.age > 10 && coinFlipRatio(0.01)) {
                         let newId = "tree_" + getRandomId();                     
@@ -100,7 +100,7 @@ const Game = ( { toggleGraph } ) => {
                     break;
                 case 'gnome':
                     // eslint-disable-next-line no-unused-expressions
-                    item.age >= 6 ? dispatch(removeTreeById(item.id)) : null;
+                    item.age >= 6 ? dispatch(removeItemById(item.id)) : null;
                     break;
                 default:
                     console.log("we might have a stray item");

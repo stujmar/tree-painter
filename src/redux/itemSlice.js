@@ -45,7 +45,7 @@ export const itemSlice = createSlice({
                 return tree.id !== action.payload.id ? tree : {...tree, growth: tree.growth.concat(action.payload.growth)}; 
             });
         },
-        removeTreeById: (state, action) => {
+        removeItemById: (state, action) => {
             state.items = state.items.filter(tree => {
                 return tree.id !== action.payload;
             })
@@ -59,7 +59,7 @@ export const {
     resetTrees,
     ageItems,
     growTreeById,
-    removeTreeById,
+    removeItemById,
     } = itemSlice.actions;
 
 export const selectItem = (state) => state.item;
