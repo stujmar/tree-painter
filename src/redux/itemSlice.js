@@ -15,11 +15,6 @@ export const itemSlice = createSlice({
         addTree: (state, action) => {
             state.items = state.items.concat(action.payload)
         },
-        removeTree: (state, action) => {
-            state.items = state.items.filter(tree => {
-               return tree.id !== action.payload;
-            })        
-        },
         resetTrees: (state) => {
             state.items = [];
         },
@@ -61,7 +56,6 @@ export const itemSlice = createSlice({
 export const {
     addTree,
     addBranch,
-    removeTree,
     resetTrees,
     ageItems,
     growTreeById,
