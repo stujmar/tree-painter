@@ -12,11 +12,14 @@ import { setMilestone, selectMode, selectStore, toggleStore } from './redux/game
 import { selectItems } from './redux/itemSlice';
 import Store from './components/gameBoard/store/Store';
 import { selectSpeed, setSpeed } from './redux/clockSlice';
+import ToolTips from './tooltips/ToolTips';
 
 const App = () => {
   const dispatch = useDispatch();
   const [ message, setMessage ] = useState("");
   const [ graph, setGraph ] = useState(false);
+  const [ isTipActive, setIsTipActive ] = useState(true);
+  const [ activeTip, setActiveTip ] = useState({});
 
   let gameMode = useSelector(selectMode);
   let trees = useSelector(selectItems);
@@ -61,6 +64,7 @@ const App = () => {
 
   return (
     <div className="relative">
+      {isTipActive ? <ToolTips onClose={() => setIsTipActive(false)} /> : null}
       {isStoreActive && <Store toggleStore={handleStoreToggle} />}
       {graph ? <GraphPanel toggleGraph={toggleGraph}/> : <></>}
       <ClockService />
