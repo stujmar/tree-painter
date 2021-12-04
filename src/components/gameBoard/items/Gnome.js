@@ -8,7 +8,12 @@ const Gnome = ({data}) => {
   let mode = useSelector(selectMode);
 
   const handleClick = (id) => {
-    mode === 'GNOME' ? dispatch(removeItemById(id)) : dispatch(setMessage("I wish I had a mallet to bop this gnome."));
+    if (mode === 'GNOME') {
+      dispatch(setMessage("Bad gnome go bye."));
+      dispatch(removeItemById(id));
+    } else {
+      dispatch(setMessage("I wish I had a mallet to bop this gnome."));
+    }
   }
   return (
     <button
