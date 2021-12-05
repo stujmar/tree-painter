@@ -45,11 +45,11 @@ const isLastTip = tipOrder.indexOf(activeTip) === tipOrder.length - 1;
         <div className="flex mt-2 justify-between">
           <button 
             type="button" 
-            className="focus:outline-none leading-4 pb-1 text-green-50 font-medium px-2 rounded bg-green-600"
+            className="focus:outline-none hover:bg-green-700 shadow text-green-50 font-medium px-2 rounded bg-green-600"
             onClick={onClose}>exit tour</button>
           {isLastTip ? null : <button 
             type="button" 
-            className="focus:outline-none leading-4 flex items-center pb-1 pl-3 text-green-50 font-medium px-2 rounded ml-2 bg-green-600"
+            className="focus:outline-none hover:bg-green-700 shadow flex items-center pl-3 text-green-50 font-medium px-2 rounded ml-2 bg-green-600"
             onClick={nextTip}>next tip 
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 pt-1 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
