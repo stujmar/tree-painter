@@ -8,7 +8,7 @@ import Header from './components/header/Header';
 import MessageModal from './components/gameBoard/MessageModal';
 import { useSelector, useDispatch } from 'react-redux';
 import { conditionsToBeMet, getMilestones } from './utils/settings';
-import { setMilestone, selectMode, selectStore, toggleStore } from './redux/gameSlice';
+import { setMilestone, selectMode, selectStore, toggleStore, toggleToolTip } from './redux/gameSlice';
 import { selectItems } from './redux/itemSlice';
 import Store from './components/gameBoard/store/Store';
 import { selectSpeed, setSpeed } from './redux/clockSlice';
@@ -18,8 +18,7 @@ const App = () => {
   const dispatch = useDispatch();
   const [ message, setMessage ] = useState("");
   const [ graph, setGraph ] = useState(false);
-  const [ isTipActive, setIsTipActive ] = useState(true);
-  const [ activeTip, setActiveTip ] = useState({});
+  let isToolTipActive = useSelector(state => state.game.isToolTipActive);
 
   let gameMode = useSelector(selectMode);
   let trees = useSelector(selectItems);
@@ -57,6 +56,11 @@ const App = () => {
     [speed]
   );
 
+  const handleToolTipClose = () => {
+    console.log(isToolTipActive)
+    dispatch(toggleToolTip(false));
+  }
+
   useEffect(() => {
     document.addEventListener("keydown", keyPress);
     return () => document.removeEventListener("keydown", keyPress);
@@ -64,7 +68,7 @@ const App = () => {
 
   return (
     <div className="relative">
-      {isTipActive ? <ToolTips onClose={() => setIsTipActive(false)} /> : null}
+      {isToolTipActive ? <ToolTips onClose={handleToolTipClose} /> : null}
       {isStoreActive && <Store toggleStore={handleStoreToggle} />}
       {graph ? <GraphPanel toggleGraph={toggleGraph}/> : <></>}
       <ClockService />

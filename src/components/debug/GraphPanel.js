@@ -2,7 +2,7 @@ import React from 'react';
 import Graph from './Graph';
 
 import {useDispatch, useSelector} from 'react-redux';
-import {resetSandbox, setSandbox} from '../../redux/gameSlice';
+import {resetSandbox, setSandbox, toggleToolTip} from '../../redux/gameSlice';
 import { selectSandboxMode } from '../../redux/gameSlice';
 import ToggleButton from './ToggleButton';
 
@@ -33,6 +33,7 @@ const GraphPanel = ({toggleGraph}) => {
         dispatch(resetResource('wood'));
         dispatch(resetResource('stone'));
         dispatch(setSpeed(1000));
+        dispatch(toggleToolTip(true));
         dispatch(setMode("NO_MODE"));
         dispatch(resetMilestones());
         dispatch(resetSandbox());

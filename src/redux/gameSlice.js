@@ -10,6 +10,7 @@ const initialState = !!persistedState.game ? persistedState.game : {
     mode: "NO_MODE",
     isDebugActive: false,
     isStoreActive: false,
+    isToolTipActive: true,
     grassLoaded: {
         clientHeight: 0,
         clientWidth: 0,
@@ -61,6 +62,9 @@ export const gameSlice = createSlice({
         toggleStore: (state) => {
             state.isStoreActive = !state.isStoreActive;
         },
+        toggleToolTip: (state, action) => {
+            state.isToolTipActive = action.payload;
+        },
         setSandbox: (state) => {
             state.sandboxMode = !state.sandboxMode;
         },
@@ -103,6 +107,7 @@ export const {
     setGrassLoaded,
     toggleDebug,
     toggleStore,
+    toggleToolTip,
     setMessage,
     setMilestone,
     resetMilestones
