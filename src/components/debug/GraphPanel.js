@@ -1,20 +1,15 @@
 import React from 'react';
 import Graph from './Graph';
 
-import {useDispatch, useSelector} from 'react-redux';
-import {resetSandbox, setSandbox, toggleToolTip} from '../../redux/gameSlice';
-import { selectSandboxMode } from '../../redux/gameSlice';
-import ToggleButton from './ToggleButton';
 
-import {
-    resetResource, 
-    setMode, 
-    resetMilestones
-    } from '../../redux/gameSlice';
+import {useDispatch, useSelector} from 'react-redux';
+import {resetGame, setSandbox } from '../../redux/gameSlice';
+import { selectSandboxMode } from '../../redux/gameSlice';
 import { resetTrees} from '../../redux/itemSlice';
 import { resetStars } from '../../redux/skySlice';
-
 import { setSpeed } from '../../redux/clockSlice';
+
+import ToggleButton from './ToggleButton';
 
 
 const GraphPanel = ({toggleGraph}) => {
@@ -25,18 +20,10 @@ const GraphPanel = ({toggleGraph}) => {
     }
 
     const reset = () => {
-        dispatch(resetTrees());
-        dispatch(resetStars());
-        dispatch(resetResource('acorns'));
-        dispatch(resetResource('water'));
-        dispatch(resetResource('stars'));
-        dispatch(resetResource('wood'));
-        dispatch(resetResource('stone'));
+        dispatch(resetGame());
         dispatch(setSpeed(1000));
-        dispatch(toggleToolTip(true));
-        dispatch(setMode("NO_MODE"));
-        dispatch(resetMilestones());
-        dispatch(resetSandbox());
+        dispatch(resetStars());
+        dispatch(resetTrees());
         localStorage.clear();
     }
 
