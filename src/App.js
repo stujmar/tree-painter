@@ -57,7 +57,6 @@ const App = () => {
   );
 
   const handleToolTipClose = () => {
-    console.log(isToolTipActive)
     dispatch(toggleToolTip(false));
   }
 

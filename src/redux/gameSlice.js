@@ -19,6 +19,7 @@ export const gameSlice = createSlice({
             state.isDebugActive = defaultGame.isDebugActive;
             state.isStoreActive = defaultGame.isStoreActive;
             state.isToolTipActive = defaultGame.isToolTipActive;
+            state.message = defaultGame.message;
         },
         setMilestone: (state, action) => {
             state.milestones[action.payload] = true;

@@ -1,6 +1,6 @@
 const defaultGame = {
   sandboxMode: false,
-  message: 'Message from Redux State',
+  message: '',
   mode: "NO_MODE",
   isDebugActive: false,
   isStoreActive: false,
@@ -23,7 +23,7 @@ const defaultGame = {
       tractor: false,
       seasons: false,
       speed: false,
-      stone: true,
+      stone: false,
   },
   mouse: {    
       x: 0,

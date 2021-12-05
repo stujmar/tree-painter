@@ -59,11 +59,6 @@ const Game = ( { toggleGraph } ) => {
     }
 
     useEffect(() => {
-        dispatch(setMessage(getMessages.welcome));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
-
-    useEffect(() => {
         dispatch(ageItems()); // Age all items.
         items.forEach((item) => { 
             switch(item.type) {
