@@ -33,6 +33,14 @@ const App = () => {
     })
   }, [dispatch, trees]);
 
+  useEffect(() => {
+    if (graph) {
+      dispatch(setSpeed(123456789));
+    } else {
+      dispatch(setSpeed(1000));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[graph]);
 
   const handleMessageChange = (payload) => {
     setMessage(payload);

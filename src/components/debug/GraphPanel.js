@@ -42,6 +42,13 @@ const GraphPanel = ({toggleGraph}) => {
                         </svg>
                     </button> 
                     <Graph resetGame={reset} />
+                <form className="flex flex-col px-2">
+                    <div className="comfortaa text-green-800 font-medium">Saved Game</div>
+                    <textarea cols="40" rows="5" value={localStorage.reduxState}></textarea>
+                    <div>
+                        <button className="bg-green-600 px-1 rounded mt-2 text-white">submit</button>
+                    </div>
+                </form>
                 </div>
         </div>
     )
