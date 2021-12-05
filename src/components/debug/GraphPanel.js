@@ -5,6 +5,7 @@ import Graph from './Graph';
 import {useDispatch, useSelector} from 'react-redux';
 import {resetGame, setSandbox } from '../../redux/gameSlice';
 import { selectSandboxMode } from '../../redux/gameSlice';
+import { selectItems } from '../../redux/itemSlice';
 import { resetTrees} from '../../redux/itemSlice';
 import { resetStars } from '../../redux/skySlice';
 import { setSpeed } from '../../redux/clockSlice';
@@ -17,6 +18,7 @@ const GraphPanel = ({toggleGraph}) => {
     const dispatch = useDispatch();
     const [saveText, setSaveText] = useState(window.btoa(localStorage.reduxState));
     let isSandbox = useSelector(selectSandboxMode);
+    let trees = useSelector(selectItems);
 
     const toggleSandbox = () => {
         dispatch(setSandbox());
@@ -57,7 +59,7 @@ const GraphPanel = ({toggleGraph}) => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
                     </button> 
-                    <Graph resetGame={reset} />
+                    <Graph resetGame={reset} trees={trees} />
                 <form onSubmit={(e) => loadGame(e)} className="flex flex-col px-2 max-w-4xl mx-auto mt-3">
                     <div className="comfortaa text-green-800 font-medium">Saved Game: paste saved game data and submit to load a previous game.</div>
                     <textarea className="bg-green-100 comfortaa text-sm" cols="30" rows="3" name="save" value={saveText} onChange={(e) => handleTextChange(e)}></textarea>

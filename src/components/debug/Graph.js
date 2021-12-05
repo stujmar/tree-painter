@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectItems } from '../../redux/itemSlice';
 import { getSeason } from '../../utils/getSeason';
 
-const Graph = ({resetGame}) => {
-  // const dispatch = useDispatch();
+const Graph = ({resetGame, trees}) => {
   const [verticalLines, setVerticalLines] = useState([]);
   const [horizontalLines, setHorizontalLines] = useState([]);
   const [xCount, setXCount] = useState(10);
   const [yCount, setYCount] = useState(10);
   const [lockAxis, setLockAxis] = useState(true);
   const [dots, setDots] = useState([]);
-
-  let trees = useSelector(selectItems);
 
   const getHorizontalLines = (density) => {
     density = density >= 1 ? (density) : 1;
