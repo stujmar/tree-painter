@@ -48,9 +48,14 @@ const GraphPanel = ({toggleGraph}) => {
         <div className="fixed inset-0 z-50">
                 <div className="relative w-full h-full bg-green-400">
                 <div className="p-2 pt-4 bg-green-200 text-green-700 font-bold text-center text-xl comfortaa">GAME IS PAUSED</div>
-                    <div className="mx-auto flex justify-start mt-4 ml-4 items-center">
-                        <div className="font-bold text-green-800 text-xl comfortaa mr-4">Toggle Sandbox Mode</div>
+                    <div className="mx-auto my-2 w-80 sm:w-96 flex justify-between items-baseline">
+                    <div className="comfortaa font-bold text-green-900">
+                    Trees: {trees.length}
+                    </div>
+                    <div className="flex justify-start items-center">
+                        <div className="font-bold text-green-800 comfortaa mr-4">Toggle Sandbox Mode</div>
                         <ToggleButton value={isSandbox} onClick={toggleSandbox} />
+                    </div>
                     </div>
                     <button
                         className="fixed hover:bg-green-500 focus:outline-none left-2 top-2 rounded-full z-50 opacity-100"
