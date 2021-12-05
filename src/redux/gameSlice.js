@@ -11,6 +11,9 @@ export const gameSlice = createSlice({
     name: 'game',
     initialState,
     reducers: {
+        resetGame: (state) => {
+            state.game = defaultGame;
+        },
         setMilestone: (state, action) => {
             state.milestones[action.payload] = true;
         },
@@ -78,7 +81,8 @@ export const {
     toggleToolTip,
     setMessage,
     setMilestone,
-    resetMilestones
+    resetMilestones,
+    resetGame
 } = gameSlice.actions;
 
 export const selectGame = (state) => state.game;
