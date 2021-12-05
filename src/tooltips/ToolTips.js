@@ -38,7 +38,7 @@ const isLastTip = tipOrder.indexOf(activeTip) === tipOrder.length - 1;
 
   return (
     <div 
-      className={`absolute ${tips[activeTip].x} ${tips[activeTip].y} z-50 flex flex-col bg-green-200 shadow-lg p-2 rounded`}>
+      className={`fixed ${tips[activeTip].x} ${tips[activeTip].y} z-50 flex flex-col bg-green-200 shadow-lg p-2 rounded`}>
           <div className="comfortaa font-medium text-green-800">
             {tips[activeTip].content}
           </div>
