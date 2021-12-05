@@ -58,11 +58,12 @@ const GraphPanel = ({toggleGraph}) => {
                         </svg>
                     </button> 
                     <Graph resetGame={reset} />
-                <form onSubmit={(e) => loadGame(e)} className="flex flex-col px-2 max-w-4xl mx-auto mt-2">
-                    <div className="comfortaa text-green-800 font-medium">Saved Game</div>
-                    <textarea cols="30" rows="3" name="save" value={saveText} onChange={(e) => handleTextChange(e)}></textarea>
+                <form onSubmit={(e) => loadGame(e)} className="flex flex-col px-2 max-w-4xl mx-auto mt-3">
+                    <div className="comfortaa text-green-800 font-medium">Saved Game: paste saved game data and submit to load a previous game.</div>
+                    <textarea className="bg-green-100 comfortaa text-sm" cols="30" rows="3" name="save" value={saveText} onChange={(e) => handleTextChange(e)}></textarea>
                     <div>
-                        <button type="submit" className="bg-green-600 px-1 rounded mt-2 text-white">submit</button>
+                        <button type="button" onClick={() => {navigator.clipboard.writeText(saveText)}} className="focus:outline-none bg-green-600 px-1 rounded mt-2 text-white">copy data</button>
+                        <button type="submit" className="bg-green-600 px-1 ml-2 rounded mt-2 text-white">submit</button>
                     </div>
                 </form>
                 </div>

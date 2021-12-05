@@ -33,7 +33,7 @@ code {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 25px;
+  width: 20px;
   margin-left: 5px;
 }
 
