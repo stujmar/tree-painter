@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Graph from './Graph';
 
 
@@ -13,11 +13,15 @@ import ToggleButton from './ToggleButton';
 
 
 const GraphPanel = ({toggleGraph}) => {
+
     const dispatch = useDispatch();
+    const [saveText, setSaveText] = useState(window.btoa(localStorage.reduxState));
     let isSandbox = useSelector(selectSandboxMode);
+
     const toggleSandbox = () => {
         dispatch(setSandbox());
     }
+    
 
     const reset = () => {
         dispatch(resetGame());
@@ -25,6 +29,17 @@ const GraphPanel = ({toggleGraph}) => {
         dispatch(resetStars());
         dispatch(resetTrees());
         localStorage.clear();
+    }
+
+    const handleTextChange = (event) => {
+        setSaveText(event.target.value);
+    }
+
+    const loadGame = (e) => {
+        e.preventDefault();
+        let decodedSave = window.atob(e.target.save.value);
+        localStorage.setItem('reduxState', decodedSave);
+        window.location.reload();
     }
 
     return (
@@ -43,11 +58,11 @@ const GraphPanel = ({toggleGraph}) => {
                         </svg>
                     </button> 
                     <Graph resetGame={reset} />
-                <form className="flex flex-col px-2 max-w-4xl mx-auto mt-2">
+                <form onSubmit={(e) => loadGame(e)} className="flex flex-col px-2 max-w-4xl mx-auto mt-2">
                     <div className="comfortaa text-green-800 font-medium">Saved Game</div>
-                    <textarea cols="30" rows="3" value={localStorage.reduxState}></textarea>
+                    <textarea cols="30" rows="3" name="save" value={saveText} onChange={(e) => handleTextChange(e)}></textarea>
                     <div>
-                        <button className="bg-green-600 px-1 rounded mt-2 text-white">submit</button>
+                        <button type="submit" className="bg-green-600 px-1 rounded mt-2 text-white">submit</button>
                     </div>
                 </form>
                 </div>
