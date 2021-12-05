@@ -9,7 +9,8 @@ const arrowTopLeft = <div className="h-2 w-2 absolute -top-3" style={{ borderBot
 const arrowBottomLeft = <div className="h-2 w-2 absolute -bottom-3" style={{ borderTop: "15px #BBF7D0 solid", borderLeft: "10px transparent solid", borderRight: "10px solid transparent"}} ></div>
 const arrowBottomRight = <div className="h-2 w-2 absolute right-2 -bottom-3" style={{ borderTop: "15px #BBF7D0 solid", borderLeft: "10px transparent solid", borderRight: "10px solid transparent"}} ></div>
 
-const isLastTip = tipOrder.indexOf(activeTip) === tipOrder.length - 1;
+let isLastTip = tipOrder.indexOf(activeTip) === tipOrder.length - 1;
+let isFirstTip = tipOrder.indexOf(activeTip) === 0;
 
   const tips = {
     "time": {
@@ -51,24 +52,33 @@ const isLastTip = tipOrder.indexOf(activeTip) === tipOrder.length - 1;
     setActiveTip(nextTip);
   }
 
+  const prevTip = () => {
+    const prevTipIndex = tipOrder.indexOf(activeTip) - 1;
+    const prevTip = tipOrder[prevTipIndex];
+    setActiveTip(prevTip);
+  }
+
   return (
     <div 
       className={`fixed ${tips[activeTip].x} ${tips[activeTip].y} z-50 flex flex-col bg-green-200 shadow-lg p-2 rounded`}>
           <div className="comfortaa font-medium text-green-800 max-w-md">
             {tips[activeTip].content}
           </div>
-        <div className="flex mt-2 justify-between">
+        <div className="flex mt-2 justify-center gap-4">
+        {isFirstTip ? null : <button 
+            type="button" 
+            className="focus:outline-none hover:bg-green-700 pb-1 shadow flex items-center text-green-50 font-medium px-2 rounded bg-green-600"
+            onClick={prevTip}>{"<"}
+
+            </button>}
           <button 
             type="button" 
             className="focus:outline-none hover:bg-green-700 shadow text-green-50 font-medium px-2 rounded bg-green-600"
             onClick={onClose}>exit tour</button>
           {isLastTip ? null : <button 
             type="button" 
-            className="focus:outline-none hover:bg-green-700 shadow flex items-center pl-3 text-green-50 font-medium px-2 rounded ml-2 bg-green-600"
-            onClick={nextTip}>next tip 
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 pt-1 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
+            className="focus:outline-none hover:bg-green-700 pb-1 shadow flex items-center text-green-50 font-medium px-2 rounded bg-green-600"
+            onClick={nextTip}>{">"}
             </button>}
           </div>
           {tips[activeTip].arrow}
