@@ -2,14 +2,29 @@ import React, { useState } from 'react';
 
 const ToolTips = ({onClose}) => {
 
-const [activeTip, setActiveTip] = useState("modes");
-const tipOrder = ["modes", "build", "settings"];
+const [activeTip, setActiveTip] = useState("time");
+const tipOrder = ["time", "status", "mode", "build", "settings"];
+
+const arrowTopLeft = <div className="h-2 w-2 absolute -top-3" style={{ borderBottom: "15px #BBF7D0 solid", borderLeft: "10px transparent solid", borderRight: "10px solid transparent"}} ></div>
 const arrowBottomLeft = <div className="h-2 w-2 absolute -bottom-3" style={{ borderTop: "15px #BBF7D0 solid", borderLeft: "10px transparent solid", borderRight: "10px solid transparent"}} ></div>
 const arrowBottomRight = <div className="h-2 w-2 absolute right-2 -bottom-3" style={{ borderTop: "15px #BBF7D0 solid", borderLeft: "10px transparent solid", borderRight: "10px solid transparent"}} ></div>
+
 const isLastTip = tipOrder.indexOf(activeTip) === tipOrder.length - 1;
 
   const tips = {
-    "modes": {
+    "time": {
+      x: "left-2",
+      y: "top-20",
+      content: "This clock keeps time. If enough time passes the season will change!",
+      arrow: arrowTopLeft
+    },
+    "status": {
+      x: "left-2",
+      y: "top-52",
+      content: "Here you can see your resources. Play around to unlock more.",
+      arrow: arrowTopLeft
+    },
+    "mode": {
       x: "left-2",
       y: "bottom-14",
       content: "Click these buttons to switch modes!",
@@ -39,7 +54,7 @@ const isLastTip = tipOrder.indexOf(activeTip) === tipOrder.length - 1;
   return (
     <div 
       className={`fixed ${tips[activeTip].x} ${tips[activeTip].y} z-50 flex flex-col bg-green-200 shadow-lg p-2 rounded`}>
-          <div className="comfortaa font-medium text-green-800">
+          <div className="comfortaa font-medium text-green-800 max-w-md">
             {tips[activeTip].content}
           </div>
         <div className="flex mt-2 justify-between">
