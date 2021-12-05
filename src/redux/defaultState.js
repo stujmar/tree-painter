@@ -4,7 +4,7 @@ const defaultGame = {
   mode: "NO_MODE",
   isDebugActive: false,
   isStoreActive: false,
-  isToolTipActive: true,
+  isToolTipActive: false,
   grassLoaded: {
       clientHeight: 0,
       clientWidth: 0,
