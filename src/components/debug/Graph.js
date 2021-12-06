@@ -85,6 +85,12 @@ const Graph = ({resetGame, trees}) => {
 
   return (
     <div>
+          <button 
+                    type="button"
+                    aria-label="Reset button"
+                    className="border-4 my-4 block mx-auto bg-green-600 hover:bg-green-700 rounded-lg font-medium text-white border-white px-2 z-10 shadow focus:outline-none"
+                    onClick={handleResetGame}
+                >RESET GAME</button>
       <div className="w-80 sm:w-96 h-80 sm:h-96 bg-amber-100 mx-auto text-center relative shadow-lg">
         {verticalLines}
         {horizontalLines}
@@ -135,12 +141,6 @@ const Graph = ({resetGame, trees}) => {
               >{lockAxis ? "unlock" : "lock"}</button>
         </div></>}
       </div>
-      <button 
-                    type="button"
-                    aria-label="Reset button"
-                    className="border-4 mt-4 block mx-auto bg-green-600 hover:bg-green-700 rounded-lg font-medium text-white border-white px-2 z-10 shadow focus:outline-none"
-                    onClick={handleResetGame}
-                >RESET GAME</button>
     </div>
   );
 }

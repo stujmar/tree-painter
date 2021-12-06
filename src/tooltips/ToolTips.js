@@ -2,16 +2,15 @@ import React, { useState } from 'react';
 
 const ToolTips = ({onClose}) => {
 
-const [activeTip, setActiveTip] = useState("time");
-const tipOrder = ["time", "status", "mode", "build", "settings"];
+  const [activeTip, setActiveTip] = useState("time");
 
-const arrowTopLeft = <div className="h-2 w-2 absolute -top-3" style={{ borderBottom: "15px #BBF7D0 solid", borderLeft: "10px transparent solid", borderRight: "10px solid transparent"}} ></div>
-const arrowBottomLeft = <div className="h-2 w-2 absolute -bottom-3" style={{ borderTop: "15px #BBF7D0 solid", borderLeft: "10px transparent solid", borderRight: "10px solid transparent"}} ></div>
-const arrowBottomRight = <div className="h-2 w-2 absolute right-2 -bottom-3" style={{ borderTop: "15px #BBF7D0 solid", borderLeft: "10px transparent solid", borderRight: "10px solid transparent"}} ></div>
+  const arrowTopLeft = <div className="h-2 w-2 absolute -top-3" style={{ borderBottom: "15px #BBF7D0 solid", borderLeft: "10px transparent solid", borderRight: "10px solid transparent"}} ></div>
+  const arrowBottomLeft = <div className="h-2 w-2 absolute -bottom-3" style={{ borderTop: "15px #BBF7D0 solid", borderLeft: "10px transparent solid", borderRight: "10px solid transparent"}} ></div>
+  const arrowBottomRight = <div className="h-2 w-2 absolute right-2 -bottom-3" style={{ borderTop: "15px #BBF7D0 solid", borderLeft: "10px transparent solid", borderRight: "10px solid transparent"}} ></div>
 
-let isLastTip = tipOrder.indexOf(activeTip) === tipOrder.length - 1;
-let isFirstTip = tipOrder.indexOf(activeTip) === 0;
-
+  // Add new tour tips here.
+  const tipOrder = ["time", "status", "mode", "build", "settings"];
+  // And here.
   const tips = {
     "time": {
       x: "left-2",
@@ -44,14 +43,16 @@ let isFirstTip = tipOrder.indexOf(activeTip) === 0;
       arrow: arrowBottomRight
     }
   }
-
-
+  
+  let isLastTip = tipOrder.indexOf(activeTip) === tipOrder.length - 1;
+  let isFirstTip = tipOrder.indexOf(activeTip) === 0;
+  
   const nextTip = () => {
     const nextTipIndex = tipOrder.indexOf(activeTip) + 1;
     const nextTip = tipOrder[nextTipIndex];
     setActiveTip(nextTip);
   }
-
+  
   const prevTip = () => {
     const prevTipIndex = tipOrder.indexOf(activeTip) - 1;
     const prevTip = tipOrder[prevTipIndex];
@@ -69,7 +70,6 @@ let isFirstTip = tipOrder.indexOf(activeTip) === 0;
             type="button" 
             className="focus:outline-none hover:bg-green-700 pb-1 shadow flex items-center text-green-50 font-medium px-2 rounded bg-green-600"
             onClick={prevTip}>{"<"}
-
             </button>}
           <button 
             type="button" 

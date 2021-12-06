@@ -45,9 +45,9 @@ const GraphPanel = ({toggleGraph}) => {
     }
 
     return (
-        <div className="fixed inset-0 z-50">
-                <div className="relative w-full h-full bg-green-400">
-                <div className="p-2 pt-4 bg-green-200 text-green-700 font-bold text-center text-xl comfortaa">GAME IS PAUSED</div>
+        <div className="fixed inset-0 z-50 w-full h-full bg-green-400">
+                <div className="relative h-full w-full overflow-y-auto">
+                <div className="p-3 bg-green-200 text-green-700 font-bold text-center text-xl comfortaa">GAME IS PAUSED</div>
                     <div className="mx-auto my-2 w-80 sm:w-96 flex justify-between items-baseline">
                     <div className="comfortaa font-bold text-green-900">
                     Trees: {trees.length}
@@ -65,7 +65,7 @@ const GraphPanel = ({toggleGraph}) => {
                         </svg>
                     </button> 
                     <Graph resetGame={reset} trees={trees} />
-                <form onSubmit={(e) => loadGame(e)} className="flex flex-col px-2 max-w-4xl mx-auto mt-3">
+                <form onSubmit={(e) => loadGame(e)} className="flex flex-col px-2 max-w-4xl mx-auto my-6">
                     <div className="comfortaa text-green-800 font-medium">Saved Game: paste saved game data and submit to load a previous game.</div>
                     <textarea className="bg-green-100 comfortaa text-sm" cols="30" rows="3" name="save" value={saveText} onChange={(e) => handleTextChange(e)}></textarea>
                     <div>
