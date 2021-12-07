@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Graph from './Graph';
-
 
 import {useDispatch, useSelector} from 'react-redux';
 import {resetGame, setSandbox } from '../../redux/gameSlice';
@@ -17,12 +16,18 @@ const GraphPanel = ({toggleGraph}) => {
 
     const dispatch = useDispatch();
     const [saveText, setSaveText] = useState(window.btoa(localStorage.reduxState));
+    const [graph, setGraph] = useState("");
     let isSandbox = useSelector(selectSandboxMode);
     let trees = useSelector(selectItems);
 
     const toggleSandbox = () => {
         dispatch(setSandbox());
     }
+
+    useEffect(() => {
+        setGraph(<Graph key="graph" resetGame={reset} trees={trees} />);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [trees]);
     
 
     const reset = () => {
@@ -31,6 +36,8 @@ const GraphPanel = ({toggleGraph}) => {
         dispatch(resetStars());
         dispatch(resetTrees());
         localStorage.clear();
+        // force a browser refresh
+        window.location.reload();
     }
 
     const handleTextChange = (event) => {
@@ -64,11 +71,11 @@ const GraphPanel = ({toggleGraph}) => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
                     </button> 
-                    <Graph resetGame={reset} trees={trees} />
+                    {graph}
                 <form onSubmit={(e) => loadGame(e)} className="flex flex-col px-2 max-w-4xl mx-auto my-6">
-                    <div className="comfortaa text-green-800 font-medium">Saved Game: paste saved game data and submit to load a previous game.</div>
+                    <div className="comfortaa text-green-900 font-medium">Saved Game: paste saved game data and submit to load a previous game.</div>
                     <textarea className="bg-green-100 comfortaa text-sm" cols="30" rows="3" name="save" value={saveText} onChange={(e) => handleTextChange(e)}></textarea>
-                    <div>
+                    <div className="w-max mx-auto">
                         <button type="button" onClick={() => {navigator.clipboard.writeText(saveText)}} className="focus:outline-none bg-green-600 px-1 rounded mt-2 text-white">copy data</button>
                         <button type="submit" className="bg-green-600 px-1 ml-2 rounded mt-2 text-white">submit</button>
                     </div>

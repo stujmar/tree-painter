@@ -41,6 +41,10 @@ const Graph = ({resetGame, trees}) => {
       }))
     }
     }, [trees]);
+
+  useEffect(() => {
+    console.log('child knows dots updated')
+  } , [dots])
   
 
   useEffect(() => {
@@ -79,7 +83,7 @@ const Graph = ({resetGame, trees}) => {
   }
 
   function handleResetGame() {
-    setDots([]);
+    // setDots([]);
     resetGame();
   }
 
@@ -88,7 +92,7 @@ const Graph = ({resetGame, trees}) => {
           <button 
                     type="button"
                     aria-label="Reset button"
-                    className="border-4 my-4 block mx-auto bg-green-600 hover:bg-green-700 rounded-lg font-medium text-white border-white px-2 z-10 shadow focus:outline-none"
+                    className="my-4 block mx-auto bg-green-600 hover:bg-green-700 rounded-lg font-medium text-white px-2 z-10 shadow focus:outline-none"
                     onClick={handleResetGame}
                 >RESET GAME</button>
       <div className="w-80 sm:w-96 h-80 sm:h-96 bg-amber-100 mx-auto text-center relative shadow-lg">
