@@ -14,6 +14,7 @@ import {
     setMessage,
     selectMilestones,
     } from '../../redux/gameSlice';
+import { MAX_GNOME_AGE } from '../../utils/settings';
 import { addTree, addBranch, ageItems, selectItems, growTreeById, removeItemById} from '../../redux/itemSlice';
 import { selectHour } from '../../redux/hourSlice';
 import { selectDay } from '../../redux/daySlice';
@@ -90,7 +91,7 @@ const Game = ( { toggleGraph } ) => {
                     break;
                 case 'gnome':
                     // eslint-disable-next-line no-unused-expressions
-                    item.age >= 6 ? dispatch(removeItemById(item.id)) : null;
+                    item.age >= MAX_GNOME_AGE ? dispatch(removeItemById(item.id)) : null;
                     break;
                 default:
             }

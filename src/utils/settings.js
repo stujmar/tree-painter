@@ -1,6 +1,7 @@
 import { store } from '../redux/store';
 
 const MAX_TREE_HEIGHT = 15;
+const MAX_GNOME_AGE = 6;
 
 const BARN_UNLOCK = 15;
 const SPEED_UNLOCK = 5;
@@ -30,4 +31,4 @@ const getMilestones = ( unlock ) => {
 
 let conditionsToBeMet = ["water", "speed", "seasons", "stars", "barn"];
 
-export { getMilestones, MAX_TREE_HEIGHT, conditionsToBeMet };
+export { getMilestones, MAX_TREE_HEIGHT, conditionsToBeMet, MAX_GNOME_AGE };
