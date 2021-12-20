@@ -154,6 +154,9 @@ const Game = ( { toggleGraph } ) => {
     }
 
     const plant = (e) => {
+        if (mode === "PLANTING" && acorns === 0) {
+            dispatch(setMessage("Try chopping some trees down."))
+        }
         if (acorns > 0 || isSandbox) {
             // Set Trees in Redux state.
             let newId = "tree_" + getRandomId();
