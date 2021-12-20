@@ -14,7 +14,7 @@ const ToolTips = ({onClose}) => {
   const tips = {
     "time": {
       x: "left-2",
-      y: "top-20",
+      y: "top-12 md:top-20",
       content: "This clock keeps time. If enough time passes the season will change!",
       arrow: arrowTopLeft
     },
