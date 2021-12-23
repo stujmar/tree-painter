@@ -127,15 +127,14 @@ const Game = ( { toggleGraph } ) => {
             if (_item.type === 'tree') {
             } else if (_item.type === 'gnome') {
             } else {
-                return <GraveStone key={_item.id} data={_item} />
             }
             switch(_item.type) {
                 case 'tree':
                     return <Tree key={_item.id} treeData={_item} onWater={handleWater} />
-                    case 'gnome':
+                case 'gnome':
                     return <Gnome key={_item.id} data={_item} />
                 case 'grave':
-                    console.log("grave");
+                    return <GraveStone key={_item.id} data={_item} />
                 case 'butterfly':
                     console.log("butterfly");
             }
