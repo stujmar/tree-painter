@@ -17,7 +17,12 @@ const Butterfly = ({data}) => {
         width: "20px",
         height: "20px",
         }}
-    >X</button>
+    >
+      <svg width="39" height="39" viewBox="0 0 39 39" fill="none">
+        <circle cx="19.5" cy="19.5" r="12.5" fill="#FBFFC9"/>
+        <circle cx="19.5" cy="19.5" r="19.5" fill="#FBFFC9" fill-opacity="0.5"/>
+      </svg>
+    </button>
   )
 }
 
