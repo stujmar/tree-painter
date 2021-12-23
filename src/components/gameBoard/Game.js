@@ -15,7 +15,7 @@ import {
     selectMilestones,
     } from '../../redux/gameSlice';
 import { MAX_GNOME_AGE } from '../../utils/settings';
-import { addTree, addBranch, ageItems, selectItems, growTreeById, removeItemById} from '../../redux/itemSlice';
+import { addItem, addBranch, ageItems, selectItems, growTreeById, removeItemById} from '../../redux/itemSlice';
 import { selectHour } from '../../redux/hourSlice';
 import { selectDay } from '../../redux/daySlice';
 
@@ -74,7 +74,7 @@ const Game = ( { toggleGraph } ) => {
                     growTree(item);
                     if (item.age > 10 && coinFlipRatio(0.01)) {
                         let newId = "tree_" + getRandomId();                     
-                        dispatch(addTree({
+                        dispatch(addItem({
                             id: newId,
                             type: 'tree',
                             birthday: item.birthday,
@@ -85,7 +85,7 @@ const Game = ( { toggleGraph } ) => {
                     }))}
                     if (item.age > 10 && coinFlipRatio(0.002)) {
                         let newId = "gnome_" + getRandomId();                     
-                        dispatch(addTree({
+                        dispatch(addItem({
                             id: newId,
                             type: 'gnome',
                             birthday: item.birthday,
@@ -172,7 +172,7 @@ const Game = ( { toggleGraph } ) => {
         if (acorns > 0 || isSandbox) {
             // Set Trees in Redux state.
             let newId = "tree_" + getRandomId();
-            dispatch( addTree({
+            dispatch( addItem({
                 id: newId,
                 type: 'tree',
                 birthday: day,

@@ -12,7 +12,7 @@ export const itemSlice = createSlice({
     name: 'item',
     initialState,
     reducers: {
-        addTree: (state, action) => {
+        addItem: (state, action) => {
             state.items = state.items.concat(action.payload)
         },
         resetTrees: (state) => {
@@ -54,7 +54,7 @@ export const itemSlice = createSlice({
 });
 
 export const {
-    addTree,
+    addItem,
     addBranch,
     resetTrees,
     ageItems,
