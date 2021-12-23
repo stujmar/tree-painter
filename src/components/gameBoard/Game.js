@@ -63,7 +63,12 @@ const Game = ( { toggleGraph } ) => {
     useEffect(() => {
         let isButterfly = coinFlipRatio(.01);
         if (isButterfly) {
-            console.log("butterfly");
+            addItem({
+                id: 'butterfly_' + getRandomId(),
+                type: 'butterfly',
+                x: 0,
+                y: getRandomInt(0,100),
+            });
         }
         dispatch(ageItems()); // Age all items.
         items.forEach((item) => { 
