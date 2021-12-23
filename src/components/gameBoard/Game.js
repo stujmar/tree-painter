@@ -125,7 +125,6 @@ const Game = ( { toggleGraph } ) => {
         }); // frozen in strict mode?
         setDrawItems(sortedItems.map(_item => {
             if (_item.type === 'tree') {
-                return <Tree key={_item.id} treeData={_item} onWater={handleWater} />
             } else if (_item.type === 'gnome') {
                 return <Gnome key={_item.id} data={_item} />
             } else {
@@ -133,7 +132,7 @@ const Game = ( { toggleGraph } ) => {
             }
             switch(_item.type) {
                 case 'tree':
-                    console.log("tree");
+                    return <Tree key={_item.id} treeData={_item} onWater={handleWater} />
                 case 'gnome':
                     console.log("gnome");
                 case 'grave':
