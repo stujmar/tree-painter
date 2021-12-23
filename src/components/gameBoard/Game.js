@@ -131,6 +131,16 @@ const Game = ( { toggleGraph } ) => {
             } else {
                 return <GraveStone key={_item.id} data={_item} />
             }
+            switch(_item.type) {
+                case 'tree':
+                    console.log("tree");
+                case 'gnome':
+                    console.log("gnome");
+                case 'grave':
+                    console.log("grave");
+                case 'butterfly':
+                    console.log("butterfly");
+            }
         }));
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
