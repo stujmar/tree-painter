@@ -33,6 +33,7 @@ import Observatory from '../farm/Observatory';
 import ScareCrow from '../farm/ScareCrow';
 import Gnome from './items/Gnome';
 import GraveStone from './items/GraveStone';
+import Butterfly from './items/Butterfly';
 
 const Game = ( { toggleGraph } ) => {
     const MAX_TREE_HEIGHT = 15;
@@ -136,7 +137,7 @@ const Game = ( { toggleGraph } ) => {
                 case 'grave':
                     return <GraveStone key={_item.id} data={_item} />
                 case 'butterfly':
-                    console.log("butterfly");
+                    return <Butterfly key={_item.id} data={_item} />
             }
         }));
 
