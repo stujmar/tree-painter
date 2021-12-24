@@ -14,7 +14,7 @@ import {
     setMessage,
     selectMilestones,
     } from '../../redux/gameSlice';
-import { BASE_BUTTERFLY_CHANCE, BASE_GNOME_CHANCE, isMaxAge, MAX_GNOME_AGE } from '../../utils/settings';
+import { BASE_BUTTERFLY_CHANCE, BASE_GNOME_CHANCE, isMaxAge } from '../../utils/settings';
 import { addItem, addBranch, ageItems, selectItems, growTreeById, removeItemById} from '../../redux/itemSlice';
 import { selectHour } from '../../redux/hourSlice';
 import { selectDay } from '../../redux/daySlice';
@@ -63,6 +63,7 @@ const Game = ( { toggleGraph } ) => {
     useEffect(() => {
         let isButterfly = coinFlipRatio(BASE_BUTTERFLY_CHANCE);
         if (isButterfly) {
+            console.log("butterfly added");
             addItem({
                 id: 'butterfly_' + getRandomId(),
                 type: 'butterfly',
