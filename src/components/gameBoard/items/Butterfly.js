@@ -14,11 +14,11 @@ const Butterfly = ({data}) => {
       style={{
         left: `${data.x}%`, 
         top: `${data.y -3}%`, 
-        width: "20px",
-        height: "20px",
+        width: "30px",
+        height: "30px",
         }}
     >
-      <svg width="39" height="39" viewBox="0 0 39 39" fill="none">
+      <svg width="20" height="20" viewBox="0 0 39 39" fill="none">
         <circle cx="19.5" cy="19.5" r="12.5" fill="#FBFFC9"/>
         <circle cx="19.5" cy="19.5" r="19.5" fill="#FBFFC9" fill-opacity="0.5"/>
       </svg>
