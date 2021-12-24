@@ -64,12 +64,12 @@ const Game = ( { toggleGraph } ) => {
         let isButterfly = coinFlipRatio(BASE_BUTTERFLY_CHANCE);
         if (isButterfly) {
             console.log("butterfly added");
-            addItem({
+            dispatch(addItem({
                 id: 'butterfly_' + getRandomId(),
                 type: 'butterfly',
                 x: 0,
                 y: getRandomInt(0,100),
-            });
+            }));
         }
         dispatch(ageItems()); // Age all items.
         items.forEach((item) => {
@@ -146,6 +146,7 @@ const Game = ( { toggleGraph } ) => {
                 case 'grave':
                     return <GraveStone key={_item.id} data={_item} />
                 case 'butterfly':
+                    console.log("drawing butterfly");
                     return <Butterfly key={_item.id} data={_item} />
             }
         }));
