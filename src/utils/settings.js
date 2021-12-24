@@ -12,8 +12,21 @@ const STARS_UNLOCK = 35;
 const BASE_BUTTERFLY_CHANCE = .01;
 const BASE_GNOME_CHANCE = .002;
 
-const isMaxAge = () => {
-    return true
+const isMaxAge = (item) => {
+    switch (item.type) {
+        case "tree":
+            return item.growth.length >= MAX_TREE_HEIGHT;
+        case "gnome":
+            return item.age >= MAX_GNOME_AGE;
+        case "grave":
+            return false;
+        case "butterfly":
+            return false;
+        default:
+            return false;
+
+    }
+    return false
 }
 
 const getMilestones = ( unlock ) => {
