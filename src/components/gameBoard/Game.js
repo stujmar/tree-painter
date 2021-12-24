@@ -14,7 +14,7 @@ import {
     setMessage,
     selectMilestones,
     } from '../../redux/gameSlice';
-import { BASE_BUTTERFLY_CHANCE, BASE_GNOME_CHANCE, MAX_GNOME_AGE } from '../../utils/settings';
+import { BASE_BUTTERFLY_CHANCE, BASE_GNOME_CHANCE, isMaxAge, MAX_GNOME_AGE } from '../../utils/settings';
 import { addItem, addBranch, ageItems, selectItems, growTreeById, removeItemById} from '../../redux/itemSlice';
 import { selectHour } from '../../redux/hourSlice';
 import { selectDay } from '../../redux/daySlice';
@@ -71,11 +71,14 @@ const Game = ( { toggleGraph } ) => {
             });
         }
         dispatch(ageItems()); // Age all items.
-        items.forEach((item) => { 
+        items.forEach((item) => {
+            if (isMaxAge(item)) {
+                dispatch(removeItemById(item.id));
+            }
             switch(item.type) {
                 case 'tree':
                     // eslint-disable-next-line no-unused-expressions
-                    item.age >= 100 ? dispatch(removeItemById(item.id)) : null;
+                    // item.age >= 100 ? dispatch(removeItemById(item.id)) : null;
                     growTree(item);
                     if (item.age > 10 && coinFlipRatio(0.01)) {
                         let newId = "tree_" + getRandomId();                     
@@ -101,7 +104,7 @@ const Game = ( { toggleGraph } ) => {
                     break;
                 case 'gnome':
                     // eslint-disable-next-line no-unused-expressions
-                    item.age >= MAX_GNOME_AGE ? dispatch(removeItemById(item.id)) : null;
+                    // item.age >= MAX_GNOME_AGE ? dispatch(removeItemById(item.id)) : null;
                     break;
                 default:
             }
