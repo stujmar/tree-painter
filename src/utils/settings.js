@@ -12,6 +12,10 @@ const STARS_UNLOCK = 35;
 const BASE_BUTTERFLY_CHANCE = .01;
 const BASE_GNOME_CHANCE = .002;
 
+const isMaxAge = () => {
+    return true
+}
+
 const getMilestones = ( unlock ) => {
     let state = store.getState();
     let treeCount = state.item.items.length;
@@ -35,6 +39,7 @@ let conditionsToBeMet = ["water", "speed", "seasons", "stars", "barn"];
 
 export { 
     getMilestones,
+    isMaxAge,
     MAX_TREE_HEIGHT,
     MAX_GNOME_AGE,
     BASE_BUTTERFLY_CHANCE,
