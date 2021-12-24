@@ -25,9 +25,7 @@ const isMaxAge = (item) => {
             return false;
         default:
             return false;
-
     }
-    return false
 }
 
 const getMilestones = ( unlock ) => {
