@@ -1,6 +1,7 @@
 import { store } from '../redux/store';
 
 const MAX_TREE_HEIGHT = 15;
+const MAX_TREE_AGE = 100;
 const MAX_GNOME_AGE = 6;
 
 const BARN_UNLOCK = 15;
@@ -15,7 +16,7 @@ const BASE_GNOME_CHANCE = .002;
 const isMaxAge = (item) => {
     switch (item.type) {
         case "tree":
-            return item.growth.length >= MAX_TREE_HEIGHT;
+            return item.age >= MAX_TREE_AGE;
         case "gnome":
             return item.age >= MAX_GNOME_AGE;
         case "grave":
