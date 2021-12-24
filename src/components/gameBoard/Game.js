@@ -14,7 +14,7 @@ import {
     setMessage,
     selectMilestones,
     } from '../../redux/gameSlice';
-import { BASE_BUTTERFLY_CHANCE, MAX_GNOME_AGE } from '../../utils/settings';
+import { BASE_BUTTERFLY_CHANCE, BASE_GNOME_CHANCE, MAX_GNOME_AGE } from '../../utils/settings';
 import { addItem, addBranch, ageItems, selectItems, growTreeById, removeItemById} from '../../redux/itemSlice';
 import { selectHour } from '../../redux/hourSlice';
 import { selectDay } from '../../redux/daySlice';
@@ -88,7 +88,7 @@ const Game = ( { toggleGraph } ) => {
                             age: 0,
                             growth: []
                     }))}
-                    if (item.age > 10 && coinFlipRatio(0.002)) {
+                    if (item.age > 10 && coinFlipRatio(BASE_GNOME_CHANCE)) {
                         let newId = "gnome_" + getRandomId();                     
                         dispatch(addItem({
                             id: newId,
