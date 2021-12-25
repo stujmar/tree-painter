@@ -146,7 +146,6 @@ const Game = ( { toggleGraph } ) => {
                 case 'grave':
                     return <GraveStone key={_item.id} data={_item} />
                 case 'wisp':
-                    console.log("drawing wisp");
                     return <Wisp key={_item.id} data={_item} />
                 default:
                     return null;

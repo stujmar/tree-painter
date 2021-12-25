@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectMode } from '../../../redux/gameSlice';
+import { getSineY } from '../../../utils/tools';
 
 const Wisp = ({data}) => {
   let mode = useSelector(selectMode);
@@ -13,7 +14,7 @@ const Wisp = ({data}) => {
       onClick={() => handleClick()}
       style={{
         left: `${data.x - 8 + data.age}%`, 
-        top: `${data.y}%`, 
+        top: `${getSineY(data.age)}%`, 
         width: "30px",
         height: "30px",
         }}
