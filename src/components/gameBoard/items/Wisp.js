@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { selectMode } from '../../../redux/gameSlice';
 
 const Wisp = ({data}) => {
-  console.log(data.age)
   let mode = useSelector(selectMode);
   const handleClick = () => {
     console.log("you clicked a butterfly!", mode);
