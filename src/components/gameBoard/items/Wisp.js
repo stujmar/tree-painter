@@ -12,7 +12,7 @@ const Wisp = ({data}) => {
       className="absolute focus:outline-none"
       onClick={() => handleClick()}
       style={{
-        left: `${data.x - 8}%`, 
+        left: `${data.x - 8 + data.age}%`, 
         top: `${data.y}%`, 
         width: "30px",
         height: "30px",
