@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectMode } from '../../../redux/gameSlice';
 
-const Butterfly = ({data}) => {
+const Wisp = ({data}) => {
   let mode = useSelector(selectMode);
   const handleClick = () => {
     console.log("you clicked a butterfly!", mode);
@@ -26,4 +26,4 @@ const Butterfly = ({data}) => {
   )
 }
 
-export default Butterfly;
+export default Wisp;

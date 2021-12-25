@@ -14,7 +14,7 @@ import {
     setMessage,
     selectMilestones,
     } from '../../redux/gameSlice';
-import { BASE_BUTTERFLY_CHANCE, BASE_GNOME_CHANCE, isMaxAge } from '../../utils/settings';
+import { BASE_WISP_CHANCE, BASE_GNOME_CHANCE, isMaxAge } from '../../utils/settings';
 import { addItem, addBranch, ageItems, selectItems, growTreeById, removeItemById} from '../../redux/itemSlice';
 import { selectHour } from '../../redux/hourSlice';
 import { selectDay } from '../../redux/daySlice';
@@ -33,7 +33,7 @@ import Observatory from '../farm/Observatory';
 import ScareCrow from '../farm/ScareCrow';
 import Gnome from './items/Gnome';
 import GraveStone from './items/GraveStone';
-import Butterfly from './items/Butterfly';
+import Wisp from './items/Wisp';
 
 const Game = ( { toggleGraph } ) => {
     const MAX_TREE_HEIGHT = 15;
@@ -61,12 +61,12 @@ const Game = ( { toggleGraph } ) => {
     }
 
     useEffect(() => {
-        let isButterfly = coinFlipRatio(BASE_BUTTERFLY_CHANCE);
-        if (isButterfly) {
-            console.log("butterfly added");
+        let isWisp = coinFlipRatio(BASE_WISP_CHANCE);
+        if (isWisp) {
+            console.log("wisp added");
             dispatch(addItem({
-                id: 'butterfly_' + getRandomId(),
-                type: 'butterfly',
+                id: 'wisp_' + getRandomId(),
+                type: 'wisp',
                 x: 0,
                 y: getRandomInt(0,100),
             }));
@@ -145,9 +145,9 @@ const Game = ( { toggleGraph } ) => {
                     return <Gnome key={_item.id} data={_item} />
                 case 'grave':
                     return <GraveStone key={_item.id} data={_item} />
-                case 'butterfly':
-                    console.log("drawing butterfly");
-                    return <Butterfly key={_item.id} data={_item} />
+                case 'wisp':
+                    console.log("drawing wisp");
+                    return <Wisp key={_item.id} data={_item} />
             }
         }));
 
