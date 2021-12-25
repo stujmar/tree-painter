@@ -63,10 +63,10 @@ const Game = ( { toggleGraph } ) => {
     useEffect(() => {
         let isWisp = coinFlipRatio(BASE_WISP_CHANCE);
         if (isWisp) {
-            console.log("wisp added");
             dispatch(addItem({
                 id: 'wisp_' + getRandomId(),
                 type: 'wisp',
+                age: 0,
                 x: 0,
                 y: getRandomInt(0,100),
             }));
