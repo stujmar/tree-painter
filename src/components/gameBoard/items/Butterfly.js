@@ -13,7 +13,7 @@ const Butterfly = ({data}) => {
       onClick={() => handleClick()}
       style={{
         left: `${data.x}%`, 
-        top: `${data.y -3}%`, 
+        top: `${data.y}%`, 
         width: "30px",
         height: "30px",
         }}
