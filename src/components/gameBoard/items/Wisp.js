@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMode, selectResources, setMessage, updateResource } from '../../../redux/gameSlice';
+import { removeItemById } from '../../../redux/itemSlice';
 import { getRandomInt } from '../../../utils/getRandomInt';
 import { getSineY } from '../../../utils/tools';
 
@@ -20,6 +21,7 @@ const Wisp = ({data}) => {
           dispatch(setMessage("I'm melting, said the wisp"));
           dispatch(updateResource({type: "stars", amount: 1}))
           dispatch(updateResource({type: "water", amount: -1}))
+          dispatch(removeItemById(data.id));
         } else {
           dispatch(setMessage("This wisp is thirsty."));
         }
