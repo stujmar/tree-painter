@@ -24,13 +24,13 @@ const App = () => {
   let isStoreActive = useSelector(selectStore);
   let speed = useSelector(selectSpeed);
 
-  useEffect(() => {
-    conditionsToBeMet.forEach(condition => {
-      if (getMilestones(condition)) {
-        dispatch(setMilestone(condition));
-      }
-    })
-  }, [dispatch, trees]);
+  // useEffect(() => {
+  //   conditionsToBeMet.forEach(condition => {
+  //     if (getMilestones(condition)) {
+  //       dispatch(setMilestone(condition));
+  //     }
+  //   })
+  // }, [dispatch, trees]);
 
   useEffect(() => {
     if (graph) {
