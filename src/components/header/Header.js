@@ -20,10 +20,10 @@ const Header = () => {
     return (
         <header
         className={`${getSeason(day).light} h-44 -mt-3 relative flex items-center justify-center text-lg font-sans text-white`}>
-        <div className="w-96 text-center pt-12 md:pt-0 comfortaa">{message}</div>
+        <div className="w-96 text-center pt-12 md:pt-0 comfortaa no-selct">{message}</div>
             <div className="absolute comfortaa w-full bottom-0 sm:top-0 -4 sm:h-14">
                 <div className={`f-full sm:w-max mx-auto h-full bg-white opacity-60 rounded-none sm:rounded-b-lg ${mode === "NO_MODE" ? " hidden" : " block"}`}>
-                    <div className="p-1 sm:p-4 text-center"><span className={`font-bold ${getSeason(day).darkText}`}>{mode} MODE</span></div>
+                    <div className="p-1 sm:p-4 text-center"><span className={`font-bold no-select ${getSeason(day).darkText}`}>{mode} MODE</span></div>
                 </div>
             </div>
             <div className="absolute top-0 left-0 w-full">

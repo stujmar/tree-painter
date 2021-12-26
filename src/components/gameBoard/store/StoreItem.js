@@ -57,9 +57,9 @@ const StoreItem = ({item, resources }) => {
             </div>
           </div>
           <div className="ml-2">
-            <h3 className={`w-min sm:w-max text-left text-lg comfortaa text-green-50 ${!canAfford(item) && !isBought ? "bg-trueGray-400" : "bg-green-500"} rounded-md px-2 pt-1`}>{item.alias}</h3>
+            <h3 className={`w-min sm:w-max text-left text-lg comfortaa no-select text-green-50 ${!canAfford(item) && !isBought ? "bg-trueGray-400" : "bg-green-500"} rounded-md px-2 pt-1`}>{item.alias}</h3>
 
-            {isBought ? <div className="pl-2 text-sm font-medium text-white text-left comfortaa mt-1">{item.description}</div> : null}
+            {isBought ? <div className="pl-2 text-sm font-medium text-white text-left comfortaa no-select mt-1">{item.description}</div> : null}
             {!isBought ? prices : null}
             </div>
           </div>

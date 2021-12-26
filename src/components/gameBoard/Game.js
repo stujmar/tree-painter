@@ -207,13 +207,13 @@ const Game = ( { toggleGraph } ) => {
     return (
         <div className="overflow-hidden">
             <div className="w-full relative overflow-hidden" style={{height: "125px"}}> {/* SKY FIELD */}
-                <Altar />
                 <ScareCrow />
                 <Silo />
                 <Observatory />
                 <Barn />
                 <Well />
                 <Sky />
+                <Altar />
             </div>
                 <div 
                     className="mx-auto lg:mr-auto w-full z-10 relative"
