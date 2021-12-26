@@ -147,7 +147,7 @@ const Game = ( { toggleGraph } ) => {
                 case 'grave':
                     return <GraveStone key={_item.id} data={_item} />
                 case 'wisp':
-                    return <Wisp key={_item.id} data={_item} />
+                    return <Wisp key={_item.id + getRandomInt(0,100)} data={_item} />
                 default:
                     return null;
             }

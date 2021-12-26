@@ -1,16 +1,19 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectMode } from '../../../redux/gameSlice';
+import { getRandomId } from '../../../utils/getRandomId';
+import { getRandomInt } from '../../../utils/getRandomInt';
 import { getSineY } from '../../../utils/tools';
 
 const Wisp = ({data}) => {
   let mode = useSelector(selectMode);
+  let randomWidth = getRandomInt(10,20)
   const handleClick = () => {
     console.log("you clicked a butterfly!", mode);
   }
   return (
     <button
-      className="absolute border focus:outline-none"
+      className="absolute focus:outline-none"
       onClick={() => handleClick()}
       style={{
         left: `${data.x - 8 + data.age}%`, 
@@ -19,10 +22,10 @@ const Wisp = ({data}) => {
         height: "20px",
         }}
     >
-      <div className="w-min inline-block border wisp-in border-red-300 h-full">
+      <div className="w-min inline-block wisp-in border-red-300 h-full">
 
       <svg 
-        width="20"
+        width={randomWidth}
         className=""
         viewBox="0 0 39 39"
         fill="none">
