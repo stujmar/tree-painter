@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectMode, setMessage } from '../../../redux/gameSlice';
+import { selectMode, setMessage, updateResource } from '../../../redux/gameSlice';
 import { getRandomInt } from '../../../utils/getRandomInt';
 import { getSineY } from '../../../utils/tools';
 
@@ -16,6 +16,7 @@ const Wisp = ({data}) => {
         break;
       case "WATERING":
         dispatch(setMessage("I'm melting, said the wisp"));
+        dispatch(updateResource({type: "stars", amount: 1}))
         break;
       case "GNOME":
         dispatch(setMessage("I'm a wisp, not a gnome!"));
