@@ -34,6 +34,7 @@ import ScareCrow from '../farm/ScareCrow';
 import Gnome from './items/Gnome';
 import GraveStone from './items/GraveStone';
 import Wisp from './items/Wisp';
+import Altar from '../farm/Altar';
 
 const Game = ( { toggleGraph } ) => {
     const MAX_TREE_HEIGHT = 15;
@@ -206,6 +207,7 @@ const Game = ( { toggleGraph } ) => {
     return (
         <div className="overflow-hidden">
             <div className="w-full relative overflow-hidden" style={{height: "125px"}}> {/* SKY FIELD */}
+                <Altar />
                 <ScareCrow />
                 <Silo />
                 <Observatory />
