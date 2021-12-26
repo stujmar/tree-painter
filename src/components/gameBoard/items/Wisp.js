@@ -19,6 +19,7 @@ const Wisp = ({data}) => {
         if (water > 0) {
           dispatch(setMessage("I'm melting, said the wisp"));
           dispatch(updateResource({type: "stars", amount: 1}))
+          dispatch(updateResource({type: "water", amount: -1}))
         } else {
           dispatch(setMessage("This wisp is thirsty."));
         }
