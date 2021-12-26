@@ -15,6 +15,19 @@
   .comfortaa {
     font-family: 'Comfortaa', cursive !important;
   }
+  
+    @keyframes slideIn {
+      from {
+        transform: translateX(0);
+      }
+    
+      to {
+        transform: translateX(1rem);
+      }
+    }
+  .wisp-in {
+    animation: 1s ease-out 0s 1 slideIn;
+  }
 }
 
 html, button {

@@ -10,19 +10,26 @@ const Wisp = ({data}) => {
   }
   return (
     <button
-      className="absolute focus:outline-none"
+      className="absolute border focus:outline-none"
       onClick={() => handleClick()}
       style={{
         left: `${data.x - 8 + data.age}%`, 
         top: `${getSineY(data.age, data.xOffset)}%`, 
         width: "30px",
-        height: "30px",
+        height: "20px",
         }}
     >
-      <svg width="20" height="20" viewBox="0 0 39 39" fill="none">
+      <div className="w-min inline-block border wisp-in border-red-300 h-full">
+
+      <svg 
+        width="20"
+        className=""
+        viewBox="0 0 39 39"
+        fill="none">
         <circle cx="19.5" cy="19.5" r="12.5" fill="#FBFFC9"/>
         <circle cx="19.5" cy="19.5" r="19.5" fill="#FBFFC9" fill-opacity="0.5"/>
       </svg>
+      </div>
     </button>
   )
 }
