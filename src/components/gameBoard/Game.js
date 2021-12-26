@@ -68,7 +68,8 @@ const Game = ( { toggleGraph } ) => {
                 type: 'wisp',
                 age: 0,
                 x: 0,
-                y: getRandomInt(0,100),
+                y: 0,
+                xOffset: getRandomInt(0,100),
             }));
         }
         dispatch(ageItems()); // Age all items.
