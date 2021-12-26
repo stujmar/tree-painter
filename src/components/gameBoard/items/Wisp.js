@@ -1,15 +1,30 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectMode } from '../../../redux/gameSlice';
-import { getRandomId } from '../../../utils/getRandomId';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectMode, setMessage } from '../../../redux/gameSlice';
 import { getRandomInt } from '../../../utils/getRandomInt';
 import { getSineY } from '../../../utils/tools';
 
 const Wisp = ({data}) => {
+  let dispatch = useDispatch();
   let mode = useSelector(selectMode);
   let randomWidth = getRandomInt(10,20)
+
   const handleClick = () => {
-    console.log("you clicked a butterfly!", mode);
+    switch (mode) {
+      case "HARVEST":
+        dispatch(setMessage("Ouch, said the wisp."));
+        break;
+      case "WATERING":
+        dispatch(setMessage("I'm melting, said the wisp"));
+        break;
+      case "GNOME":
+        dispatch(setMessage("I'm a wisp, not a gnome!"));
+        break;
+      default:
+        break;
+        
+    }
+    
   }
   return (
     <button
