@@ -1,11 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectMode, setMessage, updateResource } from '../../../redux/gameSlice';
+import { selectMode, selectResources, setMessage, updateResource } from '../../../redux/gameSlice';
 import { getRandomInt } from '../../../utils/getRandomInt';
 import { getSineY } from '../../../utils/tools';
 
 const Wisp = ({data}) => {
   let dispatch = useDispatch();
+  let water = useSelector(selectResources).water
   let mode = useSelector(selectMode);
   let randomWidth = getRandomInt(10,20)
 
@@ -15,8 +16,12 @@ const Wisp = ({data}) => {
         dispatch(setMessage("Ouch, said the wisp."));
         break;
       case "WATERING":
-        dispatch(setMessage("I'm melting, said the wisp"));
-        dispatch(updateResource({type: "stars", amount: 1}))
+        if (water > 0) {
+          dispatch(setMessage("I'm melting, said the wisp"));
+          dispatch(updateResource({type: "stars", amount: 1}))
+        } else {
+          dispatch(setMessage("This wisp is thirsty."));
+        }
         break;
       case "GNOME":
         dispatch(setMessage("I'm a wisp, not a gnome!"));
