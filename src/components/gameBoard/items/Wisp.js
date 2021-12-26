@@ -14,7 +14,7 @@ const Wisp = ({data}) => {
       onClick={() => handleClick()}
       style={{
         left: `${data.x - 8 + data.age}%`, 
-        top: `${getSineY(data.age)}%`, 
+        top: `${getSineY(data.age, data.xOffset)}%`, 
         width: "30px",
         height: "30px",
         }}
