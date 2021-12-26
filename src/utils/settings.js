@@ -10,8 +10,7 @@ const WATER_UNLOCK = 10;
 const SEASONS_UNLOCK = 20;
 const STARS_UNLOCK = 35;
 
-const BASE_WISP_CHANCE = .1;
-// const BASE_WISP_CHANCE = .01;
+const BASE_WISP_CHANCE = .01;
 const BASE_GNOME_CHANCE = .002;
 
 const isMaxAge = (item) => {
