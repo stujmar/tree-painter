@@ -9,7 +9,7 @@ import { addStar, selectStars } from '../../redux/skySlice';
 import { getRandomId } from '../../utils/getRandomId';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { selectResources, updateResource, selectMode, selectSandboxMode } from '../../redux/gameSlice';
+import { selectResources, updateResource, selectMode, selectSandboxMode, selectMilestones, setMessage } from '../../redux/gameSlice';
 
 const Sky = () => {
 
@@ -22,6 +22,7 @@ const Sky = () => {
     
     let mode = useSelector(selectMode);
     let isSandbox = useSelector(selectSandboxMode);
+    let isStarsUnlocked = useSelector(selectMilestones).stars
     let hour = useSelector(selectHour);
     let speed = useSelector(selectSpeed);
     let stars = useSelector(selectStars);
@@ -47,6 +48,9 @@ const Sky = () => {
      * Click Sky to add a star.
      */
     const clickSky = () => {
+        if (hour > 6 || hour < 20) { // If it is day.
+            dispatch(setMessage("If only it were night."));
+        }
         if (starResources > 0 && // If there are stars to add
             mode === "PLANTING" && // If we are in the planting mode
            (hour <= 6 || hour >= 20)) // If it is night
