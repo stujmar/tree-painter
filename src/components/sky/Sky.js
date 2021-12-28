@@ -48,8 +48,12 @@ const Sky = () => {
      * Click Sky to add a star.
      */
     const clickSky = () => {
-        if (hour > 6 || hour < 20) { // If it is day.
+        if (hour > 6 && hour < 20) { // If it is day.
             dispatch(setMessage("If only it were night."));
+        } else { // It must be night.
+            if (!isStarsUnlocked) {
+                dispatch(setMessage("If I could see more clearly."));
+            }
         }
         if (starResources > 0 && // If there are stars to add
             mode === "PLANTING" && // If we are in the planting mode
