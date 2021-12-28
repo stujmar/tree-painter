@@ -3,6 +3,7 @@ import { store } from '../redux/store';
 const MAX_TREE_HEIGHT = 15;
 const MAX_TREE_AGE = 100;
 const MAX_GNOME_AGE = 6;
+const MAX_WISP_AGE = 108;
 
 const BARN_UNLOCK = 15;
 const SPEED_UNLOCK = 5;
