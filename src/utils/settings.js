@@ -25,7 +25,7 @@ const isMaxAge = (item) => {
         case "grave":
             return false;
         case "wisp":
-            return false;
+            return item.age >= MAX_WISP_AGE;
         default:
             return false;
     }
