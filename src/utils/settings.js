@@ -23,7 +23,7 @@ const isMaxAge = (item) => {
             return item.age >= MAX_GNOME_AGE;
         case "grave":
             return false;
-        case "butterfly":
+        case "wisp":
             return false;
         default:
             return false;
