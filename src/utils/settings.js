@@ -13,6 +13,8 @@ const STARS_UNLOCK = 35;
 const BASE_WISP_CHANCE = .01;
 const BASE_GNOME_CHANCE = .002;
 
+const GROWTH_CHANCE = .01;
+
 const isMaxAge = (item) => {
     switch (item.type) {
         case "tree":
@@ -56,5 +58,6 @@ export {
     MAX_GNOME_AGE,
     BASE_WISP_CHANCE,
     BASE_GNOME_CHANCE,
+    GROWTH_CHANCE,
     conditionsToBeMet,
 };

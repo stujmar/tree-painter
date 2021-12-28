@@ -14,7 +14,7 @@ import {
     setMessage,
     selectMilestones,
     } from '../../redux/gameSlice';
-import { BASE_WISP_CHANCE, BASE_GNOME_CHANCE, isMaxAge } from '../../utils/settings';
+import { BASE_WISP_CHANCE, BASE_GNOME_CHANCE, GROWTH_CHANCE, isMaxAge } from '../../utils/settings';
 import { addItem, addBranch, ageItems, selectItems, growTreeById, removeItemById} from '../../redux/itemSlice';
 import { selectHour } from '../../redux/hourSlice';
 import { selectDay } from '../../redux/daySlice';
@@ -83,7 +83,7 @@ const Game = ( { toggleGraph } ) => {
                     // eslint-disable-next-line no-unused-expressions
                     // item.age >= 100 ? dispatch(removeItemById(item.id)) : null;
                     growTree(item);
-                    if (item.age > 10 && coinFlipRatio(0.01)) {
+                    if (item.age > 10 && coinFlipRatio(GROWTH_CHANCE)) {
                         let newId = "tree_" + getRandomId();                     
                         dispatch(addItem({
                             id: newId,
