@@ -221,6 +221,7 @@ const Game = ( { toggleGraph } ) => {
                     > {/* Gameboard Wrapper */}
                         <div 
                             id="grass"
+                            role="button"
                             aria-label="Grass field"
                             className={`absolute top-0 opacity-0 bg-black z-10 w-full cursor-pointer ${mode === "PLANTING" ? "" : "hidden" }`} 
                             style={{height: "calc(100vh - 321px)"}}
