@@ -7,9 +7,7 @@ import GraphPanel from './components/debug/GraphPanel';
 import Header from './components/header/Header';
 import MessageModal from './components/gameBoard/MessageModal';
 import { useSelector, useDispatch } from 'react-redux';
-import { conditionsToBeMet, getMilestones } from './utils/settings';
-import { setMilestone, selectMode, selectStore, setMessage, toggleStore, toggleToolTip } from './redux/gameSlice';
-import { selectItems } from './redux/itemSlice';
+import { selectMode, selectStore, setMessage, toggleStore, toggleToolTip } from './redux/gameSlice';
 import Store from './components/gameBoard/store/Store';
 import { selectSpeed, setSpeed } from './redux/clockSlice';
 import ToolTips from './tooltips/ToolTips';
@@ -20,7 +18,6 @@ const App = () => {
   let isToolTipActive = useSelector(state => state.game.isToolTipActive);
 
   let gameMode = useSelector(selectMode);
-  let trees = useSelector(selectItems);
   let isStoreActive = useSelector(selectStore);
   let speed = useSelector(selectSpeed);
 
