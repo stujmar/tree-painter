@@ -62,27 +62,27 @@ const ToolTips = ({onClose}) => {
   return (
     <div 
       className={`fixed ${tips[activeTip].x} ${tips[activeTip].y} z-50 flex flex-col bg-green-200 shadow-lg p-2 rounded`}>
-          <div className="comfortaa font-medium text-green-800 max-w-md">
+      <div className="comfortaa font-medium text-green-800 max-w-md">
             {tips[activeTip].content}
-          </div>
-        <div className="flex mt-2 justify-center gap-4">
+      </div>
+      <div className="flex mt-2 justify-center gap-4">
         {isFirstTip ? null : <button 
-            type="button" 
-            className="focus:outline-none hover:bg-green-700 pb-1 shadow flex items-center text-green-50 font-medium px-2 rounded bg-green-600"
-            onClick={prevTip}>{"<"}
-            </button>}
-          <button 
-            type="button" 
-            className="focus:outline-none hover:bg-green-700 shadow text-green-50 font-medium px-2 rounded bg-green-600"
-            onClick={onClose}>exit tour</button>
-          {isLastTip ? null : <button 
-            type="button" 
-            className="focus:outline-none hover:bg-green-700 pb-1 shadow flex items-center text-green-50 font-medium px-2 rounded bg-green-600"
-            onClick={nextTip}>{">"}
-            </button>}
-          </div>
-          {tips[activeTip].arrow}
-        </div> 
+          type="button" 
+          className="focus:outline-none hover:bg-green-700 pb-1 shadow flex items-center text-green-50 font-medium px-2 rounded bg-green-600"
+          onClick={prevTip}>{"<"}
+          </button>}
+        <button 
+          type="button" 
+          className="focus:outline-none hover:bg-green-700 shadow text-green-50 font-medium px-2 rounded bg-green-600"
+          onClick={onClose}>exit tour</button>
+        {isLastTip ? null : <button 
+          type="button" 
+          className="focus:outline-none hover:bg-green-700 pb-1 shadow flex items-center text-green-50 font-medium px-2 rounded bg-green-600"
+          onClick={nextTip}>{">"}
+          </button>}
+      </div>
+        {tips[activeTip].arrow}
+      </div> 
   )
 }
 
