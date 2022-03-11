@@ -21,7 +21,7 @@ const MessageModal = () => {
             <button 
                 type="button"
                 onClick={startTour}
-                className="bg-green-700 hover:bg-green-600 mx-2 focus:outline-none inline text-green-50 text-sm px-2 rounded shadow">INTRO TOUR</button>
+                className="mt-2 bg-green-700 hover:bg-green-600 mx-2 focus:outline-none inline text-green-50 px-2 rounded shadow">INTRO TOUR</button>
             </div>
         </div>
     )
