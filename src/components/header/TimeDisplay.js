@@ -11,8 +11,8 @@ const TimeDisplay = () => {
 
   return (
     <>
-      <div>{getDate(day)}</div>
-      <div className="ml-2 md:ml-0">{getTime(hour)}</div>
+      <div className="no-select">{getDate(day)}</div>
+      <div className="ml-2 md:ml-0 no-select">{getTime(hour)}</div>
     </>
   )
 }

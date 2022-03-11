@@ -88,7 +88,7 @@ export const inventory = [
       ],
       whiteSVG: starsWhiteSVG(70),
       colorSVG: starsColorSVG(70),
-      description: "There is a legend that enough stars in the sky awakens an ancient evil.",
+      description: "Plant stars in the sky at night to attract more critters.",
     },
     {
       name: "stone",

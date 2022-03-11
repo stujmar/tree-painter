@@ -14,8 +14,8 @@ import {
     setMessage,
     selectMilestones,
     } from '../../redux/gameSlice';
-import { MAX_GNOME_AGE } from '../../utils/settings';
-import { addTree, addBranch, ageItems, selectItems, growTreeById, removeItemById} from '../../redux/itemSlice';
+import { BASE_WISP_CHANCE, BASE_GNOME_CHANCE, GROWTH_CHANCE, isMaxAge } from '../../utils/settings';
+import { addItem, addBranch, ageItems, selectItems, growTreeById, removeItemById} from '../../redux/itemSlice';
 import { selectHour } from '../../redux/hourSlice';
 import { selectDay } from '../../redux/daySlice';
 
@@ -33,6 +33,8 @@ import Observatory from '../farm/Observatory';
 import ScareCrow from '../farm/ScareCrow';
 import Gnome from './items/Gnome';
 import GraveStone from './items/GraveStone';
+import Wisp from './items/Wisp';
+import Altar from '../farm/Altar';
 
 const Game = ( { toggleGraph } ) => {
     const MAX_TREE_HEIGHT = 15;
@@ -60,16 +62,30 @@ const Game = ( { toggleGraph } ) => {
     }
 
     useEffect(() => {
+        let isWisp = coinFlipRatio(BASE_WISP_CHANCE);
+        if (isWisp) {
+            dispatch(addItem({
+                id: 'wisp_' + getRandomId(),
+                type: 'wisp',
+                age: 0,
+                x: 0,
+                y: 0,
+                xOffset: getRandomInt(0,100),
+            }));
+        }
         dispatch(ageItems()); // Age all items.
-        items.forEach((item) => { 
+        items.forEach((item) => {
+            if (isMaxAge(item)) {
+                dispatch(removeItemById(item.id));
+            }
             switch(item.type) {
                 case 'tree':
                     // eslint-disable-next-line no-unused-expressions
-                    item.age >= 100 ? dispatch(removeItemById(item.id)) : null;
+                    // item.age >= 100 ? dispatch(removeItemById(item.id)) : null;
                     growTree(item);
-                    if (item.age > 10 && coinFlipRatio(0.01)) {
+                    if (item.age > 10 && coinFlipRatio(GROWTH_CHANCE)) {
                         let newId = "tree_" + getRandomId();                     
-                        dispatch(addTree({
+                        dispatch(addItem({
                             id: newId,
                             type: 'tree',
                             birthday: item.birthday,
@@ -78,9 +94,9 @@ const Game = ( { toggleGraph } ) => {
                             age: 0,
                             growth: []
                     }))}
-                    if (item.age > 10 && coinFlipRatio(0.002)) {
+                    if (item.age > 10 && coinFlipRatio(BASE_GNOME_CHANCE)) {
                         let newId = "gnome_" + getRandomId();                     
-                        dispatch(addTree({
+                        dispatch(addItem({
                             id: newId,
                             type: 'gnome',
                             birthday: item.birthday,
@@ -91,7 +107,7 @@ const Game = ( { toggleGraph } ) => {
                     break;
                 case 'gnome':
                     // eslint-disable-next-line no-unused-expressions
-                    item.age >= MAX_GNOME_AGE ? dispatch(removeItemById(item.id)) : null;
+                    // item.age >= MAX_GNOME_AGE ? dispatch(removeItemById(item.id)) : null;
                     break;
                 default:
             }
@@ -121,11 +137,20 @@ const Game = ( { toggleGraph } ) => {
         }); // frozen in strict mode?
         setDrawItems(sortedItems.map(_item => {
             if (_item.type === 'tree') {
-                return <Tree key={_item.id} treeData={_item} onWater={handleWater} />
             } else if (_item.type === 'gnome') {
-                return <Gnome key={_item.id} data={_item} />
             } else {
-                return <GraveStone key={_item.id} data={_item} />
+            }
+            switch(_item.type) {
+                case 'tree':
+                    return <Tree key={_item.id} treeData={_item} onWater={handleWater} />
+                case 'gnome':
+                    return <Gnome key={_item.id} data={_item} />
+                case 'grave':
+                    return <GraveStone key={_item.id} data={_item} />
+                case 'wisp':
+                    return <Wisp key={_item.id + getRandomInt(0,100)} data={_item} />
+                default:
+                    return null;
             }
         }));
 
@@ -154,10 +179,13 @@ const Game = ( { toggleGraph } ) => {
     }
 
     const plant = (e) => {
+        if (mode === "PLANTING" && acorns === 0) {
+            dispatch(setMessage("Try chopping some trees down."))
+        }
         if (acorns > 0 || isSandbox) {
             // Set Trees in Redux state.
             let newId = "tree_" + getRandomId();
-            dispatch( addTree({
+            dispatch( addItem({
                 id: newId,
                 type: 'tree',
                 birthday: day,
@@ -185,6 +213,7 @@ const Game = ( { toggleGraph } ) => {
                 <Barn />
                 <Well />
                 <Sky />
+                <Altar />
             </div>
                 <div 
                     className="mx-auto lg:mr-auto w-full z-10 relative"
@@ -192,6 +221,7 @@ const Game = ( { toggleGraph } ) => {
                     > {/* Gameboard Wrapper */}
                         <div 
                             id="grass"
+                            role="button"
                             aria-label="Grass field"
                             className={`absolute top-0 opacity-0 bg-black z-10 w-full cursor-pointer ${mode === "PLANTING" ? "" : "hidden" }`} 
                             style={{height: "calc(100vh - 321px)"}}

@@ -7,31 +7,27 @@ import GraphPanel from './components/debug/GraphPanel';
 import Header from './components/header/Header';
 import MessageModal from './components/gameBoard/MessageModal';
 import { useSelector, useDispatch } from 'react-redux';
-import { conditionsToBeMet, getMilestones } from './utils/settings';
-import { setMilestone, selectMode, selectStore, toggleStore, toggleToolTip } from './redux/gameSlice';
-import { selectItems } from './redux/itemSlice';
+import { selectMode, selectStore, setMessage, toggleStore, toggleToolTip } from './redux/gameSlice';
 import Store from './components/gameBoard/store/Store';
 import { selectSpeed, setSpeed } from './redux/clockSlice';
 import ToolTips from './tooltips/ToolTips';
 
 const App = () => {
   const dispatch = useDispatch();
-  const [ message, setMessage ] = useState("");
   const [ graph, setGraph ] = useState(false);
   let isToolTipActive = useSelector(state => state.game.isToolTipActive);
 
   let gameMode = useSelector(selectMode);
-  let trees = useSelector(selectItems);
   let isStoreActive = useSelector(selectStore);
   let speed = useSelector(selectSpeed);
 
-  useEffect(() => {
-    conditionsToBeMet.forEach(condition => {
-      if (getMilestones(condition)) {
-        dispatch(setMilestone(condition));
-      }
-    })
-  }, [dispatch, trees]);
+  // useEffect(() => {
+  //   conditionsToBeMet.forEach(condition => {
+  //     if (getMilestones(condition)) {
+  //       dispatch(setMilestone(condition));
+  //     }
+  //   })
+  // }, [dispatch, trees]);
 
   useEffect(() => {
     if (graph) {
@@ -41,10 +37,6 @@ const App = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[graph]);
-
-  const handleMessageChange = (payload) => {
-    setMessage(payload);
-  }
 
   const toggleGraph = () => {
     setGraph(!graph);
@@ -65,6 +57,7 @@ const App = () => {
   );
 
   const handleToolTipClose = () => {
+    dispatch(setMessage("Let's start planting!"))
     dispatch(toggleToolTip(false));
   }
 
@@ -80,9 +73,9 @@ const App = () => {
       {graph ? <GraphPanel toggleGraph={toggleGraph}/> : <></>}
       <ClockService />
       {gameMode === "NO_MODE" ? <MessageModal /> : null}
-      <Header message={message} />
+      <Header />
       <StatusBar />
-      <Game messageChange={(e) => handleMessageChange(e)} toggleGraph={toggleGraph} />
+      <Game toggleGraph={toggleGraph} />
     </div>
   )
 }

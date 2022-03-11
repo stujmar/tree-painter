@@ -1,7 +1,9 @@
 import { store } from '../redux/store';
 
 const MAX_TREE_HEIGHT = 15;
+const MAX_TREE_AGE = 100;
 const MAX_GNOME_AGE = 6;
+const MAX_WISP_AGE = 108;
 
 const BARN_UNLOCK = 15;
 const SPEED_UNLOCK = 5;
@@ -9,6 +11,25 @@ const WATER_UNLOCK = 10;
 const SEASONS_UNLOCK = 20;
 const STARS_UNLOCK = 35;
 
+const BASE_WISP_CHANCE = .01;
+const BASE_GNOME_CHANCE = .002;
+
+const GROWTH_CHANCE = .01;
+
+const isMaxAge = (item) => {
+    switch (item.type) {
+        case "tree":
+            return item.age >= MAX_TREE_AGE;
+        case "gnome":
+            return item.age >= MAX_GNOME_AGE;
+        case "grave":
+            return false;
+        case "wisp":
+            return item.age >= MAX_WISP_AGE;
+        default:
+            return false;
+    }
+}
 
 const getMilestones = ( unlock ) => {
     let state = store.getState();
@@ -31,4 +52,13 @@ const getMilestones = ( unlock ) => {
 
 let conditionsToBeMet = ["water", "speed", "seasons", "stars", "barn"];
 
-export { getMilestones, MAX_TREE_HEIGHT, conditionsToBeMet, MAX_GNOME_AGE };
+export { 
+    getMilestones,
+    isMaxAge,
+    MAX_TREE_HEIGHT,
+    MAX_GNOME_AGE,
+    BASE_WISP_CHANCE,
+    BASE_GNOME_CHANCE,
+    GROWTH_CHANCE,
+    conditionsToBeMet,
+};

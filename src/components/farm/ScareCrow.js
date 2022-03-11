@@ -25,7 +25,7 @@ const ScareCrow = () => {
             </svg>: null}
             {(isScarecrowUnlocked && isBarnUnlocked) ? 
 
-                <svg width="200" className="-mb-1" viewBox="0 0 389 97" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="200" className="-mb-1 -ml-2" viewBox="0 0 389 97" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 96.1399C38.76 69.8299 111.75 59.3999 208.87 59.3999C319.16 59.3999 388.93 96.1399 388.93 96.1399H0Z" fill="#1DAA4F"/>
                     <path d="M225.3 18.7999H218.41V66.6199H225.3V18.7999Z" fill="#A38948"/>
                     <path d="M201.84 27.12L193.13 29.94L196.23 31.75L193.63 36.18L197.24 34.91L197.02 37.74L205.59 31.49L201.84 27.12Z" fill="#D3D329"/>

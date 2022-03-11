@@ -32,6 +32,8 @@ export const gameSlice = createSlice({
                 tractor: false,
                 seasons: false,
                 speed: false,
+                altar: false,
+                stone:false
             };
         },
         toggleDebug: (state) => {
