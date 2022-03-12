@@ -16,12 +16,17 @@ const GraphPanel = ({toggleGraph}) => {
 
     const dispatch = useDispatch();
     const [saveText, setSaveText] = useState(window.btoa(localStorage.reduxState));
+    const [saveVisible, setSaveVisible] = useState(false);
     const [graph, setGraph] = useState("");
     let isSandbox = useSelector(selectSandboxMode);
     let trees = useSelector(selectItems);
 
     const toggleSandbox = () => {
         dispatch(setSandbox());
+    }
+
+    const toggleSaveVisible = () => {
+        setSaveVisible(!saveVisible);
     }
 
     useEffect(() => {
@@ -64,6 +69,10 @@ const GraphPanel = ({toggleGraph}) => {
                         <ToggleButton value={isSandbox} onClick={toggleSandbox} />
                     </div>
                     </div>
+                    <div className="flex justify-start items-center mx-auto w-max mt-4">
+                        <div className="font-bold text-green-800 comfortaa mr-4">Toggle Experimental Save Feature</div>
+                        <ToggleButton value={saveVisible} onClick={toggleSaveVisible} />
+                    </div>
                     <button
                         className="fixed hover:bg-green-500 focus:outline-none left-2 top-2 rounded-full z-50 opacity-100"
                         onClick={toggleGraph}>
@@ -72,7 +81,7 @@ const GraphPanel = ({toggleGraph}) => {
                         </svg>
                     </button> 
                     {graph}
-                <form onSubmit={(e) => loadGame(e)} className="flex flex-col px-2 max-w-4xl mx-auto my-6">
+                <form onSubmit={(e) => loadGame(e)} className={`flex flex-col px-2 max-w-4xl mx-auto my-6 ${saveVisible ? "flex" : "hidden"}`}>
                     <div className="comfortaa text-green-900 font-medium">Saved Game: paste saved game data and submit to load a previous game.</div>
                     <textarea className="bg-green-100 comfortaa text-sm" cols="30" rows="3" name="save" value={saveText} onChange={(e) => handleTextChange(e)}></textarea>
                     <div className="w-max mx-auto">
