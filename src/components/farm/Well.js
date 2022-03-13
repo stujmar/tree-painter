@@ -1,6 +1,7 @@
 import React from 'react';
 import {useDispatch, useSelector } from 'react-redux';
-import { updateResource, selectSandboxMode, selectMilestones } from '../../redux/gameSlice';
+import { updateResource, selectSandboxMode, selectMilestones, setMessage } from '../../redux/gameSlice';
+
 
 const Well = () => {
 
@@ -10,6 +11,7 @@ const Well = () => {
 
     const drawWater = () => {
         if(!isSandbox){
+            dispatch(setMessage("You draw water from the well."));
             dispatch(updateResource({type:'water', amount: 1} ));
         }
     };
