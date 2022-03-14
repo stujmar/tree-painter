@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectMode, selectResources, setMessage, updateResource } from '../../../redux/gameSlice';
+import { selectMode, selectResources, setMessage, updateResource, selectMilestones, setMilestone } from '../../../redux/gameSlice';
 import { removeItemById } from '../../../redux/itemSlice';
 import { getRandomInt } from '../../../utils/getRandomInt';
 import { getSineY } from '../../../utils/tools';
@@ -9,7 +9,8 @@ const Wisp = ({data}) => {
   let dispatch = useDispatch();
   let water = useSelector(selectResources).water
   let mode = useSelector(selectMode);
-  let randomWidth = getRandomInt(10,20)
+  let randomWidth = getRandomInt(10,20);
+  let isStarsUnlocked = useSelector(selectMilestones).stars;
 
   const handleClick = () => {
     switch (mode) {
@@ -22,6 +23,10 @@ const Wisp = ({data}) => {
           dispatch(updateResource({type: "stars", amount: 1}))
           dispatch(updateResource({type: "water", amount: -1}))
           dispatch(removeItemById(data.id));
+          if (!isStarsUnlocked) {
+            dispatch(setMilestone("stars"));
+            dispatch(setMessage("The wisp has given you a star!"));
+          }
         } else {
           dispatch(setMessage("This wisp is thirsty."));
         }
