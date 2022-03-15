@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { selectSandboxMode, updateResource } from '../../redux/gameSlice';
+import { selectSandboxMode, updateResource, setMessage } from '../../redux/gameSlice';
 import { selectMode } from '../../redux/gameSlice';
 import { selectHour } from '../../redux/hourSlice';
 import { removeStarById } from '../../redux/skySlice';
@@ -25,6 +25,7 @@ const Star = ({starData}) => {
         if(mode === 'HARVEST') {
             dispatch(removeStarById(starData.id));
             if (!isSandbox) {
+                dispatch(setMessage("Catch a falling star and put it in your pocket."));
                 dispatch(updateResource({type: "stars", amount: 1}));
             }
         }
