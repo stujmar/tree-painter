@@ -184,6 +184,7 @@ const Game = ( { toggleGraph } ) => {
         }
         if (acorns > 0 || isSandbox) {
             // Set Trees in Redux state.
+            dispatch(setMessage("You planted a tree!"));
             let newId = "tree_" + getRandomId();
             dispatch( addItem({
                 id: newId,
