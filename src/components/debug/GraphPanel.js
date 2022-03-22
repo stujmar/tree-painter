@@ -60,7 +60,7 @@ const GraphPanel = ({toggleGraph}) => {
         <div className="fixed inset-0 z-50 w-full h-full bg-green-400">
                 <div className="relative h-full w-full overflow-y-auto">
                 <div className="p-3 bg-green-200 text-green-700 font-bold text-center text-xl comfortaa">GAME IS PAUSED</div>
-                    <div className="mx-auto my-2 w-80 sm:w-96 flex justify-between items-baseline">
+                    <div className="mx-auto my-2 mt-4 w-80 sm:w-96 flex justify-between items-baseline">
                     <div className="comfortaa font-bold text-green-900">
                     Trees: {trees.length}
                     </div>
