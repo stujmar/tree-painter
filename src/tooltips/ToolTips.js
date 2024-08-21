@@ -8,6 +8,10 @@ const ToolTips = ({onClose}) => {
   const arrowBottomLeft = <div className="h-2 w-2 absolute -bottom-3" style={{ borderTop: "15px #BBF7D0 solid", borderLeft: "10px transparent solid", borderRight: "10px solid transparent"}} ></div>
   const arrowBottomRight = <div className="h-2 w-2 absolute right-2 -bottom-3" style={{ borderTop: "15px #BBF7D0 solid", borderLeft: "10px transparent solid", borderRight: "10px solid transparent"}} ></div>
 
+
+  // TODO: Tip order and tips should be props passed into the componenet not hardcoded here.
+  // Also instead of absolute x/y coordinates the tips positions should be defined by the id of their parent.
+
   // Add new tour tips here.
   const tipOrder = ["time", "status", "mode", "build", "settings"];
   // And here.
